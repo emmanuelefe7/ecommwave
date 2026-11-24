@@ -18,5 +18,5 @@ Newest at the bottom. Formats cycle: CAROUSEL → GROWTH VIDEO → MISTAKES VIDE
 | 2026-11-24 02:00 | PROFILE BANNER (not in rotation) | Grid banner v2 tile 3/3 – free audit | Get a free store audit. | 18026723555868928 | profile/banner2_3.jpg |
 | 2026-11-24 02:01 | PROFILE BANNER (not in rotation) | Grid banner v2 tile 2/3 – services | Stores that actually sell. | 17898379293426752 | profile/banner2_2.jpg |
 | 2026-11-24 02:02 | PROFILE BANNER (not in rotation) | Grid banner v2 tile 1/3 – intro | Shopify growth agency. | 17926234098223423 | profile/banner2_1.jpg |
-| 2026-11-24 02:00 | 3D CONCEPT (not in rotation) | Strategy over traffic (dartboard) | Getting traffic is easy. Getting sales needs a strategy. | 18350989570253793 | posts/2026-11-24-0200-3d-concepts/ |
-| 2026-11-24 02:00 | 3D CONCEPT (not in rotation) | Stand out / brand differentiation (pawns) | Don't just sell. Stand out. | 18347514817274133 | posts/2026-11-24-0200-3d-concepts/ |
+| 2026-11-24 02:00 | 3D CONCEPT (not in rotation, owner disliked this style – do not repeat) | Strategy over traffic (dartboard) | Getting traffic is easy. Getting sales needs a strategy. | 18350989570253793 | posts/2026-11-24-0200-3d-concepts/ |
+| 2026-11-24 02:00 | 3D CONCEPT (not in rotation, owner disliked this style – do not repeat) | Stand out / brand differentiation (pawns) | Don't just sell. Stand out. | 18347514817274133 | posts/2026-11-24-0200-3d-concepts/ |

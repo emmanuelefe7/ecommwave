@@ -1,0 +1,97 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script>
+<style>
+#h1{left:80px;top:330px;width:940px;font-size:122px;color:#fff}
+#h1 .serif{color:var(--mint);font-size:1.12em}
+#logo{left:80px;top:170px;height:46px}
+#br{left:70px;top:880px;width:940px;height:720px}
+.lab{position:absolute;z-index:5;font:700 30px "Inter Display";padding:12px 26px;border-radius:999px}
+#lbBefore{background:var(--coral);color:#3a0a12;left:800px;top:850px}
+#lbAfter{background:var(--mint);color:var(--ink);left:820px;top:850px}
+#wipe{position:absolute;top:0;bottom:0;width:4px;background:var(--mint);box-shadow:0 0 30px 6px rgba(52,213,160,.7);z-index:4}
+#end{opacity:0}
+#e1{left:80px;top:700px;width:940px;font-size:118px;color:#fff;text-align:center}
+#e1 .serif{color:var(--mint);font-size:1.12em}
+#elogo{left:50%;top:560px;height:52px;transform:translateX(-50%)}
+#chips{left:0;right:0;top:1050px;display:flex;justify-content:center;gap:22px}
+#cta{left:50%;top:1210px}
+#url{left:0;right:0;top:1420px;text-align:center;color:#a9b8d6;font:600 36px "Inter";letter-spacing:.01em}
+.toasts .toast{left:340px}
+</style></head><body><div id="stage">
+<div class="scene bg-dark" id="main">
+  <img id="logo" class="abs" src="assets/logo_white.png">
+  <div id="h1" class="abs headline">Your competitors might be one <span class="serif">redesign</span> ahead.</div>
+  <div id="lbBefore" class="lab">Before</div><div id="lbAfter" class="lab">After</div>
+  <div id="br" class="browser"></div>
+  <div class="toasts"></div>
+  <div id="cur" class="cursor"></div>
+</div>
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="assets/logo_white.png">
+  <div id="e1" class="abs headline">Let’s make you the <span class="serif">one ahead.</span></div>
+  <div id="chips" class="abs"><div class="chip"><span class="ck">${CHECK}</span>Free store audit</div><div class="chip"><span class="ck">${CHECK}</span>Redesigns that sell</div></div>
+  <div id="cta" class="abs cta">Message us <span class="arrow">${ARROW}</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+document.body.innerHTML=document.body.innerHTML.replaceAll('${CHECK}',CHECK).replaceAll('${ARROW}',ARROW);
+const W=940,H=720;
+$('#br').innerHTML=browserHTML('yourstore.com',`<div id="vj">${junkHTML()}</div><div id="vn" style="position:absolute;inset:0">${novaHTML()}</div><div id="wipe"></div>`,W,H);
+$('#cur').innerHTML=CURSOR;
+const orders=[['Order #1042','Tan Satchel · $129.00','now'],['Order #1043','Court Sneaker · $89.00','now'],['Order #1044','Glow Serum Set · $48.00','now']];
+$('.toasts').innerHTML=orders.map(o=>`<div class="toast">${'<div class="ic">'+BAG+'</div>'}<div><div class="t1">${o[0]}</div><div class="t2">${o[1]}</div></div><div class="tm">${o[2]}</div></div>`).join('');
+const toasts=$$('.toast');
+const hw=splitWords($('#h1')); const ew=splitWords($('#e1'));
+const DUR=14;
+function cursorPath(t){
+  // keyframes [time,x,y]
+  const k=[[1.8,760,1800],[2.6,520,1210],[3.3,640,1090],[3.9,480,1260],[4.3,560,1200],[5.6,560,1200],[6.5,722,1494],[7.6,722,1494],[8.6,900,1800]];
+  if(t<=k[0][0]) return [k[0][1],k[0][2]];
+  for(let i=0;i<k.length-1;i++){const a=k[i],b=k[i+1]; if(t<=b[0]){const x=eio((t-a[0])/(b[0]-a[0]));return [lerp(a[1],b[1],x),lerp(a[2],b[2],x)]}}
+  return [k[k.length-1][1],k[k.length-1][2]];
+}
+function render(t){
+  // headline
+  wordsIn(hw,t,.15,.075,.7);
+  // browser in
+  const bi=eo5(P(t,1.3,.9));
+  tf($('#br'),`translateY(${(1-bi)*260}px) scale(${lerp(.94,1,bi)*(1+.015*P(t,2,8))})`); op($('#br'),bi);
+  // junk wobble
+  $('.mq').style.transform=`translateX(${-((t*160)%900)}px)`;
+  $('.junk .pop').style.transform=`rotate(${Math.sin(t*9)*1.2}deg) scale(${1+Math.sin(t*7)*.012})`;
+  $('.junk .bd').style.transform=`rotate(${-2+Math.sin(t*5)*1.5}deg)`;
+  // wipe 4.4-5.4
+  const wp=eio(P(t,4.4,1.1));
+  $('#vn').style.clipPath=`inset(0 ${(1-wp)*100}% 0 0)`;
+  const wipe=$('#wipe'); wipe.style.left=(wp*W-2)+'px'; op(wipe, wp>0&&wp<1?1:0);
+  // labels
+  const lb=back(P(t,2.0,.5)), lbo=eio(P(t,4.7,.35)), la=back(P(t,5.1,.5));
+  tf($('#lbBefore'),`scale(${lb*(1-lbo)})`); tf($('#lbAfter'),`scale(${la})`);
+  // cursor
+  const [cx,cy]=cursorPath(t); const cv=P(t,1.8,.3)*(1-P(t,8.4,.3));
+  const click=t>6.6&&t<6.85?.85:1;
+  tf($('#cur'),`translate(${cx}px,${cy}px) scale(${click})`); op($('#cur'),cv);
+  // add-to-cart click on bag plus
+  const plus=$$('.nova .plus')[2]; const pc=P(t,6.6,.4);
+  plus.style.transform=`scale(${1+Math.sin(pc*Math.PI)*.35})`; plus.style.background=pc>0?'#12b886':'#0f1f4d';
+  const cn=$('.cartn'); const cb=back(P(t,6.8,.45)); op(cn,cb>0?1:0); tf(cn,`scale(${cb})`);
+  // toasts 7.1, 7.7, 8.3 stacked upward from bottom of browser
+  toasts.forEach((el,i)=>{
+    const s=7.1+i*.6; const x=back(P(t,s,.55)); const later=toasts.length-1-i;
+    const shift=[0,1,2].reduce((acc,j)=>acc+(j>i?eo(P(t,7.1+j*.6,.5))*1:0),0);
+    const y=1370-shift*120+(1-x)*80;
+    el.style.top=y+'px'; op(el,clamp(x*1.4)); tf(el,`scale(${lerp(.85,1,x)*(1-shift*.04)})`);
+  });
+  // exit main 9.6-10.3, end card in
+  const ex=eio(P(t,9.7,.6));
+  tf($('#main'),`scale(${1-ex*.06})`); op($('#main'),1);
+  op($('#end'),ex);
+  wordsIn(ew,t,10.0,.07,.7);
+  const el=eo(P(t,9.9,.6)); op($('#elogo'),el); $('#elogo').style.transform=`translateX(-50%) translateY(${(1-el)*20}px)`;
+  $$('#chips .chip').forEach((c,i)=>{const x=back(P(t,10.6+i*.15,.55)); tf(c,`scale(${x})`); op(c,clamp(x));});
+  const cx2=back(P(t,11.0,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-11.8)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  const ar=$('#cta .arrow'); ar.style.transform=`translateX(${Math.max(0,Math.sin((t-11.8)*4))*8}px)`;
+  op($('#url'),eo(P(t,11.3,.6)));
+}
+window.DUR=DUR; render(0);
+</script></body></html>

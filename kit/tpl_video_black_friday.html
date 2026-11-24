@@ -1,0 +1,147 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script>
+<style>
+#logo{left:80px;top:170px;height:46px}
+#h1{left:80px;top:290px;width:940px;font-size:112px;color:var(--ink)}
+#h1 .serif{color:var(--green);font-size:1.12em}
+#sub{left:84px;top:575px;font:500 46px "Inter";color:var(--muted);letter-spacing:-.01em}
+#phone{left:90px;top:690px;width:440px;height:900px;border-radius:66px;background:#0b1020;padding:14px;box-shadow:0 60px 120px rgba(10,26,71,.30),0 0 0 2px #2a3245 inset}
+#scr{position:relative;width:412px;height:872px;border-radius:52px;overflow:hidden;background:#fff;font-family:"Inter"}
+.island{position:absolute;left:50%;top:12px;width:116px;height:34px;border-radius:20px;background:#000;transform:translateX(-50%);z-index:20}
+.sb{height:54px;display:flex;align-items:center;justify-content:space-between;padding:8px 34px 0;font:600 17px "Inter";color:#0f172a}
+.addr{margin:2px 16px 0;height:38px;border-radius:12px;background:#f1f3f6;display:flex;align-items:center;justify-content:center;gap:8px;font:500 15px "Inter";color:#475569}
+.prog{position:absolute;left:16px;top:94px;height:3px;background:#12b886;border-radius:2px}
+.mnav{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 20px}
+.mnav b{font:800 21px "Inter Display";letter-spacing:.06em;color:#0f1f4d}
+.bf{height:0;overflow:hidden;background:#0f1f4d;color:#34d5a0;font:700 14px "Inter";letter-spacing:.08em;display:flex;align-items:center;justify-content:center}
+.mhero{position:relative;height:186px;margin:0 14px;border-radius:16px;overflow:hidden;background:linear-gradient(90deg,#c2aa8d,#d7c7b3)}
+.mhero img{position:absolute;right:-40px;top:0;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 25%)}
+.mhero h2{position:absolute;left:18px;top:44px;font:400 36px/1 "Serif";color:#2a2118}
+.mhero h2 em{font-style:italic}
+.mhero .b{position:absolute;left:18px;top:118px;background:#0f1f4d;color:#fff;font:600 13px "Inter";padding:9px 16px;border-radius:999px}
+.mt{font:700 17px "Inter";color:#0f1f4d;margin:16px 16px 10px}
+.mg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 14px}
+.mg .im{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:163/100;background:#f1efec}
+.mg .im img{width:100%;height:100%;object-fit:cover}
+.mg .off{position:absolute;left:8px;top:8px;background:#e11d48;color:#fff;font:700 11px "Inter";padding:4px 8px;border-radius:999px}
+.mg .nm{font:600 14px "Inter";color:#0f172a;margin-top:7px}
+.mg .pr{font:600 13px "Inter";color:#12b886;margin-top:2px}
+.mg .pr s{color:#94a3b8;font-weight:500;margin-left:5px}
+.skel{position:absolute;left:0;right:0;top:150px;bottom:0;background:#fff;padding:0 14px}
+.skel div{background:linear-gradient(90deg,#eef1f5 0%,#f7f9fb 50%,#eef1f5 100%);background-size:200% 100%;border-radius:14px;margin-bottom:12px}
+.sheet{position:absolute;left:0;right:0;bottom:0;height:360px;background:#fff;border-radius:28px 28px 0 0;box-shadow:0 -20px 50px rgba(0,0,0,.18);padding:14px 22px;z-index:10}
+.dim{position:absolute;inset:0;background:rgba(10,20,40,.45);z-index:9}
+.grab{width:46px;height:5px;border-radius:3px;background:#d4d9e1;margin:0 auto 16px}
+.sh-row{display:flex;gap:14px;align-items:center}
+.sh-row img{width:92px;height:62px;object-fit:cover;border-radius:10px}
+.xbtn{margin-top:22px;height:58px;border-radius:14px;background:#0b0b0f;color:#fff;font:700 19px "Inter";display:flex;align-items:center;justify-content:center;gap:10px}
+.obtn{margin-top:12px;height:54px;border-radius:14px;border:2px solid #d4d9e1;color:#0f1f4d;font:700 17px "Inter";display:flex;align-items:center;justify-content:center}
+.spin{width:24px;height:24px;border-radius:50%;border:3px solid rgba(255,255,255,.3);border-top-color:#fff}
+.done{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:12}
+.done .c{width:110px;height:110px;border-radius:50%;background:#12b886;display:grid;place-items:center}
+.done h4{font:800 30px "Inter Display";color:#0f172a;margin-top:26px;letter-spacing:-.02em}
+.done p{font:500 17px "Inter";color:#64748b;margin-top:8px}
+.tap{position:absolute;width:70px;height:70px;border-radius:50%;border:3px solid rgba(18,184,134,.9);background:rgba(18,184,134,.18);z-index:30;margin:-35px 0 0 -35px}
+#list{left:582px;top:760px;width:450px}
+.item{display:flex;gap:22px;align-items:flex-start;margin-bottom:58px}
+.item .bub{flex:none;width:64px;height:64px;border-radius:50%;background:var(--navy2);display:grid;place-items:center;box-shadow:0 12px 30px rgba(15,37,87,.25)}
+.item .bub svg{width:32px;height:32px}
+.item b{display:block;font:800 36px/1.08 "Inter Display";color:var(--ink);letter-spacing:-.025em}
+.item span{display:block;font:500 25px/1.3 "Inter";color:var(--muted);margin-top:8px}
+#lt{left:175px;top:1555px;background:#fff;border-radius:999px;padding:12px 20px;font:700 24px "Inter";color:var(--ink);box-shadow:0 16px 40px rgba(10,26,71,.2);display:flex;gap:10px;align-items:center;z-index:5}
+#lt i{width:12px;height:12px;border-radius:50%;background:#12b886;display:block}
+#end{opacity:0}
+#elogo{left:50%;top:520px;height:50px;transform:translateX(-50%)}
+#e1{left:70px;top:650px;width:940px;font-size:112px;color:var(--ink);text-align:center}
+#e1 .serif{color:var(--green);font-size:1.12em}
+#chips{left:0;right:0;top:1080px;display:flex;justify-content:center;gap:22px}
+#cta{left:50%;top:1230px}
+#url{left:0;right:0;top:1440px;text-align:center;color:var(--muted);font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<div class="scene bg-light" id="main">
+  <img id="logo" class="abs" src="assets/logo_navy.png">
+  <div id="h1" class="abs headline">Black Friday is<br><span class="serif">this week.</span></div>
+  <div id="sub" class="abs">Is your store ready for the rush?</div>
+  <div id="phone" class="abs"><div id="scr">
+    <div class="island"></div>
+    <div class="sb"><span>9:41</span><span>STATUS</span></div>
+    <div class="addr">LOCK<span>yourstore.com</span></div><div class="prog"></div>
+    <div class="mnav"><span style="font:600 22px Inter;color:#0f1f4d">☰</span><b>NOVA</b><span style="position:relative">CART<i class="cb" style="position:absolute;right:-8px;top:-6px;width:18px;height:18px;border-radius:50%;background:#12b886;color:#fff;font:700 11px/18px Inter;text-align:center;font-style:normal;opacity:0">1</i></span></div>
+    <div class="bf">BLACK FRIDAY · 30% OFF SITEWIDE</div>
+    <div class="mhero"><img src="assets/hero_woman.png"><h2>The New<br>Season <em>Edit</em></h2><div class="b">Shop the sale</div></div>
+    <div class="mt">Best sellers</div>
+    <div class="mg" id="mg"></div>
+    <div class="skel"><div style="height:186px"></div><div style="height:22px;width:40%"></div><div style="height:120px;width:48%;display:inline-block;margin-right:3%"></div><div style="height:120px;width:48%;display:inline-block"></div></div>
+    <div class="dim"></div>
+    <div class="sheet"><div class="grab"></div>
+      <div style="font:700 15px Inter;color:#12b886;margin-bottom:12px">✓ Added to cart</div>
+      <div class="sh-row"><img src="assets/p_bag.png"><div><div style="font:700 18px Inter;color:#0f172a">Tan Satchel</div><div style="font:600 16px Inter;color:#12b886;margin-top:4px">$90.30 <s style="color:#94a3b8;font-weight:500">$129.00</s></div></div></div>
+      <div class="xbtn"><span class="xt">Express checkout</span><div class="spin" style="display:none"></div></div>
+      <div class="obtn">View cart</div>
+    </div>
+    <div class="done"><div class="c"><svg width="58" height="58" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path id="ck" d="M5 12.5l4.5 4.5L19 7.5" stroke-dasharray="22" stroke-dashoffset="22"/></svg></div><h4>Order confirmed</h4><p>Order #1042 · $90.30</p></div>
+    <div class="tap"></div>
+  </div></div>
+  <div id="lt" class="abs"><i></i>Loads in 1.2s</div>
+  <div id="list" class="abs">
+    <div class="item"><div class="bub">${CHECK}</div><div><b>Fast load</b><span>Under 2 seconds on mobile</span></div></div>
+    <div class="item"><div class="bub">${CHECK}</div><div><b>Offer up top</b><span>Your deal seen instantly</span></div></div>
+    <div class="item"><div class="bub">${CHECK}</div><div><b>One-tap checkout</b><span>No forms, no friction</span></div></div>
+    <div class="item"><div class="bub">${CHECK}</div><div><b>Built for phones</b><span>Where most shoppers buy</span></div></div>
+  </div>
+</div>
+<div class="scene bg-light" id="end">
+  <img id="elogo" class="abs" src="assets/logo_navy.png">
+  <div id="e1" class="abs headline">Don’t let your store <span class="serif">miss the rush.</span></div>
+  <div id="chips" class="abs"><div class="chip"><span class="ck">${CHECK}</span>Free store audit</div><div class="chip"><span class="ck">${CHECK}</span>Before Friday</div></div>
+  <div id="cta" class="abs cta">Message us <span class="arrow">${ARROW}</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+document.body.innerHTML=document.body.innerHTML.replaceAll('${CHECK}',CHECK).replaceAll('${ARROW}',ARROW).replace('LOCK',LOCK).replace('CART',CART).replace('STATUS',STATUS);
+$('#mg').innerHTML=PRODUCTS.map(p=>`<div class="mc"><div class="im"><img src="assets/${p[0]}.png"><span class="off">-30%</span></div><div class="nm">${p[1]}</div><div class="pr">${'$'+(parseFloat(p[2].slice(1))*.7).toFixed(2)}<s>${p[2]}</s></div></div>`).join('');
+const hw=splitWords($('#h1')), ew=splitWords($('#e1'));
+const DUR=16;
+function render(t){
+  wordsIn(hw,t,.15,.08,.7);
+  const s=eo(P(t,.9,.6)); op($('#sub'),s); tf($('#sub'),`translateY(${(1-s)*24}px)`);
+  // phone in
+  const ph=eo5(P(t,1.2,.9)); tf($('#phone'),`translateY(${(1-ph)*300}px) rotate(${(1-ph)*-4}deg)`); op($('#phone'),ph);
+  // loading 1.8-2.6
+  const ld=P(t,1.8,.8); const pr=$('.prog'); pr.style.width=(eo(ld)*380)+'px'; op(pr,ld<1?1:1-P(t,2.6,.2));
+  $$('.skel div').forEach(d=>d.style.backgroundPosition=`${-(t*220)%400}px 0`);
+  op($('.skel'),1-P(t,2.6,.3));
+  const lt=back(P(t,2.7,.5)); tf($('#lt'),`scale(${lt})`); op($('#lt'),clamp(lt)*(1-P(t,8.6,.3)));
+  // BF banner 3.2
+  $('.bf').style.height=(eo(P(t,3.3,.5))*40)+'px';
+  // tap on bag card 4.5
+  const tapAt=(t>=4.4&&t<5.0)?[[4.4,4.9],[110+189+10,0]]:null;
+  const tap=$('.tap');
+  let tx=0,ty=0,tp=-1;
+  if(t>=4.4&&t<5.0){tp=P(t,4.4,.5);tx=108;ty=640}
+  else if(t>=6.0&&t<6.6){tp=P(t,6.0,.5);tx=206;ty=700}
+  if(tp>=0){tap.style.left=tx+'px';tap.style.top=ty+'px';tf(tap,`scale(${lerp(.5,1.3,eo(tp))})`);op(tap,1-tp)}else op(tap,0);
+  const cb=back(P(t,4.6,.4)); tf($('.cb'),`scale(${cb})`); op($('.cb'),clamp(cb));
+  // sheet 4.9
+  const sh=eo5(P(t,4.9,.6)); tf($('.sheet'),`translateY(${(1-sh)*380}px)`); op($('.dim'),sh);
+  // express press 6.1 → spinner → done 6.9
+  const pressed=t>6.1; $('.xt').style.display=pressed?'none':'';$('.spin').style.display=pressed?'block':'none';
+  $('.spin').style.transform=`rotate(${t*720}deg)`;
+  const dn=eo(P(t,6.9,.4)); op($('.done'),dn); tf($('.done'),`scale(${lerp(1.04,1,dn)})`);
+  const c=back(P(t,7.0,.5)); tf($('.done .c'),`scale(${c})`);
+  $('#ck').style.strokeDashoffset=22*(1-eo(P(t,7.3,.45)));
+  // checklist items
+  const its=$$('.item'); const at=[2.8,3.7,7.1,7.8];
+  its.forEach((it,i)=>{const x=eo5(P(t,at[i],.6)); op(it,x); tf(it,`translateX(${(1-x)*60}px)`);
+    const b=back(P(t,at[i]+.15,.5)); tf(it.querySelector('.bub'),`scale(${b})`);});
+  // exit
+  const ex=eio(P(t,9.4,.6)); op($('#main'),1); tf($('#main'),`scale(${1-ex*.05})`); op($('#end'),ex);
+  wordsIn(ew,t,9.7,.07,.7);
+  const el=eo(P(t,9.6,.6)); op($('#elogo'),el);
+  $$('#chips .chip').forEach((c,i)=>{const x=back(P(t,10.4+i*.15,.55)); tf(c,`scale(${x})`); op(c,clamp(x));});
+  const cx2=back(P(t,10.8,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-11.6)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-11.6)*4))*8}px)`;
+  op($('#url'),eo(P(t,11.1,.6)));
+}
+window.DUR=DUR; render(0);
+</script></body></html>

@@ -1,0 +1,78 @@
+@font-face{font-family:"Serif";font-style:italic;src:url(fonts/serif-italic.woff2) format("woff2")}
+@font-face{font-family:"Serif";font-style:normal;src:url(fonts/serif.woff2) format("woff2")}
+:root{
+  --navy:#0a1a47; --navy2:#0f2557; --ink:#0d1b3e; --mint:#34d5a0; --green:#12b886;
+  --light:#eef3f9; --muted:#5b6b86; --coral:#ff6b7a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+body{font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+#stage{position:absolute;inset:0;overflow:hidden}
+.abs{position:absolute}
+.scene{position:absolute;inset:0;will-change:opacity,transform}
+.bg-dark{background:radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),var(--navy)}
+.bg-light{background:radial-gradient(800px 600px at 100% 0%,#d6f5ea 0%,rgba(214,245,234,0) 70%),radial-gradient(700px 600px at 0% 100%,#dbeefa 0%,rgba(219,238,250,0) 70%),#f2f6fb}
+.headline{font-weight:800;letter-spacing:-0.045em;line-height:1.02}
+.serif{font-family:"Serif";font-weight:400;font-style:italic;letter-spacing:-0.01em}
+.w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+.w>span{display:inline-block;will-change:transform}
+.pill{display:inline-flex;align-items:center;gap:14px;border-radius:999px;font-weight:700}
+.tag{border:2px solid rgba(52,213,160,.45);color:var(--mint);font-weight:700;letter-spacing:.14em;font-size:26px;padding:14px 26px;border-radius:999px}
+.cta{background:var(--mint);color:var(--ink);font-size:46px;font-weight:800;letter-spacing:-.02em;padding:26px 30px 26px 50px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 20px 50px rgba(52,213,160,.35)}
+.cta .arrow{width:70px;height:70px;border-radius:50%;background:var(--ink);display:grid;place-items:center}
+.chip{background:#fff;color:var(--ink);font-size:32px;font-weight:700;padding:16px 30px 16px 16px;border-radius:999px;display:inline-flex;align-items:center;gap:16px;box-shadow:0 18px 40px rgba(10,26,71,.18)}
+.chip .ck{width:46px;height:46px;border-radius:50%;background:var(--navy2);display:grid;place-items:center}
+
+/* ---------- browser + store UI ---------- */
+.browser{position:absolute;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 50px 120px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06)}
+.bbar{height:58px;background:#eef1f5;display:flex;align-items:center;padding:0 22px;gap:10px;border-bottom:1px solid #e1e5ec}
+.bbar i{width:14px;height:14px;border-radius:50%;display:block}
+.url{margin-left:26px;flex:1;height:36px;border-radius:10px;background:#fff;display:flex;align-items:center;padding:0 16px;gap:10px;font:500 19px "Inter";color:#4b5568}
+.view{position:relative;overflow:hidden;background:#fff}
+
+/* clean store */
+.nova{position:absolute;inset:0;background:#fff;font-family:"Inter"}
+.nova .ann{height:38px;background:#0f1f4d;color:#fff;font:500 16px "Inter";display:flex;align-items:center;justify-content:center;letter-spacing:.01em}
+.nova .nav{height:76px;display:flex;align-items:center;padding:0 40px;border-bottom:1px solid #eef0f3}
+.nova .logo{font:800 26px "Inter Display";letter-spacing:.06em;color:#0f1f4d}
+.nova .links{display:flex;gap:38px;margin-left:auto;margin-right:auto;font:500 18px "Inter";color:#334155}
+.nova .icons{display:flex;gap:18px;align-items:center}
+.nova .hero{position:relative;height:300px;background:linear-gradient(90deg,#c2aa8d 0%,#d5c3ad 45%,#d7c7b3 100%);overflow:hidden}
+.nova .hero img{position:absolute;right:0;top:0;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 18%)}
+.nova .hero h2{position:absolute;left:44px;top:92px;font:400 64px "Serif";color:#2a2118;letter-spacing:-.01em}
+.nova .hero h2 em{font-style:italic}
+.nova .btn{position:absolute;left:46px;top:192px;background:#0f1f4d;color:#fff;font:600 18px "Inter";padding:14px 28px;border-radius:999px}
+.nova .sec{padding:26px 40px 0}
+.nova .sec h3{font:700 22px "Inter";color:#0f1f4d;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card .im{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:163/96;background:#f1efec}
+.card .im img{width:100%;height:100%;object-fit:cover}
+.card .plus{position:absolute;right:10px;bottom:10px;width:34px;height:34px;border-radius:50%;background:#0f1f4d;display:grid;place-items:center}
+.card .nm{font:600 16px "Inter";color:#0f172a;margin-top:10px}
+.card .pr{font:600 15px "Inter";color:#12b886;margin-top:4px}
+.card .pr s{color:#94a3b8;font-weight:500;margin-left:6px}
+
+/* cluttered store */
+.junk{position:absolute;inset:0;background:#fff7d6;font-family:Arial,Helvetica,sans-serif}
+.junk .top{height:44px;background:#e11d2a;color:#fff;font:700 20px Arial;display:flex;align-items:center;justify-content:center}
+.junk .nav{height:52px;background:#7c3aed;display:flex;align-items:center;justify-content:space-around;color:#ffe066;font:700 15px Arial;text-transform:uppercase}
+.junk .bd{position:absolute;left:30px;top:120px;background:#ffe03a;color:#d9152a;font:900 38px Impact,Arial Black,Arial;padding:12px 24px;transform:rotate(-2deg)}
+.junk .ch{position:absolute;left:46px;top:196px;background:#16a34a;color:#fff;font:700 22px Arial;padding:12px 20px;border:3px dashed #fff}
+.junk .marq{position:absolute;left:0;right:0;top:268px;height:36px;background:#000;color:#39ff14;font:700 19px "Courier New",monospace;white-space:nowrap;display:flex;align-items:center}
+.junk .heroimg{position:absolute;right:20px;top:110px;width:330px;height:190px;object-fit:cover;border:4px solid #e11d2a}
+.junk .prods{position:absolute;left:22px;right:22px;top:330px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.junk .p{background:#fff;border:2px solid #f59e0b;padding:6px}
+.junk .p img{width:100%;aspect-ratio:163/96;object-fit:cover}
+.junk .p b{display:block;color:#e11d2a;font:900 22px Arial;margin-top:6px}
+.junk .p u{display:block;color:#2563eb;font:700 13px Arial}
+.junk .pop{position:absolute;left:250px;top:150px;width:420px;background:#fff;border:5px solid #e11d2a;box-shadow:12px 12px 0 #000;padding:22px;text-align:center;font:900 30px Arial;color:#111}
+.junk .pop small{display:block;font:700 17px Arial;color:#e11d2a;margin-top:8px}
+.junk .pop .x{position:absolute;right:8px;top:2px;font:700 22px Arial;color:#999}
+
+/* cursor + toast */
+.cursor{position:absolute;width:40px;height:40px;z-index:50;filter:drop-shadow(0 4px 6px rgba(0,0,0,.35))}
+.toast{position:absolute;background:rgba(255,255,255,.97);border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.28);display:flex;align-items:center;gap:22px;padding:24px 28px;width:640px;font-family:"Inter"}
+.toast .ic{width:64px;height:64px;border-radius:16px;background:var(--navy2);display:grid;place-items:center;flex:none}
+.toast .t1{font:700 26px "Inter";color:#0f172a}
+.toast .t2{font:500 22px "Inter";color:#64748b;margin-top:4px}
+.toast .tm{margin-left:auto;align-self:flex-start;font:500 20px "Inter";color:#94a3b8}

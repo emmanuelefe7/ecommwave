@@ -1,0 +1,105 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<script src="common.js"></script>
+<style>
+html,body{width:auto!important;height:auto!important;overflow:visible!important;background:#777}
+#pano{position:relative;width:3240px;height:1350px;overflow:hidden;
+ background:radial-gradient(1100px 800px at 1650px 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(900px 700px at 0% 100%,#173a80 0%,rgba(23,58,128,0) 70%),radial-gradient(900px 700px at 3240px 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1.6px,transparent 1.7px);background-size:36px 36px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.15) 60%,transparent)}
+.kick{font:700 26px "Inter";letter-spacing:.16em;color:#34d5a0;text-transform:uppercase}
+.hl{font:800 104px/1 "Inter Display";letter-spacing:-.045em;color:#fff}
+.hl em{font-family:"Serif";font-style:italic;font-weight:400;color:#34d5a0;font-size:1.1em;letter-spacing:-.01em}
+.glass{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:999px;color:#fff;font:700 28px "Inter";padding:14px 26px;display:inline-flex;align-items:center;gap:12px}
+.toast2{position:absolute;background:#fff;border-radius:26px;box-shadow:0 30px 70px rgba(0,0,0,.4);display:flex;align-items:center;gap:20px;padding:22px 26px;width:520px;font-family:"Inter"}
+.toast2 .ic{width:62px;height:62px;border-radius:16px;background:#0f2557;display:grid;place-items:center;flex:none}
+.toast2 .t1{font:700 25px "Inter";color:#0f172a}
+.toast2 .t2{font:500 21px "Inter";color:#64748b;margin-top:3px}
+.toast2 .tm{margin-left:auto;align-self:flex-start;font:500 19px "Inter";color:#94a3b8}
+.phone{position:absolute;border-radius:64px;background:#0b1020;padding:13px;box-shadow:0 60px 140px rgba(0,0,0,.55),inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:52px;overflow:hidden;background:#fff;font-family:"Inter"}
+.island{position:absolute;left:50%;top:12px;width:110px;height:32px;border-radius:18px;background:#000;transform:translateX(-50%)}
+.chip{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#0d1b3e;font:700 28px "Inter";padding:14px 26px 14px 14px;border-radius:999px;box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.chip .ck{width:42px;height:42px;border-radius:50%;background:#0f2557;display:grid;place-items:center}
+.cta2{display:inline-flex;align-items:center;gap:22px;background:#34d5a0;color:#0d1b3e;font:800 40px "Inter Display";letter-spacing:-.02em;padding:22px 26px 22px 44px;border-radius:999px;box-shadow:0 20px 50px rgba(52,213,160,.35)}
+.cta2 i{width:62px;height:62px;border-radius:50%;background:#0d1b3e;display:grid;place-items:center}
+
+.node{position:absolute;width:64px;height:64px;border-radius:50%;background:#0a1a47;border:4px solid #34d5a0;box-shadow:0 0 0 10px rgba(52,213,160,.12),0 0 40px rgba(52,213,160,.5);display:grid;place-items:center;font:800 24px "Inter Display";color:#34d5a0;transform:translate(-50%,-50%)}
+.nlab{position:absolute;font:700 24px "Inter";color:#fff;letter-spacing:.02em;transform:translateX(-50%);white-space:nowrap}
+.card{position:absolute;background:#fff;border-radius:30px;box-shadow:0 50px 120px rgba(0,0,0,.5);font-family:"Inter";color:#0f172a}
+.li{display:flex;align-items:center;gap:20px;padding:18px 0;border-bottom:1px solid #e8edf3}
+.li img{width:96px;height:96px;object-fit:cover;border-radius:16px;background:#f1f3f6}
+.qty{display:inline-flex;align-items:center;gap:14px;border:1.5px solid #dbe2ea;border-radius:999px;padding:4px 14px;font:600 18px Inter;color:#334155;margin-top:8px}
+</style></head><body>
+<div id="pano">
+  <div class="dots"></div>
+  <svg width="3240" height="1350" viewBox="0 0 3240 1350" style="position:absolute;inset:0">
+    <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#34d5a0" stop-opacity=".25"/><stop offset=".5" stop-color="#34d5a0"/><stop offset="1" stop-color="#34d5a0"/></linearGradient>
+    <filter id="glow" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="14"/></filter></defs>
+    <path id="jr" d="M-40 1000 C 300 1000, 420 820, 760 840 S 1300 1010, 1640 960 S 2300 760, 2640 820 S 3100 900, 3300 860" fill="none" stroke="#34d5a0" stroke-width="22" opacity=".35" filter="url(#glow)"/>
+    <path d="M-40 1000 C 300 1000, 420 820, 760 840 S 1300 1010, 1640 960 S 2300 760, 2640 820 S 3100 900, 3300 860" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round"/>
+    <path d="M-40 1000 C 300 1000, 420 820, 760 840 S 1300 1010, 1640 960 S 2300 760, 2640 820 S 3100 900, 3300 860" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="2 22" stroke-linecap="round" opacity=".55" transform="translate(0,34)"/>
+    <path d="M-40 1250 C 520 1150, 900 1330, 1500 1230 S 2500 1120, 3300 1240" fill="none" stroke="#34d5a0" stroke-width="3" opacity=".22"/>
+    <path d="M-40 1295 C 520 1195, 900 1375, 1500 1275 S 2500 1165, 3300 1285" fill="none" stroke="#34d5a0" stroke-width="2" opacity=".12"/>
+  </svg>
+
+  <!-- TILE 1 : VISIT -->
+  <img src="assets/logo_white.png" style="position:absolute;left:110px;top:130px;height:54px">
+  <div class="kick" style="position:absolute;left:110px;top:250px">From click to checkout</div>
+  <div class="hl" style="position:absolute;left:110px;top:300px;width:880px;font-size:100px">Turn visitors into <em>buyers.</em></div>
+  <div class="phone" style="left:520px;top:560px;width:400px;height:840px;transform:rotate(3deg)"><div class="scr">
+    <div class="island"></div>
+    <div style="height:54px;display:flex;align-items:center;justify-content:space-between;padding:8px 32px 0;font:600 17px Inter;color:#0f172a"><span>9:41</span>STATUS</div>
+    <div style="margin:2px 14px 0;height:34px;border-radius:10px;background:#f1f3f6;display:flex;align-items:center;justify-content:center;font:500 14px Inter;color:#475569">yourstore.com</div>
+    <div style="height:50px;display:flex;align-items:center;justify-content:center;font:800 19px 'Inter Display';letter-spacing:.06em;color:#0f1f4d">NOVA</div>
+    <div style="margin:0 14px;height:300px;border-radius:18px;background:#f3efe9;display:grid;place-items:center;overflow:hidden"><img src="assets/p_serum.png" style="height:290px;object-fit:contain"></div>
+    <div style="padding:16px 18px 0">
+      <div style="font:800 24px 'Inter Display';letter-spacing:-.02em">Glow Serum Set</div>
+      <div style="font:600 15px Inter;color:#12b886;margin-top:6px">★★★★★ <span style="color:#64748b;font-weight:500">128 reviews</span></div>
+      <div style="font:800 22px Inter;margin-top:10px">$48.00 <span style="font:500 16px Inter;color:#94a3b8;text-decoration:line-through">$64.00</span></div>
+      <div style="margin-top:16px;height:54px;border-radius:14px;background:#0f1f4d;color:#fff;font:700 18px Inter;display:flex;align-items:center;justify-content:center;gap:10px">Add to cart</div>
+      <div style="font:500 13px Inter;color:#64748b;margin-top:10px;text-align:center">Free shipping over $50 · 30-day returns</div>
+    </div>
+  </div></div>
+  <div class="node" style="left:250px;top:960px">01</div>
+  <div class="nlab" style="left:250px;top:1020px">Visit</div>
+
+  <!-- TILE 2 : CART -->
+  <div style="position:absolute;left:1190px;top:130px;width:880px">
+    <div class="kick" style="margin-top:120px">Make every step easy</div>
+    <div class="hl" style="font-size:100px;margin-top:22px">No friction, <em>just sales.</em></div>
+  </div>
+  <div class="card" style="left:1250px;top:600px;width:640px;padding:30px 36px 32px;transform:rotate(-1.5deg)">
+    <div style="display:flex;justify-content:space-between;align-items:center"><div style="font:800 30px 'Inter Display';letter-spacing:-.02em">Your cart <span style="color:#94a3b8;font-weight:600">(2)</span></div><div style="font:600 26px Inter;color:#94a3b8">✕</div></div>
+    <div style="margin-top:16px;background:#e9fbf4;border-radius:14px;padding:12px 16px;font:600 18px Inter;color:#0b7a57">You’ve unlocked free shipping
+      <div style="height:8px;border-radius:9px;background:#34d5a0;margin-top:10px"></div></div>
+    <div class="li"><img src="assets/p_serum.png"><div style="flex:1"><div style="font:700 21px Inter">Glow Serum Set</div><div class="qty">− 1 +</div></div><div style="font:700 21px Inter">$48.00</div></div>
+    <div class="li"><img src="assets/p_bag.png"><div style="flex:1"><div style="font:700 21px Inter">Tan Satchel</div><div class="qty">− 1 +</div></div><div style="font:700 21px Inter">$129.00</div></div>
+    <div style="display:flex;justify-content:space-between;margin-top:18px;font:600 20px Inter;color:#475569"><span>Shipping</span><span style="color:#12b886">Free</span></div>
+    <div style="display:flex;justify-content:space-between;margin-top:8px;font:800 24px Inter"><span>Total</span><span>$177.00</span></div>
+    <div style="margin-top:20px;height:66px;border-radius:16px;background:#0f1f4d;color:#fff;font:700 22px Inter;display:flex;align-items:center;justify-content:center;gap:12px">LOCKW Checkout · $177.00</div>
+  </div>
+  <div class="node" style="left:1990px;top:986px">02</div>
+  <div class="nlab" style="left:1990px;top:1046px">Add to cart</div>
+
+  <!-- TILE 3 : ORDER -->
+  <div style="position:absolute;left:2270px;top:130px;width:880px">
+    <div class="kick" style="margin-top:120px">Free store audit</div>
+    <div class="hl" style="font-size:100px;margin-top:22px">Let’s get you <em>more orders.</em></div>
+  </div>
+  <div style="position:absolute;left:2700px;top:560px;width:400px;height:500px">
+    <div style="position:absolute;left:22px;top:22px;right:-22px;bottom:-22px;border-radius:200px 200px 32px 32px;background:#34d5a0"></div>
+    <div style="position:absolute;inset:0;border-radius:200px 200px 32px 32px;overflow:hidden;background:#d9e3ef"><img src="assets/man.png" style="position:absolute;left:50%;bottom:0;height:500px;transform:translateX(-50%)"></div>
+  </div>
+  <div class="toast2" style="left:2260px;top:640px;width:500px;transform:rotate(-2deg)"><div class="ic">BAG</div><div><div class="t1">New order #1045</div><div class="t2">Glow Serum Set + 1 · $177.00</div></div><div class="tm">now</div></div>
+  <div class="toast2" style="left:2290px;top:800px;width:470px"><div class="ic">BAG</div><div><div class="t1">New order #1046</div><div class="t2">Court Sneaker · $89.00</div></div><div class="tm">3m</div></div>
+  <div class="node" style="left:2400px;top:990px;display:none">03</div>
+  <div style="position:absolute;left:2160px;width:1080px;top:1120px;text-align:center"><span class="cta2">DM us “GROWTH” <i>ARM</i></span>
+    <div style="font:600 24px Inter;color:rgba(255,255,255,.7);margin-top:22px;letter-spacing:.02em">ecommwave.org</div></div>
+</div>
+<script>
+const ic=(d,c,w,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+let h=document.body.innerHTML;
+h=h.replace('STATUS',STATUS).replaceAll('>BAG<','>'+BAG+'<').replace('LOCKW',ic('<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>','#34d5a0',2.4,22)).replace('ARM',ic('<path d="M5 12h14M13 6l6 6-6 6"/>','#34d5a0',2.6,30));
+document.body.innerHTML=h;
+</script>
+</body></html>

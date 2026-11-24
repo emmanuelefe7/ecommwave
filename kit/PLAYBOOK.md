@@ -15,6 +15,7 @@ Every run you create ONE finished post, publish it to Instagram, and log it. Wor
   - `python3 tools/render_video.py page.html --frames 2,6,11` → preview JPEGs in /tmp; `python3 tools/render_video.py page.html out.mp4` → silent 1080×1920 30 fps MP4 (page defines `window.DUR` and `render(t)`).
   - `python3 tools/voiceover.py plan script.json vo/` then `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4` → voice-first timing + natural voiceover + quiet music pad, −14 LUFS, with an automatic pacing/silence gate (see §4). Needs `pip install --break-system-packages kokoro-onnx soundfile` (model downloads itself from GitHub on first use).
 - Templates to copy and adapt (study them first, they define the look):
+  - `profile/banner2_full.png` + `tpl_triptych_banner.html` — THE look the owner loves (navy, mint wave, clean UI, photo arch).
   - `tpl_carousel_seo.html` — carousel: phone mockups, real search results, before/after cards, callouts, chart, CTA slide.
   - `tpl_video_black_friday.html` (+ `tpl_vo/`) — THE reference for voice-synced timing (voWarp). `tpl_video_redesign.html`, `tpl_video_free_audit.html` — more animated reel ideas: word-by-word headline reveal, browser/phone store UI, cursor taps, toasts, checklists, score gauge, end card with CTA. `common.js` has helpers (easing, `splitWords`, `wordsIn`, `novaHTML()`, `junkHTML()`, `browserHTML()`, icons) and `common.css` the shared styles.
 
@@ -39,17 +40,16 @@ Pick a topic that is NOT in the log (no repeats within the last 30 posts, and do
 - Honesty: no invented statistics, percentages or client results. Example charts get the label "Example for illustration. Results vary by store." Speak in plain, simple words a beginner store owner understands.
 
 
-## 3b. Premium concept style (REQUIRED on every post — the owner's reference look)
-The owner's reference posts (leaking bucket, turtle on a skateboard, standout chess pawn, dart in a bullseye, laptop held in hands, glass icon ring) share one formula. Follow it:
-- **One big visual metaphor per post** that explains the message before anyone reads: e.g. a standout pawn (be different), dart in the bullseye (strategy/targeting), leaking bucket (losing sales), magnet (attract customers), rocket (growth), hourglass/turtle (slow store), padlock/shield (trust), key (SEO), funnel (conversions), shopping cart, gift box (offers), megaphone (marketing), ladder/stairs (scaling), puzzle piece (missing piece), lightbulb (ideas), stacked coins (revenue).
-- **Real-looking 3D**, not flat icons: build the object in three.js (`tpl_3d_concepts.html` has two finished scenes, `pawn` and `dart`; add new `if(scene==='…')` blocks from Lathe/Extrude/Cylinder/Torus/Sphere geometry). Glossy navy (#0e1a3a) + ONE mint hero object (#0fae7c), white/steel supporting pieces, soft studio light, soft shadows, gentle depth of field. Render with `python3 tools/render_3d.py page.html "s=<scene>" out.jpg` (full post) or `"s=<scene>&alpha" out.png` (transparent object to place inside carousel slides or animate in videos with CSS transforms). One-time setup: `npm pack three && tar xzf three-*.tgz && mv package three_pkg && rm three-*.tgz` inside `kit/`.
-- **Typography like the references**: a short, punchy headline (3–8 words) — big, ExtraBold, tight tracking — often a two-line contrast ("Getting traffic is easy. / Getting sales needs a *strategy.*"), with ONE accent phrase in Instrument Serif italic mint or a solid navy label box (`.tag`). Optional single sub-line. Logo small at the top; footer small: `ecommwave.org · DM “GROWTH”`.
-- **Lots of clean space**, light studio background (#eef2f7) or deep navy, never busy. The object sits in the lower/right part, the headline in the upper/left; nothing overlaps the headline.
-- Where to use it: every single-image post and every carousel COVER (slide 1) is a 3D concept image; inner carousel slides may combine the transparent 3D object with the realistic UI cards; videos open on a 3D hero object (rendered once as PNG, animated with CSS: float, slide-in, slight rotation) before the UI demo.
-- Realistic device mockups (phone, laptop/browser with the NOVA store) remain the way to show "a store" — keep them clean and premium like the references.
+## 3b. The look the owner loves (REQUIRED) — deep brand navy, clean, premium
+The owner rejected light-grey 3D renders ("not professional, doesn't communicate my colors, not clean") and loves the connected navy grid banner (profile/banner2_*.jpg) and the navy reels. Every post must look like that:
+- **Deep brand navy dominates**: background = the navy gradient from `common.css` `.bg-dark` (#0a1a47 base, teal glow top-right, blue glow bottom-left), optional faint dot grid, and the mint wave lines as a signature element. Light (#f3f7fb) backgrounds only for inner carousel slides that need contrast — never for covers or single-image posts.
+- **Mint (#34d5a0) is the only accent**: one accent phrase in Instrument Serif italic mint, mint CTA pill, mint check chips, mint wave/glow. White headlines (Inter Display ExtraBold, tight tracking).
+- **Clean and premium**: generous margins (≥ 80 px), one clear focal visual, nothing crowded, no clutter, no grey placeholder bars.
+- **Visuals = realistic, polished UI and the brand photos**: phone/browser mockups of the NOVA store, order-notification cards, score gauges, chips, the arch photo of the woman/man with the mint offset shape. Do NOT use `tpl_3d_concepts.html` / 3D objects unless the owner asks again.
+- Footer small: `ecommwave.org` (and/or `DM “GROWTH”`), logo small at top.
 
 ## 4. Format specs
-**Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping 3D concept cover (§3b), slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (dark, woman or man photo in the arch like the template). Each slide gets alt text when posting.
+**Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping navy cover (§3b), slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (dark, woman or man photo in the arch like the template). Each slide gets alt text when posting.
 
 **Videos**: 1080×1920, 30 fps, 15–22 s, ALWAYS with voiceover. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook → animated realistic UI demo that SHOWS the point → end card with CTA. Crossfades: keep the old scene at opacity 1 and fade the new scene in on top (never scale/shrink the old scene, never dip to black).
 

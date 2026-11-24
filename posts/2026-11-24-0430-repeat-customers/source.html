@@ -1,0 +1,148 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script><script src="work/vo/timing.js"></script>
+<style>
+#logo{left:80px;top:170px;height:46px}
+.headline .serif{color:var(--mint);font-size:1.12em}
+#h1{left:80px;top:290px;width:940px;font-size:112px;color:#fff}
+/* customer profile panel */
+#panel{left:80px;top:730px;width:920px;background:#fff;border-radius:34px;box-shadow:0 50px 120px rgba(0,0,0,.4);font-family:Inter;padding:44px 46px 30px;overflow:hidden}
+.ph-top{display:flex;align-items:center;gap:24px}
+.ph-top .av{width:96px;height:96px;border-radius:50%;background:var(--navy2);color:#fff;font:800 34px "Inter Display";display:grid;place-items:center;letter-spacing:.02em}
+.ph-top .nm{font:800 40px "Inter Display";color:#0f172a;letter-spacing:-.02em}
+.ph-top .sn{font:500 22px Inter;color:#64748b;margin-top:4px}
+#badge{margin-left:auto;background:#e6faf2;color:#0b8a63;border:2px solid #9be8cb;font:700 22px Inter;padding:12px 20px;border-radius:999px;display:flex;gap:10px;align-items:center;opacity:0}
+#badge i{width:12px;height:12px;border-radius:50%;background:#12b886;display:block}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.st{background:#f3f7fb;border-radius:20px;padding:22px 24px}
+.st .k{font:600 19px Inter;color:#64748b;letter-spacing:.02em}
+.st .v{font:800 46px "Inter Display";color:#0f172a;margin-top:6px;letter-spacing:-.02em}
+.oh{font:700 24px Inter;color:#0f172a;margin:38px 0 8px}
+.row{display:flex;align-items:center;gap:22px;padding:18px 0;border-top:1px solid #eef1f5;opacity:0}
+.row .th{width:92px;height:72px;border-radius:14px;overflow:hidden;background:#f1efec;flex:none}
+.row .th img{width:100%;height:100%;object-fit:cover}
+.row .nm{font:700 25px Inter;color:#0f172a}
+.row .dt{font:500 20px Inter;color:#64748b;margin-top:4px}
+.row .pr{margin-left:auto;font:700 25px Inter;color:#0f172a;text-align:right}
+.tg{display:inline-block;margin-top:6px;font:700 17px Inter;padding:6px 14px;border-radius:999px}
+.tg.f{background:#eef1f5;color:#475569}
+.tg.r{background:#e6faf2;color:#0b8a63}
+/* scene 2 */
+#s2{opacity:0}
+#h2{left:80px;top:290px;width:940px;font-size:118px;color:#fff}
+#phone{left:80px;top:500px;width:520px;height:1010px;border-radius:72px;background:#0b1430;padding:16px;box-shadow:0 50px 120px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.1)}
+#phone .scr{position:relative;width:100%;height:100%;border-radius:58px;overflow:hidden;font-family:Inter;
+  background:radial-gradient(420px 420px at 85% 10%,rgba(52,213,160,.55),rgba(52,213,160,0) 70%),radial-gradient(500px 500px at 0% 100%,#2a4d9a,rgba(42,77,154,0) 70%),linear-gradient(180deg,#14306e,#0c1d4a)}
+#phone .isl{position:absolute;left:50%;top:14px;width:130px;height:36px;border-radius:20px;background:#000;transform:translateX(-50%)}
+#phone .sb{height:62px;display:flex;align-items:center;justify-content:space-between;padding:10px 38px 0 44px;font:700 19px Inter;color:#fff}
+#phone .dte{text-align:center;font:600 24px Inter;color:rgba(255,255,255,.85);margin-top:40px}
+#phone .clk{text-align:center;font:700 128px/1 "Inter Display";color:#fff;letter-spacing:-.03em;margin-top:6px}
+.nt{position:absolute;left:18px;right:18px;background:rgba(255,255,255,.94);border-radius:28px;padding:20px 20px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 14px 34px rgba(0,0,0,.2);opacity:0}
+.nt .ai{width:52px;height:52px;border-radius:14px;background:#0f1f4d;color:#fff;font:800 20px "Inter Display";display:grid;place-items:center;flex:none;letter-spacing:.04em}
+.nt .bd{flex:1;min-width:0}
+.nt .r1{display:flex;justify-content:space-between;font:600 16px Inter;color:#64748b;letter-spacing:.03em}
+.nt .tt{font:700 20px Inter;color:#0f172a;margin-top:4px}
+.nt .tx{font:500 17px/1.3 Inter;color:#334155;margin-top:3px}
+.nt .th{width:64px;height:64px;border-radius:12px;overflow:hidden;flex:none;background:#f1efec;align-self:center}
+.nt .th img{width:100%;height:100%;object-fit:cover}
+#list{left:640px;top:640px;width:400px}
+.item{display:flex;gap:20px;align-items:flex-start;margin-bottom:70px;opacity:0}
+.item .bub{flex:none;width:64px;height:64px;border-radius:50%;background:rgba(52,213,160,.14);border:2px solid rgba(52,213,160,.5);display:grid;place-items:center}
+.item b{display:block;font:800 36px/1.08 "Inter Display";color:#fff;letter-spacing:-.025em}
+.item span{display:block;font:500 24px/1.3 Inter;color:#a9b8d6;margin-top:8px}
+#t2{left:300px;top:1360px;z-index:12;opacity:0;width:700px}
+/* end */
+#end{opacity:0}
+#elogo{left:50%;top:170px;height:46px;transform:translateX(-50%)}
+#e1{left:70px;top:270px;width:940px;font-size:108px;color:#fff;text-align:center}
+#arch{left:290px;top:580px;width:500px;height:640px}
+#arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--mint)}
+#arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+#arch .ph img{position:absolute;left:50%;bottom:0;height:620px;transform:translateX(-50%)}
+#c1{left:50px;top:740px}#c2{left:640px;top:930px}#c3{left:70px;top:1100px}
+#cta{left:50%;top:1290px;white-space:nowrap}
+#url{left:0;right:0;top:1450px;text-align:center;color:#a9b8d6;font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<div class="scene bg-dark" id="main">
+  <img id="logo" class="abs" src="assets/logo_white.png">
+  <div id="h1" class="abs headline">Grow with customers you <span class="serif">already have.</span></div>
+  <div id="panel" class="abs">
+    <div class="ph-top"><div class="av">AM</div><div><div class="nm">Alex M.</div><div class="sn">Customer since March</div></div><div id="badge"><i></i>Repeat customer</div></div>
+    <div class="stats">
+      <div class="st"><div class="k">ORDERS</div><div class="v" id="v1">1</div></div>
+      <div class="st"><div class="k">TOTAL SPENT</div><div class="v" id="v2">$48</div></div>
+      <div class="st"><div class="k">LAST ORDER</div><div class="v" id="v3">Mar 3</div></div>
+    </div>
+    <div class="oh">Order history</div>
+    <div class="row" id="r1"><div class="th"><img src="assets/p_serum.png"></div><div><div class="nm">Glow Serum Set</div><div class="dt">#1021 · Mar 3</div></div><div class="pr">$48<br><span class="tg f">First order</span></div></div>
+    <div class="row" id="r2"><div class="th"><img src="assets/p_serum.png"></div><div><div class="nm">Glow Serum Set</div><div class="dt">#1066 · May 12</div></div><div class="pr">$48<br><span class="tg r">Came back</span></div></div>
+    <div class="row" id="r3"><div class="th"><img src="assets/p_sneaker.png"></div><div><div class="nm">Court Sneaker</div><div class="dt">#1094 · Jul 14</div></div><div class="pr">$89<br><span class="tg r">Came back</span></div></div>
+  </div>
+</div>
+<div class="scene bg-dark" id="s2">
+  <img class="abs" style="left:80px;top:170px;height:46px" src="assets/logo_white.png">
+  <div id="h2" class="abs headline">Bring them <span class="serif">back.</span></div>
+  <div id="phone" class="abs"><div class="scr">
+    <div class="isl"></div>
+    <div class="sb"><span>9:41</span>ST</div>
+    <div class="dte">Tuesday, November 24</div>
+    <div class="clk">9:41</div>
+    <div class="nt" id="n1" style="top:380px"><div class="ai">N</div><div class="bd"><div class="r1"><span>NOVA · EMAIL</span><span>now</span></div><div class="tt">Thank you, Alex!</div><div class="tx">Your order is on its way. Here’s how to get the most from it.</div></div></div>
+    <div class="nt" id="n2" style="top:556px"><div class="ai">N</div><div class="bd"><div class="r1"><span>NOVA · EMAIL</span><span>now</span></div><div class="tt">Running low on serum?</div><div class="tx">Restock your Glow Serum Set in one tap.</div></div><div class="th"><img src="assets/p_serum.png"></div></div>
+    <div class="nt" id="n3" style="top:732px"><div class="ai">N</div><div class="bd"><div class="r1"><span>NOVA · EMAIL</span><span>now</span></div><div class="tt">A thank-you gift for you</div><div class="tx">Enjoy $10 off your next order, just for coming back.</div></div></div>
+  </div></div>
+  <div id="list" class="abs">
+    <div class="item"><div class="bub">CK</div><div><b>Say thank you</b><span>Right after the order</span></div></div>
+    <div class="item"><div class="bub">CK</div><div><b>Remind to restock</b><span>Before they run out</span></div></div>
+    <div class="item"><div class="bub">CK</div><div><b>Reward loyalty</b><span>A perk for coming back</span></div></div>
+  </div>
+  <div id="t2" class="abs toast"><div class="ic">BG</div><div><div class="t1">New order · Glow Serum Set</div><div class="t2">Returning customer · Alex M.</div></div><div class="tm">now</div></div>
+</div>
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="assets/logo_white.png">
+  <div id="e1" class="abs headline">Want more <span class="serif">repeat customers?</span></div>
+  <div id="arch" class="abs"><div class="back"></div><div class="ph"><img src="assets/woman.png"></div></div>
+  <div id="c1" class="abs chip"><span class="ck">CK</span>Thank-you emails</div>
+  <div id="c2" class="abs chip"><span class="ck">CK</span>Restock reminders</div>
+  <div id="c3" class="abs chip"><span class="ck">CK</span>Loyalty rewards</div>
+  <div id="cta" class="abs cta">DM us “GROWTH” <span class="arrow">AR</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+document.body.innerHTML=document.body.innerHTML.replaceAll('>CK<','>'+CHECK+'<').replaceAll('>BG<','>'+BAG+'<').replace('>AR<','>'+ARROW+'<').replace('>ST<','>'+STATUS.replaceAll('#0f172a','#fff')+'<');
+const hw=splitWords($('#h1')), h2w=splitWords($('#h2')), ew=splitWords($('#e1'));
+const L=i=>VO.lines[i].start;
+function render(t){
+  // ---- line 0: headline + customer profile (first order)
+  wordsIn(hw,t,L(0),.09,.7);
+  const pi=eo5(P(t,L(0)+.9,.9)); tf($("#panel"),`translateY(${(1-pi)*260}px)`); op($('#panel'),pi);
+  const rowIn=(id,s)=>{const k=eo5(P(t,s,.6)); op($(id),k); tf($(id),`translateX(${(1-k)*50}px)`);};
+  rowIn('#r1',L(0)+1.9);
+  // ---- line 1: repeat orders appear
+  const r2=L(1)+0.3, r3=L(1)+1.1;
+  rowIn('#r2',r2); rowIn('#r3',r3);
+  const n=t<r2?1:(t<r3?2:3);
+  $('#v1').textContent=n; $('#v2').textContent=['$48','$96','$185'][n-1]; $('#v3').textContent=['Mar 3','May 12','Jul 14'][n-1];
+  $$('.st .v').forEach(v=>{const last=n===1?-9:(n===2?r2:r3); const b=back(P(t,last,.45)); v.style.transform=`scale(${t<last+.45?lerp(.85,1,clamp(b)):1})`;v.style.transformOrigin='left center';});
+  const bg=back(P(t,L(1)+1.8,.5)); op($('#badge'),clamp(bg)); tf($('#badge'),`scale(${bg})`);
+  // ---- scene 2 fades in on top (old scene stays at full opacity)
+  const s2=eio(P(t,L(2)-.45,.55)); op($('#s2'),s2);
+  wordsIn(h2w,t,L(2)-.3,.09,.7);
+  const ph=eo5(P(t,L(2)-.2,.9)); tf($('#phone'),`translateY(${(1-ph)*240}px)`); op($('#phone'),ph);
+  const items=$$('.item'), at=[L(2)+.4,L(3)+.2,L(4)+.2], nts=['#n1','#n2','#n3'];
+  items.forEach((it,i)=>{const x=eo5(P(t,at[i],.6)); op(it,x); tf(it,`translateX(${(1-x)*60}px)`);
+    const b=back(P(t,at[i]+.15,.5)); tf(it.querySelector('.bub'),`scale(${b})`);});
+  nts.forEach((id,i)=>{const k=back(P(t,at[i]+.35,.6)); op($(id),clamp(k*1.4)); tf($(id),`translateY(${(1-k)*-40}px) scale(${lerp(.92,1,k)})`);});
+  const t2=back(P(t,L(4)+1.4,.55)); op($('#t2'),clamp(t2)); tf($('#t2'),`translateY(${(1-t2)*60}px) scale(${lerp(.9,1,t2)})`);
+  // ---- end card exactly with the CTA line
+  const E=L(5); const ex=eio(P(t,E-.35,.5)); op($('#end'),ex);
+  op($('#elogo'),eo(P(t,E-.2,.5)));
+  wordsIn(ew,t,E-.1,.08,.7);
+  const a=eo5(P(t,E+.2,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);
+  $('#arch .ph img').style.transform=`translateX(-50%) scale(${1.06-.06*eo(P(t,E+.2,3))})`;
+  ['#c1','#c2','#c3'].forEach((id,i)=>{const k=back(P(t,E+.6+i*.2,.55)); const fl=Math.sin(t*1.6+i*2)*6; tf($(id),`translateY(${fl}px) scale(${k})`); op($(id),clamp(k));});
+  const cx2=back(P(t,E+1.1,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-E-1.8)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-E-1.8)*4))*8}px)`;
+  op($('#url'),eo(P(t,E+1.3,.6)));
+}
+window.DUR=VO.dur; render(0);
+</script></body></html>

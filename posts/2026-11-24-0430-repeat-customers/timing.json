@@ -1,0 +1,41 @@
+{
+ "dur": 18.87,
+ "lines": [
+  {
+   "start": 0.3,
+   "end": 3.464,
+   "text": "Want to grow? Start with customers you already have.",
+   "wps": 2.84
+  },
+  {
+   "start": 3.814,
+   "end": 6.486,
+   "text": "Someone who bought once already trusts your brand.",
+   "wps": 2.99
+  },
+  {
+   "start": 6.986,
+   "end": 9.791,
+   "text": "Send a thank-you email right after their order.",
+   "wps": 2.85
+  },
+  {
+   "start": 10.141,
+   "end": 12.627,
+   "text": "Remind them when it's time to restock.",
+   "wps": 2.82
+  },
+  {
+   "start": 12.977,
+   "end": 15.159,
+   "text": "And reward them for coming back.",
+   "wps": 2.75
+  },
+  {
+   "start": 15.659,
+   "end": 18.173,
+   "text": "Want more repeat customers? DM us GROWTH.",
+   "wps": 2.79
+  }
+ ]
+}

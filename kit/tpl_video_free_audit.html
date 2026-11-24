@@ -74,7 +74,7 @@ function render(t){
   });
   // headline swap at 4.6
   // exit 8.6
-  const ex=eio(P(t,8.6,.6)); op($('#main'),1); tf($('#main'),`scale(${1-ex*.05})`); op($('#end'),ex);
+  const ex=eio(P(t,8.6,.6)); op($('#main'),1);  op($('#end'),ex);
   op($('#elogo'),eo(P(t,8.8,.6)));
   wordsIn(ew,t,8.9,.07,.7);
   const a=eo5(P(t,9.2,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);

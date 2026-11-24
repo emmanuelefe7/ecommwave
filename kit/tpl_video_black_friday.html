@@ -1,4 +1,4 @@
-<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script>
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script><script src="tpl_vo/timing.js"></script>
 <style>
 #logo{left:80px;top:170px;height:46px}
 #h1{left:80px;top:290px;width:940px;font-size:112px;color:var(--ink)}
@@ -101,8 +101,9 @@
 document.body.innerHTML=document.body.innerHTML.replaceAll('${CHECK}',CHECK).replaceAll('${ARROW}',ARROW).replace('LOCK',LOCK).replace('CART',CART).replace('STATUS',STATUS);
 $('#mg').innerHTML=PRODUCTS.map(p=>`<div class="mc"><div class="im"><img src="assets/${p[0]}.png"><span class="off">-30%</span></div><div class="nm">${p[1]}</div><div class="pr">${'$'+(parseFloat(p[2].slice(1))*.7).toFixed(2)}<s>${p[2]}</s></div></div>`).join('');
 const hw=splitWords($('#h1')), ew=splitWords($('#e1'));
-const DUR=16;
-function render(t){
+const T=voWarp([0.15,0.9,2.6,5.6,9.5,10.6],16); const DUR=VO.dur;
+function render(t){ draw(T(t)); }
+function draw(t){
   wordsIn(hw,t,.15,.08,.7);
   const s=eo(P(t,.9,.6)); op($('#sub'),s); tf($('#sub'),`translateY(${(1-s)*24}px)`);
   // phone in
@@ -135,7 +136,7 @@ function render(t){
   its.forEach((it,i)=>{const x=eo5(P(t,at[i],.6)); op(it,x); tf(it,`translateX(${(1-x)*60}px)`);
     const b=back(P(t,at[i]+.15,.5)); tf(it.querySelector('.bub'),`scale(${b})`);});
   // exit
-  const ex=eio(P(t,9.4,.6)); op($('#main'),1); tf($('#main'),`scale(${1-ex*.05})`); op($('#end'),ex);
+  const ex=eio(P(t,9.4,.6)); op($('#main'),1);  op($('#end'),ex);
   wordsIn(ew,t,9.7,.07,.7);
   const el=eo(P(t,9.6,.6)); op($('#elogo'),el);
   $$('#chips .chip').forEach((c,i)=>{const x=back(P(t,10.4+i*.15,.55)); tf(c,`scale(${x})`); op(c,clamp(x));});

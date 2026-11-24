@@ -75,3 +75,16 @@ function junkHTML(){
   <div class="prods">${PRODUCTS.map((p,i)=>`<div class="p"><img src="assets/${p[0]}.png"><b>$${[99,49,19,29][i]}!!!</b><u>BUY NOW BUY NOW</u></div>`).join('')}</div>
   <div class="pop"><span class="x">✕</span>WAIT!!! DON'T LEAVE!!!<small>Enter your email for 5% off maybe</small></div></div>`;
 }
+
+// ---- Voiceover sync ----
+// Author the animation on any "design" timeline, then lock it to the voice:
+//   const T = voWarp([0.15, 1.9, 3.7, 6.4, 9.9, 12.0]);   // design time where each VO line's moment begins
+//   window.DUR = VO.dur;  function render(t){ draw(T(t)); }   // draw(d) = your animation in design time
+// Line i's design moment lands exactly when line i starts being spoken; the end of the design
+// timeline (designEnd, default last anchor + 3) lands on VO.dur. Requires <script src="vo/timing.js">.
+function voWarp(anchors, designEnd){
+  const L=window.VO.lines; const xs=[0], ys=[0];
+  anchors.forEach((d,i)=>{ if(L[i]){ xs.push(L[i].start); ys.push(d); } });
+  xs.push(window.VO.dur); ys.push(designEnd ?? anchors[anchors.length-1]+3);
+  return t=>{ for(let i=1;i<xs.length;i++){ if(t<=xs[i]){ const f=(t-xs[i-1])/Math.max(1e-6,xs[i]-xs[i-1]); return ys[i-1]+(ys[i]-ys[i-1])*f; } } return ys[ys.length-1]; };
+}

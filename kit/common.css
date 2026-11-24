@@ -5,7 +5,7 @@
   --light:#eef3f9; --muted:#5b6b86; --coral:#ff6b7a;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0a1a47}
 body{font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
 #stage{position:absolute;inset:0;overflow:hidden}
 .abs{position:absolute}

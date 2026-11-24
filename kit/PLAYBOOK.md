@@ -13,10 +13,10 @@ Every run you create ONE finished post, publish it to Instagram, and log it. Wor
 - Tools (Python + Playwright + Chrome + ffmpeg):
   - `python3 tools/render_carousel.py page.html out_dir prefix` → one 1080×1350 JPEG per `<section class="s" id="sN">`.
   - `python3 tools/render_video.py page.html --frames 2,6,11` → preview JPEGs in /tmp; `python3 tools/render_video.py page.html out.mp4` → silent 1080×1920 30 fps MP4 (page defines `window.DUR` and `render(t)`).
-  - `python3 tools/voiceover.py script.json silent.mp4 final.mp4` → adds a natural voiceover + quiet music pad, loudness −14 LUFS. Needs `pip install --break-system-packages kokoro-onnx soundfile` (model downloads itself from GitHub on first use).
+  - `python3 tools/voiceover.py plan script.json vo/` then `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4` → voice-first timing + natural voiceover + quiet music pad, −14 LUFS, with an automatic pacing/silence gate (see §4). Needs `pip install --break-system-packages kokoro-onnx soundfile` (model downloads itself from GitHub on first use).
 - Templates to copy and adapt (study them first, they define the look):
   - `tpl_carousel_seo.html` — carousel: phone mockups, real search results, before/after cards, callouts, chart, CTA slide.
-  - `tpl_video_redesign.html`, `tpl_video_black_friday.html`, `tpl_video_free_audit.html` — animated reels: word-by-word headline reveal, browser/phone store UI, cursor taps, toasts, checklists, score gauge, end card with CTA. `common.js` has helpers (easing, `splitWords`, `wordsIn`, `novaHTML()`, `junkHTML()`, `browserHTML()`, icons) and `common.css` the shared styles.
+  - `tpl_video_black_friday.html` (+ `tpl_vo/`) — THE reference for voice-synced timing (voWarp). `tpl_video_redesign.html`, `tpl_video_free_audit.html` — more animated reel ideas: word-by-word headline reveal, browser/phone store UI, cursor taps, toasts, checklists, score gauge, end card with CTA. `common.js` has helpers (easing, `splitWords`, `wordsIn`, `novaHTML()`, `junkHTML()`, `browserHTML()`, icons) and `common.css` the shared styles.
 
 ## 2. What to post: rotate three formats
 Read `kit/content-log.md`. Find the last row whose Format is exactly CAROUSEL, GROWTH VIDEO or MISTAKES VIDEO (ignore other rows) and make the NEXT format in this cycle:
@@ -41,11 +41,18 @@ Pick a topic that is NOT in the log (no repeats within the last 30 posts, and do
 ## 4. Format specs
 **Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping hook on navy, slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (dark, woman or man photo in the arch like the template). Each slide gets alt text when posting.
 
-**Videos**: 1080×1920, 30 fps, 15–20 s. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook headline animates in by 1 s → animated realistic UI demo that SHOWS the point (store, phone, checkout, notifications, before/after, score) → end card with CTA from ~70 % of the duration. Voiceover script: 5–7 short lines, plain spoken English, each line timed to what is on screen, ≈2.6 words per second, last line finishes ≥ 0.5 s before the end (extend `DUR` if needed). Crossfades: keep the old scene at opacity 1 and fade the new scene in on top (no dip to black).
+**Videos**: 1080×1920, 30 fps, 15–22 s, ALWAYS with voiceover. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook → animated realistic UI demo that SHOWS the point → end card with CTA. Crossfades: keep the old scene at opacity 1 and fade the new scene in on top (never scale/shrink the old scene, never dip to black).
+
+**Voiceover sync (mandatory, the VOICE drives the timeline):**
+1. Write `script.json` FIRST: 5–7 short spoken lines, plain conversational English, 5–11 words each, one idea per line, last line = CTA ("…DM us GROWTH" / free audit). Use `"pause_after": 0.5` only before a big scene change (max 0.6).
+2. `python3 tools/voiceover.py plan script.json vo/` → natural pace (~2.8 words/sec per line), lines packed with 0.35 s gaps, writes `vo/timing.js` and prints the timeline + video length.
+3. Build the page with `<script src="vo/timing.js"></script>` after `common.js`. Either drive every animation directly from `VO.lines[i].start`, or author on a design timeline and lock it with `const T = voWarp([designTimeOfLine0, …, designTimeOfLineN], designEnd)` + `function render(t){ draw(T(t)) }` + `window.DUR = VO.dur` (see `tpl_video_black_friday.html` + `tpl_vo/`). Every line must have something on screen that matches it AT THAT MOMENT: the words being spoken appear (headline reveal, label, callout, checklist item) as they are said; the end card + CTA appear exactly when the CTA line starts. Never let a scene sit still for more than ~2 s; never let the visuals run ahead of or behind the voice.
+4. Render silent → `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4`. This is a hard gate: it refuses to output if the video length doesn't match the plan, a line is too fast/slow (outside 2.3–3.3 words/sec), any silent gap > 0.7 s, first word after 0.5 s, more than 1.2 s silence at the end, or speech covers < 75 % of the video. If it fails, fix the script or timing and re-run; never post a video that didn't pass.
+5. Preview frames AT each line's start time (+0.8 s) and check that what's on screen matches what's being said.
 
 ## 5. Quality check before posting (required)
 - Carousel: render, then LOOK at every slide with the Read tool (make a contact sheet with PIL). Fix overlaps, clipped text, empty areas, unreadable contrast, literal placeholder words.
-- Video: render preview frames at 4–5 key moments, look at them, fix, then render full, add voiceover, and check the voiceover log has no WARNING lines.
+- Video: render preview frames at each voiceover line's start (+0.8 s), look at them, fix, then render full and run the voiceover mix gate (it must print `ok`). Save `script.json` and `vo/timing.json` with the post.
 - Caption proofread: correct spelling, no claims you can't back up.
 
 ## 6. Caption

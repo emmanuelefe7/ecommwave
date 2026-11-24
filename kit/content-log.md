@@ -12,3 +12,6 @@ Newest at the bottom. Formats cycle: CAROUSEL → GROWTH VIDEO → MISTAKES VIDE
 | 2026-11-24 01:24 | CAROUSEL | Product page anatomy (7-part checklist) | Your product page is your best salesperson. | 18096250922673539 | posts/2026-11-24-0124-product-page/ |
 | scheduled 2026-11-25 11:23 | VIDEO (separate scheduled post) | Store redesign | Your competitors might be one redesign ahead. | — | reels/ecommwave_reel_redesign.mp4 |
 | scheduled 2026-11-27 10:47 | VIDEO (separate scheduled post) | Free store audit / no sales | Getting traffic but no sales? | — | reels/ecommwave_reel_free_audit.mp4 |
+| 2026-11-24 01:52 | PROFILE BANNER (not in rotation) | Grid banner tile 3/3 – free audit | Get a free store audit. | 18135474077495153 | profile/banner_3.jpg |
+| 2026-11-24 01:53 | PROFILE BANNER (not in rotation) | Grid banner tile 2/3 – services | Stores that actually sell. | 17914215744306819 | profile/banner_2.jpg |
+| 2026-11-24 01:54 | PROFILE BANNER (not in rotation) | Grid banner tile 1/3 – intro | Shopify growth agency. | 18122249473980649 | profile/banner_1.jpg |

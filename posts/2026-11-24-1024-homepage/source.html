@@ -1,0 +1,295 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Serif";font-style:italic;src:url(fonts/serif-italic.woff2) format("woff2")}
+:root{--navy:#0a1a47;--navy2:#0f2557;--ink:#0d1b3e;--mint:#34d5a0;--green:#12b886;--muted:#5b6b86;--line:#e3e9f2;--red:#e5484d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px}
+.dark{background:radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47;color:#fff}
+.light{background:radial-gradient(700px 560px at 100% 0%,#d6f5ea 0%,rgba(214,245,234,0) 70%),radial-gradient(700px 600px at 0% 100%,#dcecfa 0%,rgba(220,236,250,0) 70%),#f3f7fb;color:#0d1b3e}
+.top{position:absolute;left:80px;right:80px;top:70px;display:flex;justify-content:space-between;align-items:center}
+.top img{height:44px}
+.num{font:700 24px "Inter";letter-spacing:.12em;padding:12px 22px;border-radius:999px;border:2px solid rgba(18,184,134,.4);color:#12b886}
+.dark .num{color:#34d5a0;border-color:rgba(52,213,160,.45)}
+.kick{font:700 24px "Inter";letter-spacing:.16em;color:#12b886;text-transform:uppercase}
+.dark .kick{color:#34d5a0}
+h1{font-weight:800;letter-spacing:-.045em;line-height:1.02}
+h1 em{font-family:"Serif";font-style:italic;font-weight:400;letter-spacing:-.01em;color:#12b886;font-size:1.1em}
+.dark h1 em{color:#34d5a0}
+.txt{position:absolute;left:80px;right:80px;top:180px}
+.sub{font:500 32px/1.35 "Inter";color:#5b6b86;letter-spacing:-.01em;margin-top:22px}
+.dark .sub{color:#b4c2dc}
+.swipe{position:absolute;right:80px;bottom:60px;display:flex;align-items:center;gap:12px;font:700 24px "Inter";color:#5b6b86;z-index:20}
+.dark .swipe{color:#c3cee3}
+.swipe i{width:52px;height:52px;border-radius:50%;background:#0f2557;display:grid;place-items:center}
+.dark .swipe i{background:#34d5a0}
+/* phone */
+.phone{position:absolute;border-radius:70px;background:#0b1020;padding:14px;box-shadow:0 60px 120px rgba(10,26,71,.30),inset 0 0 0 2px #2b3448}
+.dark .phone{box-shadow:0 60px 140px rgba(0,0,0,.55),inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:57px;overflow:hidden;background:#fff;font-family:"Inter"}
+.island{position:absolute;left:50%;top:13px;width:126px;height:36px;border-radius:20px;background:#000;transform:translateX(-50%)}
+.sb{height:58px;display:flex;align-items:center;justify-content:space-between;padding:10px 38px 0;font:600 18px "Inter";color:#0f172a}
+/* search ui */
+.sbx{display:flex;align-items:center;gap:14px;height:62px;border-radius:999px;background:#fff;box-shadow:0 2px 10px rgba(15,23,42,.10),0 0 0 1px #e5e9f0;padding:0 22px;font:500 21px "Inter";color:#0f172a}
+.tabs{display:flex;gap:26px;padding:16px 26px 0;font:600 16px "Inter";color:#64748b;border-bottom:1px solid #edf0f4}
+.tabs span{padding-bottom:12px}
+.tabs .on{color:#0f172a;border-bottom:3px solid #0f172a}
+.r{padding:18px 26px;border-bottom:8px solid #f4f6f9}
+.site{display:flex;align-items:center;gap:12px}
+.fv{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:800 14px "Inter";color:#fff;flex:none}
+.sn{font:600 15px "Inter";color:#0f172a;line-height:1.2}
+.su{font:400 13px "Inter";color:#5f6b7a;line-height:1.3}
+.rt{font:500 21px/1.3 "Inter";color:#1a0dab;margin-top:9px;letter-spacing:-.005em}
+.rs{font:400 15px/1.5 "Inter";color:#4d5156;margin-top:5px}
+.rm{font:400 14px "Inter";color:#5f6b7a;margin-top:6px}
+.rm b{color:#e8a317;font-weight:700;letter-spacing:1px}
+.sp{font:700 13px "Inter";color:#0f172a}
+.thumb{width:92px;height:92px;border-radius:12px;object-fit:cover;flex:none}
+.card{position:absolute;background:#fff;border-radius:30px;box-shadow:0 40px 90px rgba(10,26,71,.14),0 0 0 1px rgba(10,26,71,.05);font-family:"Inter"}
+.dark .card{box-shadow:0 50px 110px rgba(0,0,0,.45)}
+.callout{position:absolute;display:inline-flex;align-items:center;gap:12px;padding:14px 24px 14px 16px;border-radius:999px;font:800 26px "Inter";box-shadow:0 18px 40px rgba(10,26,71,.25);z-index:10;white-space:nowrap}
+.callout .dot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.c-mint{background:#34d5a0;color:#0d1b3e}.c-mint .dot{background:#0d1b3e}
+.c-red{background:#fff;color:#0d1b3e}.c-red .dot{background:#e5484d}
+.c-white{background:#fff;color:#0d1b3e}.c-white .dot{background:#0f2557}
+.chip{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#0d1b3e;font:700 28px "Inter";padding:14px 26px 14px 14px;border-radius:999px;box-shadow:0 16px 40px rgba(10,26,71,.16)}
+.chip .ck{width:42px;height:42px;border-radius:50%;background:#0f2557;display:grid;place-items:center}
+.cta{display:inline-flex;align-items:center;gap:24px;background:#34d5a0;color:#0d1b3e;font:800 42px "Inter Display";letter-spacing:-.02em;padding:24px 28px 24px 46px;border-radius:999px;box-shadow:0 20px 50px rgba(52,213,160,.35)}
+.cta i{width:64px;height:64px;border-radius:50%;background:#0d1b3e;display:grid;place-items:center}
+.lbl{font:700 15px "Inter";letter-spacing:.06em;color:#64748b;text-transform:uppercase}
+
+/* product page */
+.pimg{position:relative;overflow:hidden;background:#d9d3cb}
+.pimg img{position:absolute;width:100%;height:100%;object-fit:cover}
+.stars{color:#f5a524;letter-spacing:2px}
+.btnbig{display:flex;align-items:center;justify-content:center;gap:12px;background:#0f1f4d;color:#fff;font:700 22px "Inter";border-radius:16px}
+.row{display:flex;align-items:center;gap:14px}
+.ic{width:46px;height:46px;border-radius:14px;background:#eefaf5;display:grid;place-items:center;flex:none}
+.li{display:flex;align-items:center;gap:22px;padding:21px 0;border-top:1px solid #edf0f4;font:600 29px Inter;color:#0f172a;letter-spacing:-.01em}
+.li:first-child{border-top:none}
+.li .ck2{width:46px;height:46px;border-radius:50%;background:#34d5a0;display:grid;place-items:center;flex:none}
+.mh{position:relative;overflow:hidden;background:#dbcfbe;font-family:Inter}
+.mh img{position:absolute;top:0;right:0;height:100%;width:58%;object-fit:cover;object-position:62% 50%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%)}
+.mh .ht{position:absolute;left:7%;top:50%;transform:translateY(-50%);width:48%}
+.mh .h{font:700 1em/1.08 "Inter Display";letter-spacing:-.03em;color:#1c1a17}
+.mh .p{font:400 .5em/1.4 Inter;color:#5a5249;margin-top:.45em}
+.mh .b{display:inline-block;margin-top:.8em;background:#0f1f4d;color:#fff;font:600 .48em Inter;padding:.7em 1.3em;border-radius:999px}
+.ann2{background:#0f1f4d;color:#fff;font:600 16px Inter;display:flex;align-items:center;justify-content:center;gap:10px}
+.navb{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:#fff}
+.tag{font:700 15px Inter;letter-spacing:.06em;text-transform:uppercase}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="s dark" id="s1">
+  <div class="top"><img src="assets/logo_white.png"><span class="num">HOMEPAGE</span></div>
+  <div class="txt"><h1 style="font-size:92px">What shoppers see first <em>decides if they stay.</em></h1></div>
+  <div class="phone" style="left:230px;top:510px;width:620px;height:960px"><div class="scr">
+    <div class="island"></div>STATUSBAR
+    <div style="margin:4px 22px 8px;height:40px;border-radius:12px;background:#f1f3f6;display:flex;align-items:center;justify-content:center;font:500 17px Inter;color:#475569">yourstore.com</div>
+    <div class="ann2" style="height:42px">Free shipping over $75 · Free 30-day returns</div>
+    <div class="navb">MENU<span style="font:800 22px Inter;letter-spacing:.08em;color:#0f1f4d">NOVA</span>BAG</div>
+    HERO_COVER
+    <div class="row" style="justify-content:center;gap:10px;padding:16px 0;font:600 17px Inter;color:#0f172a;border-bottom:1px solid #edf0f4"><span class="stars">★★★★★</span>4.8 from 1,240 reviews</div>
+    <div style="padding:16px 22px 0;font:700 19px Inter;color:#0f172a">New arrivals</div>
+    <div style="display:flex;gap:12px;padding:12px 22px">PRODS</div>
+  </div></div>
+  <div class="callout c-mint" style="left:50px;top:735px;font-size:24px">DOTCK Clear headline</div>
+  <div class="callout c-white" style="left:520px;top:988px;font-size:24px">DOTCK One button</div>
+  <div class="callout c-mint" style="left:40px;top:1130px;font-size:24px">DOTSTAR Proof up top</div>
+  <div class="swipe">Swipe <i>ARN</i></div>
+</section>
+
+<!-- 2 HEADLINE -->
+<section class="s light" id="s2">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">01 / 08</span></div>
+  <div class="txt"><div class="kick">Part 1 · Headline</div><h1 style="font-size:94px;margin-top:22px">Say what you sell <em>in one line.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:22px;opacity:.92">
+    <div class="row" style="padding:0 8px 14px"><div class="lbl" style="color:#e5484d">Before</div><span style="margin-left:auto">XRED</span></div>
+    HERO_BEFORE1
+  </div>
+  <div class="card" style="left:80px;right:80px;top:840px;padding:22px;box-shadow:0 40px 90px rgba(10,26,71,.16),0 0 0 3px #34d5a0">
+    <div class="row" style="padding:0 8px 14px"><div class="lbl" style="color:#12b886">After</div><span style="margin-left:auto">CKG</span></div>
+    HERO_AFTER1
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1160px;font-size:25px">DOTCK A stranger should get it in one look</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 3 HERO IMAGE -->
+<section class="s light" id="s3">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">02 / 08</span></div>
+  <div class="txt"><div class="kick">Part 2 · Hero image</div><h1 style="font-size:94px;margin-top:22px">Show the product <em>in real life.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:22px;opacity:.92">
+    <div class="row" style="padding:0 8px 14px"><div class="lbl" style="color:#e5484d">Before · No product in sight</div><span style="margin-left:auto">XRED</span></div>
+    <div style="height:200px;border-radius:18px;background:linear-gradient(120deg,#c7d2fe,#fbcfe8 55%,#fde68a);display:grid;place-items:center;font:800 64px 'Inter Display';letter-spacing:.12em;color:#fff;text-shadow:0 4px 20px rgba(0,0,0,.12)">NEW SEASON</div>
+  </div>
+  <div class="card" style="left:80px;right:80px;top:860px;padding:22px;box-shadow:0 40px 90px rgba(10,26,71,.16),0 0 0 3px #34d5a0">
+    <div class="row" style="padding:0 8px 14px"><div class="lbl" style="color:#12b886">After · Worn, styled, real</div><span style="margin-left:auto">CKG</span></div>
+    HERO_AFTER2
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1180px;font-size:25px">DOTCK Let them picture it in their life</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 4 ONE BUTTON -->
+<section class="s light" id="s4">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">03 / 08</span></div>
+  <div class="txt"><div class="kick">Part 3 · Button</div><h1 style="font-size:94px;margin-top:22px">Give them <em>one</em> clear next step.</h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:28px 32px;opacity:.92">
+    <div class="row"><div class="lbl" style="color:#e5484d">Before · 5 choices, no direction</div><span style="margin-left:auto">XRED</span></div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:20px">
+      <span class="obtn">Shop all</span><span class="obtn">Our story</span><span class="obtn">Read the blog</span><span class="obtn">Join the club</span><span class="obtn">Follow us</span>
+    </div>
+  </div>
+  <div class="card" style="left:80px;right:80px;top:800px;padding:28px 32px;box-shadow:0 40px 90px rgba(10,26,71,.16),0 0 0 3px #34d5a0">
+    <div class="row"><div class="lbl" style="color:#12b886">After · One path to the products</div><span style="margin-left:auto">CKG</span></div>
+    <div class="btnbig" style="height:84px;margin-top:22px;font-size:28px;border-radius:999px">Shop new arrivals ARW</div>
+    <div style="font:500 19px Inter;color:#64748b;margin-top:14px;text-align:center">Everything else can live in the menu.</div>
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1110px;font-size:25px">DOTCK Fewer choices, faster decisions</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 5 OFFER BAR -->
+<section class="s light" id="s5">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">04 / 08</span></div>
+  <div class="txt"><div class="kick">Part 4 · Top bar</div><h1 style="font-size:94px;margin-top:22px">Put your best offer <em>at the very top.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:560px;padding:0;overflow:hidden">
+    <div class="ann2" style="height:70px;font-size:22px;box-shadow:inset 0 0 0 3px #34d5a0">TRUCKW Free shipping over $75 · Free 30-day returns</div>
+    <div class="navb" style="height:74px;padding:0 32px">MENU<span style="font:800 26px Inter;letter-spacing:.08em;color:#0f1f4d">NOVA</span>BAG</div>
+    HERO_BAR
+  </div>
+  <div class="lbl" style="position:absolute;left:80px;top:1045px;font-size:18px">Ideas for your bar</div>
+  <div style="position:absolute;left:80px;right:80px;top:1085px;display:flex;flex-direction:column;gap:14px">
+    <div class="chip" style="font-size:24px;align-self:flex-start"><span class="ck">CKW</span>Free shipping over a set amount</div>
+    <div class="chip" style="font-size:24px;align-self:flex-start"><span class="ck">CKW</span>Last day to order for holiday delivery</div>
+  </div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 6 PROOF -->
+<section class="s light" id="s6">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">05 / 08</span></div>
+  <div class="txt"><div class="kick">Part 5 · Proof</div><h1 style="font-size:94px;margin-top:22px">Show proof <em>before</em> they scroll.</h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:30px 34px">
+    <div class="row" style="gap:24px">
+      <div style="font:800 80px Inter;color:#0f172a;letter-spacing:-.04em;line-height:1">4.8</div>
+      <div><div class="stars" style="font-size:30px">★★★★★</div><div style="font:500 19px Inter;color:#64748b;margin-top:4px">from 1,240 reviews</div></div>
+    </div>
+    <div style="border-radius:20px;background:#f7f9fc;padding:22px;margin-top:24px;box-shadow:inset 0 0 0 1px #edf0f4">
+      <div class="row" style="gap:12px"><span class="fv" style="width:42px;height:42px;font-size:16px;background:#7c3aed">SR</span><div><div style="font:700 18px Inter;color:#0f172a">S.R.</div><div style="font:600 14px Inter;color:#12b886">✓ Verified buyer</div></div><span class="stars" style="margin-left:auto;font-size:18px">★★★★★</span></div>
+      <div style="font:400 21px/1.5 Inter;color:#334155;margin-top:14px">“Soft, breezy and it washes so well. I bought it in two colours.”</div>
+    </div>
+    <div style="border-radius:20px;background:#f7f9fc;padding:22px;margin-top:14px;box-shadow:inset 0 0 0 1px #edf0f4">
+      <div class="row" style="gap:12px"><span class="fv" style="width:42px;height:42px;font-size:16px;background:#0891b2">LM</span><div><div style="font:700 18px Inter;color:#0f172a">L.M.</div><div style="font:600 14px Inter;color:#12b886">✓ Verified buyer</div></div><span class="stars" style="margin-left:auto;font-size:18px">★★★★★</span></div>
+      <div style="font:400 21px/1.5 Inter;color:#334155;margin-top:14px">“Fits just like the size guide said. Arrived fast and well packed.”</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:24px">
+      <div class="row" style="font:600 19px Inter;color:#0f172a;gap:10px"><span class="ic">ITRUCK</span>Ships in 24h</div>
+      <div class="row" style="font:600 19px Inter;color:#0f172a;gap:10px"><span class="ic">IRET</span>Free returns</div>
+      <div class="row" style="font:600 19px Inter;color:#0f172a;gap:10px"><span class="ic">ILOCK</span>Secure checkout</div>
+    </div>
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1170px;font-size:25px">DOTCK Trust first, then they shop</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 7 MOBILE -->
+<section class="s light" id="s7">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">06 / 08</span></div>
+  <div class="txt"><div class="kick">Part 6 · Mobile</div><h1 style="font-size:94px;margin-top:22px">Check it <em>on your phone</em> first.</h1></div>
+  <div class="phone" style="left:110px;top:540px;width:400px;height:690px;padding:12px;border-radius:56px"><div class="scr" style="border-radius:45px">
+    <div class="island" style="width:100px;height:30px"></div>STATUSBAR
+    <div class="navb" style="height:50px;padding:0 18px">MENU<span style="font:800 18px Inter;letter-spacing:.08em;color:#0f1f4d">NOVA</span>BAG</div>
+    HERO_PHONE
+    <div style="position:absolute;inset:0;background:rgba(15,23,42,.55)"></div>
+    <div style="position:absolute;left:22px;right:22px;top:170px;background:#fff;border-radius:22px;padding:30px 24px;text-align:center">
+      <div style="position:absolute;right:16px;top:12px;font:400 26px Inter;color:#94a3b8">×</div>
+      <div style="font:800 28px 'Inter Display';color:#0f172a;letter-spacing:-.02em">Wait! Don't go!</div>
+      <div style="font:400 16px/1.45 Inter;color:#64748b;margin-top:10px">Join our list for news, drops and more.</div>
+      <div style="height:46px;border-radius:10px;box-shadow:inset 0 0 0 1px #e2e8f0;margin-top:16px;display:flex;align-items:center;padding:0 14px;font:400 15px Inter;color:#94a3b8">Email address</div>
+      <div class="btnbig" style="height:50px;margin-top:10px;font-size:17px;border-radius:10px">Sign me up</div>
+    </div>
+  </div></div>
+  <div class="phone" style="left:570px;top:540px;width:400px;height:690px;padding:12px;border-radius:56px"><div class="scr" style="border-radius:45px">
+    <div class="island" style="width:100px;height:30px"></div>STATUSBAR
+    <div class="ann2" style="height:34px;font-size:12px">Free shipping over $75 · Free returns</div>
+    <div class="navb" style="height:50px;padding:0 18px">MENU<span style="font:800 18px Inter;letter-spacing:.08em;color:#0f1f4d">NOVA</span>BAG</div>
+    HERO_PHONE2
+    <div class="row" style="justify-content:center;gap:8px;padding:12px 0;font:600 14px Inter;color:#0f172a;border-bottom:1px solid #edf0f4"><span class="stars" style="font-size:14px">★★★★★</span>4.8 from 1,240 reviews</div>
+    <div style="display:flex;gap:8px;padding:12px 14px">PRODS_SM</div>
+  </div></div>
+  <div class="callout c-red" style="left:120px;top:500px;font-size:23px">DOTX Popup hides it all</div>
+  <div class="callout c-mint" style="left:600px;top:500px;font-size:23px">DOTCK Clear on a small screen</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 8 CHECKLIST -->
+<section class="s light" id="s8">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">07 / 08</span></div>
+  <div class="txt"><div class="kick">Save this</div><h1 style="font-size:94px;margin-top:22px">Your homepage <em>checklist.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:16px 40px">
+    <div class="li">CK2 A headline that says what you sell</div>
+    <div class="li">CK2 A real photo of the product in use</div>
+    <div class="li">CK2 One main button to shop</div>
+    <div class="li">CK2 Your best offer in the top bar</div>
+    <div class="li">CK2 Reviews before the first scroll</div>
+    <div class="li">CK2 No popup the second they land</div>
+    <div class="li">CK2 Looks clean on a phone</div>
+  </div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 9 CTA -->
+<section class="s dark" id="s9">
+  <div class="top"><img src="assets/logo_white.png"><span class="num">08 / 08</span></div>
+  <div class="txt" style="text-align:center;top:190px"><h1 style="font-size:96px">Is your homepage <em>losing shoppers?</em></h1><div class="sub" style="font-size:34px">We’ll review it for free.</div></div>
+  <div style="position:absolute;left:300px;top:590px;width:480px;height:520px">
+    <div style="position:absolute;left:22px;top:22px;right:-22px;bottom:-22px;border-radius:240px 240px 34px 34px;background:#34d5a0"></div>
+    <div style="position:absolute;inset:0;border-radius:240px 240px 34px 34px;overflow:hidden;background:#d9e3ef"><img src="assets/man.png" style="position:absolute;left:50%;bottom:0;height:520px;transform:translateX(-50%)"></div>
+  </div>
+  <div class="chip" style="position:absolute;left:80px;top:710px">CKC Headline check</div>
+  <div class="chip" style="position:absolute;left:680px;top:870px">CKC Mobile test</div>
+  <div class="chip" style="position:absolute;left:100px;top:1000px">CKC Trust review</div>
+  <div style="position:absolute;left:0;right:0;top:1150px;text-align:center"><span class="cta">DM us “GROWTH” <i>ARM</i></span></div>
+  <div style="position:absolute;left:0;right:0;bottom:40px;text-align:center;font:600 28px Inter;color:#a9b8d6">ecommwave.org</div>
+</section>
+
+<style>.obtn{padding:16px 24px;border-radius:999px;font:600 22px Inter;color:#475569;box-shadow:inset 0 0 0 2px #cbd5e1}.obtn:first-child{background:#94a3b8;color:#fff;box-shadow:none}
+.ck{width:42px;height:42px;border-radius:50%;background:#0f2557;display:grid;place-items:center}</style>
+<script>
+const ico=(d,c,w=3,s=22)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const CKP='<path d="M5 12.5l4.5 4.5L19 7.5"/>', XP='<path d="M6 6l12 12M18 6L6 18"/>', ARP='<path d="M5 12h14M13 6l6 6-6 6"/>';
+const STATUS=`<div class="sb"><span>9:41</span><svg width="78" height="14" viewBox="0 0 78 14"><rect x="0" y="9" width="3.5" height="5" rx="1" fill="#0f172a"/><rect x="5.5" y="6" width="3.5" height="8" rx="1" fill="#0f172a"/><rect x="11" y="3" width="3.5" height="11" rx="1" fill="#0f172a"/><rect x="16.5" y="0" width="3.5" height="14" rx="1" fill="#0f172a"/><path d="M29 5.5a10 10 0 0114 0M31.5 8.3a6.3 6.3 0 019 0M34.2 11a2.6 2.6 0 013.6 0" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="50" y="1" width="24" height="12" rx="3.5" stroke="#0f172a" stroke-opacity=".4" fill="none"/><rect x="52" y="3" width="18" height="8" rx="2" fill="#0f172a"/></svg></div>`;
+
+const ICO=(d)=>ico(d,'#12b886',2.4,24);
+// mini hero: w,h px, font-size(em base), title, sub, btn, imgpos
+const hero=(h,fs,title,sub,btn,radius=0,extra='')=>`<div class="mh" style="height:${h}px;font-size:${fs}px;border-radius:${radius}px;${extra}"><img src="assets/hero_woman.png"><div class="ht"><div class="h">${title}</div>${sub?`<div class="p">${sub}</div>`:''}${btn?`<div class="b">${btn}</div>`:''}</div></div>`;
+const prod=(img,name,price,w,h,fs)=>`<div style="flex:1"><div class="pimg" style="height:${h}px;border-radius:12px"><img src="assets/${img}.png"></div><div style="font:600 ${fs}px Inter;color:#0f172a;margin-top:8px">${name}</div><div style="font:500 ${fs}px Inter;color:#64748b;margin-top:2px">${price}</div></div>`;
+const PRODS=prod('p_dress','Linen Midi Dress','$118',0,120,16)+prod('p_bag','Weekend Tote','$96',0,120,16)+prod('p_serum','Glow Serum','$34',0,120,16);
+const PRODS_SM=prod('p_dress','Midi Dress','$118',0,80,12)+prod('p_bag','Tote','$96',0,80,12)+prod('p_serum','Serum','$34',0,80,12);
+const DOT=(p,bg)=>`<span class="dot">${ico(p,bg,3,20)}</span>`;
+const before1=`<div class="mh" style="height:190px;font-size:40px;border-radius:16px;background:#f1f5f9"><div class="ht" style="width:80%"><div class="h" style="color:#334155">Welcome to our store</div><div class="p" style="color:#94a3b8">Est. 2024 · Quality · Passion · Style</div></div></div>`;
+let h=document.body.innerHTML;
+h=h.replaceAll('STATUSBAR',STATUS)
+ .replace('HERO_COVER',hero(400,40,'Linen pieces you’ll live in','Breathable dresses, shirts and sets.','Shop new arrivals'))
+ .replace('HERO_BEFORE1',before1)
+ .replace('HERO_AFTER1',hero(220,40,'Linen pieces you’ll live in','Breathable dresses, shirts and sets.','Shop new arrivals',16))
+ .replace('HERO_AFTER2',hero(240,40,'Linen pieces you’ll live in','','Shop new arrivals',16))
+ .replace('HERO_BAR',hero(300,42,'Linen pieces you’ll live in','Breathable dresses, shirts and sets.','Shop new arrivals'))
+ .replace('HERO_PHONE2',hero(300,30,'Linen pieces you’ll live in','','Shop now'))
+ .replace('HERO_PHONE',hero(300,30,'Linen pieces you’ll live in','','Shop now'))
+ .replace('PRODS_SM',PRODS_SM).replace('PRODS',PRODS)
+ .replaceAll('MENU',ico('<path d="M4 7h16M4 12h16M4 17h16"/>','#0f172a',2,26)).replaceAll('BAG',ico('<path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 016 0"/>','#0f172a',2,26))
+ .replace('TRUCKW',ico('<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>','#34d5a0',2.2,28))
+ .replace('ITRUCK',ICO('<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>'))
+ .replace('IRET',ICO('<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 010 12h-3"/>'))
+ .replace('ILOCK',ICO('<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>'))
+ .replaceAll('CK2 ','<span class="ck2">'+ico(CKP,'#0d1b3e',3,24)+'</span>')
+ .replaceAll('CKW',ico(CKP,'#34d5a0',3,22))
+ .replaceAll('DOTCK ',DOT(CKP,'#34d5a0')).replaceAll('DOTX ',DOT(XP,'#fff')).replaceAll('DOTSTAR ',DOT('<path d="M12 3l2.2 6.8H21l-5.5 4 2.1 6.7L12 16.4 6.4 20.5l2.1-6.7L3 9.8h6.8z"/>','#fff'))
+ .replaceAll('CKC ','<span class="ck">'+ico(CKP,'#34d5a0')+'</span>').replaceAll('XRED',ico(XP,'#e5484d',3,26)).replaceAll('CKG',ico(CKP,'#12b886',3,26))
+ .replaceAll('ARM',ico(ARP,'#34d5a0',2.6,30)).replaceAll('ARN',ico(ARP,'#0d1b3e',2.6,28)).replaceAll('ARW',ico(ARP,'#fff',2.6,28));
+document.body.innerHTML=h;
+</script>
+</body></html>

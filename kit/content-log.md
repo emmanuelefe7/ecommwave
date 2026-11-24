@@ -26,3 +26,4 @@ Newest at the bottom. Formats cycle: CAROUSEL → GROWTH VIDEO → MISTAKES VIDE
 | 2026-11-24 10:55 | TRIPTYCH | Click-to-checkout journey (visit → cart → order, mint path with nodes) – tile 3/3 RIGHT | Let’s get you more orders. | 18122569643008227 | posts/2026-11-24-1053-triptych-click-to-checkout/ |
 | 2026-11-24 10:55 | TRIPTYCH | Click-to-checkout journey (visit → cart → order, mint path with nodes) – tile 2/3 MIDDLE | No friction, just sales. | 18122764396977666 | posts/2026-11-24-1053-triptych-click-to-checkout/ |
 | 2026-11-24 10:55 | TRIPTYCH | Click-to-checkout journey (visit → cart → order, mint path with nodes) – tile 1/3 LEFT | Turn visitors into buyers. | 18104126096663412 | posts/2026-11-24-1053-triptych-click-to-checkout/ |
+| 2026-11-24 13:34 | GROWTH VIDEO | Fast mobile store (shrink photos, delete unused apps, test on your phone) | Make your store fast on phones. | 17878416996638005 | posts/2026-11-24-1334-fast-mobile/ |

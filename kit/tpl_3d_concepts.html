@@ -1,0 +1,101 @@
+<!doctype html>
+<!-- 3D CONCEPT POSTS. Each scene = one hero object metaphor + overlay text. ?s=<scene> full post; add &alpha for a transparent PNG of
+     just the object + soft shadow (use it inside carousels/videos; render with tools/render_3d.py and a .png out path).
+     Add new scenes as new `if(scene==='...')` blocks built from three.js primitives (Lathe, Extrude, Cylinder, Torus, Sphere)
+     with the navy/mint/white/steel materials defined below. --><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Serif";font-style:italic;src:url(fonts/serif-italic.woff2) format("woff2")}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden;background:#eef2f7;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased}
+canvas{position:absolute;inset:0;width:1080px!important;height:1350px!important}
+.ov{position:absolute;inset:0;pointer-events:none}
+.logo{position:absolute;height:46px}
+.h{position:absolute;font-weight:800;letter-spacing:-.05em;line-height:.98;color:#0d1b3e}
+.h em{font-family:"Serif";font-style:italic;font-weight:400;letter-spacing:-.01em;color:#12b886;font-size:1.08em}
+.tag{display:inline-block;background:#0f2557;color:#fff;font:800 30px "Inter";letter-spacing:.14em;padding:16px 30px}
+.sub{position:absolute;font:700 40px/1.2 "Inter Display";letter-spacing:-.02em;color:#0d1b3e}
+.sub span{color:#12b886}
+.foot{position:absolute;left:0;right:0;bottom:46px;display:flex;justify-content:center;gap:40px;font:600 26px "Inter";color:#41506b}
+</style>
+<script type="importmap">{"imports":{"three":"./three_pkg/build/three.module.js","three/addons/":"./three_pkg/examples/jsm/"}}</script>
+</head><body>
+<div id="ov" class="ov"></div>
+<script type="module">
+import * as THREE from 'three';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+import {EffectComposer} from 'three/addons/postprocessing/EffectComposer.js';
+import {RenderPass} from 'three/addons/postprocessing/RenderPass.js';
+import {BokehPass} from 'three/addons/postprocessing/BokehPass.js';
+import {OutputPass} from 'three/addons/postprocessing/OutputPass.js';
+const Q=new URLSearchParams(location.search); const W=1080,H=1350, scene=Q.get('s')||'pawn', ALPHA=Q.has('alpha');
+const r=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true,alpha:ALPHA});
+r.setSize(W,H); r.setPixelRatio(1); r.shadowMap.enabled=true; r.shadowMap.type=THREE.PCFSoftShadowMap;
+r.toneMapping=THREE.ACESFilmicToneMapping; r.toneMappingExposure=0.95; document.body.prepend(r.domElement);
+const sc=new THREE.Scene(); const BG=new THREE.Color('#eef2f7'); if(!ALPHA){ sc.background=BG; sc.fog=new THREE.Fog(BG,24,55); } else { document.documentElement.style.background='transparent'; document.body.style.background='transparent'; }
+const pm=new THREE.PMREMGenerator(r); sc.environment=pm.fromScene(new RoomEnvironment(),0.04).texture;
+const key=new THREE.DirectionalLight(0xffffff,2.2); key.position.set(-6,10,8); key.castShadow=true;
+key.shadow.mapSize.set(2048,2048); key.shadow.radius=8; key.shadow.blurSamples=20; Object.assign(key.shadow.camera,{left:-10,right:10,top:10,bottom:-10,near:1,far:40}); sc.add(key);
+sc.add(new THREE.HemisphereLight(0xffffff,0xdfe6f0,0.6));
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(80,80),ALPHA?new THREE.ShadowMaterial({opacity:.16}):new THREE.MeshStandardMaterial({color:'#f3f6fa',roughness:.55,metalness:0}));
+floor.rotation.x=-Math.PI/2; floor.receiveShadow=true; sc.add(floor);
+const navy=new THREE.MeshPhysicalMaterial({color:'#0e1a3a',roughness:.22,metalness:0,clearcoat:1,clearcoatRoughness:.08});
+const mint=new THREE.MeshPhysicalMaterial({color:'#0fae7c',roughness:.2,metalness:0,clearcoat:1,clearcoatRoughness:.06});
+const white=new THREE.MeshPhysicalMaterial({color:'#f7f9fc',roughness:.35,clearcoat:.6});
+const steel=new THREE.MeshStandardMaterial({color:'#d9dee6',roughness:.22,metalness:1});
+const cam=new THREE.PerspectiveCamera(30,W/H,.1,100);
+const ov=document.getElementById('ov'); let focus=10;
+
+function pawn(mat){
+  const pts=[[0,0],[.66,0],[.68,.05],[.68,.15],[.6,.2],[.58,.26],[.5,.3],[.48,.36],[.4,.4],[.33,.5],[.27,.72],[.23,.95],[.22,1.05],[.33,1.09],[.37,1.14],[.33,1.19],[.2,1.22],[.18,1.27]].map(p=>new THREE.Vector2(p[0],p[1]));
+  const g=new THREE.Group();
+  const body=new THREE.Mesh(new THREE.LatheGeometry(new THREE.SplineCurve(pts).getPoints(120),96),mat); body.castShadow=body.receiveShadow=true; g.add(body);
+  const head=new THREE.Mesh(new THREE.SphereGeometry(.34,96,64),mat); head.position.y=1.52; head.castShadow=true; g.add(head);
+  return g;
+}
+if(scene==='pawn'){
+  for(let i=0;i<7;i++){ const p=pawn(navy); p.position.set(-3.6+i*.62, 0, 2.4-i*1.25); sc.add(p); }
+  const m=pawn(mint); m.position.set(-.35,.05,1.55); m.rotation.z=-.22; m.rotation.x=.05; sc.add(m);
+  cam.position.set(1.4,1.5,11.8); cam.lookAt(-.6,2.35,-.6); focus=cam.position.distanceTo(new THREE.Vector3(-.35,.9,1.55));
+  ov.innerHTML=`<img class="logo" src="assets/logo_navy.png" style="left:50%;top:70px;transform:translateX(-50%)">
+  <div class="h" style="left:300px;top:190px;font-size:128px">Don’t just<br>sell. <em>Stand out.</em></div>
+  <div style="position:absolute;left:300px;top:480px"><span class="tag">BE THE OBVIOUS CHOICE</span></div>
+  <div class="sub" style="left:640px;top:600px">A store shoppers<br><span>remember and trust.</span></div>
+  <div class="foot"><span>ecommwave.org</span><span>·</span><span>DM “GROWTH”</span></div>`;
+}
+if(scene==='dart'){
+  const board=new THREE.Group();
+  const side=new THREE.Mesh(new THREE.CylinderGeometry(2.6,2.6,.5,128),white); side.rotation.x=Math.PI/2; side.castShadow=true; side.receiveShadow=true; board.add(side);
+  const cols=['#0f2557','#f7f9fc','#0f2557','#f7f9fc','#22c993','#f7f9fc','#0f2557'];
+  const radii=[2.45,2.05,1.65,1.25,.85,.5,.2];
+  radii.forEach((R,i)=>{ const m=new THREE.MeshPhysicalMaterial({color:cols[i],roughness:.3,clearcoat:.8});
+    const ring=new THREE.Mesh(new THREE.CylinderGeometry(R,R,.06+i*.035,128),m); ring.rotation.x=Math.PI/2; ring.position.z=.25+(.03+i*.0175); ring.castShadow=true; ring.receiveShadow=true; board.add(ring); });
+  board.scale.setScalar(.82); board.position.set(2.0,2.3,-1.4); board.rotation.y=-.95; board.rotation.x=-.03; sc.add(board);
+  function dart(shaftMat, flightMat){
+    const d=new THREE.Group();
+    const tip=new THREE.Mesh(new THREE.ConeGeometry(.045,.55,32),steel); tip.rotation.z=-Math.PI/2; tip.position.x=.27; d.add(tip);
+    const barrel=new THREE.Mesh(new THREE.CylinderGeometry(.11,.09,.9,48),steel); barrel.rotation.z=Math.PI/2; barrel.position.x=-.45; d.add(barrel);
+    for(let k=0;k<7;k++){ const g=new THREE.Mesh(new THREE.TorusGeometry(.107,.012,8,40),steel); g.rotation.y=Math.PI/2; g.position.x=-.15-k*.1; d.add(g); }
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.05,.05,1.1,32),shaftMat); shaft.rotation.z=Math.PI/2; shaft.position.x=-1.45; d.add(shaft);
+    const fshape=new THREE.Shape(); fshape.moveTo(0,0); fshape.bezierCurveTo(-.25,.15,-.6,.5,-.95,.52); fshape.lineTo(-1.05,.05); fshape.lineTo(-1.0,0);
+    const fg=new THREE.ExtrudeGeometry(fshape,{depth:.015,bevelEnabled:false});
+    for(let k=0;k<4;k++){ const f=new THREE.Mesh(fg,flightMat); f.position.x=-1.6; f.rotation.x=k*Math.PI/2; f.castShadow=true; d.add(f); }
+    d.traverse(o=>{if(o.isMesh)o.castShadow=true}); return d;
+  }
+  const d=dart(mint,mint); const tipW=new THREE.Vector3(0,0,.45).applyEuler(board.rotation).add(board.position);
+  d.scale.setScalar(1.25); d.position.copy(tipW); d.rotation.y=-.95+Math.PI/2+.35; d.rotation.z=.08; sc.add(d);
+  const wm=new THREE.MeshPhysicalMaterial({color:'#ffffff',roughness:.3,clearcoat:.5});
+  [[-2.6,.12,3.0,.5],[-.2,.12,4.4,2.2],[-4.0,.12,.6,-.7],[2.4,.12,4.6,-2.6]].forEach(([x,y,z,ry])=>{ const m=dart(wm,wm); m.position.set(x,y,z); m.rotation.set(.0,ry,-.05); m.scale.setScalar(.9); sc.add(m); });
+  cam.position.set(-2.0,2.4,16.5); cam.lookAt(.2,3.7,0); focus=cam.position.distanceTo(board.position);
+  ov.innerHTML=`<img class="logo" src="assets/logo_navy.png" style="left:80px;top:80px">
+  <div class="h" style="left:80px;top:200px;font-size:94px;color:#2c3a55;font-weight:500;letter-spacing:-.035em">Getting traffic is easy.</div>
+  <div class="h" style="left:80px;top:300px;font-size:112px">Getting sales needs<br>a <em>strategy.</em></div>
+  <div class="foot"><span>ecommwave.org</span><span>·</span><span>DM “GROWTH”</span></div>`;
+}
+if(ALPHA) ov.innerHTML='';
+const comp=new EffectComposer(r); comp.addPass(new RenderPass(sc,cam));
+if(!ALPHA && !location.search.includes('nob')) comp.addPass(new BokehPass(sc,cam,{focus, aperture:.0018, maxblur:.008})); comp.addPass(new OutputPass());
+comp.render();
+const im=new Image(); im.onload=()=>{ window.READY=true; }; im.src=r.domElement.toDataURL('image/png');
+im.style.cssText='position:absolute;inset:0;width:1080px;height:1350px'; r.domElement.replaceWith(im);
+</script>
+</body></html>

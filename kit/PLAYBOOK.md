@@ -38,8 +38,18 @@ Pick a topic that is NOT in the log (no repeats within the last 30 posts, and do
 - CTA: "DM us “GROWTH”" (matches the bio) and/or free store audit. Last slide / end card always carries the CTA + ecommwave.org.
 - Honesty: no invented statistics, percentages or client results. Example charts get the label "Example for illustration. Results vary by store." Speak in plain, simple words a beginner store owner understands.
 
+
+## 3b. Premium concept style (REQUIRED on every post — the owner's reference look)
+The owner's reference posts (leaking bucket, turtle on a skateboard, standout chess pawn, dart in a bullseye, laptop held in hands, glass icon ring) share one formula. Follow it:
+- **One big visual metaphor per post** that explains the message before anyone reads: e.g. a standout pawn (be different), dart in the bullseye (strategy/targeting), leaking bucket (losing sales), magnet (attract customers), rocket (growth), hourglass/turtle (slow store), padlock/shield (trust), key (SEO), funnel (conversions), shopping cart, gift box (offers), megaphone (marketing), ladder/stairs (scaling), puzzle piece (missing piece), lightbulb (ideas), stacked coins (revenue).
+- **Real-looking 3D**, not flat icons: build the object in three.js (`tpl_3d_concepts.html` has two finished scenes, `pawn` and `dart`; add new `if(scene==='…')` blocks from Lathe/Extrude/Cylinder/Torus/Sphere geometry). Glossy navy (#0e1a3a) + ONE mint hero object (#0fae7c), white/steel supporting pieces, soft studio light, soft shadows, gentle depth of field. Render with `python3 tools/render_3d.py page.html "s=<scene>" out.jpg` (full post) or `"s=<scene>&alpha" out.png` (transparent object to place inside carousel slides or animate in videos with CSS transforms). One-time setup: `npm pack three && tar xzf three-*.tgz && mv package three_pkg && rm three-*.tgz` inside `kit/`.
+- **Typography like the references**: a short, punchy headline (3–8 words) — big, ExtraBold, tight tracking — often a two-line contrast ("Getting traffic is easy. / Getting sales needs a *strategy.*"), with ONE accent phrase in Instrument Serif italic mint or a solid navy label box (`.tag`). Optional single sub-line. Logo small at the top; footer small: `ecommwave.org · DM “GROWTH”`.
+- **Lots of clean space**, light studio background (#eef2f7) or deep navy, never busy. The object sits in the lower/right part, the headline in the upper/left; nothing overlaps the headline.
+- Where to use it: every single-image post and every carousel COVER (slide 1) is a 3D concept image; inner carousel slides may combine the transparent 3D object with the realistic UI cards; videos open on a 3D hero object (rendered once as PNG, animated with CSS: float, slide-in, slight rotation) before the UI demo.
+- Realistic device mockups (phone, laptop/browser with the NOVA store) remain the way to show "a store" — keep them clean and premium like the references.
+
 ## 4. Format specs
-**Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping hook on navy, slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (dark, woman or man photo in the arch like the template). Each slide gets alt text when posting.
+**Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping 3D concept cover (§3b), slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (dark, woman or man photo in the arch like the template). Each slide gets alt text when posting.
 
 **Videos**: 1080×1920, 30 fps, 15–22 s, ALWAYS with voiceover. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook → animated realistic UI demo that SHOWS the point → end card with CTA. Crossfades: keep the old scene at opacity 1 and fade the new scene in on top (never scale/shrink the old scene, never dip to black).
 

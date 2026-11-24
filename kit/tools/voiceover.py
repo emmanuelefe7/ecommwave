@@ -13,7 +13,10 @@ Step 3  mix:   python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4
         - QUALITY GATE: refuses to write final.mp4 if the video length doesn't match the plan (±0.15 s),
           a line is too fast/slow (outside 2.3-3.3 words/sec), a silent gap > 0.7 s, first word later than 0.5 s,
           ending silence > 1.2 s, or speech covers < 75 % of the video.
-Voices: af_heart (warm female, default), am_michael (male). Model files download once to ~/.kokoro."""
+Engines: "engine":"chatterbox" (DEFAULT, natural human-sounding voice; needs `pip install --break-system-packages chatterbox-tts`
+         and huggingface.co reachable; optional "voice_ref":"path/to/clip.wav" to use a specific voice; "exaggeration" 0.3-0.7)
+         falls back automatically to "kokoro" (af_heart warm female / am_michael male) if Chatterbox can't load.
+Model files download once (Chatterbox -> HF cache, Kokoro -> ~/.kokoro)."""
 import sys, os, json, subprocess
 import numpy as np, soundfile as sf
 
@@ -48,17 +51,53 @@ def synth(k, text, voice):
     a = np.interp(np.arange(0, len(a), sr / SR), np.arange(len(a)), a)
     return a, wps
 
+def chatterbox():
+    import torch
+    from chatterbox.tts import ChatterboxTTS
+    torch.set_num_threads(os.cpu_count() or 2)
+    dev = 'cuda' if torch.cuda.is_available() else 'cpu'
+    return ChatterboxTTS.from_pretrained(device=dev)
+
+def stretch(a, sr, factor):
+    """time-stretch without changing pitch (factor >1 = faster)"""
+    sf.write('/tmp/_st_in.wav', a.astype(np.float32), sr)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', '/tmp/_st_in.wav', '-af', f'atempo={factor:.4f}', '/tmp/_st_out.wav'], check=True)
+    b, _ = sf.read('/tmp/_st_out.wav'); return b
+
+def synth_cb(m, text, spec):
+    import torch
+    words = len(text.split()); best = None
+    kw = {'exaggeration': spec.get('exaggeration', 0.55), 'cfg_weight': spec.get('cfg_weight', 0.45), 'temperature': spec.get('temperature', 0.8)}
+    if spec.get('voice_ref'): kw['audio_prompt_path'] = spec['voice_ref']
+    for attempt in range(3):
+        torch.manual_seed(1234 + attempt * 7)
+        a = m.generate(text, **kw).squeeze(0).cpu().numpy(); a = trim(a, m.sr, thr=0.015)
+        wps = words / (len(a) / m.sr)
+        if best is None or abs(wps - TARGET_WPS) < abs(best[1] - TARGET_WPS): best = (a, wps)
+        if 2.5 <= wps <= 3.1: break
+    a, wps = best
+    if not 2.5 <= wps <= 3.1:   # gentle pitch-preserving tempo fix, max ±12 %
+        f = float(np.clip(TARGET_WPS / wps, 0.88, 1.12)); a = stretch(a, m.sr, f); wps = words / (len(a) / m.sr)
+    a = np.interp(np.arange(0, len(a), m.sr / SR), np.arange(len(a)), a)
+    return a, wps
+
 def plan(script, out):
-    os.makedirs(out, exist_ok=True); spec = json.load(open(script)); k = kokoro()
+    os.makedirs(out, exist_ok=True); spec = json.load(open(script))
+    engine = spec.get('engine', 'chatterbox'); m = None
+    if engine == 'chatterbox':
+        try: m = chatterbox(); print('voice engine: chatterbox (natural)')
+        except Exception as e:
+            print(f'WARNING: Chatterbox unavailable ({type(e).__name__}: {str(e)[:120]}) -> falling back to Kokoro'); engine = 'kokoro'
+    if engine == 'kokoro': k = kokoro(); print('voice engine: kokoro')
     voice = spec.get('voice', 'af_heart'); t = LEAD; lines = []
     for i, ln in enumerate(spec['lines']):
-        a, wps = synth(k, ln['text'], voice)
+        a, wps = synth_cb(m, ln['text'], spec) if m is not None else synth(k, ln['text'], voice)
         sf.write(f'{out}/line{i}.wav', a.astype(np.float32), SR)
         L = len(a) / SR
         lines.append({'start': round(t, 3), 'end': round(t + L, 3), 'text': ln['text'], 'wps': round(wps, 2)})
         t += L + min(MAX_GAP, max(GAP, ln.get('pause_after', GAP)))
     dur = round(lines[-1]['end'] + TAIL, 2)
-    plan = {'dur': dur, 'lines': lines}
+    plan = {'dur': dur, 'engine': engine, 'lines': lines}
     json.dump(plan, open(f'{out}/timing.json', 'w'), indent=1)
     open(f'{out}/timing.js', 'w').write('window.VO=' + json.dumps(plan) + ';\n')
     for l in lines: print(f"{l['start']:6.2f}-{l['end']:6.2f}s  {l['wps']:.2f} w/s  {l['text']}")

@@ -1,0 +1,48 @@
+{
+ "dur": 21.59,
+ "engine": "kokoro",
+ "lines": [
+  {
+   "start": 0.3,
+   "end": 2.384,
+   "text": "Here's what growing brands get right.",
+   "wps": 2.88
+  },
+  {
+   "start": 2.734,
+   "end": 5.672,
+   "text": "Their store loads fast on a phone.",
+   "wps": 2.38
+  },
+  {
+   "start": 6.172,
+   "end": 9.072,
+   "text": "Shoppers won't wait for a slow page.",
+   "wps": 2.41
+  },
+  {
+   "start": 9.422,
+   "end": 12.329,
+   "text": "So shrink big photos before you upload them.",
+   "wps": 2.75
+  },
+  {
+   "start": 12.679,
+   "end": 14.725,
+   "text": "Delete the apps you never use.",
+   "wps": 2.93
+  },
+  {
+   "start": 15.075,
+   "end": 17.962,
+   "text": "And test your store on your own phone.",
+   "wps": 2.77
+  },
+  {
+   "start": 18.462,
+   "end": 20.894,
+   "text": "Want a faster store? DM us GROWTH.",
+   "wps": 2.88
+  }
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "engine": "chatterbox",
+ "voice": "af_heart",
+ "lines": [
+  {
+   "text": "Here's what growing brands get right."
+  },
+  {
+   "text": "Their store loads fast on a phone.",
+   "pause_after": 0.5
+  },
+  {
+   "text": "Shoppers won't wait for a slow page."
+  },
+  {
+   "text": "So shrink big photos before you upload them."
+  },
+  {
+   "text": "Delete the apps you never use."
+  },
+  {
+   "text": "And test your store on your own phone.",
+   "pause_after": 0.5
+  },
+  {
+   "text": "Want a faster store? DM us GROWTH."
+  }
+ ]
+}

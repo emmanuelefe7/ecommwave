@@ -1,0 +1,213 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script><script src="work/vo/timing.js"></script>
+<style>
+.headline .serif{color:var(--mint);font-size:1.12em}
+.logo{left:80px;top:170px;height:46px}
+#h1{left:80px;top:290px;width:940px;font-size:116px;color:#fff}
+/* phone */
+.phone{width:540px;height:900px;border-radius:74px;background:#0b1430;padding:16px;box-shadow:0 50px 120px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.1)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:60px;overflow:hidden;background:#fff;font-family:Inter}
+.isl{position:absolute;left:50%;top:14px;width:130px;height:36px;border-radius:20px;background:#000;transform:translateX(-50%);z-index:5}
+.sb{height:62px;display:flex;align-items:center;justify-content:space-between;padding:10px 40px 0 46px;font:700 19px Inter;color:#0f172a}
+.ubar{margin:6px 22px 0;height:52px;border-radius:16px;background:#eef1f5;display:flex;align-items:center;justify-content:center;gap:10px;font:500 20px Inter;color:#334155}
+.prog{position:relative;height:5px;margin:10px 0 0;background:transparent}
+.prog i{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--mint);border-radius:3px}
+.pg{position:absolute;left:0;right:0;top:135px;bottom:0;background:#fff}
+.pg .ann{height:36px;background:#0f1f4d;color:#fff;font:500 15px Inter;display:flex;align-items:center;justify-content:center}
+.pg .nv{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid #eef0f3}
+.pg .nv b{font:800 24px "Inter Display";letter-spacing:.06em;color:#0f1f4d}
+.pg .im{height:380px;background:#f1efec;overflow:hidden}
+.pg .im img{width:100%;height:100%;object-fit:cover}
+.pg .tt{font:700 30px "Inter Display";color:#0f172a;letter-spacing:-.02em;margin:22px 28px 0}
+.pg .rt{font:600 18px Inter;color:#12b886;margin:8px 28px 0}
+.pg .rt span{color:#64748b;font-weight:500}
+.pg .pr{font:800 30px Inter;color:#0f172a;margin:12px 28px 0}
+.pg .pr s{font:500 20px Inter;color:#94a3b8;margin-left:10px}
+.pg .btn{margin:20px 28px 0;height:66px;border-radius:999px;background:#0f1f4d;color:#fff;font:700 22px Inter;display:grid;place-items:center}
+.spin{position:absolute;left:50%;top:430px;width:84px;height:84px;margin-left:-42px}
+.ld{position:absolute;left:0;right:0;top:540px;text-align:center;font:600 22px Inter;color:#94a3b8}
+#ph1{left:270px;top:610px}
+#chipA{left:640px;top:1250px;opacity:0}
+#chipA2{left:56px;top:1120px;opacity:0}
+/* scene 2 slow */
+#s2{opacity:0}
+#h2{left:80px;top:290px;width:940px;font-size:116px;color:#fff}
+#ph2{left:270px;top:610px}
+#timer{left:640px;top:880px;opacity:0;background:#fff;border-radius:999px;padding:18px 28px;font:700 30px Inter;color:#0f172a;display:flex;gap:14px;align-items:center;box-shadow:0 20px 50px rgba(0,0,0,.3)}
+#timer i{width:16px;height:16px;border-radius:50%;background:var(--coral);display:block}
+#left{left:130px;top:1330px;width:820px;opacity:0;z-index:10}
+#left .ic{background:#fde8ea}
+/* scene 3 fixes */
+#s3{opacity:0}
+#h3{left:80px;top:290px;width:940px;font-size:122px;color:#fff}
+#ph3{left:80px;top:520px;width:520px;height:990px}
+#ph3 .scr{background:#f3f7fb}
+.ah{padding:18px 30px 6px}
+.ah small{font:700 16px Inter;color:#64748b;letter-spacing:.08em}
+.ah h4{font:800 34px "Inter Display";color:#0f172a;letter-spacing:-.02em;margin-top:6px}
+.cd{position:absolute;left:18px;right:18px;background:#fff;border-radius:26px;padding:22px;box-shadow:0 12px 30px rgba(15,31,77,.1);opacity:0}
+.cd .hd{font:700 16px Inter;color:#64748b;letter-spacing:.06em}
+.fr{display:flex;gap:16px;align-items:center;margin-top:14px}
+.fr .th{width:78px;height:78px;border-radius:14px;overflow:hidden;flex:none;background:#f1efec}
+.fr .th img{width:100%;height:100%;object-fit:cover}
+.fr .nm{font:700 21px Inter;color:#0f172a}
+.fr .sz{font:800 28px "Inter Display";color:#0f172a;margin-top:4px;letter-spacing:-.01em}
+.bar{height:10px;border-radius:6px;background:#eef1f5;margin-top:16px;overflow:hidden}
+.bar i{display:block;height:100%;width:100%;border-radius:6px;background:var(--green)}
+.ap{display:flex;align-items:center;gap:14px;margin-top:14px}
+.ap .ai{width:50px;height:50px;border-radius:14px;display:grid;place-items:center;font:800 18px "Inter Display";color:#fff;flex:none}
+.ap .nm{font:700 20px Inter;color:#0f172a}
+.ap .st{font:500 16px Inter;color:#94a3b8;margin-top:2px}
+.ap .bt{margin-left:auto;font:700 16px Inter;padding:10px 16px;border-radius:999px;background:#fde8ea;color:#c9353b}
+.ok{display:flex;gap:16px;align-items:center;margin-top:14px}
+.ok .mini{width:78px;height:110px;border-radius:14px;border:3px solid #0f1f4d;overflow:hidden;flex:none;background:#fff}
+.ok .mini img{width:100%;height:66px;object-fit:cover;display:block}
+.ok .mini b{display:block;margin:8px 8px 0;height:10px;border-radius:5px;background:#0f1f4d}
+.ok .nm{font:700 21px Inter;color:#0f172a}
+.ok .gd{display:flex;gap:8px;align-items:center;font:700 19px Inter;color:#0b8a63;margin-top:6px}
+#list{left:640px;top:640px;width:400px}
+.item{display:flex;gap:20px;align-items:flex-start;margin-bottom:76px;opacity:0}
+.item .bub{flex:none;width:64px;height:64px;border-radius:50%;background:rgba(52,213,160,.14);border:2px solid rgba(52,213,160,.5);display:grid;place-items:center}
+.item b{display:block;font:800 38px/1.08 "Inter Display";color:#fff;letter-spacing:-.025em}
+.item span{display:block;font:500 24px/1.3 Inter;color:#a9b8d6;margin-top:8px}
+#t3{left:610px;top:1280px;z-index:12;opacity:0;width:410px}
+/* end */
+#end{opacity:0}
+#elogo{left:50%;top:170px;height:46px;transform:translateX(-50%)}
+#e1{left:70px;top:270px;width:940px;font-size:112px;color:#fff;text-align:center}
+#arch{left:290px;top:580px;width:500px;height:640px}
+#arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--mint)}
+#arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+#arch .ph img{position:absolute;left:50%;bottom:0;height:620px;transform:translateX(-50%)}
+#c1{left:50px;top:740px}#c2{left:650px;top:930px}#c3{left:60px;top:1100px}
+#cta{left:50%;top:1290px;white-space:nowrap}
+#url{left:0;right:0;top:1450px;text-align:center;color:#a9b8d6;font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<!-- scene 1: fast store -->
+<div class="scene bg-dark" id="main">
+  <img class="abs logo" src="assets/logo_white.png">
+  <div id="h1" class="abs headline">Make your store <span class="serif">fast on phones.</span></div>
+  <div id="ph1" class="abs phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="ubar">LK<span>yourstore.com</span></div>
+    <div class="prog"><i id="pr1"></i></div>
+    <svg class="spin" id="sp1" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="#eef1f5" stroke-width="5"/><path d="M25 5a20 20 0 0120 20" fill="none" stroke="#0f1f4d" stroke-width="5" stroke-linecap="round"/></svg>
+    <div class="pg" id="pg1">
+      <div class="ann">Free shipping over $50 · 30-day returns</div>
+      <div class="nv"><b>NOVA</b>CT</div>
+      <div class="im"><img src="assets/p_serum.png"></div>
+      <div class="tt">Glow Serum Set</div>
+      <div class="rt">★★★★★ <span>4.9 · 212 reviews</span></div>
+      <div class="pr">$48<s>$64</s></div>
+      <div class="btn">Add to cart</div>
+    </div>
+  </div></div>
+  <div id="chipA" class="abs chip"><span class="ck">CK</span>Loaded fast</div>
+  <div id="chipA2" class="abs chip"><span class="ck">CK</span>Ready to buy</div>
+</div>
+<!-- scene 2: slow store -->
+<div class="scene bg-dark" id="s2">
+  <img class="abs logo" src="assets/logo_white.png">
+  <div id="h2" class="abs headline">Slow pages <span class="serif">lose shoppers.</span></div>
+  <div id="ph2" class="abs phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="ubar">LK<span>yourstore.com</span></div>
+    <div class="prog"><i id="pr2"></i></div>
+    <svg class="spin" id="sp2" viewBox="0 0 50 50"><circle cx="25" cy="25" r="20" fill="none" stroke="#eef1f5" stroke-width="5"/><path d="M25 5a20 20 0 0120 20" fill="none" stroke="#0f1f4d" stroke-width="5" stroke-linecap="round"/></svg>
+    <div class="ld">Loading…</div>
+  </div></div>
+  <div id="timer" class="abs"><i></i><span id="tsec">Still loading</span></div>
+  <div id="left" class="abs toast"><div class="ic">XX</div><div><div class="t1">Shopper left your store</div><div class="t2">Page took too long to load</div></div><div class="tm">now</div></div>
+</div>
+<!-- scene 3: fixes -->
+<div class="scene bg-dark" id="s3">
+  <img class="abs logo" src="assets/logo_white.png">
+  <div id="h3" class="abs headline">Speed it <span class="serif">up.</span></div>
+  <div id="ph3" class="abs phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="ah"><small>NOVA · STORE ADMIN</small><h4>Speed to-do</h4></div>
+    <div class="cd" id="k1" style="top:190px"><div class="hd">PRODUCT PHOTO</div>
+      <div class="fr"><div class="th"><img src="assets/p_serum.png"></div><div><div class="nm">serum-hero.jpg</div><div class="sz" id="fsz">4.8 MB</div></div></div>
+      <div class="bar"><i id="fbar"></i></div></div>
+    <div class="cd" id="k2" style="top:430px"><div class="hd">INSTALLED APPS</div>
+      <div class="ap"><div class="ai" style="background:#7c3aed">SW</div><div><div class="nm">Spin Wheel Popup</div><div class="st">Not used</div></div><div class="bt" id="b1">Delete</div></div>
+      <div class="ap"><div class="ai" style="background:#f59e0b">CT</div><div><div class="nm">Countdown Timer</div><div class="st">Not used</div></div><div class="bt" id="b2">Delete</div></div></div>
+    <div class="cd" id="k3" style="top:690px"><div class="hd">MOBILE TEST</div>
+      <div class="ok"><div class="mini"><img src="assets/p_serum.png"><b></b></div><div><div class="nm">Checked on my phone</div><div class="gd">CK Loads smoothly</div></div></div></div>
+  </div></div>
+  <div id="list" class="abs">
+    <div class="item"><div class="bub">CK</div><div><b>Shrink photos</b><span>Before you upload</span></div></div>
+    <div class="item"><div class="bub">CK</div><div><b>Delete unused apps</b><span>Less for the page to load</span></div></div>
+    <div class="item"><div class="bub">CK</div><div><b>Test on your phone</b><span>Shop it like a customer</span></div></div>
+  </div>
+  <div id="t3" class="abs toast"><div class="ic">BG</div><div><div class="t1">New order</div><div class="t2">Glow Serum Set</div></div><div class="tm">now</div></div>
+</div>
+<!-- end -->
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="assets/logo_white.png">
+  <div id="e1" class="abs headline">Want a <span class="serif">faster store?</span></div>
+  <div id="arch" class="abs"><div class="back"></div><div class="ph"><img src="assets/man.png"></div></div>
+  <div id="c1" class="abs chip"><span class="ck">CK</span>Lighter photos</div>
+  <div id="c2" class="abs chip"><span class="ck">CK</span>Fewer apps</div>
+  <div id="c3" class="abs chip"><span class="ck">CK</span>Mobile tested</div>
+  <div id="cta" class="abs cta">DM us “GROWTH” <span class="arrow">AR</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+const XX='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+document.body.innerHTML=document.body.innerHTML.replaceAll('>CK<','>'+CHECK+'<').replaceAll('>CK ','>'+CHECK+' ').replaceAll('>BG<','>'+BAG+'<').replace('>AR<','>'+ARROW+'<')
+  .replaceAll('>ST<','>'+STATUS+'<').replaceAll('>LK<','>'+LOCK+'<').replace('>CT<','>'+CART+'<').replace('>XX<','>'+XX+'<');
+const hw=splitWords($('#h1')), h2w=splitWords($('#h2')), h3w=splitWords($('#h3')), ew=splitWords($('#e1'));
+const L=i=>VO.lines[i].start;
+const pop=(el,s,d=.55)=>{const k=back(P(window._t,s,d)); op(el,clamp(k*1.3)); return k;};
+function render(t){
+  window._t=t;
+  // ---- line 0: headline + phone rises, page loading
+  wordsIn(hw,t,L(0),.08,.7);
+  const pi=eo5(P(t,L(0)+.6,.9)); tf($('#ph1'),`translateY(${(1-pi)*300}px)`); op($('#ph1'),pi);
+  // ---- line 1: loads fast
+  const F=L(1)+.25;
+  const pr=t<F?eo(P(t,L(0)+.8,2))*.22:lerp(.22,1,eo(P(t,F,.45)));
+  $('#pr1').style.width=(pr*100)+'%'; op($('#pr1'),1-P(t,F+.5,.3));
+  tf($('#sp1'),`rotate(${t*360}deg)`); op($('#sp1'),1-P(t,F+.2,.2));
+  const pg=eo(P(t,F+.25,.4)); op($('#pg1'),pg); tf($('#pg1'),`translateY(${(1-pg)*30}px)`);
+  const ca=back(P(t,F+.6,.55)); op($('#chipA'),clamp(ca)); tf($('#chipA'),`translateY(${Math.sin(t*1.6)*6}px) scale(${ca})`);
+  const cb=back(P(t,F+1.2,.55)); op($('#chipA2'),clamp(cb)); tf($('#chipA2'),`translateY(${Math.sin(t*1.6+2)*6}px) scale(${cb})`);
+  // ---- line 2: slow page (scene fades in on top)
+  const S2=L(2); op($('#s2'),eio(P(t,S2-.45,.5)));
+  wordsIn(h2w,t,S2-.3,.08,.7);
+  $('#pr2').style.width=(eo(P(t,S2-.4,3))*34)+'%';
+  tf($('#sp2'),`rotate(${t*300}deg)`);
+  const tm=back(P(t,S2+.4,.5)); op($('#timer'),clamp(tm)); tf($('#timer'),`scale(${tm})`);
+  const secs=Math.max(1,Math.floor((t-S2+.2)*2.2)); $('#tsec').textContent=`Still loading… ${secs}s`;
+  const lf=back(P(t,S2+1.7,.55)); op($('#left'),clamp(lf)); tf($('#left'),`translateY(${(1-lf)*60}px) scale(${lerp(.9,1,lf)})`);
+  // ---- lines 3-5: the fixes
+  const S3=L(3); op($('#s3'),eio(P(t,S3-.45,.5)));
+  wordsIn(h3w,t,S3-.3,.09,.7);
+  const p3=eo5(P(t,S3-.3,.9)); tf($('#ph3'),`translateY(${(1-p3)*240}px)`); op($('#ph3'),p3);
+  const at=[S3+.3,L(4)+.2,L(5)+.2];
+  $$('.item').forEach((it,i)=>{const x=eo5(P(t,at[i],.6)); op(it,x); tf(it,`translateX(${(1-x)*60}px)`);
+    tf(it.querySelector('.bub'),`scale(${back(P(t,at[i]+.15,.5))})`);});
+  ['#k1','#k2','#k3'].forEach((id,i)=>{const k=back(P(t,at[i]+.3,.6)); op($(id),clamp(k*1.4)); tf($(id),`translateY(${(1-k)*-40}px) scale(${lerp(.92,1,k)})`);});
+  // photo shrinks
+  const sh=eio(P(t,at[0]+1.0,1.1)); $('#fbar').style.width=lerp(100,9,sh)+'%';
+  $('#fsz').textContent=sh<1?(lerp(4.8,.42,sh)>=1?lerp(4.8,.42,sh).toFixed(1)+' MB':Math.round(lerp(4800,420,sh))+' KB'):'420 KB';
+  $('#fsz').style.color=sh>=1?'#0b8a63':'#0f172a';
+  // apps removed
+  [['#b1',at[1]+1.0],['#b2',at[1]+1.5]].forEach(([id,s])=>{const on=t>s; const b=$(id); b.textContent=on?'Removed':'Delete';
+    b.style.background=on?'#e6faf2':'#fde8ea'; b.style.color=on?'#0b8a63':'#c9353b'; tf(b,`scale(${on?lerp(1.15,1,eo(P(t,s,.3))):1})`);
+    const row=b.parentElement; op(row.querySelector('.nm'),on?.45:1);});
+  const t3=back(P(t,L(5)+1.3,.55)); op($('#t3'),clamp(t3)); tf($('#t3'),`translateY(${(1-t3)*60}px) scale(${lerp(.9,1,t3)})`);
+  // ---- end card on the CTA line
+  const E=L(6); op($('#end'),eio(P(t,E-.35,.5)));
+  op($('#elogo'),eo(P(t,E-.2,.5)));
+  wordsIn(ew,t,E-.1,.08,.7);
+  const a=eo5(P(t,E+.2,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);
+  $('#arch .ph img').style.transform=`translateX(-50%) scale(${1.06-.06*eo(P(t,E+.2,3))})`;
+  ['#c1','#c2','#c3'].forEach((id,i)=>{const k=back(P(t,E+.6+i*.2,.55)); const fl=Math.sin(t*1.6+i*2)*6; tf($(id),`translateY(${fl}px) scale(${k})`); op($(id),clamp(k));});
+  const cx2=back(P(t,E+1.1,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-E-1.8)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-E-1.8)*4))*8}px)`;
+  op($('#url'),eo(P(t,E+1.3,.6)));
+}
+window.DUR=VO.dur; render(0);
+</script></body></html>

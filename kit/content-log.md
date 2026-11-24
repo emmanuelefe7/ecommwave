@@ -23,3 +23,6 @@ Newest at the bottom. Formats cycle: CAROUSEL → GROWTH VIDEO → MISTAKES VIDE
 | 2026-11-24 02:02 | PROFILE BANNER (not in rotation) | Grid banner v2 tile 1/3 – intro | Shopify growth agency. | 17926234098223423 | profile/banner2_1.jpg |
 | 2026-11-24 02:00 | 3D CONCEPT (not in rotation, owner disliked this style – do not repeat) | Strategy over traffic (dartboard) | Getting traffic is easy. Getting sales needs a strategy. | 18350989570253793 | posts/2026-11-24-0200-3d-concepts/ |
 | 2026-11-24 02:00 | 3D CONCEPT (not in rotation, owner disliked this style – do not repeat) | Stand out / brand differentiation (pawns) | Don't just sell. Stand out. | 18347514817274133 | posts/2026-11-24-0200-3d-concepts/ |
+| 2026-11-24 10:55 | TRIPTYCH | Click-to-checkout journey (visit → cart → order, mint path with nodes) – tile 3/3 RIGHT | Let’s get you more orders. | 18122569643008227 | posts/2026-11-24-1053-triptych-click-to-checkout/ |
+| 2026-11-24 10:55 | TRIPTYCH | Click-to-checkout journey (visit → cart → order, mint path with nodes) – tile 2/3 MIDDLE | No friction, just sales. | 18122764396977666 | posts/2026-11-24-1053-triptych-click-to-checkout/ |
+| 2026-11-24 10:55 | TRIPTYCH | Click-to-checkout journey (visit → cart → order, mint path with nodes) – tile 1/3 LEFT | Turn visitors into buyers. | 18104126096663412 | posts/2026-11-24-1053-triptych-click-to-checkout/ |

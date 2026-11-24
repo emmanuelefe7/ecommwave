@@ -1,0 +1,193 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script>
+<style>
+#logo{left:80px;top:170px;height:46px}
+#tag1{right:80px;top:162px;border-color:rgba(255,107,122,.55);color:var(--coral);font-size:22px;padding:12px 22px}
+#h1{left:80px;top:290px;width:940px;font-size:108px;color:#fff}
+#h1 .serif,#h2 .serif,#e1 .serif{color:var(--mint);font-size:1.12em}
+#h1 .serif{color:var(--coral)}
+.phone{width:540px;height:880px;border-radius:70px;background:#0b1430;padding:16px;box-shadow:0 50px 120px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.08)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:56px;background:#fff;overflow:hidden;font-family:Inter}
+.phone .sb{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 40px 0 46px;font:700 20px Inter;color:#0f172a}
+.phone .isl{position:absolute;left:50%;top:14px;width:140px;height:38px;border-radius:20px;background:#0b1430;transform:translateX(-50%)}
+.phone .top{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;border-bottom:1px solid #eef1f5}
+.phone .top .lg{font:800 24px "Inter Display";letter-spacing:.08em;color:#0f1f4d}
+.phone .top .x{font:500 26px Inter;color:#64748b;width:40px;text-align:center}
+.steps{display:flex;gap:10px;padding:18px 30px 6px;font:600 15px Inter;color:#94a3b8}
+.steps b{color:#0f1f4d}
+.ckh{padding:10px 30px 4px;font:800 38px "Inter Display";letter-spacing:-.03em;color:#0f172a}
+.item{display:flex;gap:16px;align-items:center;margin:14px 30px;padding:14px;border:1px solid #eef1f5;border-radius:16px}
+.item .th{width:92px;height:92px;border-radius:12px;overflow:hidden;background:#f1efec;flex:none;position:relative}
+.item .th img{width:100%;height:100%;object-fit:cover}
+.item .th i{position:absolute;right:-2px;top:-2px;width:26px;height:26px;border-radius:50%;background:#64748b;color:#fff;font:700 14px Inter;font-style:normal;display:grid;place-items:center}
+.item .nm{font:700 21px Inter;color:#0f172a}.item .vr{font:500 16px Inter;color:#64748b;margin-top:4px}
+.item .pr{margin-left:auto;font:700 21px Inter;color:#0f172a}
+.rows{margin:8px 30px 0;font:500 20px Inter;color:#475569}
+.row{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-radius:10px;position:relative}
+.row .v{color:#0f172a;font-weight:600}
+.row .muted{color:#94a3b8;font-weight:500;font-size:17px}
+.tot{border-top:1px solid #e5e9f0;margin-top:8px;padding-top:18px;font:800 26px Inter;color:#0f172a}
+.btn{margin:26px 30px 0;height:68px;border-radius:16px;background:#0f1f4d;color:#fff;font:700 21px Inter;display:grid;place-items:center}
+.disc{margin:18px 30px 0;height:60px;border:1.5px solid #d6dce5;border-radius:14px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font:500 18px Inter;color:#94a3b8}.disc b{color:#0f1f4d;font-weight:700}
+.sec{margin-top:20px;text-align:center;font:500 16px Inter;color:#64748b;display:flex;gap:8px;justify-content:center;align-items:center}
+#hl{position:absolute;left:-12px;right:-12px;top:2px;bottom:2px;border-radius:10px;background:rgba(229,72,77,.12);border:2px solid rgba(229,72,77,.6);opacity:0}
+#ph1{left:80px;top:640px}
+#warn{left:650px;top:1072px;z-index:8;opacity:0}
+#warn .ck{background:#e5484d;color:#fff;font:800 26px Inter}
+#cur{z-index:20}
+#t1{left:250px;top:1300px;z-index:12;opacity:0;width:700px}
+#t1 .ic{background:#e5484d;color:#fff;font:800 30px Inter}
+/* scene 2 */
+#s2{opacity:0}
+#tag2{right:80px;top:162px;font-size:22px;padding:12px 22px}
+#h2{left:80px;top:290px;width:940px;font-size:108px;color:#fff}
+#ph2{left:80px;top:640px}
+.pimg{height:330px;background:#efe9e2;position:relative;overflow:hidden}
+.pimg img{position:absolute;left:50%;top:50%;height:120%;transform:translate(-50%,-50%)}
+.pd{padding:20px 30px 0}
+.pd .nm{font:800 32px "Inter Display";letter-spacing:-.02em;color:#0f172a}
+.pd .rt{font:600 17px Inter;color:#f5a524;margin-top:6px}.pd .rt span{color:#64748b;font-weight:500}
+.pd .pr{font:800 30px Inter;color:#0f172a;margin-top:10px}
+.ship{margin:16px 30px 0;padding:14px 16px;border-radius:14px;background:#ecfbf4;border:1.5px solid #bfeedb;font:600 18px Inter;color:#0b7a55;display:flex;gap:12px;align-items:center;position:relative}
+.ship svg{flex:none}
+.ship small{display:block;font:500 16px Inter;color:#3f8f72;margin-top:2px}
+.add{margin:18px 30px 0;height:66px;border-radius:16px;background:#0f1f4d;color:#fff;font:700 21px Inter;display:grid;place-items:center}
+#drawer{position:absolute;left:0;right:0;bottom:0;height:470px;background:#fff;border-radius:30px 30px 0 0;box-shadow:0 -20px 60px rgba(10,26,71,.25);padding:14px 30px 0;transform:translateY(100%)}
+#drawer .gr{width:60px;height:6px;border-radius:3px;background:#d6dce5;margin:0 auto 16px}
+#drawer .dh{font:800 28px "Inter Display";color:#0f172a;letter-spacing:-.02em}
+#drawer .goal{margin-top:14px;font:600 18px Inter;color:#0f172a}
+#drawer .bar{margin-top:10px;height:12px;border-radius:6px;background:#eef1f5;overflow:hidden}
+#drawer .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#34d5a0,#12b886);border-radius:6px}
+#drawer .rows{margin:12px 0 0}
+#drawer .btn{margin:16px 0 0;background:#12b886}
+#dim2{position:absolute;inset:0;background:rgba(10,20,45,.4);opacity:0}
+.lbl{position:absolute;z-index:8;opacity:0}
+#l1{left:560px;top:1060px}#l2{left:650px;top:1182px}
+#t2{left:300px;top:700px;z-index:12;opacity:0;width:700px}
+/* end */
+#end{opacity:0}
+#elogo{left:50%;top:170px;height:46px;transform:translateX(-50%)}
+#e1{left:70px;top:270px;width:940px;font-size:108px;color:#fff;text-align:center}
+#arch{left:290px;top:580px;width:500px;height:640px}
+#arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--mint)}
+#arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+#arch .ph img{position:absolute;left:50%;bottom:0;height:620px;transform:translateX(-50%)}
+#c1{left:50px;top:740px}#c2{left:640px;top:930px}#c3{left:70px;top:1100px}
+#cta{left:50%;top:1290px;white-space:nowrap}
+#url{left:0;right:0;top:1450px;text-align:center;color:#a9b8d6;font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<div class="scene bg-dark" id="main">
+  <img id="logo" class="abs" src="assets/logo_white.png">
+  <div id="tag1" class="abs tag">COMMON MISTAKE</div>
+  <div id="h1" class="abs headline">Surprise shipping fees kill your <span class="serif">sales.</span></div>
+  <div id="ph1" class="abs phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="top"><span class="x">‹</span><span class="lg">NOVA</span><span class="x" id="xbtn">✕</span></div>
+    <div class="steps"><b>Cart</b>›<b>Information</b>›<span id="stp">Shipping</span>›<span>Payment</span></div>
+    <div class="ckh">Order summary</div>
+    <div class="item"><div class="th"><img src="assets/p_bag.png"><i>1</i></div><div><div class="nm">Tan Satchel</div><div class="vr">Tan / One size</div></div><div class="pr">$129.00</div></div>
+    <div class="rows">
+      <div class="row"><span>Subtotal</span><span class="v">$129.00</span></div>
+      <div class="row" id="shr"><div id="hl"></div><span style="position:relative">Shipping</span><span id="shv" class="muted" style="position:relative">Calculated at next step</span></div>
+      <div class="row tot"><span>Total</span><span id="totv">$129.00</span></div>
+    </div>
+    <div class="btn" id="b1">Continue to shipping</div>
+    <div class="disc"><span>Discount code</span><b>Apply</b></div>
+    <div class="sec">LOCK Secure checkout</div>
+  </div></div>
+  <div id="warn" class="abs chip"><span class="ck">!</span>Surprise fee</div>
+  <div id="t1" class="abs toast"><div class="ic">✕</div><div><div class="t1">Checkout abandoned</div><div class="t2">Tan Satchel left in the cart</div></div><div class="tm">now</div></div>
+  <div id="cur" class="cursor"></div>
+</div>
+<div class="scene bg-dark" id="s2">
+  <img class="abs" style="left:80px;top:170px;height:46px" src="assets/logo_white.png">
+  <div id="tag2" class="abs tag">THE FIX</div>
+  <div id="h2" class="abs headline">Show shipping costs <span class="serif">up front.</span></div>
+  <div id="ph2" class="abs phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="pimg"><img src="assets/p_bag.png"></div>
+    <div class="pd"><div class="nm">Tan Satchel</div><div class="rt">★★★★★ <span>Customer reviews</span></div><div class="pr">$129.00</div></div>
+    <div class="ship" id="shipbox">TRK<div>Free shipping on orders over $50<small>Arrives in 3–5 business days</small></div></div>
+    <div class="add">Add to cart</div>
+    <div id="dim2"></div>
+    <div id="drawer"><div class="gr"></div><div class="dh">Your cart</div>
+      <div class="goal" id="goal">You’re $50 away from free shipping</div>
+      <div class="bar"><i id="barf"></i></div>
+      <div class="rows">
+        <div class="row"><span>Tan Satchel</span><span class="v">$129.00</span></div>
+        <div class="row"><span>Shipping</span><span class="v" style="color:#12b886">Free</span></div>
+        <div class="row tot"><span>Total</span><span>$129.00</span></div>
+      </div>
+      <div class="btn">Checkout</div>
+    </div>
+  </div></div>
+  <div id="l1" class="lbl chip"><span class="ck">CK</span>Shown on product page</div>
+  <div id="l2" class="lbl chip"><span class="ck">CK</span>Free shipping goal</div>
+  <div id="t2" class="abs toast"><div class="ic">BG</div><div><div class="t1">New order · Tan Satchel</div><div class="t2">No surprises at checkout</div></div><div class="tm">now</div></div>
+</div>
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="assets/logo_white.png">
+  <div id="e1" class="abs headline">No surprises.<br><span class="serif">More sales.</span></div>
+  <div id="arch" class="abs"><div class="back"></div><div class="ph"><img src="assets/woman.png"></div></div>
+  <div id="c1" class="abs chip"><span class="ck">CK</span>Clear shipping info</div>
+  <div id="c2" class="abs chip"><span class="ck">CK</span>Smooth checkout</div>
+  <div id="c3" class="abs chip"><span class="ck">CK</span>Free store audit</div>
+  <div id="cta" class="abs cta">DM us “GROWTH” <span class="arrow">AR</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+const TRUCK='<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#12b886" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6h11v10H2zM13 9h4.5l3.5 3.5V16h-8"/><circle cx="6" cy="17.5" r="1.8" fill="#fff"/><circle cx="17" cy="17.5" r="1.8" fill="#fff"/></svg>';
+document.body.innerHTML=document.body.innerHTML.replaceAll('>CK<','>'+CHECK+'<').replaceAll('>BG<','>'+BAG+'<').replace('>AR<','>'+ARROW+'<').replaceAll('>ST<','>'+STATUS+'<').replace('>TRK<','>'+TRUCK+'<').replace('LOCK Secure',LOCK+' Secure');
+$('#cur').innerHTML=CURSOR;
+const hw=splitWords($('#h1')), h2w=splitWords($('#h2')), ew=splitWords($('#e1'));
+const DUR=19.5;
+const money=v=>'$'+v.toFixed(2);
+function render(t){
+  // ---- scene 1: checkout with a surprise fee
+  wordsIn(hw,t,.15,.08,.7);
+  op($('#tag1'),eo(P(t,.6,.5)));
+  const bi=eo5(P(t,1.0,.9)); tf($('#ph1'),`translateY(${(1-bi)*240}px)`); op($('#ph1'),bi);
+  // cursor taps "Continue" at 2.7, then the ✕ at 5.4
+  const cur=$('#cur');
+  const c1=eio(P(t,2.0,.6)), c2=eio(P(t,4.8,.5));
+  const x=lerp(lerp(900,360,c1),548,c2), y=lerp(lerp(1600,1258,c1),744,c2);
+  const press=(t>2.7&&t<2.85)||(t>5.4&&t<5.55)?.85:1;
+  tf(cur,`translate(${x}px,${y}px) scale(${press})`); op(cur,t<2.0?0:(t>5.8?1-eo(P(t,5.8,.3)):1));
+  $('#b1').style.background=t>2.7&&t<3.0?'#24356b':'#0f1f4d';
+  $('#b1').textContent=t>2.9?'Continue to payment':'Continue to shipping';
+  $('#stp').style.color=t>2.9?'#0f1f4d':'#94a3b8'; $('#stp').style.fontWeight=t>2.9?'700':'600';
+  const s=eo(P(t,3.0,.5));
+  if(t<3.0){$('#shv').className='muted';$('#shv').textContent='Calculated at next step';$('#shv').style.color='';}
+  else{$('#shv').className='v';$('#shv').textContent='$14.95';$('#shv').style.color='#e5484d';}
+  op($('#hl'),s);
+  const tv=129+14.95*eo(P(t,3.1,.7)); $('#totv').textContent=money(t<3.1?129:tv); $('#totv').style.color=t>3.1?'#e5484d':'#0f172a';
+  const w=back(P(t,3.5,.5)); const fl=Math.sin(t*1.6)*5; tf($('#warn'),`translateY(${fl}px) scale(${w})`); op($('#warn'),clamp(w));
+  const tt=back(P(t,5.6,.55)); op($('#t1'),clamp(tt)); tf($('#t1'),`translateY(${(1-tt)*60}px) scale(${lerp(.9,1,tt)})`);
+  op($('#ph1 .scr'),1-.35*eo(P(t,5.55,.4)));
+  // ---- scene 2: the fix (fades in on top at 7.6)
+  const s2=eio(P(t,7.6,.6)); op($('#s2'),s2); tf($('#main'),`scale(${1-s2*.04})`);
+  op($('#tag2'),eo(P(t,7.9,.5)));
+  wordsIn(h2w,t,7.8,.08,.7);
+  const ph=eo5(P(t,8.0,.9)); tf($('#ph2'),`translateY(${(1-ph)*240}px)`); op($('#ph2'),ph);
+  const sb=eo(P(t,8.9,.4)); $('#shipbox').style.boxShadow=`0 0 0 ${sb*6}px rgba(52,213,160,${.35*sb*(1-P(t,10.4,.6))})`;
+  {const k=back(P(t,9.2,.5)); tf($('#l1'),`translateY(${Math.sin(t*1.6)*5}px) scale(${k})`); op($('#l1'),clamp(k)*(1-eo(P(t,11.2,.3))));}
+  // drawer 11.4
+  const d=eo5(P(t,11.4,.7)); tf($('#drawer'),`translateY(${(1-d)*100}%)`); op($('#dim2'),d);
+  const g=eio(P(t,11.9,1.0)); $('#barf').style.width=(g*100)+'%';
+  $('#goal').textContent=g<1?`You’re $${Math.max(0,Math.ceil(50-g*129))} away from free shipping`:'You’ve unlocked free shipping ✓';
+  $('#goal').style.color=g<1?'#0f172a':'#12b886';
+  {const k=back(P(t,12.1,.5)); tf($('#l2'),`translateY(${Math.sin(t*1.6+2)*5}px) scale(${k})`); op($('#l2'),clamp(k));}
+  const t2=back(P(t,13.0,.55)); op($('#t2'),clamp(t2)); tf($('#t2'),`translateY(${(1-t2)*60}px) scale(${lerp(.9,1,t2)})`);
+  // ---- end card from 14.3
+  const ex=eio(P(t,14.3,.6)); op($('#end'),ex); tf($('#s2'),`scale(${1-ex*.04})`);
+  op($('#elogo'),eo(P(t,14.5,.6)));
+  wordsIn(ew,t,14.5,.07,.7);
+  const a=eo5(P(t,14.8,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);
+  $('#arch .ph img').style.transform=`translateX(-50%) scale(${1.06-.06*eo(P(t,14.8,4))})`;
+  ['#c1','#c2','#c3'].forEach((id,i)=>{const k=back(P(t,15.4+i*.25,.55)); const fl=Math.sin(t*1.6+i*2)*6; tf($(id),`translateY(${fl}px) scale(${k})`); op($(id),clamp(k));});
+  const cx2=back(P(t,16.2,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-17)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-17)*4))*8}px)`;
+  op($('#url'),eo(P(t,16.5,.6)));
+}
+window.DUR=DUR; render(0);
+</script></body></html>

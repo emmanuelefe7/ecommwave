@@ -12,6 +12,7 @@ Newest at the bottom. Formats cycle: CAROUSEL → GROWTH VIDEO → MISTAKES VIDE
 | 2026-11-24 01:24 | CAROUSEL | Product page anatomy (7-part checklist) | Your product page is your best salesperson. | 18096250922673539 | posts/2026-11-24-0124-product-page/ |
 | 2026-11-24 04:30 | GROWTH VIDEO | Repeat customers / retention (thank-you, restock, rewards) | Grow with customers you already have. | 17956565556365207 | posts/2026-11-24-0430-repeat-customers/ |
 | 2026-11-24 07:22 | MISTAKES VIDEO | No reviews on product pages (ask after delivery, stars near price, photo reviews) | No reviews? No sales. | 18113499371616467 | posts/2026-11-24-0722-no-reviews/ |
+| 2026-11-24 10:24 | CAROUSEL | Homepage first screen / above the fold (headline, hero photo, one button, offer bar, proof, mobile) | What shoppers see first decides if they stay. | 17908140174354194 | posts/2026-11-24-1024-homepage/ |
 | scheduled 2026-11-25 11:23 | VIDEO (separate scheduled post) | Store redesign | Your competitors might be one redesign ahead. | — | reels/ecommwave_reel_redesign.mp4 |
 | scheduled 2026-11-27 10:47 | VIDEO (separate scheduled post) | Free store audit / no sales | Getting traffic but no sales? | — | reels/ecommwave_reel_free_audit.mp4 |
 | 2026-11-24 01:52 | PROFILE BANNER (not in rotation) | Grid banner tile 3/3 – free audit | Get a free store audit. | 18135474077495153 (old v1 – to delete) | profile/banner_3.jpg |

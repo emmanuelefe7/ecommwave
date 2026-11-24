@@ -1,0 +1,307 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Serif";font-style:italic;src:url(fonts/serif-italic.woff2) format("woff2")}
+:root{--navy:#0a1a47;--navy2:#0f2557;--ink:#0d1b3e;--mint:#34d5a0;--green:#12b886;--muted:#5b6b86;--line:#e3e9f2;--red:#e5484d}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px}
+.dark{background:radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47;color:#fff}
+.light{background:radial-gradient(700px 560px at 100% 0%,#d6f5ea 0%,rgba(214,245,234,0) 70%),radial-gradient(700px 600px at 0% 100%,#dcecfa 0%,rgba(220,236,250,0) 70%),#f3f7fb;color:#0d1b3e}
+.top{position:absolute;left:80px;right:80px;top:70px;display:flex;justify-content:space-between;align-items:center}
+.top img{height:44px}
+.num{font:700 24px "Inter";letter-spacing:.12em;padding:12px 22px;border-radius:999px;border:2px solid rgba(18,184,134,.4);color:#12b886}
+.dark .num{color:#34d5a0;border-color:rgba(52,213,160,.45)}
+.kick{font:700 24px "Inter";letter-spacing:.16em;color:#12b886;text-transform:uppercase}
+.dark .kick{color:#34d5a0}
+h1{font-weight:800;letter-spacing:-.045em;line-height:1.02}
+h1 em{font-family:"Serif";font-style:italic;font-weight:400;letter-spacing:-.01em;color:#12b886;font-size:1.1em}
+.dark h1 em{color:#34d5a0}
+.txt{position:absolute;left:80px;right:80px;top:180px}
+.sub{font:500 32px/1.35 "Inter";color:#5b6b86;letter-spacing:-.01em;margin-top:22px}
+.dark .sub{color:#b4c2dc}
+.swipe{position:absolute;right:80px;bottom:60px;display:flex;align-items:center;gap:12px;font:700 24px "Inter";color:#5b6b86;z-index:20}
+.dark .swipe{color:#c3cee3}
+.swipe i{width:52px;height:52px;border-radius:50%;background:#0f2557;display:grid;place-items:center}
+.dark .swipe i{background:#34d5a0}
+/* phone */
+.phone{position:absolute;border-radius:70px;background:#0b1020;padding:14px;box-shadow:0 60px 120px rgba(10,26,71,.30),inset 0 0 0 2px #2b3448}
+.dark .phone{box-shadow:0 60px 140px rgba(0,0,0,.55),inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:57px;overflow:hidden;background:#fff;font-family:"Inter"}
+.island{position:absolute;left:50%;top:13px;width:126px;height:36px;border-radius:20px;background:#000;transform:translateX(-50%)}
+.sb{height:58px;display:flex;align-items:center;justify-content:space-between;padding:10px 38px 0;font:600 18px "Inter";color:#0f172a}
+/* search ui */
+.sbx{display:flex;align-items:center;gap:14px;height:62px;border-radius:999px;background:#fff;box-shadow:0 2px 10px rgba(15,23,42,.10),0 0 0 1px #e5e9f0;padding:0 22px;font:500 21px "Inter";color:#0f172a}
+.tabs{display:flex;gap:26px;padding:16px 26px 0;font:600 16px "Inter";color:#64748b;border-bottom:1px solid #edf0f4}
+.tabs span{padding-bottom:12px}
+.tabs .on{color:#0f172a;border-bottom:3px solid #0f172a}
+.r{padding:18px 26px;border-bottom:8px solid #f4f6f9}
+.site{display:flex;align-items:center;gap:12px}
+.fv{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:800 14px "Inter";color:#fff;flex:none}
+.sn{font:600 15px "Inter";color:#0f172a;line-height:1.2}
+.su{font:400 13px "Inter";color:#5f6b7a;line-height:1.3}
+.rt{font:500 21px/1.3 "Inter";color:#1a0dab;margin-top:9px;letter-spacing:-.005em}
+.rs{font:400 15px/1.5 "Inter";color:#4d5156;margin-top:5px}
+.rm{font:400 14px "Inter";color:#5f6b7a;margin-top:6px}
+.rm b{color:#e8a317;font-weight:700;letter-spacing:1px}
+.sp{font:700 13px "Inter";color:#0f172a}
+.thumb{width:92px;height:92px;border-radius:12px;object-fit:cover;flex:none}
+.card{position:absolute;background:#fff;border-radius:30px;box-shadow:0 40px 90px rgba(10,26,71,.14),0 0 0 1px rgba(10,26,71,.05);font-family:"Inter"}
+.dark .card{box-shadow:0 50px 110px rgba(0,0,0,.45)}
+.callout{position:absolute;display:inline-flex;align-items:center;gap:12px;padding:14px 24px 14px 16px;border-radius:999px;font:800 26px "Inter";box-shadow:0 18px 40px rgba(10,26,71,.25);z-index:10;white-space:nowrap}
+.callout .dot{width:36px;height:36px;border-radius:50%;display:grid;place-items:center}
+.c-mint{background:#34d5a0;color:#0d1b3e}.c-mint .dot{background:#0d1b3e}
+.c-red{background:#fff;color:#0d1b3e}.c-red .dot{background:#e5484d}
+.c-white{background:#fff;color:#0d1b3e}.c-white .dot{background:#0f2557}
+.chip{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#0d1b3e;font:700 28px "Inter";padding:14px 26px 14px 14px;border-radius:999px;box-shadow:0 16px 40px rgba(10,26,71,.16)}
+.chip .ck{width:42px;height:42px;border-radius:50%;background:#0f2557;display:grid;place-items:center}
+.cta{display:inline-flex;align-items:center;gap:24px;background:#34d5a0;color:#0d1b3e;font:800 42px "Inter Display";letter-spacing:-.02em;padding:24px 28px 24px 46px;border-radius:999px;box-shadow:0 20px 50px rgba(52,213,160,.35)}
+.cta i{width:64px;height:64px;border-radius:50%;background:#0d1b3e;display:grid;place-items:center}
+.lbl{font:700 15px "Inter";letter-spacing:.06em;color:#64748b;text-transform:uppercase}
+
+/* product page */
+.pimg{position:relative;overflow:hidden;background:#d9d3cb}
+.pimg img{position:absolute;width:100%;height:100%;object-fit:cover}
+.stars{color:#f5a524;letter-spacing:2px}
+.btnbig{display:flex;align-items:center;justify-content:center;gap:12px;background:#0f1f4d;color:#fff;font:700 22px "Inter";border-radius:16px}
+.row{display:flex;align-items:center;gap:14px}
+.ic{width:46px;height:46px;border-radius:14px;background:#eefaf5;display:grid;place-items:center;flex:none}
+.li{display:flex;align-items:center;gap:22px;padding:21px 0;border-top:1px solid #edf0f4;font:600 29px Inter;color:#0f172a;letter-spacing:-.01em}
+.li:first-child{border-top:none}
+.li .ck2{width:46px;height:46px;border-radius:50%;background:#34d5a0;display:grid;place-items:center;flex:none}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="s dark" id="s1">
+  <div class="top"><img src="assets/logo_white.png"><span class="num">PRODUCT PAGES</span></div>
+  <div class="txt"><h1 style="font-size:96px">Your product page is your <em>best salesperson.</em></h1></div>
+  <div class="phone" style="left:230px;top:560px;width:620px;height:960px"><div class="scr">
+    <div class="island"></div>STATUSBAR
+    <div style="margin:4px 22px 0;height:40px;border-radius:12px;background:#f1f3f6;display:flex;align-items:center;justify-content:center;font:500 17px Inter;color:#475569">yourstore.com</div>
+    <div style="height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px">MENU<span style="font:800 22px Inter;letter-spacing:.08em;color:#0f1f4d">NOVA</span>BAG</div>
+    <div class="pimg" style="height:330px"><img src="assets/p_sneaker.png" style="object-position:50% 60%"></div>
+    <div style="display:flex;gap:10px;padding:12px 22px">
+      <div class="pimg" style="width:76px;height:62px;border-radius:10px;box-shadow:0 0 0 3px #0f1f4d"><img src="assets/p_sneaker.png"></div>
+      <div class="pimg" style="width:76px;height:62px;border-radius:10px"><img src="assets/p_sneaker.png" style="transform:scale(2.2);object-position:35% 55%"></div>
+      <div class="pimg" style="width:76px;height:62px;border-radius:10px"><img src="assets/p_sneaker.png" style="transform:scale(1.8);object-position:75% 70%"></div>
+      <div class="pimg" style="width:76px;height:62px;border-radius:10px;background:#0f1f4d"><img src="assets/p_sneaker.png" style="opacity:.55"><span style="position:absolute;inset:0;display:grid;place-items:center">PLAY</span></div>
+    </div>
+    <div style="padding:4px 24px 0">
+      <div style="font:700 27px Inter;color:#0f172a;letter-spacing:-.01em">Court Sneaker in White Leather</div>
+      <div class="row" style="margin-top:8px;font:500 17px Inter;color:#64748b"><span class="stars">★★★★★</span>4.8 (212 reviews)</div>
+      <div style="font:800 28px Inter;color:#0f172a;margin-top:10px">$89.00 <span style="font:500 16px Inter;color:#12b886;margin-left:8px">Free shipping over $50</span></div>
+      <div class="btnbig" style="height:66px;margin-top:16px">Add to cart · $89</div>
+    </div>
+  </div></div>
+  <div class="callout c-mint" style="left:60px;top:770px;font-size:24px">DOTCK Clear photos</div>
+  <div class="callout c-white" style="left:730px;top:1120px;font-size:24px">DOTSTAR Real reviews</div>
+  <div class="callout c-mint" style="left:20px;top:1262px;font-size:24px">DOTCK One big button</div>
+  <div class="swipe">Swipe <i>ARN</i></div>
+</section>
+
+<!-- 2 PHOTOS -->
+<section class="s light" id="s2">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">01 / 08</span></div>
+  <div class="txt"><div class="kick">Part 1 · Photos</div><h1 style="font-size:94px;margin-top:22px">Shoppers can’t touch it. <em>Show them.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:24px;display:flex;gap:30px">
+    <div style="width:440px;flex:none">
+      <div class="pimg" style="height:380px;border-radius:22px"><img src="assets/p_sneaker.png" style="object-position:50% 60%"></div>
+      <div style="display:flex;gap:10px;margin-top:12px">
+        <div class="pimg" style="flex:1;height:92px;border-radius:12px;box-shadow:0 0 0 3px #0f1f4d"><img src="assets/p_sneaker.png"></div>
+        <div class="pimg" style="flex:1;height:92px;border-radius:12px"><img src="assets/p_sneaker.png" style="transform:scale(2.2);object-position:35% 55%"></div>
+        <div class="pimg" style="flex:1;height:92px;border-radius:12px"><img src="assets/p_sneaker.png" style="transform:scale(1.8);object-position:75% 70%"></div>
+        <div class="pimg" style="flex:1;height:92px;border-radius:12px;background:#0f1f4d"><img src="assets/p_sneaker.png" style="opacity:.55"><span style="position:absolute;inset:0;display:grid;place-items:center">PLAY</span></div>
+      </div>
+    </div>
+    <div style="flex:1;padding:8px 0;display:flex;flex-direction:column">
+      <div class="lbl">Show shoppers</div>
+      <div class="li" style="font-size:25px">CK2 Every angle</div>
+      <div class="li" style="font-size:25px">CK2 Close-ups of the material</div>
+      <div class="li" style="font-size:25px">CK2 The size, next to something</div>
+      <div class="li" style="font-size:25px">CK2 A short video in use</div>
+    </div>
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1080px;font-size:25px">DOTCK Answer “what does it really look like?”</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 3 TITLE + PRICE -->
+<section class="s light" id="s3">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">02 / 08</span></div>
+  <div class="txt"><div class="kick">Part 2 · Title &amp; price</div><h1 style="font-size:94px;margin-top:22px">Say what it is and <em>what it costs.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:28px 32px;display:flex;gap:24px;align-items:center;opacity:.92">
+    <div class="pimg" style="width:120px;height:120px;border-radius:14px;flex:none;filter:grayscale(.4)"><img src="assets/p_sneaker.png"></div>
+    <div style="flex:1"><div class="lbl" style="color:#e5484d">Before</div><div style="font:600 30px Inter;color:#0f172a;margin-top:8px;letter-spacing:-.01em">SNKR-2291 – New Drop</div><div style="font:500 19px Inter;color:#94a3b8;margin-top:6px">Price hidden below the fold</div></div>
+    <span style="width:52px;height:52px;border-radius:50%;background:#fde8e8;display:grid;place-items:center">XRED</span>
+  </div>
+  <div class="card" style="left:80px;right:80px;top:770px;padding:28px 32px;display:flex;gap:24px;align-items:center;box-shadow:0 40px 90px rgba(10,26,71,.16),0 0 0 3px #34d5a0">
+    <div class="pimg" style="width:120px;height:120px;border-radius:14px;flex:none"><img src="assets/p_sneaker.png"></div>
+    <div style="flex:1"><div class="lbl" style="color:#12b886">After</div><div style="font:600 30px Inter;color:#0f172a;margin-top:8px;letter-spacing:-.01em">Court Sneaker in White Leather</div>
+      <div class="row" style="margin-top:8px;font:500 19px Inter;color:#64748b"><b style="font:800 24px Inter;color:#0f172a">$89.00</b><span class="stars">★★★★★</span>4.8 (212)</div></div>
+    <span style="width:52px;height:52px;border-radius:50%;background:#dcf7ec;display:grid;place-items:center">CKG</span>
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1030px;font-size:25px">DOTCK Clear in one look, right at the top</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 4 DESCRIPTION -->
+<section class="s light" id="s4">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">03 / 08</span></div>
+  <div class="txt"><div class="kick">Part 3 · Description</div><h1 style="font-size:94px;margin-top:22px">Sell the <em>benefit,</em> not just the specs.</h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:28px 34px;opacity:.92">
+    <div class="row"><div class="lbl" style="color:#e5484d">Before</div><span style="margin-left:auto">XRED</span></div>
+    <div style="font:400 22px/1.55 Inter;color:#94a3b8;margin-top:10px">Upper: leather. Sole: rubber. Lining: textile. Closure: lace-up. Colour: white.</div>
+  </div>
+  <div class="card" style="left:80px;right:80px;top:750px;padding:28px 34px;box-shadow:0 40px 90px rgba(10,26,71,.16),0 0 0 3px #34d5a0">
+    <div class="row"><div class="lbl" style="color:#12b886">After</div><span style="margin-left:auto">CKG</span></div>
+    <div class="row" style="margin-top:18px;font:500 24px Inter;color:#0f172a"><span class="ic">ICLOUD</span>Soft insole for all-day walking</div>
+    <div class="row" style="margin-top:16px;font:500 24px Inter;color:#0f172a"><span class="ic">IDROP</span>Wipe-clean leather that stays white</div>
+    <div class="row" style="margin-top:16px;font:500 24px Inter;color:#0f172a"><span class="ic">ISPARK</span>Goes with jeans, dresses and suits</div>
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1115px;font-size:25px">DOTCK Tell them how it makes life better</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 5 REVIEWS -->
+<section class="s light" id="s5">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">04 / 08</span></div>
+  <div class="txt"><div class="kick">Part 4 · Reviews</div><h1 style="font-size:94px;margin-top:22px">Let happy buyers <em>sell for you.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:30px 34px">
+    <div class="row" style="gap:28px">
+      <div style="font:800 86px Inter;color:#0f172a;letter-spacing:-.04em;line-height:1">4.8</div>
+      <div><div class="stars" style="font-size:30px">★★★★★</div><div style="font:500 19px Inter;color:#64748b;margin-top:4px">212 reviews</div></div>
+      <div style="margin-left:auto;width:330px">BARS</div>
+    </div>
+    <div style="display:flex;gap:18px;margin-top:26px">
+      REV1
+      REV2
+    </div>
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1100px;font-size:25px">DOTCK Ask every buyer for a review + photo</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 6 SHIPPING / RETURNS -->
+<section class="s light" id="s6">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">05 / 08</span></div>
+  <div class="txt"><div class="kick">Part 5 · Shipping &amp; returns</div><h1 style="font-size:94px;margin-top:22px">Answer doubts <em>before</em> they ask.</h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:28px 34px">
+    <div class="btnbig" style="height:78px;font-size:25px">Add to cart · $89</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px">
+      <div class="row" style="font:600 21px Inter;color:#0f172a"><span class="ic">ITRUCK</span>Free shipping over $50</div>
+      <div class="row" style="font:600 21px Inter;color:#0f172a"><span class="ic">ICLOCK</span>Arrives in 3–5 days</div>
+      <div class="row" style="font:600 21px Inter;color:#0f172a"><span class="ic">IRET</span>Free 30-day returns</div>
+      <div class="row" style="font:600 21px Inter;color:#0f172a"><span class="ic">ILOCK</span>Secure checkout</div>
+    </div>
+    <div style="margin-top:20px;border-top:1px solid #edf0f4">
+      <div style="display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid #edf0f4;font:600 21px Inter;color:#0f172a">Size guide<span style="color:#64748b">+</span></div>
+      <div style="display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid #edf0f4;font:600 21px Inter;color:#0f172a">Shipping &amp; returns<span style="color:#64748b">+</span></div>
+      <div style="display:flex;justify-content:space-between;padding:18px 0 4px;font:600 21px Inter;color:#0f172a">Care instructions<span style="color:#64748b">+</span></div>
+    </div>
+  </div>
+  <div class="callout c-mint" style="left:80px;top:1105px;font-size:25px">DOTCK No surprises = confident buyers</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 7 ADD TO CART -->
+<section class="s light" id="s7">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">06 / 08</span></div>
+  <div class="txt"><div class="kick">Part 6 · Add to cart</div><h1 style="font-size:94px;margin-top:22px">One button. <em>Impossible to miss.</em></h1></div>
+  <div class="phone" style="left:110px;top:520px;width:400px;height:690px;padding:12px;border-radius:56px"><div class="scr" style="border-radius:45px">
+    <div class="island" style="width:100px;height:30px"></div>STATUSBAR
+    <div class="pimg" style="height:230px;margin-top:6px"><img src="assets/p_sneaker.png"></div>
+    <div style="padding:14px 18px">
+      <div style="font:700 19px Inter;color:#0f172a">Court Sneaker in White Leather</div>
+      <div style="font:400 14px/1.5 Inter;color:#94a3b8;margin-top:8px">Upper: leather. Sole: rubber. Lining: textile. Closure: lace-up…</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:14px">
+        <span style="padding:9px 12px;border:1px solid #e2e8f0;border-radius:8px;font:500 13px Inter;color:#64748b">♡ Wishlist</span>
+        <span style="padding:9px 12px;border:1px solid #e2e8f0;border-radius:8px;font:500 13px Inter;color:#64748b">Compare</span>
+        <span style="padding:9px 12px;border:1px solid #e2e8f0;border-radius:8px;font:500 13px Inter;color:#64748b">Share</span>
+        <span style="padding:9px 12px;border:1px solid #e2e8f0;border-radius:8px;font:500 13px Inter;color:#64748b">Ask a question</span>
+        <span style="padding:9px 12px;border:1px solid #e2e8f0;border-radius:8px;font:500 13px Inter;color:#64748b">Size chart</span>
+        <span style="padding:9px 12px;border:1px solid #cbd5e1;border-radius:8px;font:500 13px Inter;color:#94a3b8">Add to cart</span>
+      </div>
+      <div style="font:400 14px/1.5 Inter;color:#94a3b8;margin-top:14px">You may also like: 24 more items from our new collection…</div>
+    </div>
+  </div></div>
+  <div class="phone" style="left:570px;top:520px;width:400px;height:690px;padding:12px;border-radius:56px"><div class="scr" style="border-radius:45px">
+    <div class="island" style="width:100px;height:30px"></div>STATUSBAR
+    <div class="pimg" style="height:230px;margin-top:6px"><img src="assets/p_sneaker.png"></div>
+    <div style="padding:14px 18px">
+      <div style="font:700 19px Inter;color:#0f172a">Court Sneaker in White Leather</div>
+      <div class="row" style="gap:8px;margin-top:6px;font:500 13px Inter;color:#64748b"><span class="stars" style="font-size:14px">★★★★★</span>4.8 (212)</div>
+      <div style="font:800 22px Inter;color:#0f172a;margin-top:8px">$89.00</div>
+      <div style="display:flex;gap:8px;margin-top:12px">SIZES</div>
+    </div>
+    <div style="position:absolute;left:0;right:0;bottom:0;padding:16px 18px 26px;background:#fff;box-shadow:0 -10px 30px rgba(15,23,42,.10)">
+      <div class="btnbig" style="height:62px;font-size:19px;background:#12b886">Add to cart · $89</div>
+    </div>
+  </div></div>
+  <div class="callout c-red" style="left:120px;top:480px;font-size:23px">DOTX Lost in the clutter</div>
+  <div class="callout c-mint" style="left:600px;top:480px;font-size:23px">DOTCK Always on screen</div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 8 CHECKLIST -->
+<section class="s light" id="s8">
+  <div class="top"><img src="assets/logo_navy.png"><span class="num">07 / 08</span></div>
+  <div class="txt"><div class="kick">Save this</div><h1 style="font-size:94px;margin-top:22px">Your product page <em>checklist.</em></h1></div>
+  <div class="card" style="left:80px;right:80px;top:540px;padding:16px 40px">
+    <div class="li">CK2 Clear photos from every angle</div>
+    <div class="li">CK2 A title that says what it is</div>
+    <div class="li">CK2 Price you see without scrolling</div>
+    <div class="li">CK2 Benefits, not just specs</div>
+    <div class="li">CK2 Reviews with real photos</div>
+    <div class="li">CK2 Shipping &amp; returns, up front</div>
+    <div class="li">CK2 One big Add to cart button</div>
+  </div>
+  <div class="swipe">Swipe <i>ARW</i></div>
+</section>
+
+<!-- 9 CTA -->
+<section class="s dark" id="s9">
+  <div class="top"><img src="assets/logo_white.png"><span class="num">08 / 08</span></div>
+  <div class="txt" style="text-align:center;top:190px"><h1 style="font-size:96px">Is your product page <em>costing you sales?</em></h1><div class="sub" style="font-size:34px">We’ll review it for free.</div></div>
+  <div style="position:absolute;left:300px;top:590px;width:480px;height:520px">
+    <div style="position:absolute;left:22px;top:22px;right:-22px;bottom:-22px;border-radius:240px 240px 34px 34px;background:#34d5a0"></div>
+    <div style="position:absolute;inset:0;border-radius:240px 240px 34px 34px;overflow:hidden;background:#d9e3ef"><img src="assets/woman.png" style="position:absolute;left:50%;bottom:0;height:520px;transform:translateX(-50%)"></div>
+  </div>
+  <div class="chip" style="position:absolute;left:80px;top:710px">CKC Photo check</div>
+  <div class="chip" style="position:absolute;left:660px;top:870px">CKC Copy review</div>
+  <div class="chip" style="position:absolute;left:110px;top:1000px">CKC Mobile test</div>
+  <div style="position:absolute;left:0;right:0;top:1150px;text-align:center"><span class="cta">DM us “GROWTH” <i>ARM</i></span></div>
+  <div style="position:absolute;left:0;right:0;bottom:40px;text-align:center;font:600 28px Inter;color:#a9b8d6">ecommwave.org</div>
+</section>
+
+<script>
+const ico=(d,c,w=3,s=22)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const CKP='<path d="M5 12.5l4.5 4.5L19 7.5"/>', XP='<path d="M6 6l12 12M18 6L6 18"/>', ARP='<path d="M5 12h14M13 6l6 6-6 6"/>';
+const STATUS=`<div class="sb"><span>9:41</span><svg width="78" height="14" viewBox="0 0 78 14"><rect x="0" y="9" width="3.5" height="5" rx="1" fill="#0f172a"/><rect x="5.5" y="6" width="3.5" height="8" rx="1" fill="#0f172a"/><rect x="11" y="3" width="3.5" height="11" rx="1" fill="#0f172a"/><rect x="16.5" y="0" width="3.5" height="14" rx="1" fill="#0f172a"/><path d="M29 5.5a10 10 0 0114 0M31.5 8.3a6.3 6.3 0 019 0M34.2 11a2.6 2.6 0 013.6 0" stroke="#0f172a" stroke-width="2" fill="none" stroke-linecap="round"/><rect x="50" y="1" width="24" height="12" rx="3.5" stroke="#0f172a" stroke-opacity=".4" fill="none"/><rect x="52" y="3" width="18" height="8" rx="2" fill="#0f172a"/></svg></div>`;
+
+const ICO=(d)=>ico(d,'#12b886',2.4,24);
+const BARS=[[5,84],[4,11],[3,3],[2,1],[1,1]].map(([s,p])=>`<div class="row" style="gap:10px;font:500 15px Inter;color:#64748b;margin:4px 0">${s}★<div style="flex:1;height:9px;border-radius:5px;background:#eef1f5"><i style="display:block;width:${p}%;height:100%;border-radius:5px;background:#f5a524"></i></div></div>`).join('');
+const rev=(ini,col,txt,pos)=>`<div style="flex:1;border-radius:20px;background:#f7f9fc;padding:20px;box-shadow:inset 0 0 0 1px #edf0f4">
+ <div class="row" style="gap:12px"><span class="fv" style="width:40px;height:40px;font-size:16px;background:${col}">${ini}</span><div><div style="font:700 17px Inter;color:#0f172a">${ini.split('').join('.')}.</div><div style="font:600 13px Inter;color:#12b886">✓ Verified buyer</div></div><span class="stars" style="margin-left:auto;font-size:16px">★★★★★</span></div>
+ <div style="font:400 18px/1.5 Inter;color:#334155;margin-top:14px">${txt}</div>
+ <div class="pimg" style="width:110px;height:84px;border-radius:12px;margin-top:14px"><img src="assets/p_sneaker.png" style="object-position:${pos}"></div></div>`;
+const REV1=rev('JM','#7c3aed','“Comfy from day one and true to size. I wear them every day.”','30% 50%');
+const REV2=rev('AK','#0891b2','“Look even better in person. So easy to keep clean.”','70% 60%');
+const SIZES=['7','8','9','10','11'].map((s,i)=>`<span style="width:52px;height:40px;border-radius:8px;display:grid;place-items:center;font:600 14px Inter;${i==2?'background:#0f172a;color:#fff':'box-shadow:inset 0 0 0 1px #e2e8f0;color:#0f172a'}">${s}</span>`).join('');
+const DOT=(p,bg)=>`<span class="dot">${ico(p,bg,3,20)}</span>`;
+let h=document.body.innerHTML;
+h=h.replaceAll('STATUSBAR',STATUS).replace('BARS',BARS).replace('REV1',REV1).replace('REV2',REV2).replace('SIZES',SIZES)
+ .replaceAll('MENU',ico('<path d="M4 7h16M4 12h16M4 17h16"/>','#0f172a',2,26)).replaceAll('BAG',ico('<path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8a3 3 0 016 0"/>','#0f172a',2,26))
+ .replaceAll('PLAY','<span style="width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center">'+'<svg width="14" height="14" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="#0f1f4d"/></svg></span>')
+ .replace('ICLOUD',ICO('<path d="M4 15c0-3 2.5-5 5-5h6c2.5 0 5 2 5 5v1H4z"/><path d="M4 16h16v3H4z"/>'))
+ .replace('IDROP',ICO('<path d="M12 3s6 7 6 11a6 6 0 01-12 0c0-4 6-11 6-11z"/>'))
+ .replace('ISPARK',ICO('<path d="M12 3l2.2 6.8H21l-5.5 4 2.1 6.7L12 16.4 6.4 20.5l2.1-6.7L3 9.8h6.8z"/>'))
+ .replace('ITRUCK',ICO('<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17" cy="18" r="1.8"/>'))
+ .replace('ICLOCK',ICO('<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/>'))
+ .replace('IRET',ICO('<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 010 12h-3"/>'))
+ .replace('ILOCK',ICO('<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/>'))
+ .replaceAll('CK2 ','<span class="ck2">'+ico(CKP,'#0d1b3e',3,24)+'</span>')
+ .replaceAll('DOTCK ',DOT(CKP,'#34d5a0')).replaceAll('DOTX ',DOT(XP,'#fff')).replaceAll('DOTSTAR ',DOT('<path d="M12 3l2.2 6.8H21l-5.5 4 2.1 6.7L12 16.4 6.4 20.5l2.1-6.7L3 9.8h6.8z"/>','#fff'))
+ .replaceAll('CKC ','<span class="ck">'+ico(CKP,'#34d5a0')+'</span>').replaceAll('XRED',ico(XP,'#e5484d',3,26)).replaceAll('CKG',ico(CKP,'#12b886',3,26))
+ .replaceAll('ARM',ico(ARP,'#34d5a0',2.6,30)).replaceAll('ARN',ico(ARP,'#0d1b3e',2.6,28)).replaceAll('ARW',ico(ARP,'#fff',2.6,28));
+document.body.innerHTML=h;
+</script>
+</body></html>

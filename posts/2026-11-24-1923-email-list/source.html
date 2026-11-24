@@ -1,0 +1,137 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script>
+<style>
+#logo{left:80px;top:170px;height:46px}
+#h1{left:80px;top:300px;width:940px;font-size:118px;color:#fff}
+#h1 .serif,#h2 .serif,#e1 .serif{color:var(--mint);font-size:1.12em}
+#br{left:70px;top:730px;width:940px;height:700px}
+#dim{position:absolute;inset:0;background:rgba(10,20,45,.55);z-index:5;opacity:0}
+#modal{position:absolute;left:150px;top:120px;width:640px;height:400px;background:#fff;border-radius:22px;overflow:hidden;display:flex;z-index:6;box-shadow:0 40px 90px rgba(0,0,0,.4);opacity:0}
+#modal .mi{width:250px;height:100%;background:#d5c3ad;position:relative;overflow:hidden}
+#modal .mi img{position:absolute;height:100%;left:50%;transform:translateX(-58%)}
+#modal .mc{flex:1;padding:40px 36px;font-family:Inter;position:relative}
+#modal .mx{position:absolute;right:18px;top:12px;font:500 24px Inter;color:#94a3b8}
+#modal .mk{font:700 14px Inter;letter-spacing:.16em;color:#12b886}
+#modal h4{font:400 46px "Serif";color:#0f1f4d;line-height:1.05;margin-top:10px}
+#modal h4 em{font-style:italic}
+#modal p{font:500 17px Inter;color:#64748b;margin-top:12px;line-height:1.4}
+#modal .in{margin-top:22px;height:54px;border:1.5px solid #d6dce5;border-radius:12px;display:flex;align-items:center;padding:0 16px;font:500 19px Inter;color:#0f172a}
+#modal .in .ph{color:#a0aabb}
+#modal .in .car{display:inline-block;width:2px;height:24px;background:#0f1f4d;margin-left:2px}
+#modal .jb{margin-top:12px;height:54px;border-radius:12px;background:#0f1f4d;color:#fff;font:600 19px Inter;display:grid;place-items:center}
+#cur{z-index:20}
+#t1{left:220px;top:590px;z-index:12;opacity:0}
+/* scene 2 */
+#s2{opacity:0}
+#h2{left:80px;top:300px;width:940px;font-size:118px;color:#fff}
+#phone{left:80px;top:560px;width:540px;height:960px;border-radius:70px;background:#0b1430;padding:16px;box-shadow:0 50px 120px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.08)}
+#phone .scr{position:relative;width:100%;height:100%;border-radius:56px;background:#fff;overflow:hidden;font-family:Inter}
+#phone .sb{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 40px 0 46px;font:700 20px Inter;color:#0f172a}
+#phone .isl{position:absolute;left:50%;top:14px;width:140px;height:38px;border-radius:20px;background:#0b1430;transform:translateX(-50%)}
+#phone .ih{padding:18px 30px 12px;font:800 44px "Inter Display";letter-spacing:-.03em;color:#0f172a}
+#phone .srch{margin:0 30px 14px;height:46px;border-radius:12px;background:#f1f4f8;display:flex;align-items:center;gap:10px;padding:0 14px;font:500 18px Inter;color:#94a3b8}
+.em{display:flex;gap:16px;padding:20px 30px;border-bottom:1px solid #eef1f5;position:relative;background:#fff}
+.em .av{width:58px;height:58px;border-radius:50%;background:#0f1f4d;color:#fff;font:800 20px "Inter Display";display:grid;place-items:center;flex:none;letter-spacing:.04em}
+.em .bd{flex:1;min-width:0}
+.em .r1{display:flex;justify-content:space-between;font:700 20px Inter;color:#0f172a}
+.em .r1 span{font:500 16px Inter;color:#94a3b8}
+.em .sj{font:600 19px Inter;color:#0f172a;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.em .pv{font:500 16px Inter;color:#64748b;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.em .dot{position:absolute;left:12px;top:44px;width:10px;height:10px;border-radius:50%;background:#2f7bf6}
+.em .th{width:74px;height:74px;border-radius:12px;overflow:hidden;flex:none;background:#f1efec}
+.em .th img{width:100%;height:100%;object-fit:cover}
+.lbl{position:absolute;z-index:8;opacity:0}
+#l1{left:560px;top:860px}#l2{left:560px;top:1010px}#l3{left:560px;top:1160px}
+#t2{left:250px;top:1290px;z-index:12;opacity:0;width:700px}
+/* end */
+#end{opacity:0}
+#elogo{left:50%;top:170px;height:46px;transform:translateX(-50%)}
+#e1{left:70px;top:270px;width:940px;font-size:108px;color:#fff;text-align:center}
+#arch{left:290px;top:580px;width:500px;height:640px}
+#arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--mint)}
+#arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+#arch .ph img{position:absolute;left:50%;bottom:0;height:620px;transform:translateX(-50%)}
+#c1{left:60px;top:740px}#c2{left:660px;top:930px}#c3{left:80px;top:1100px}
+#cta{left:50%;top:1290px;white-space:nowrap}
+#url{left:0;right:0;top:1450px;text-align:center;color:#a9b8d6;font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<div class="scene bg-dark" id="main">
+  <img id="logo" class="abs" src="assets/logo_white.png">
+  <div id="h1" class="abs headline">Build your email list from <span class="serif">day one.</span></div>
+  <div id="br" class="browser"></div>
+  <div id="t1" class="abs toast"><div class="ic">BG</div><div><div class="t1">You’re on the list</div><div class="t2">New subscriber joined NOVA</div></div><div class="tm">now</div></div>
+  <div id="cur" class="cursor"></div>
+</div>
+<div class="scene bg-dark" id="s2">
+  <img class="abs" style="left:80px;top:170px;height:46px" src="assets/logo_white.png">
+  <div id="h2" class="abs headline">A list you <span class="serif">own.</span></div>
+  <div id="phone" class="abs"><div class="scr">
+    <div class="isl"></div>
+    <div class="sb"><span>9:41</span>ST</div>
+    <div class="ih">Inbox</div>
+    <div class="srch">SR Search</div>
+    <div id="m1" class="em"><i class="dot"></i><div class="av">N</div><div class="bd"><div class="r1">NOVA<span>9:40</span></div><div class="sj">Welcome to NOVA ✨</div><div class="pv">Thanks for joining. Here’s our story…</div></div></div>
+    <div id="m2" class="em"><i class="dot"></i><div class="av">N</div><div class="bd"><div class="r1">NOVA<span>Tue</span></div><div class="sj">New drop: The Winter Edit</div><div class="pv">You get first look before anyone…</div></div><div class="th"><img src="assets/p_dress.png"></div></div>
+    <div id="m3" class="em"><i class="dot"></i><div class="av">N</div><div class="bd"><div class="r1">NOVA<span>Mon</span></div><div class="sj">Still thinking it over?</div><div class="pv">Your Tan Satchel is waiting in your cart</div></div><div class="th"><img src="assets/p_bag.png"></div></div>
+    <div id="m4" class="em" style="opacity:.45"><div class="av" style="background:#cbd5e1">B</div><div class="bd"><div class="r1">Bank alerts<span>Sun</span></div><div class="sj">Your monthly statement</div><div class="pv">Your statement is now available…</div></div></div>
+  </div></div>
+  <div id="l1" class="lbl chip"><span class="ck">CK</span>Welcome email</div>
+  <div id="l2" class="lbl chip"><span class="ck">CK</span>New launches</div>
+  <div id="l3" class="lbl chip"><span class="ck">CK</span>Cart reminders</div>
+  <div id="t2" class="abs toast"><div class="ic">BG</div><div><div class="t1">New order · Tan Satchel</div><div class="t2">Came from your cart reminder</div></div><div class="tm">now</div></div>
+</div>
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="assets/logo_white.png">
+  <div id="e1" class="abs headline">Start your list <span class="serif">today.</span></div>
+  <div id="arch" class="abs"><div class="back"></div><div class="ph"><img src="assets/man.png"></div></div>
+  <div id="c1" class="abs chip"><span class="ck">CK</span>Signup form</div>
+  <div id="c2" class="abs chip"><span class="ck">CK</span>Welcome flow</div>
+  <div id="c3" class="abs chip"><span class="ck">CK</span>Cart recovery</div>
+  <div id="cta" class="abs cta">DM us “GROWTH” <span class="arrow">AR</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+document.body.innerHTML=document.body.innerHTML.replaceAll('>CK<','>'+CHECK+'<').replaceAll('>BG<','>'+BAG+'<').replace('>AR<','>'+ARROW+'<').replace('>ST<','>'+STATUS+'<').replace('SR Search',SEARCH.replace('#0f1f4d','#94a3b8')+' Search');
+$('#br').innerHTML=browserHTML('yourstore.com',novaHTML()+`<div id="dim"></div><div id="modal"><div class="mi"><img src="assets/hero_woman.png"></div><div class="mc"><span class="mx">✕</span><div class="mk">JOIN THE LIST</div><h4>Be first to <em>know.</em></h4><p>New drops and members-only offers, straight to your inbox.</p><div class="in" id="inp"></div><div class="jb" id="jb">Join</div></div></div>`,940,700);
+$('#cur').innerHTML=CURSOR;
+const hw=splitWords($('#h1')), h2w=splitWords($('#h2')), ew=splitWords($('#e1'));
+const EMAIL='alex@mail.com';
+const DUR=18.5;
+function render(t){
+  // ---- scene 1: store + signup popup
+  wordsIn(hw,t,.15,.08,.7);
+  const bi=eo5(P(t,1.0,.9)); tf($('#br'),`translateY(${(1-bi)*260}px) scale(${lerp(.94,1,bi)})`); op($('#br'),bi);
+  const m=back(P(t,2.2,.6)); op($('#modal'),clamp(m)); tf($('#modal'),`scale(${lerp(.85,1,m)})`); op($('#dim'),eo(P(t,2.1,.5)));
+  const n=Math.floor(clamp((t-3.0)/1.2)*EMAIL.length);
+  const blink=(Math.floor(t*2.5)%2===0)?1:0;
+  $('#inp').innerHTML = n>0 ? EMAIL.slice(0,n)+`<span class="car" style="opacity:${t<4.4?1:blink}"></span>` : `<span class="ph">Your email</span>`;
+  // cursor: comes in 2.6 -> input 3.0, then to Join 4.3, click 4.6
+  const cur=$('#cur');
+  const c1=eio(P(t,2.5,.5)), c2=eio(P(t,4.1,.45));
+  const x=lerp(lerp(900,640,c1),600,c2), y=lerp(lerp(1530,1170,c1),1235,c2);
+  const press=t>4.6&&t<4.75?.85:1;
+  tf(cur,`translate(${x}px,${y}px) scale(${press})`); op(cur,t<2.5?0:(t>5.2?1-eo(P(t,5.2,.3)):1));
+  $('#jb').style.background = t>4.6? '#12b886':'#0f1f4d';
+  $('#jb').textContent = t>4.65? 'Welcome! ✓':'Join';
+  const tt=back(P(t,4.9,.55)); op($('#t1'),clamp(tt)); tf($('#t1'),`translateY(${(1-tt)*-40}px) scale(${lerp(.9,1,tt)})`);
+  // ---- scene 2: inbox (fades in on top at 6.0)
+  const s2=eio(P(t,6.0,.6)); op($('#s2'),s2); tf($('#main'),`scale(${1-s2*.04})`);
+  wordsIn(h2w,t,6.2,.08,.7);
+  const ph=eo5(P(t,6.3,.9)); tf($('#phone'),`translateY(${(1-ph)*240}px)`); op($('#phone'),ph);
+  ['#m1','#m2','#m3'].forEach((id,i)=>{const k=eo5(P(t,7.0+i*.45,.6)); tf($(id),`translateY(${(1-k)*-30}px)`); op($(id),k);});
+  ['#l1','#l2','#l3'].forEach((id,i)=>{const k=back(P(t,9.9+i*.7,.5)); const fl=Math.sin(t*1.6+i*2)*5; tf($(id),`translateY(${fl}px) scale(${k})`); op($(id),clamp(k));});
+  const hl=eo(P(t,11.9,.4)); $('#m3').style.background=`rgba(52,213,160,${.14*hl})`;
+  const t2=back(P(t,12.2,.55)); op($('#t2'),clamp(t2)); tf($('#t2'),`translateY(${(1-t2)*60}px) scale(${lerp(.9,1,t2)})`);
+  // ---- end card from 13.6
+  const ex=eio(P(t,13.6,.6)); op($('#end'),ex); tf($('#s2'),`scale(${1-ex*.04})`);
+  op($('#elogo'),eo(P(t,13.8,.6)));
+  wordsIn(ew,t,13.8,.07,.7);
+  const a=eo5(P(t,14.1,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);
+  $('#arch .ph img').style.transform=`translateX(-50%) scale(${1.06-.06*eo(P(t,14.1,4))})`;
+  ['#c1','#c2','#c3'].forEach((id,i)=>{const k=back(P(t,14.7+i*.25,.55)); const fl=Math.sin(t*1.6+i*2)*6; tf($(id),`translateY(${fl}px) scale(${k})`); op($(id),clamp(k));});
+  const cx2=back(P(t,15.5,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-16.3)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-16.3)*4))*8}px)`;
+  op($('#url'),eo(P(t,15.8,.6)));
+}
+window.DUR=DUR; render(0);
+</script></body></html>

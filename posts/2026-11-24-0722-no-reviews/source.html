@@ -1,0 +1,191 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script><script src="work_nr/vo/timing.js"></script>
+<style>
+#logo{left:80px;top:170px;height:46px}
+#tag1{right:80px;top:162px;border-color:rgba(255,107,122,.55);color:var(--coral);font-size:22px;padding:12px 22px}
+#tag2{right:80px;top:162px;font-size:22px;padding:12px 22px}
+.headline .serif{color:var(--mint);font-size:1.12em}
+#h1 .serif{color:var(--coral)}
+#h1,#h2{left:80px;top:290px;width:940px;font-size:112px;color:#fff}
+.phone{width:540px;height:880px;border-radius:70px;background:#0b1430;padding:16px;box-shadow:0 50px 120px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.08)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:56px;background:#fff;overflow:hidden;font-family:Inter}
+.sb{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 40px 0 46px;font:700 20px Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:14px;width:140px;height:38px;border-radius:20px;background:#0b1430;transform:translateX(-50%);z-index:5}
+.top{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;border-bottom:1px solid #eef1f5}
+.top .lg{font:800 24px "Inter Display";letter-spacing:.08em;color:#0f1f4d}
+.top .x{font:500 26px Inter;color:#64748b;width:40px;text-align:center}
+.pimg{height:290px;background:#efe9e2;position:relative;overflow:hidden}
+.pimg img{position:absolute;left:50%;top:50%;height:118%;transform:translate(-50%,-50%)}
+.pd{padding:20px 30px 0}
+.pd .nm{font:800 32px "Inter Display";letter-spacing:-.02em;color:#0f172a}
+.rt{font:600 19px Inter;margin-top:8px;display:inline-flex;gap:10px;align-items:center;position:relative;padding:4px 0}
+.rt .st{letter-spacing:2px}
+.rt.none .st{color:#cbd2dc}.rt.none span{color:#94a3b8;font-weight:500}
+.rt.full .st{color:#f5a524}.rt.full span{color:#0f172a}.rt.full span i{font-style:normal;color:#64748b;font-weight:500}
+.pd .pr{font:800 30px Inter;color:#0f172a;margin-top:8px}
+.add{margin:18px 30px 0;height:62px;border-radius:16px;background:#0f1f4d;color:#fff;font:700 21px Inter;display:grid;place-items:center}
+.rv{margin:24px 30px 0;position:relative}
+.rv h4{font:800 22px "Inter Display";color:#0f172a;letter-spacing:-.01em;margin:0 0 12px}
+.empty{border:1.5px dashed #d6dce5;border-radius:16px;padding:22px;text-align:center;font:500 18px Inter;color:#94a3b8}
+.empty b{display:block;color:#64748b;font:700 19px Inter;margin-bottom:4px}
+.hl{position:absolute;left:-12px;right:-12px;top:-6px;bottom:-6px;border-radius:14px;background:rgba(229,72,77,.10);border:2.5px solid rgba(229,72,77,.65);opacity:0}
+.hlg{background:rgba(52,213,160,.10);border-color:rgba(18,184,134,.7)}
+.rc{display:flex;gap:14px;border:1px solid #eef1f5;border-radius:16px;padding:12px;margin-bottom:10px;opacity:0}
+.rc .im{width:78px;height:78px;border-radius:12px;overflow:hidden;background:#efe9e2;flex:none}
+.rc .im img{width:100%;height:100%;object-fit:cover}
+.rc .s{color:#f5a524;font:600 15px Inter;letter-spacing:1px}
+.rc .q{font:600 17px/1.3 Inter;color:#0f172a;margin-top:3px}
+.rc .by{font:500 14px Inter;color:#64748b;margin-top:4px;display:flex;align-items:center;gap:6px}
+.rc .by b{color:#0b8a63;font-weight:700}
+#ph1,#ph2{left:80px;top:640px}
+#stats{left:660px;top:680px;width:340px;background:#fff;border-radius:28px;padding:26px 28px;box-shadow:0 30px 70px rgba(0,0,0,.3);font-family:Inter;opacity:0}
+#stats .k{font:600 18px Inter;color:#64748b;letter-spacing:.04em}
+#stats .v{font:800 54px "Inter Display";letter-spacing:-.03em;color:#0f172a;margin:4px 0 14px}
+#stats .v.z{color:#e5484d}
+#stats hr{border:0;border-top:1px solid #eef1f5;margin:0 0 14px}
+#warn{left:640px;top:1030px;z-index:8;opacity:0}
+#warn .ck{background:#e5484d;color:#fff;font:800 26px Inter}
+#cur{z-index:20}
+#t1{left:300px;top:1330px;z-index:12;opacity:0;width:700px}
+#t1 .ic{background:#e5484d;color:#fff;font:800 30px Inter}
+/* scene 2 */
+#s2{opacity:0}
+.lock{position:absolute;inset:0;background:radial-gradient(420px 420px at 85% 10%,rgba(52,213,160,.55),rgba(52,213,160,0) 70%),radial-gradient(500px 500px at 0% 100%,#2a4d9a,rgba(42,77,154,0) 70%),linear-gradient(180deg,#14306e,#0c1d4a)}
+.lock .sb{color:#fff}
+.lock .dte{text-align:center;font:600 24px Inter;color:rgba(255,255,255,.85);margin-top:40px}
+.lock .clk{text-align:center;font:700 128px/1 "Inter Display";color:#fff;letter-spacing:-.03em;margin-top:6px}
+.nt{position:absolute;left:18px;right:18px;background:rgba(255,255,255,.95);border-radius:28px;padding:20px;display:flex;gap:16px;align-items:flex-start;box-shadow:0 14px 34px rgba(0,0,0,.2);opacity:0}
+.nt .ai{width:52px;height:52px;border-radius:14px;background:#0f1f4d;color:#fff;font:800 20px "Inter Display";display:grid;place-items:center;flex:none}
+.nt .bd{flex:1;min-width:0}
+.nt .r1{display:flex;justify-content:space-between;font:600 16px Inter;color:#64748b;letter-spacing:.03em}
+.nt .tt{font:700 20px Inter;color:#0f172a;margin-top:4px}
+.nt .tx{font:500 17px/1.3 Inter;color:#334155;margin-top:3px}
+.nt .stars{margin-top:8px;font:600 26px Inter;color:#f5a524;letter-spacing:4px}
+.nt .th{width:64px;height:64px;border-radius:12px;overflow:hidden;flex:none;background:#f1efec;align-self:center}
+.nt .th img{width:100%;height:100%;object-fit:cover}
+#pp2{position:absolute;inset:0;background:#fff;opacity:0}
+.lbl{position:absolute;z-index:8;opacity:0}
+#l1{left:640px;top:1010px}#l2{left:620px;top:930px}#l3{left:640px;top:1200px}
+#t2{left:300px;top:720px;z-index:12;opacity:0;width:700px}
+/* end */
+#end{opacity:0}
+#elogo{left:50%;top:170px;height:46px;transform:translateX(-50%)}
+#e1{left:70px;top:270px;width:940px;font-size:108px;color:#fff;text-align:center}
+#arch{left:290px;top:580px;width:500px;height:640px}
+#arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--mint)}
+#arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+#arch .ph img{position:absolute;left:50%;bottom:0;height:620px;transform:translateX(-50%)}
+#c1{left:40px;top:740px}#c2{left:640px;top:930px}#c3{left:60px;top:1100px}
+#cta{left:50%;top:1290px;white-space:nowrap}
+#url{left:0;right:0;top:1450px;text-align:center;color:#a9b8d6;font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<div class="scene bg-dark" id="main">
+  <img id="logo" class="abs" src="assets/logo_white.png">
+  <div id="tag1" class="abs tag">COMMON MISTAKE</div>
+  <div id="h1" class="abs headline">No reviews? No <span class="serif">sales.</span></div>
+  <div id="ph1" class="abs phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="top"><span class="x">‹</span><span class="lg">NOVA</span><span class="x" id="xbtn">✕</span></div>
+    <div class="pimg"><img src="assets/p_serum.png"></div>
+    <div class="pd"><div class="nm">Glow Serum Set</div>
+      <div class="rt none"><div class="hl" id="hl1"></div><span class="st">★★★★★</span><span>No reviews yet</span></div>
+      <div class="pr">$48.00</div></div>
+    <div class="add">Add to cart</div>
+    <div class="rv"><div class="hl" id="hl2"></div><h4>Customer reviews</h4><div class="empty"><b>No reviews yet</b>Be the first to write a review</div></div>
+  </div></div>
+  <div id="stats" class="abs"><div class="k">PRODUCT VIEWS</div><div class="v" id="views">0</div><hr><div class="k">ORDERS</div><div class="v z">0</div></div>
+  <div id="warn" class="abs chip"><span class="ck">!</span>No proof</div>
+  <div id="t1" class="abs toast"><div class="ic">✕</div><div><div class="t1">Shopper left the page</div><div class="t2">Went to a store with reviews</div></div><div class="tm">now</div></div>
+  <div id="cur" class="cursor"></div>
+</div>
+<div class="scene bg-dark" id="s2">
+  <img class="abs" style="left:80px;top:170px;height:46px" src="assets/logo_white.png">
+  <div id="tag2" class="abs tag">THE FIX</div>
+  <div id="h2" class="abs headline">Collect reviews. <span class="serif">Show them.</span></div>
+  <div id="ph2" class="abs phone"><div class="scr">
+    <div class="lock"><div class="isl"></div><div class="sb"><span>9:41</span>STW</div>
+      <div class="dte">Tuesday, November 24</div><div class="clk">9:41</div>
+      <div class="nt" id="n1" style="top:380px"><div class="ai">N</div><div class="bd"><div class="r1"><span>NOVA · ORDER</span><span>2h ago</span></div><div class="tt">Your order was delivered</div><div class="tx">Glow Serum Set is at your door.</div></div><div class="th"><img src="assets/p_serum.png"></div></div>
+      <div class="nt" id="n2" style="top:540px"><div class="ai">N</div><div class="bd"><div class="r1"><span>NOVA · EMAIL</span><span>now</span></div><div class="tt">How do you like your serum?</div><div class="tx">Tap a star to leave a quick review.</div><div class="stars" id="tap">★★★★★</div></div></div>
+    </div>
+    <div id="pp2"><div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+      <div class="top"><span class="x">‹</span><span class="lg">NOVA</span><span class="x">♡</span></div>
+      <div class="pimg" style="height:250px"><img src="assets/p_serum.png"></div>
+      <div class="pd"><div class="nm">Glow Serum Set</div>
+        <div class="rt full"><div class="hl hlg" id="hl3"></div><span class="st">★★★★★</span><span>4.8 <i>· 126 reviews</i></span></div>
+        <div class="pr">$48.00</div></div>
+      <div class="rv" style="margin-top:18px"><div class="hl hlg" id="hl4"></div><h4>Photo reviews</h4>
+        <div class="rc" id="rc1"><div class="im"><img src="assets/hero_woman.png"></div><div><div class="s">★★★★★</div><div class="q">“My skin feels so soft.”</div><div class="by">VB<b>Verified buyer</b></div></div></div>
+        <div class="rc" id="rc2"><div class="im"><img src="assets/p_serum.png"></div><div><div class="s">★★★★★</div><div class="q">“Arrived fast, looks great.”</div><div class="by">VB<b>Verified buyer</b></div></div></div>
+      </div>
+    </div>
+  </div></div>
+  <div id="l1" class="lbl chip"><span class="ck">CK</span>Ask after delivery</div>
+  <div id="l2" class="lbl chip"><span class="ck">CK</span>Stars near the price</div>
+  <div id="l3" class="lbl chip"><span class="ck">CK</span>Photo reviews</div>
+  <div id="t2" class="abs toast"><div class="ic">BG</div><div><div class="t1">New order · Glow Serum Set</div><div class="t2">Shopper read the reviews first</div></div><div class="tm">now</div></div>
+</div>
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="assets/logo_white.png">
+  <div id="e1" class="abs headline">Reviews build <span class="serif">trust.</span></div>
+  <div id="arch" class="abs"><div class="back"></div><div class="ph"><img src="assets/man.png"></div></div>
+  <div id="c1" class="abs chip"><span class="ck">CK</span>Review emails</div>
+  <div id="c2" class="abs chip"><span class="ck">CK</span>Photo reviews</div>
+  <div id="c3" class="abs chip"><span class="ck">CK</span>Free page check</div>
+  <div id="cta" class="abs cta">DM us “GROWTH” <span class="arrow">AR</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+const VBADGE='<svg width="16" height="16" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#12b886"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+document.body.innerHTML=document.body.innerHTML.replaceAll('>CK<','>'+CHECK+'<').replaceAll('>BG<','>'+BAG+'<').replace('>AR<','>'+ARROW+'<').replace('>STW<','>'+STATUS.replaceAll('#0f172a','#fff')+'<').replaceAll('>ST<','>'+STATUS+'<').replaceAll('>VB<','>'+VBADGE+'<');
+$('#cur').innerHTML=CURSOR;
+const hw=splitWords($('#h1')), h2w=splitWords($('#h2')), ew=splitWords($('#e1'));
+const L=i=>VO.lines[i].start;
+const pop=(id,s,fl=0)=>{const k=back(P(window._t,s,.5)); tf($(id),`translateY(${Math.sin(window._t*1.6+fl)*5}px) scale(${k})`); op($(id),clamp(k));};
+function render(t){
+  window._t=t;
+  // ---- line 0: product page gets views, no orders
+  wordsIn(hw,t,L(0),.09,.7);
+  op($('#tag1'),eo(P(t,L(0)+.5,.5)));
+  const bi=eo5(P(t,L(0)+.7,.9)); tf($('#ph1'),`translateY(${(1-bi)*240}px)`); op($('#ph1'),bi);
+  const si=eo5(P(t,L(0)+1.3,.7)); tf($('#stats'),`translateX(${(1-si)*80}px)`); op($('#stats'),si);
+  $('#views').textContent=Math.round(128*eo(P(t,L(0)+1.4,2.6)));
+  // ---- line 1: no reviews = no proof
+  op($('#hl1'),eo(P(t,L(1)+.3,.4))); op($('#hl2'),eo(P(t,L(1)+.9,.4)));
+  pop('#warn',L(1)+1.4);
+  // ---- line 2: shopper leaves
+  const cur=$('#cur'); const c=eio(P(t,L(2)-.1,.7));
+  tf(cur,`translate(${lerp(900,548,c)}px,${lerp(1500,762,c)}px) scale(${t>L(2)+.7&&t<L(2)+.85?.85:1})`);
+  op(cur,t<L(2)-.1?0:1-eo(P(t,L(2)+1.1,.3)));
+  op($('#ph1 .scr'),1-.4*eo(P(t,L(2)+.85,.4)));
+  const tt=back(P(t,L(2)+.9,.55)); op($('#t1'),clamp(tt)); tf($('#t1'),`translateY(${(1-tt)*60}px) scale(${lerp(.9,1,tt)})`);
+  // ---- scene 2 fades in on top
+  const s2=eio(P(t,L(3)-.45,.55)); op($('#s2'),s2);
+  op($('#tag2'),eo(P(t,L(3)-.1,.5)));
+  wordsIn(h2w,t,L(3)-.3,.09,.7);
+  const ph=eo5(P(t,L(3)-.2,.9)); tf($('#ph2'),`translateY(${(1-ph)*240}px)`); op($('#ph2'),ph);
+  [['#n1',L(3)+.5],['#n2',L(3)+1.3]].forEach(([id,s])=>{const k=back(P(t,s,.6)); op($(id),clamp(k*1.4)); tf($(id),`translateY(${(1-k)*-40}px) scale(${lerp(.92,1,k)})`);});
+  const fill=P(t,L(3)+2.0,.6); const n=Math.round(fill*5);
+  $('#tap').innerHTML='<span style="color:#f5a524">'+'★'.repeat(n)+'</span><span style="color:#cbd2dc">'+'★'.repeat(5-n)+'</span>';
+  pop('#l1',L(3)+.9); op($('#l1'),clamp(back(P(t,L(3)+.9,.5)))*(1-eo(P(t,L(4)-.2,.3))));
+  // ---- line 4: product page with stars + photo reviews
+  op($('#pp2'),eio(P(t,L(4)-.1,.5)));
+  op($('#hl3'),eo(P(t,L(4)+.6,.4))*(1-eo(P(t,L(4)+2.4,.4))));
+  pop('#l2',L(4)+.6,1);
+  ['#rc1','#rc2'].forEach((id,i)=>{const k=eo5(P(t,L(4)+1.2+i*.35,.6)); op($(id),k); tf($(id),`translateX(${(1-k)*50}px)`);});
+  op($('#hl4'),eo(P(t,L(4)+1.4,.4)));
+  pop('#l3',L(4)+1.5,2);
+  const t2=back(P(t,L(4)+2.2,.55)); op($('#t2'),clamp(t2)); tf($('#t2'),`translateY(${(1-t2)*60}px) scale(${lerp(.9,1,t2)})`);
+  // ---- end card with the CTA line
+  const E=L(5); op($('#end'),eio(P(t,E-.35,.5)));
+  op($('#elogo'),eo(P(t,E-.2,.5)));
+  wordsIn(ew,t,E-.1,.08,.7);
+  const a=eo5(P(t,E+.2,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);
+  $('#arch .ph img').style.transform=`translateX(-50%) scale(${1.06-.06*eo(P(t,E+.2,3))})`;
+  ['#c1','#c2','#c3'].forEach((id,i)=>{const k=back(P(t,E+.6+i*.2,.55)); tf($(id),`translateY(${Math.sin(t*1.6+i*2)*6}px) scale(${k})`); op($(id),clamp(k));});
+  const cx2=back(P(t,E+1.1,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-E-1.8)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-E-1.8)*4))*8}px)`;
+  op($('#url'),eo(P(t,E+1.3,.6)));
+}
+window.DUR=VO.dur; render(0);
+</script></body></html>

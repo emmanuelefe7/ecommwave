@@ -1,0 +1,41 @@
+{
+ "dur": 20.73,
+ "lines": [
+  {
+   "start": 0.3,
+   "end": 3.171,
+   "text": "People visit your product page, but nobody buys?",
+   "wps": 2.79
+  },
+  {
+   "start": 3.521,
+   "end": 6.786,
+   "text": "No reviews means there's no proof it's any good.",
+   "wps": 2.76
+  },
+  {
+   "start": 7.136,
+   "end": 9.829,
+   "text": "So shoppers leave for a store they trust.",
+   "wps": 2.97
+  },
+  {
+   "start": 10.329,
+   "end": 13.125,
+   "text": "Ask every buyer for a review after delivery.",
+   "wps": 2.86
+  },
+  {
+   "start": 13.475,
+   "end": 16.493,
+   "text": "Then show stars and photo reviews on the page.",
+   "wps": 2.98
+  },
+  {
+   "start": 16.843,
+   "end": 20.035,
+   "text": "Want a free product page check? DM us GROWTH.",
+   "wps": 2.82
+  }
+ ]
+}

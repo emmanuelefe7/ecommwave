@@ -1,5 +1,7 @@
 # Daily grid plan (owner's standing rule, set 2026-11-25)
 
+Every post on every row follows PLAYBOOK §0 HOOKS & LANGUAGE (strong store-owner hook, "customers" not "buyers", plain words).
+
 Every day the profile grid gets exactly these rows (15 posts). Every row is published as a block, back to back,
 so rows always stay whole. Read `PLAYBOOK.md` (brand, NAVY look §3b, LIGHT look §3c, captions, publishing, logging) first.
 

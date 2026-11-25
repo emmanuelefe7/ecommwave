@@ -1,0 +1,171 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="common.css"><script src="common.js"></script><script src="work_gv/vo/timing.js"></script>
+<style>
+#logo{left:80px;top:170px;height:46px}
+#tag1{right:80px;top:162px;font-size:22px;padding:12px 22px}
+.headline .serif{color:var(--mint);font-size:1.12em}
+#h1{left:80px;top:280px;width:940px;font-size:104px;color:#fff}
+.phone{width:540px;height:880px;border-radius:70px;background:#0b1430;padding:16px;box-shadow:0 50px 120px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.08)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:56px;background:#fff;overflow:hidden;font-family:Inter}
+.sb{height:64px;display:flex;align-items:center;justify-content:space-between;padding:10px 40px 0 46px;font:700 20px Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:14px;width:140px;height:38px;border-radius:20px;background:#0b1430;transform:translateX(-50%);z-index:5}
+.sb,.top{position:relative;z-index:4;background:#fff}
+.top{height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;border-bottom:1px solid #eef1f5}
+.top .lg{font:800 24px "Inter Display";letter-spacing:.08em;color:#0f1f4d}
+.top .x{font:500 26px Inter;color:#64748b;width:40px;text-align:center;position:relative}
+.pimg{height:250px;background:#f3e6e1;position:relative;overflow:hidden}
+.pimg img{position:absolute;left:50%;top:50%;height:112%;transform:translate(-50%,-50%)}
+.pd{padding:18px 30px 0}
+.pd .nm{font:800 30px "Inter Display";letter-spacing:-.02em;color:#0f172a}
+.pd .rt{font:600 17px Inter;color:#f5a524;margin-top:6px}.pd .rt span{color:#64748b;font-weight:500}
+.pd .pr{font:800 28px Inter;color:#0f172a;margin-top:6px}
+.add{margin:16px 30px 0;height:58px;border-radius:16px;background:#0f1f4d;color:#fff;font:700 20px Inter;display:grid;place-items:center}
+.bundle{position:relative;margin:18px 22px 0;border:2.5px solid #34d5a0;border-radius:20px;padding:16px;background:#f3fbf8}
+.bundle .bt{font:800 19px "Inter Display";color:#0f172a;letter-spacing:-.01em}
+.bundle .bs{font:500 15px Inter;color:#64748b;margin-top:2px}
+.bundle .row{display:flex;align-items:center;gap:10px;margin-top:12px}
+.bundle .row .im{width:84px;height:84px;border-radius:14px;overflow:hidden;display:grid;place-items:center}
+.bundle .row .im img{height:92%}
+.bundle .plus{font:800 26px Inter;color:#94a3b8}
+.bundle .row .bp{margin-left:auto;text-align:right}
+.bundle .row .bp b{display:block;font:800 24px Inter;color:#0f172a}
+.bundle .row .bp i{font:600 14px Inter;color:#12b886;font-style:normal}
+.bundle .bb{margin-top:12px;height:50px;border-radius:14px;background:#12b886;color:#fff;font:700 18px Inter;display:grid;place-items:center}
+/* cart drawer */
+.dim{position:absolute;inset:0;background:rgba(10,20,40,.45);opacity:0;z-index:8}
+.cart{position:absolute;left:0;right:0;bottom:0;height:640px;background:#fff;border-radius:30px 30px 0 0;box-shadow:0 -20px 50px rgba(0,0,0,.2);padding:16px 26px;z-index:9;transform:translateY(660px)}
+.grab{width:50px;height:5px;border-radius:3px;background:#d4d9e1;margin:0 auto 16px}
+.cart h4{font:800 26px "Inter Display";color:#0f172a;letter-spacing:-.02em;display:flex;justify-content:space-between;align-items:center}
+.cart h4 span{font:600 16px Inter;color:#64748b}
+.ci{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid #eef1f5}
+.ci .im{width:74px;height:74px;border-radius:12px;overflow:hidden;display:grid;place-items:center;flex:none}
+.ci .im img{height:92%}
+.ci .n{font:700 18px Inter;color:#0f172a}.ci .q{font:500 14px Inter;color:#64748b;margin-top:3px}
+.ci .p{margin-left:auto;font:800 19px Inter;color:#0f172a}
+.addon{position:relative;margin-top:14px;border:2px dashed #b9c4d4;border-radius:16px;padding:12px 14px;display:flex;gap:12px;align-items:center}
+.addon .lbl2{position:absolute;left:14px;top:-11px;background:#fff;padding:0 6px;font:700 12px Inter;letter-spacing:.12em;color:#12b886}
+.addon .ab{margin-left:auto;height:42px;border-radius:12px;background:#0f1f4d;color:#fff;font:700 16px Inter;padding:0 16px;display:grid;place-items:center;white-space:nowrap}
+.tot{display:flex;justify-content:space-between;align-items:center;margin-top:18px;font:700 20px Inter;color:#0f172a}
+.tot b{font:800 30px "Inter Display";letter-spacing:-.02em}
+.co{margin-top:14px;height:60px;border-radius:16px;background:#0f1f4d;color:#fff;font:700 20px Inter;display:grid;place-items:center}
+.tap{position:absolute;width:70px;height:70px;border-radius:50%;border:3px solid rgba(18,184,134,.9);background:rgba(18,184,134,.18);z-index:30;margin:-35px 0 0 -35px;opacity:0}
+/* side card */
+#tc{left:660px;top:690px;width:340px;background:#fff;border-radius:28px;padding:24px 28px;box-shadow:0 30px 70px rgba(0,0,0,.3);font-family:Inter;opacity:0}
+#tc .k{font:600 17px Inter;color:#64748b;letter-spacing:.06em}
+#tc .v{font:800 64px "Inter Display";letter-spacing:-.03em;color:#0f172a;margin-top:2px}
+#tc .bar{height:10px;border-radius:5px;background:#eef1f5;margin-top:14px;overflow:hidden}
+#tc .bar i{display:block;height:100%;width:30%;background:linear-gradient(90deg,#12b886,#34d5a0);border-radius:5px}
+#tc .lines{margin-top:14px;font:600 16px Inter;color:#334155}
+#tc .lines div{display:flex;justify-content:space-between;padding:5px 0;opacity:0}
+.lbl{position:absolute;z-index:8;opacity:0}
+#l1{left:620px;top:1010px}#l2{left:640px;top:1130px}#l3{left:600px;top:1250px}
+#k1{left:640px;top:520px;z-index:8;opacity:0}
+#k2{left:660px;top:1370px;z-index:8;opacity:0}
+#t1{left:300px;top:1380px;z-index:12;opacity:0;width:700px}
+/* end */
+#end{opacity:0}
+#elogo{left:50%;top:170px;height:46px;transform:translateX(-50%)}
+#e1{left:70px;top:270px;width:940px;font-size:108px;color:#fff;text-align:center}
+#arch{left:290px;top:580px;width:500px;height:640px}
+#arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--mint)}
+#arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+#arch .ph img{position:absolute;left:50%;bottom:0;height:620px;transform:translateX(-50%)}
+#c1{left:40px;top:740px}#c2{left:640px;top:930px}#c3{left:60px;top:1100px}
+#cta{left:50%;top:1290px;white-space:nowrap}
+#url{left:0;right:0;top:1450px;text-align:center;color:#a9b8d6;font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<div class="scene bg-dark" id="main">
+  <img id="logo" class="abs" src="assets/logo_white.png">
+  <div id="tag1" class="abs tag">GROW YOUR SALES</div>
+  <div id="h1" class="abs headline">More sales from the <span class="serif">same visitors.</span></div>
+  <div id="ph1" class="abs phone" style="left:80px;top:640px"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="top"><span class="x">‹</span><span class="lg">NOVA</span><span class="x">CRT<i class="cb" style="position:absolute;right:-2px;top:-6px;width:20px;height:20px;border-radius:50%;background:#12b886;color:#fff;font:700 12px/20px Inter;text-align:center;font-style:normal;opacity:0">2</i></span></div>
+    <div class="pimg"><img src="assets/p_serum.png"></div>
+    <div class="pd"><div class="nm">Glow Serum Set</div><div class="rt">★★★★★ <span>4.8 · 126 reviews</span></div><div class="pr">$48.00</div></div>
+    <div class="add">Add to cart</div>
+    <div class="bundle" id="bun"><div class="bt">Complete the set</div><div class="bs">Customers often buy these together</div>
+      <div class="row"><div class="im" style="background:#f3e6e1"><img src="assets/p_serum.png"></div><span class="plus">+</span><div class="im" style="background:#e3ecf5"><img src="assets/p_serum.png"></div>
+        <div class="bp"><b>$89</b><i>Serum + Night Serum</i></div></div>
+      <div class="bb">Add the set</div></div>
+    <div class="dim"></div>
+    <div class="cart"><div class="grab"></div><h4>Your cart <span>2 items</span></h4>
+      <div class="ci"><div class="im" style="background:#f3e6e1"><img src="assets/p_serum.png"></div><div><div class="n">Glow Serum Set</div><div class="q">Qty 1</div></div><div class="p">$48</div></div>
+      <div class="ci"><div class="im" style="background:#e3ecf5"><img src="assets/p_serum.png"></div><div><div class="n">Night Serum</div><div class="q">Qty 1 · in the set</div></div><div class="p">$41</div></div>
+      <div class="addon" id="ad"><span class="lbl2">ADD BEFORE YOU GO</span><div class="ci" style="padding:0;border:0"><div class="im" style="background:#efe7da;width:60px;height:60px"><img src="assets/p_serum.png"></div><div><div class="n">Travel-size Serum</div><div class="q">Fits in any bag</div></div></div><div class="ab" id="abt">+ Add $14</div></div>
+      <div class="tot"><span>Total</span><b id="ctot">$89.00</b></div>
+      <div class="co">Checkout</div>
+    </div>
+    <div class="tap"></div>
+  </div></div>
+  <div id="tc" class="abs"><div class="k">CART TOTAL</div><div class="v" id="tv">$48</div><div class="bar"><i id="tb"></i></div>
+    <div class="lines"><div id="r1"><span>Glow Serum Set</span><span>$48</span></div><div id="r2"><span>+ Night Serum</span><span>$41</span></div><div id="r3"><span>+ Travel-size</span><span>$14</span></div></div></div>
+  <div id="k1" class="abs chip"><span class="ck">CK</span>One more item</div>
+  <div id="l1" class="lbl chip"><span class="ck">CK</span>Bundle on the page</div>
+  <div id="l2" class="lbl chip"><span class="ck">CK</span>One small add-on</div>
+  <div id="t1" class="abs toast"><div class="ic">BG</div><div><div class="t1">New order · $103.00</div><div class="t2">3 items · same customer</div></div><div class="tm">now</div></div>
+</div>
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="assets/logo_white.png">
+  <div id="e1" class="abs headline">Bigger orders.<br><span class="serif">Same traffic.</span></div>
+  <div id="arch" class="abs"><div class="back"></div><div class="ph"><img src="assets/woman.png"></div></div>
+  <div id="c1" class="abs chip"><span class="ck">CK</span>Bundles</div>
+  <div id="c2" class="abs chip"><span class="ck">CK</span>Cart add-ons</div>
+  <div id="c3" class="abs chip"><span class="ck">CK</span>Free store audit</div>
+  <div id="cta" class="abs cta">DM us “GROWTH” <span class="arrow">AR</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+document.body.innerHTML=document.body.innerHTML.replaceAll('>CK<','>'+CHECK+'<').replaceAll('>BG<','>'+BAG+'<').replace('>AR<','>'+ARROW+'<').replaceAll('>ST<','>'+STATUS+'<').replace('CRT<i',CART+'<i');
+const hw=splitWords($('#h1')), ew=splitWords($('#e1'));
+const L=i=>VO.lines[i].start;
+const pop=(id,s,fl=0)=>{const k=back(P(window._t,s,.5)); tf($(id),`translateY(${Math.sin(window._t*1.6+fl)*5}px) scale(${k})`); op($(id),clamp(k));};
+function render(t){
+  window._t=t;
+  // line 0: hook + product page
+  wordsIn(hw,t,L(0),.08,.7);
+  op($('#tag1'),eo(P(t,L(0)+.5,.5)));
+  const bi=eo5(P(t,L(0)+.7,.9)); tf($('#ph1'),`translateY(${(1-bi)*240}px)`); op($('#ph1'),bi);
+  const si=eo5(P(t,L(0)+1.3,.7)); tf($('#tc'),`translateX(${(1-si)*80}px)`); op($('#tc'),si);
+  op($('#r1'),eo(P(t,L(0)+1.6,.4)));
+  // line 1: one more item
+  const kk=back(P(t,L(1)+.4,.5)); op($('#k1'),clamp(kk)*(1-eo(P(t,L(2)+.2,.3)))); tf($('#k1'),`scale(${kk})`);
+  // line 2: bundle appears on the product page (scroll page up)
+  const sc=eio(P(t,L(2)-.1,.7)); $$('#ph1 .pimg,#ph1 .pd,#ph1 .add,#bun').forEach(e=>tf(e,`translateY(${-sc*140}px)`));
+  const bn=eo5(P(t,L(2)+.2,.6)); op($('#bun'),.3+.7*bn);
+  pop('#l1',L(2)+.7);
+  // tap "Add the set"
+  const tap=$('.tap'); let tp=-1,tx=0,ty=0;
+  if(t>=L(2)+1.5&&t<L(2)+2.1){tp=P(t,L(2)+1.5,.5);tx=254;ty=704}
+  else if(t>=L(3)+1.1&&t<L(3)+1.7){tp=P(t,L(3)+1.1,.5);tx=420;ty=578}
+  if(tp>=0){tap.style.left=tx+'px';tap.style.top=ty+'px';tf(tap,`scale(${lerp(.5,1.3,eo(tp))})`);op(tap,1-tp)}else op(tap,0);
+  const cb=back(P(t,L(2)+1.7,.4)); tf($('.cb'),`scale(${cb})`); op($('.cb'),clamp(cb));
+  // cart total card
+  let tot=48; const s1=eio(P(t,L(2)+1.7,.6)), s2=eio(P(t,L(3)+1.3,.6)); tot+=41*s1+14*s2;
+  $('#tv').textContent='$'+Math.round(tot); $('#tb').style.width=(30+40*s1+20*s2)+'%';
+  op($('#r2'),eo(P(t,L(2)+1.7,.4))); op($('#r3'),eo(P(t,L(3)+1.3,.4)));
+  // line 3: cart drawer with add-on
+  const dr=eo5(P(t,L(3)-.1,.6)); tf($('.cart'),`translateY(${(1-dr)*660}px)`); op($('.dim'),dr);
+  op($('#l1'),clamp(back(P(t,L(2)+.7,.5)))*(1-eo(P(t,L(3)+.1,.3))));
+  pop('#l2',L(3)+.5,1);
+  const added=t>L(3)+1.3; $('#abt').textContent=added?'✓ Added':'+ Add $14'; $('#abt').style.background=added?'#12b886':'#0f1f4d';
+  $('#ad').style.borderColor=added?'#34d5a0':'#b9c4d4'; $('#ad').style.borderStyle=added?'solid':'dashed';
+  $('#ctot').textContent=added?'$103.00':'$89.00';
+  $('.cart h4 span').textContent=added?'3 items':'2 items';
+  $('.cb').textContent=added?'3':'2';
+  // line 4: order lands
+  const t1=back(P(t,L(4)+.2,.55)); op($('#t1'),clamp(t1)); tf($('#t1'),`translateY(${(1-t1)*60}px) scale(${lerp(.9,1,t1)})`);
+  op($('#l2'),clamp(back(P(t,L(3)+.5,.5)))*(1-eo(P(t,L(4)+.1,.3))));
+  // end card with CTA line
+  const E=L(5); op($('#end'),eio(P(t,E-.35,.5)));
+  op($('#elogo'),eo(P(t,E-.2,.5)));
+  wordsIn(ew,t,E-.1,.08,.7);
+  const a=eo5(P(t,E+.2,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);
+  $('#arch .ph img').style.transform=`translateX(-50%) scale(${1.06-.06*eo(P(t,E+.2,3))})`;
+  ['#c1','#c2','#c3'].forEach((id,i)=>{const k=back(P(t,E+.6+i*.2,.55)); tf($(id),`translateY(${Math.sin(t*1.6+i*2)*6}px) scale(${k})`); op($(id),clamp(k));});
+  const cx2=back(P(t,E+1.1,.6)); tf($('#cta'),`translateX(-50%) scale(${cx2*(1+Math.sin(Math.max(0,t-E-1.8)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-E-1.8)*4))*8}px)`;
+  op($('#url'),eo(P(t,E+1.3,.6)));
+}
+window.DUR=VO.dur; render(0);
+</script></body></html>

@@ -1,0 +1,42 @@
+{
+ "dur": 21.13,
+ "engine": "kokoro",
+ "lines": [
+  {
+   "start": 0.3,
+   "end": 3.598,
+   "text": "Names like Item 2041 are costing you sales.",
+   "wps": 2.43
+  },
+  {
+   "start": 3.948,
+   "end": 6.966,
+   "text": "Customers can't tell what it is from that.",
+   "wps": 2.65
+  },
+  {
+   "start": 7.316,
+   "end": 10.146,
+   "text": "And people searching will never find it.",
+   "wps": 2.47
+  },
+  {
+   "start": 10.646,
+   "end": 14.401,
+   "text": "Say what it is, who it's for, and one detail.",
+   "wps": 2.66
+  },
+  {
+   "start": 14.751,
+   "end": 17.617,
+   "text": "Like this: Women's Linen Wrap Dress in Sand.",
+   "wps": 2.79
+  },
+  {
+   "start": 17.967,
+   "end": 20.435,
+   "text": "Want your titles checked? DM us GROWTH.",
+   "wps": 2.84
+  }
+ ]
+}

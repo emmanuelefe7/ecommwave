@@ -51,16 +51,26 @@ The profile grid holds connected 3-tile banners (TRIPTYCH rows, plus the `profil
 - Honesty: no invented statistics, percentages or client results. Example charts get the label "Example for illustration. Results vary by store." Speak in plain, simple words a beginner store owner understands.
 
 
-## 3b. The look the owner loves (REQUIRED) — deep brand navy, clean, premium
-The owner rejected light-grey 3D renders ("not professional, doesn't communicate my colors, not clean") and loves the connected navy grid banner (profile/banner2_*.jpg) and the navy reels. Every post must look like that:
-- **Deep brand navy dominates**: background = the navy gradient from `common.css` `.bg-dark` (#0a1a47 base, teal glow top-right, blue glow bottom-left), optional faint dot grid, and the mint wave lines as a signature element. Light (#f3f7fb) backgrounds only for inner carousel slides that need contrast — never for covers or single-image posts.
+## 3b. The look the owner loves (REQUIRED) — NAVY look (one of two looks, see §3c)
+The owner rejected light-grey 3D renders ("not professional, doesn't communicate my colors, not clean") and loves the connected navy grid banner (profile/banner2_*.jpg) and the navy reels. NAVY posts look like this:
+- **Deep brand navy dominates**: background = the navy gradient from `common.css` `.bg-dark` (#0a1a47 base, teal glow top-right, blue glow bottom-left), optional faint dot grid, and the mint wave lines as a signature element. Light (#f3f7fb) backgrounds only for inner slides that need contrast. (For a full light post use the LIGHT look in §3c.)
 - **Mint (#34d5a0) is the only accent**: one accent phrase in Instrument Serif italic mint, mint CTA pill, mint check chips, mint wave/glow. White headlines (Inter Display ExtraBold, tight tracking).
 - **Clean and premium**: generous margins (≥ 80 px), one clear focal visual, nothing crowded, no clutter, no grey placeholder bars.
 - **Visuals = realistic, polished UI and the brand photos**: phone/browser mockups of the NOVA store, order-notification cards, score gauges, chips, the arch photo of the woman/man with the mint offset shape. Do NOT use `tpl_3d_concepts.html` / 3D objects unless the owner asks again.
 - Footer small: `ecommwave.org` (and/or `DM “GROWTH”`), logo small at top.
 
+## 3c. LIGHT look (REQUIRED in the mix — owner: "not every post should be blue background")
+Reference: `ref/light_style.jpg` (the owner's example) and the ready template `tpl_light_style.html` (render: `ref/light_style_template_render.jpg`). Copy its `.lt` classes.
+- Background: soft light blue-grey `#ebf2fa` with a white glow behind the focal element (and a faint mint glow). Never flat grey, never 3D renders.
+- Headline: navy `#14254f`. Key words in white UPPERCASE Inter Display Black inside navy `#152a59` slanted blocks (parallelogram clip-path), staggered; mint `#4fd1a0` "&" or accent word.
+- Focal visual: stacked navy gradient cards (`#3356b0` → `#162a5c`, rounded 24 px, soft shadow), each with a mint icon circle + white title + short line; top card slightly tilted. Realistic UI (phone/browser mockups, order cards) also works on this background.
+- Decoration: blurred mint rings and grey `#acb7cb` rings near the edges, a small grey dot grid. Keep it airy and premium.
+- Footer: `assets/logo_navy.png` bottom-left, `ecommwave.org` bottom-right in navy bold. CTA pill: navy with mint arrow circle (`.cta-l`).
+- Videos in the LIGHT look: same palette on 1080×1920; dark text on light, cards/blocks animate in as the voice says them.
+**Mix rule (every set):** 1 or 2 posts per set use the LIGHT look, the rest NAVY, so the grid alternates. Carousel = LIGHT on every other run (check the log); when the carousel is NAVY, the growth video is LIGHT. Mark the look in the log's Topic column with `[LIGHT]` or `[NAVY]`. Connected TRIPTYCH banners stay NAVY.
+
 ## 4. Format specs
-**Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping navy cover (§3b), slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (dark, woman or man photo in the arch like the template). Each slide gets alt text when posting.
+**Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping cover in the post's look (NAVY §3b or LIGHT §3c), slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (in the post's look, woman or man photo in the arch like the template). Each slide gets alt text when posting.
 
 **Videos**: 1080×1920, 30 fps, 15–22 s, ALWAYS with voiceover. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook → animated realistic UI demo that SHOWS the point → end card with CTA. Crossfades: keep the old scene at opacity 1 and fade the new scene in on top (never scale/shrink the old scene, never dip to black).
 

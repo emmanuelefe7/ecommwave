@@ -1,36 +1,39 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="light.css"><script src="light.js"></script>
 <style>
 /* LIGHT variant: vertical timeline + big mint circle illustration */
-.tl{background:linear-gradient(160deg,#f8fbfe 0%,#edf3fa 100%)}
+.tl{background:radial-gradient(460px 460px at 82% 62%,#ffffff 0%,rgba(255,255,255,0) 70%),radial-gradient(420px 260px at 82% 50%,rgba(79,209,160,.16),rgba(79,209,160,0) 70%),var(--lbg)}
 .circle{position:absolute;right:-220px;top:500px;width:680px;height:680px;border-radius:50%;background:#dff7ee}
 .circle2{position:absolute;right:-110px;top:610px;width:460px;height:460px;border-radius:50%;border:2px dashed rgba(18,184,134,.45)}
-.ill{position:absolute;right:50px;top:600px;width:360px;height:520px;object-fit:contain}
+.ill{position:absolute;right:60px;top:610px;width:340px;height:500px;object-fit:contain}
 .tag{position:absolute;left:80px;top:170px;background:var(--lnavy);color:#fff;font:700 21px Inter;letter-spacing:.14em;padding:12px 20px;border-radius:999px;display:flex;gap:10px;align-items:center}
 .tag i{width:10px;height:10px;border-radius:50%;background:var(--lmint);display:block}
 .H{position:absolute;left:80px;top:240px;width:940px;font:800 82px/1.03 "Inter Display";letter-spacing:-.045em;color:var(--ltext)}
 .H em{font-family:Serif;font-style:italic;font-weight:400;color:var(--lgreen);letter-spacing:-.01em;font-size:1.1em}
-.line{position:absolute;left:127px;top:560px;width:4px;height:560px;background:linear-gradient(180deg,var(--lmint),rgba(79,209,160,.15));border-radius:2px}
+.line{position:absolute;left:127px;top:560px;width:4px;height:520px;background:var(--lnavy);opacity:.25;border-radius:2px}
 .step{position:absolute;left:80px;width:570px;display:flex;gap:24px;align-items:flex-start}
-.step .dot{width:98px;height:98px;border-radius:50%;background:#fff;border:4px solid var(--lmint);display:grid;place-items:center;flex:none;box-shadow:0 10px 24px rgba(21,42,89,.1);font:800 19px/1.1 "Inter Display";color:var(--lnavy);text-align:center;letter-spacing:-.01em}
-.step .cd{background:#fff;border-radius:24px;padding:20px 24px;box-shadow:0 14px 30px rgba(21,42,89,.08);border:1px solid #e6edf5;flex:1}
-.step b{display:block;font:800 29px "Inter Display";color:var(--ltext);letter-spacing:-.02em}
-.step span{display:block;font:500 20px/1.35 Inter;color:var(--lmuted);margin-top:4px}
+.step .dot{width:98px;height:98px;border-radius:50%;background:var(--lmint);border:5px solid #fff;display:grid;place-items:center;flex:none;box-shadow:0 10px 24px rgba(21,42,89,.1);font:800 19px/1.1 "Inter Display";color:var(--lnavy);text-align:center;letter-spacing:-.01em}
+.step .cd{background:linear-gradient(90deg,var(--lcard1),var(--lcard2));border-radius:24px;padding:20px 26px;box-shadow:0 18px 34px rgba(21,42,89,.26),inset 0 1px 0 rgba(255,255,255,.18);flex:1}
+.step b{display:block;font:800 29px "Inter Display";color:#fff;letter-spacing:-.02em}
+.step span{display:block;font:500 20px/1.35 Inter;color:rgba(255,255,255,.86);margin-top:4px}
 .bot{position:absolute;left:80px;right:80px;bottom:56px;display:flex;justify-content:space-between;align-items:center}
 .bot img{height:40px}
 .bot span{font:700 25px Inter;color:var(--ltext)}
 .bot span b{font:800 26px "Inter Display"}
 </style></head><body>
 <section class="s tl" id="s1">
-  <div class="circle"></div><div class="circle2"></div>
+  <div class="ring m" style="right:-70px;top:520px;width:200px;height:200px;border-width:30px"></div>
+  <div class="ring g" style="right:300px;top:1070px;width:120px;height:120px;border-width:18px"></div>
+  <div class="ring g" style="right:-60px;top:180px;width:150px;height:150px;border-width:22px;filter:blur(1.5px)"></div>
+  <div class="dots" style="right:80px;top:1080px"></div>
   <img class="ill" src="assets/ill/successful-purchase.svg">
-  <div class="top"><img src="assets/logo_navy.png"><span style="font:800 26px 'Inter Display';color:#14254f">ecommwave.org</span></div>
+  <div class="top"><img src="assets/logo_navy.png"></div>
   <div class="tag"><i></i>AFTER BLACK FRIDAY</div>
   <div class="H">Turn holiday buyers into <em>regulars.</em></div>
   <div class="line"></div>
-  <div class="step" style="top:530px"><div class="dot">DAY<br>1</div><div class="cd"><b>Say thank you</b><span>A warm email right after the order</span></div></div>
+  <div class="step" style="top:530px;transform:rotate(-1.2deg)"><div class="dot">DAY<br>1</div><div class="cd"><b>Say thank you</b><span>A warm email right after the order</span></div></div>
   <div class="step" style="top:695px"><div class="dot">DAY<br>3</div><div class="cd"><b>Keep them updated</b><span>Shipping news before they ask</span></div></div>
   <div class="step" style="top:860px"><div class="dot">WEEK<br>2</div><div class="cd"><b>Ask for a review</b><span>Once the order has arrived</span></div></div>
   <div class="step" style="top:1025px"><div class="dot">WEEK<br>4</div><div class="cd"><b>Show what's new</b><span>A reason to come back and shop</span></div></div>
-  <div class="bot"><span>Want this set up? DM us <b>“GROWTH”</b></span><span style="display:flex;align-items:center;gap:12px;color:#5b6b86;font-weight:600">📌 Save for later</span></div>
+  <div class="bot"><span>Want this set up? DM us <b>“GROWTH”</b></span><span style="font:800 28px 'Inter Display'">ecommwave.org</span></div>
 </section>
 </body></html>

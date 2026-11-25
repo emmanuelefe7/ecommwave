@@ -1,6 +1,6 @@
 /* LIGHT look shared styles (see PLAYBOOK §3c, ref/light_style.jpg). Use on 1080x1350 <section class="s lt">. */
 @font-face{font-family:"Serif";font-style:italic;src:url(fonts/serif-italic.woff2) format("woff2")}
-:root{--lbg:#ebf2fa;--lnavy:#152a59;--lcard1:#3356b0;--lcard2:#162a5c;--lmint:#4fd1a0;--lgreen:#12b886;--lring:#acb7cb;--ltext:#14254f;--lmuted:#5b6b86}
+:root{--lbg:#ebf2fa;--lnavy:#152a59;--lcard1:#3356b0;--lcard2:#162a5c;--lmint:#4fd1a0;--lgreen:#3cc995;--lring:#acb7cb;--ltext:#14254f;--lmuted:#5b6b86}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#888;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
 .s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px}

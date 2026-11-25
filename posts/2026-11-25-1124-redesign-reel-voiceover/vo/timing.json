@@ -1,0 +1,41 @@
+{
+ "dur": 19.59,
+ "lines": [
+  {
+   "start": 0.3,
+   "end": 2.811,
+   "text": "Your competitors might be one redesign ahead.",
+   "wps": 2.79
+  },
+  {
+   "start": 3.161,
+   "end": 5.382,
+   "text": "Shoppers judge your store in seconds.",
+   "wps": 2.7
+  },
+  {
+   "start": 5.732,
+   "end": 8.028,
+   "text": "A cluttered store pushes them away.",
+   "wps": 2.61
+  },
+  {
+   "start": 8.528,
+   "end": 11.104,
+   "text": "A clean, fast design builds trust instantly.",
+   "wps": 2.72
+  },
+  {
+   "start": 11.454,
+   "end": 13.495,
+   "text": "And trust turns visitors into orders.",
+   "wps": 2.94
+  },
+  {
+   "start": 13.995,
+   "end": 18.894,
+   "text": "Let's make you the one ahead. Message us for a free store audit.",
+   "wps": 2.65
+  }
+ ]
+}

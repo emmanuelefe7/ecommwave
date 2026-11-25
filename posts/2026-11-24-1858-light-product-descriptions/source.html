@@ -1,0 +1,122 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="light.css"><script src="light.js"></script>
+<!-- LIGHT carousel: before/after comparison, 2x2 navy tiles, FAQ UI + illustrations. Locked light look (PLAYBOOK §3c). -->
+<style>
+.L{position:absolute;left:80px;top:180px}
+.Hd{position:absolute;left:80px;top:226px;width:940px;font:800 74px/1.14 "Inter Display";letter-spacing:-.04em;color:var(--ltext)}
+.Sb{position:absolute;left:80px;width:900px;font:500 29px/1.4 Inter;color:var(--lmuted)}
+.ill{position:absolute;object-fit:contain}
+.ba{position:absolute;left:80px;width:920px;border-radius:28px;padding:30px 34px;font-family:Inter}
+.ba .tg{display:inline-flex;gap:10px;align-items:center;font:800 18px Inter;letter-spacing:.14em;padding:9px 16px;border-radius:999px}
+.bef{background:#fff;box-shadow:0 18px 40px rgba(21,42,89,.10);opacity:.96}
+.bef .tg{background:#fde8ea;color:#c9353b}
+.bef p{font:500 27px/1.45 Inter;color:#94a3b8;margin-top:16px}
+.aft{background:linear-gradient(90deg,var(--lcard1),var(--lcard2));box-shadow:0 22px 44px rgba(21,42,89,.28);color:#fff}
+.aft .tg{background:var(--lmint);color:var(--lnavy)}
+.aft h5{font:800 34px "Inter Display";letter-spacing:-.02em;margin-top:16px}
+.aft p{font:500 23px/1.4 Inter;color:rgba(255,255,255,.88);margin-top:8px}
+.aft ul{list-style:none;margin-top:14px}
+.aft li{display:flex;gap:14px;align-items:center;font:600 23px Inter;margin-top:10px}
+.aft li i{width:34px;height:34px;border-radius:50%;background:var(--lmint);display:grid;place-items:center;flex:none}
+.grid4{position:absolute;left:80px;width:920px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.t4{background:linear-gradient(90deg,var(--lcard1),var(--lcard2));border-radius:24px;padding:26px;color:#fff;box-shadow:0 18px 34px rgba(21,42,89,.24),inset 0 1px 0 rgba(255,255,255,.18);min-height:190px}
+.t4 .ic{width:60px;height:60px;border-radius:50%;background:var(--lmint);display:grid;place-items:center}
+.t4 b{display:block;font:800 30px "Inter Display";letter-spacing:-.02em;margin-top:16px}
+.t4 span{display:block;font:500 21px/1.35 Inter;color:rgba(255,255,255,.86);margin-top:6px}
+.faq{position:absolute;background:#fff;border-radius:28px;box-shadow:0 40px 90px rgba(21,42,89,.18);overflow:hidden;font-family:Inter}
+.faq .fh{padding:24px 30px;font:800 28px "Inter Display";color:#0f172a;border-bottom:1px solid #eef1f5}
+.q{display:flex;justify-content:space-between;align-items:center;padding:22px 30px;border-bottom:1px solid #f1f4f8;font:700 23px Inter;color:#0f172a}
+.q i{font-style:normal;width:36px;height:36px;border-radius:50%;background:#eef2f8;display:grid;place-items:center;color:var(--lnavy);font:700 22px Inter}
+.q.open{background:#f6f9fc;display:block}
+.q.open .a{font:500 20px/1.45 Inter;color:#475569;margin-top:10px}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="s lt" id="s1">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">01 / 05</div></div>
+  <div class="ring m" style="left:-60px;top:330px;width:160px;height:160px;border-width:26px"></div>
+  <div class="ring g" style="right:-50px;top:560px;width:150px;height:150px;border-width:22px"></div>
+  <div class="ring m" style="right:-90px;top:1090px;width:220px;height:220px;border-width:32px"></div>
+  <div class="dots" style="left:44px;top:1060px"></div>
+  <div class="abs kick" style="left:0;right:0;top:180px;text-align:center">Product descriptions that</div>
+  <div class="slab" style="left:160px;top:256px">Actually</div>
+  <div class="slab" style="left:470px;top:386px">Sell</div>
+  <div class="micon" style="left:330px;top:392px">i:trend</div>
+  <img class="ill" src="assets/ill/online-shopping.svg" style="left:130px;top:560px;width:820px;height:480px">
+  <div class="chipl" style="left:120px;top:1000px"><span class="ck">i:check</span>Clear</div>
+  <div class="chipl" style="left:430px;top:1060px"><span class="ck">i:check</span>Simple</div>
+  <div class="chipl" style="left:720px;top:1000px"><span class="ck">i:check</span>Helpful</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 2 BEFORE / AFTER -->
+<section class="s lt" id="s2">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">02 / 05</div></div>
+  <div class="ring m" style="right:-70px;top:200px;width:170px;height:170px;border-width:26px"></div>
+  <div class="ring g" style="left:-60px;top:1100px;width:170px;height:170px;border-width:26px"></div>
+  <div class="lbl L">Same product</div>
+  <div class="Hd"><span class="hl">Better words</span></div>
+  <div class="ba bef" style="top:370px"><span class="tg">✕ BEFORE</span><p>High quality serum. Best product. Amazing results. Buy now!</p></div>
+  <div class="ba aft" style="top:570px"><span class="tg">i:check AFTER</span>
+    <h5>Wake up to brighter, softer skin</h5>
+    <p>A light serum you use morning and night. It sinks in fast and works under makeup.</p>
+    <ul><li><i>i:check</i>Gentle on sensitive skin</li><li><i>i:check</i>30 ml lasts about two months</li><li><i>i:check</i>Free returns within 30 days</li></ul>
+  </div>
+  <img class="ill" src="assets/ill/happy-customer.svg" style="left:700px;top:960px;width:260px;height:260px">
+  <div class="chipl" style="left:80px;top:1050px"><span class="ck">i:check</span>Same product, clearer story</div>
+  <div class="web">ecommwave.org</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 3 FOUR RULES -->
+<section class="s lt" id="s3">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">03 / 05</div></div>
+  <div class="ring m" style="left:-70px;top:1080px;width:190px;height:190px;border-width:28px"></div>
+  <div class="ring g" style="right:-60px;top:330px;width:150px;height:150px;border-width:22px"></div>
+  <div class="dots" style="right:70px;top:1080px"></div>
+  <div class="lbl L">The rules</div>
+  <div class="Hd">4 rules for <span class="hl">every page</span></div>
+  <div class="grid4" style="top:400px">
+    <div class="t4"><div class="ic">i:target</div><b>Lead with the benefit</b><span>What changes for them, not just what it is</span></div>
+    <div class="t4"><div class="ic">i:check</div><b>Short bullet points</b><span>Easy to scan on a phone</span></div>
+    <div class="t4"><div class="ic">i:search</div><b>Answer real questions</b><span>Size, materials, care, delivery</span></div>
+    <div class="t4"><div class="ic">i:mail</div><b>Write like you talk</b><span>Friendly and simple, no hype</span></div>
+  </div>
+  <img class="ill" src="assets/ill/online-review.svg" style="left:330px;top:870px;width:420px;height:320px">
+  <div class="web">ecommwave.org</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 4 FAQ -->
+<section class="s lt" id="s4">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">04 / 05</div></div>
+  <div class="ring m" style="right:-70px;top:1040px;width:190px;height:190px;border-width:28px"></div>
+  <div class="ring g" style="left:-60px;top:560px;width:140px;height:140px;border-width:22px"></div>
+  <div class="lbl L">Remove doubts</div>
+  <div class="Hd">Answer questions <span class="hl">before</span> they ask</div>
+  <div class="faq" style="left:80px;top:440px;width:600px">
+    <div class="fh">Questions</div>
+    <div class="q open"><div style="display:flex;justify-content:space-between;align-items:center">How do I use it?<i>−</i></div><div class="a">Two drops on clean skin, morning and night.</div></div>
+    <div class="q">What size is it?<i>+</i></div>
+    <div class="q">Is it good for sensitive skin?<i>+</i></div>
+    <div class="q" style="border:none">What if it doesn't suit me?<i>+</i></div>
+  </div>
+  <img class="ill" src="assets/ill/questions.svg" style="left:690px;top:620px;width:340px;height:440px">
+  <div class="web">ecommwave.org</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 5 CTA -->
+<section class="s lt" id="s5">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">05 / 05</div></div>
+  <div class="ring m" style="left:-70px;top:700px;width:180px;height:180px;border-width:28px"></div>
+  <div class="ring g" style="right:-60px;top:420px;width:160px;height:160px;border-width:24px"></div>
+  <div class="dots" style="right:70px;top:960px"></div>
+  <div class="abs kick" style="left:0;right:0;top:180px;text-align:center">Want pages that sell?</div>
+  <div class="slab" style="left:170px;top:256px">Let's fix</div>
+  <div class="slab" style="left:250px;top:386px">Your pages</div>
+  <img class="ill" src="assets/ill/successful-purchase.svg" style="left:240px;top:540px;width:600px;height:540px">
+  <div class="abs" style="left:0;right:0;top:1130px;text-align:center"><span class="cta-l">DM us “GROWTH” <span class="arrow">i:arrowm</span></span></div>
+  <div class="abs" style="left:0;right:0;top:1250px;text-align:center;font:800 28px 'Inter Display';color:#14254f">ecommwave.org</div>
+</section>
+<script>lightIcons();document.body.innerHTML=document.body.innerHTML.replace(/>i:check AFTER</,'>'+LICONS.check+' AFTER<');</script>
+</body></html>

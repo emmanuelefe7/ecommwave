@@ -1,0 +1,149 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="light.css"><script src="light.js"></script>
+<!-- LIGHT carousel: realistic cart UI + illustrations + navy cards. Locked light look (PLAYBOOK §3c). -->
+<style>
+.L{position:absolute;left:80px;top:180px}
+.Hd{position:absolute;left:80px;top:226px;width:940px;font:800 74px/1.14 "Inter Display";letter-spacing:-.04em;color:var(--ltext)}
+.Sb{position:absolute;left:80px;width:900px;font:500 29px/1.4 Inter;color:var(--lmuted)}
+.ill{position:absolute;object-fit:contain}
+/* cart drawer UI */
+.cart{position:absolute;background:#fff;border-radius:30px;box-shadow:0 40px 90px rgba(21,42,89,.20);overflow:hidden;font-family:Inter}
+.cart .ch{display:flex;justify-content:space-between;align-items:center;padding:24px 28px;border-bottom:1px solid #eef1f5;font:800 28px "Inter Display";color:#0f172a}
+.cart .ch span{font:500 20px Inter;color:#94a3b8}
+.fs{padding:18px 28px 6px}
+.fs .t{font:600 19px Inter;color:#0f172a}.fs .t b{color:#12a877}
+.bar{height:12px;border-radius:6px;background:#eef1f5;margin-top:12px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--lmint)}
+.it{display:flex;gap:18px;align-items:center;padding:16px 28px;border-top:1px solid #f1f4f8}
+.it .th{width:84px;height:84px;border-radius:14px;overflow:hidden;background:#f1efec;flex:none}
+.it .th img{width:100%;height:100%;object-fit:cover}
+.it .nm{font:700 21px Inter;color:#0f172a}.it .q{font:500 17px Inter;color:#94a3b8;margin-top:4px}
+.it .pr{margin-left:auto;font:800 22px Inter;color:#0f172a}
+.add{margin-left:auto;background:var(--lnavy);color:#fff;font:700 18px Inter;padding:12px 20px;border-radius:999px}
+.sug{background:#f2fbf7;border-top:1px solid #dff3ea}
+.sug .tg{font:700 15px Inter;letter-spacing:.1em;color:#12a877;padding:14px 28px 0}
+.co{margin:16px 28px 24px;height:64px;border-radius:999px;background:var(--lnavy);color:#fff;font:700 21px Inter;display:grid;place-items:center}
+/* value bar visual */
+.vb{position:absolute;left:80px;width:920px;height:300px;border-radius:30px;background:linear-gradient(90deg,var(--lcard1),var(--lcard2));box-shadow:0 22px 44px rgba(21,42,89,.28);color:#fff;padding:44px 50px}
+.vb .tr{position:relative;height:16px;border-radius:8px;background:rgba(255,255,255,.18);margin-top:90px}
+.vb .tr i{position:absolute;left:0;top:0;bottom:0;border-radius:8px;background:var(--lmint)}
+.mk{position:absolute;top:-78px;transform:translateX(-50%);text-align:center;white-space:nowrap}
+.mk b{display:block;font:800 30px "Inter Display"}.mk span{font:500 19px Inter;color:rgba(255,255,255,.8)}
+.mk:after{content:"";position:absolute;left:50%;top:70px;width:4px;height:34px;margin-left:-2px;background:#fff;border-radius:2px}
+.ex{font:600 18px Inter;color:rgba(255,255,255,.7);margin-top:60px}
+.stack3{position:absolute;left:80px;width:560px}
+.stack3 .lc{margin-bottom:18px}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="s lt" id="s1">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">01 / 06</div></div>
+  <div class="ring m" style="left:-60px;top:470px;width:160px;height:160px;border-width:26px"></div>
+  <div class="ring g" style="right:-40px;top:300px;width:140px;height:140px;border-width:20px"></div>
+  <div class="ring g" style="right:-60px;top:1110px;width:180px;height:180px;border-width:28px;filter:blur(1.5px)"></div>
+  <div class="dots" style="left:44px;top:1080px"></div>
+  <div class="abs kick" style="left:0;right:0;top:180px;text-align:center">The smart way to offer</div>
+  <div class="slab" style="left:200px;top:256px">Free</div>
+  <div class="micon" style="left:590px;top:262px">i:truck</div>
+  <div class="slab" style="left:320px;top:386px">Shipping</div>
+  <div class="cart" style="left:110px;top:560px;width:560px">
+    <div class="ch">Your cart<span>2 items</span></div>
+    <div class="fs"><div class="t">You're <b>$12 away</b> from free shipping</div><div class="bar"><i style="width:76%"></i></div></div>
+    <div class="it"><div class="th"><img src="assets/p_serum.png"></div><div><div class="nm">Glow Serum Set</div><div class="q">Qty 1</div></div><div class="pr">$24</div></div>
+    <div class="it"><div class="th"><img src="assets/p_bag.png"></div><div><div class="nm">Mini Pouch</div><div class="q">Qty 1</div></div><div class="pr">$14</div></div>
+    <div class="co">Checkout · $38</div>
+  </div>
+  <img class="ill" src="assets/ill/delivery-truck.svg" style="left:640px;top:760px;width:380px;height:330px">
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 2 KNOW YOUR AVERAGE -->
+<section class="s lt" id="s2">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">02 / 06</div></div>
+  <div class="ring m" style="right:-70px;top:980px;width:200px;height:200px;border-width:30px"></div>
+  <div class="ring g" style="left:-50px;top:640px;width:130px;height:130px;border-width:20px"></div>
+  <div class="lbl L">Step 01</div>
+  <div class="Hd">Know your <span class="hl">average order</span></div>
+  <div class="Sb" style="top:430px">Your store analytics show the average order value. That number is your starting point.</div>
+  <img class="ill" src="assets/ill/growth-analytics.svg" style="left:110px;top:600px;width:860px;height:440px">
+  <div class="chipl" style="left:640px;top:600px"><span class="ck">i:trend</span>Average order: $42 <span style="font:500 17px Inter;color:#94a3b8">example</span></div>
+  <div class="web">ecommwave.org</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 3 SET IT HIGHER -->
+<section class="s lt" id="s3">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">03 / 06</div></div>
+  <div class="ring m" style="left:-80px;top:1000px;width:200px;height:200px;border-width:30px"></div>
+  <div class="ring g" style="right:-50px;top:420px;width:140px;height:140px;border-width:22px"></div>
+  <div class="dots" style="right:70px;top:1060px"></div>
+  <div class="lbl L">Step 02</div>
+  <div class="Hd">Set it <span class="hl">a bit higher</span></div>
+  <div class="Sb" style="top:330px">Put the free-shipping line a little above your average order, so most shoppers only need one more item.</div>
+  <div class="vb" style="top:520px">
+    <div style="font:800 32px 'Inter Display'">Where to set the line</div>
+    <div class="tr"><i style="width:80%"></i>
+      <div class="mk" style="left:52%"><b>$42</b><span>average order</span></div>
+      <div class="mk" style="left:80%"><b style="color:var(--lmint)">$50</b><span>free shipping</span></div>
+    </div>
+    <div class="ex">Example for illustration. Choose a number that fits your margins.</div>
+  </div>
+  <img class="ill" src="assets/ill/shopping-bags.svg" style="left:290px;top:870px;width:500px;height:330px">
+  <div class="web">ecommwave.org</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 4 SHOW IT EVERYWHERE -->
+<section class="s lt" id="s4">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">04 / 06</div></div>
+  <div class="ring m" style="right:-70px;top:360px;width:180px;height:180px;border-width:28px"></div>
+  <div class="ring g" style="left:-60px;top:1080px;width:170px;height:170px;border-width:26px"></div>
+  <div class="lbl L">Step 03</div>
+  <div class="Hd">Show it <span class="hl">everywhere</span></div>
+  <div class="Sb" style="top:330px">Shoppers can't aim for a goal they don't see.</div>
+  <div class="stack3" style="top:470px">
+    <div class="lc" style="transform:rotate(1.6deg)"><div class="ic">i:target</div><div><b>Announcement bar</b><span>At the top of every page</span></div></div>
+    <div class="lc" style="left:-10px"><div class="ic">i:cart</div><div><b>Cart progress bar</b><span>"You're $12 away"</span></div></div>
+    <div class="lc" style="left:10px"><div class="ic">i:search</div><div><b>Product page</b><span>Right under the price</span></div></div>
+  </div>
+  <img class="ill" src="assets/ill/shopping-app.svg" style="left:300px;top:880px;width:700px;height:330px">
+  <div class="web">ecommwave.org</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 5 SUGGEST ITEM -->
+<section class="s lt" id="s5">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">05 / 06</div></div>
+  <div class="ring m" style="left:-70px;top:520px;width:170px;height:170px;border-width:26px"></div>
+  <div class="ring g" style="right:-60px;top:1000px;width:190px;height:190px;border-width:28px"></div>
+  <div class="lbl L">Step 04</div>
+  <div class="Hd">Suggest the <span class="hl">last item</span></div>
+  <div class="Sb" style="top:330px">In the cart, offer a small add-on that gets them over the line.</div>
+  <div class="cart" style="left:190px;top:470px;width:700px">
+    <div class="ch">Your cart<span>2 items</span></div>
+    <div class="fs"><div class="t">You're <b>$12 away</b> from free shipping</div><div class="bar"><i style="width:76%"></i></div></div>
+    <div class="it"><div class="th"><img src="assets/p_serum.png"></div><div><div class="nm">Glow Serum Set</div><div class="q">Qty 1</div></div><div class="pr">$24</div></div>
+    <div class="sug"><div class="tg">ADD TO GET FREE SHIPPING</div>
+      <div class="it" style="border:none"><div class="th"><img src="assets/p_bag.png"></div><div><div class="nm">Mini Pouch</div><div class="q">$14</div></div><div class="add">+ Add</div></div></div>
+    <div class="co">Checkout</div>
+  </div>
+  <img class="ill" src="assets/ill/add-to-cart.svg" style="left:330px;top:1010px;width:420px;height:200px">
+  <div class="chipl" style="left:690px;top:430px"><span class="ck">i:check</span>Bigger orders</div>
+  <div class="web">ecommwave.org</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 6 CTA -->
+<section class="s lt" id="s6">
+  <div class="top"><img src="assets/logo_navy.png"><div class="num">06 / 06</div></div>
+  <div class="ring m" style="left:-70px;top:700px;width:180px;height:180px;border-width:28px"></div>
+  <div class="ring g" style="right:-60px;top:420px;width:160px;height:160px;border-width:24px"></div>
+  <div class="dots" style="right:70px;top:960px"></div>
+  <div class="abs kick" style="left:0;right:0;top:180px;text-align:center">Let's get you</div>
+  <div class="slab" style="left:160px;top:256px">Bigger</div>
+  <div class="slab" style="left:380px;top:386px">Orders</div>
+  <img class="ill" src="assets/ill/shopping-spree.svg" style="left:190px;top:540px;width:700px;height:540px">
+  <div class="abs" style="left:0;right:0;top:1130px;text-align:center"><span class="cta-l">DM us “GROWTH” <span class="arrow">i:arrowm</span></span></div>
+  <div class="abs" style="left:0;right:0;top:1250px;text-align:center;font:800 28px 'Inter Display';color:#14254f">ecommwave.org</div>
+</section>
+<script>lightIcons();</script>
+</body></html>

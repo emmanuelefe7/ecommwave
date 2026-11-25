@@ -1,0 +1,49 @@
+/* LIGHT look shared styles (see PLAYBOOK §3c, ref/light_style.jpg). Use on 1080x1350 <section class="s lt">. */
+@font-face{font-family:"Serif";font-style:italic;src:url(fonts/serif-italic.woff2) format("woff2")}
+:root{--lbg:#ebf2fa;--lnavy:#152a59;--lcard1:#3356b0;--lcard2:#162a5c;--lmint:#4fd1a0;--lgreen:#12b886;--lring:#acb7cb;--ltext:#14254f;--lmuted:#5b6b86}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#888;font-family:"Inter Display","Inter",sans-serif;-webkit-font-smoothing:antialiased;text-rendering:geometricPrecision}
+.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px}
+.lt{background:radial-gradient(560px 420px at 50% 52%,#ffffff 0%,rgba(255,255,255,0) 70%),radial-gradient(520px 280px at 50% 44%,rgba(79,209,160,.14),rgba(79,209,160,0) 70%),var(--lbg);color:var(--ltext)}
+.abs{position:absolute}
+.ring{position:absolute;border-radius:50%;border-style:solid}
+.ring.m{border-color:var(--lmint);opacity:.7;filter:blur(1.5px)}
+.ring.g{border-color:var(--lring);opacity:.9}
+.dots{position:absolute;width:90px;height:150px;background-image:radial-gradient(#c8d1e0 3.5px,transparent 4px);background-size:30px 30px}
+.kick{font:800 48px "Inter Display";letter-spacing:-.025em;color:var(--ltext)}
+.slab{position:absolute;background:var(--lnavy);color:#fff;font:900 92px/1 "Inter Display";letter-spacing:-.005em;display:flex;align-items:center;justify-content:center;clip-path:polygon(6% 0,100% 0,94% 100%,0 100%);text-transform:uppercase;padding:0 70px;height:112px;white-space:nowrap}
+.slab.sm{font-size:64px;height:84px;padding:0 54px}
+.amp{position:absolute;font:900 116px/1 "Inter Display";color:var(--lmint)}
+.lc{position:relative;height:108px;border-radius:24px;background:linear-gradient(90deg,var(--lcard1),var(--lcard2));box-shadow:0 18px 34px rgba(21,42,89,.26),inset 0 1px 0 rgba(255,255,255,.18);display:flex;align-items:center;gap:22px;padding:0 28px;color:#fff}
+.lc .ic{width:62px;height:62px;border-radius:50%;background:var(--lmint);display:grid;place-items:center;flex:none}
+.lc b{display:block;font:800 30px "Inter Display";letter-spacing:-.01em}
+.lc span{display:block;font:500 21px Inter;color:rgba(255,255,255,.86);margin-top:4px}
+.lc .n{margin-left:auto;font:800 22px Inter;color:var(--lmint);letter-spacing:.08em}
+.top{position:absolute;left:80px;right:80px;top:70px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.top img{height:42px}
+.num{font:700 22px Inter;letter-spacing:.12em;padding:11px 20px;border-radius:999px;border:2px solid rgba(21,42,89,.18);color:var(--lnavy);background:rgba(255,255,255,.6)}
+.foot{position:absolute;left:80px;right:80px;bottom:62px;display:flex;justify-content:space-between;align-items:center}
+.foot img{height:42px}
+.foot span{font:800 30px "Inter Display";color:var(--ltext)}
+.swipe{position:absolute;right:80px;bottom:62px;display:flex;align-items:center;gap:12px;font:700 24px Inter;color:var(--lmuted);z-index:20}
+.swipe i{width:52px;height:52px;border-radius:50%;background:var(--lnavy);display:grid;place-items:center}
+.web{position:absolute;left:80px;bottom:74px;font:800 26px "Inter Display";color:var(--ltext)}
+.lbl{font:700 22px Inter;letter-spacing:.16em;color:var(--lgreen);text-transform:uppercase}
+.h{font:800 78px/1.04 "Inter Display";letter-spacing:-.04em;color:var(--ltext)}
+.sub{font:500 30px/1.38 Inter;color:var(--lmuted)}
+.cta-l{background:var(--lnavy);color:#fff;font:800 42px "Inter Display";letter-spacing:-.01em;padding:22px 24px 22px 46px;border-radius:999px;display:inline-flex;gap:24px;align-items:center;box-shadow:0 22px 44px rgba(21,42,89,.3);white-space:nowrap}
+.cta-l .arrow{width:64px;height:64px;border-radius:50%;background:var(--lmint);display:grid;place-items:center}
+/* realistic email UI */
+.mail{position:absolute;background:#fff;border-radius:30px;box-shadow:0 40px 90px rgba(21,42,89,.22),0 0 0 1px rgba(21,42,89,.05);overflow:hidden;font-family:Inter}
+.mail .mh{display:flex;align-items:center;gap:16px;padding:24px 28px;border-bottom:1px solid #eef1f5}
+.mail .av{width:56px;height:56px;border-radius:50%;background:var(--lnavy);color:#fff;font:800 20px "Inter Display";letter-spacing:.06em;display:grid;place-items:center;flex:none}
+.mail .fr{font:700 22px Inter;color:#0f172a}
+.mail .to{font:500 17px Inter;color:#94a3b8;margin-top:3px}
+.mail .tm{margin-left:auto;font:500 17px Inter;color:#94a3b8}
+.mail .sj{font:800 32px/1.15 "Inter Display";color:#0f172a;letter-spacing:-.02em;padding:24px 28px 0}
+.mail .im{margin:20px 28px 0;height:290px;border-radius:18px;overflow:hidden;background:#f1efec}
+.mail .im img{width:100%;height:100%;object-fit:cover}
+.mail .tx{font:500 20px/1.45 Inter;color:#475569;padding:18px 28px 0}
+.mail .bt{margin:20px 28px 28px;height:64px;border-radius:999px;background:var(--lnavy);color:#fff;font:700 21px Inter;display:grid;place-items:center}
+.chipl{position:absolute;background:#fff;color:var(--ltext);font:700 25px Inter;padding:13px 24px 13px 13px;border-radius:999px;display:flex;align-items:center;gap:14px;box-shadow:0 16px 36px rgba(21,42,89,.16);white-space:nowrap;z-index:6}
+.chipl .ck{width:42px;height:42px;border-radius:50%;background:var(--lmint);display:grid;place-items:center}

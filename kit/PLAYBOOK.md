@@ -30,6 +30,8 @@ Pick a topic that is NOT in the log (no repeats within the last 30 posts, and do
 - Growth video: a clear brand identity, a niche hero product, a professional store design, email list from day one, content that shows the product in use, social proof, fast mobile store, retention over acquisition, consistent posting, data/analytics habits, customer service speed, offers that feel premium.
 - Mistakes video: no reviews, slow site, confusing navigation, surprise shipping costs at checkout, weak product photos, generic product titles, too many popups, no clear CTA, no return policy, untrusted look (no contact info), forcing account creation, ignoring mobile, cheap-looking theme, driving ads to the homepage, no abandoned-cart email.
 
+## 2a. DAILY GRID PLAN — read `GRID_PLAN.md` (owner's rule, 2026-11-25). It replaces the old 3-format rotation below: each autopilot run makes ONE row type (SIMILAR-3, N-L-N or L-N-L) and the daily connected task makes CONNECTED-6. The growth/mistakes videos now live in the navy slots of N-L-N / L-N-L rows.
+
 ## 2b. Keep the connected grid aligned (REQUIRED — owner's standing rule)
 The profile grid holds connected 3-tile banners (TRIPTYCH rows, plus the `profile/banner2_*` row). They only line up when the number of grid posts published after a banner is a multiple of 3. So:
 - The autopilot runs every 5 hours and publishes a SET, not a single post: carousel → growth video → mistakes video (videos with `share_to_feed: true`, so all 3 land on the grid).

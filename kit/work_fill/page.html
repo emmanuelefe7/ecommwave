@@ -1,0 +1,130 @@
+<!doctype html><html><head><meta charset="utf-8">
+<script src="../common.js"></script>
+<style>
+@font-face{font-family:"Serif";font-style:italic;src:url(../fonts/serif-italic.woff2) format("woff2")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#555;font-family:"Inter";-webkit-font-smoothing:antialiased}
+section.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px;
+ background:radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.09) 1.6px,transparent 1.7px);background-size:36px 36px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.15) 55%,transparent)}
+.waves{position:absolute;inset:0}
+.logo{position:absolute;left:90px;top:88px;height:46px}
+.num{position:absolute;right:90px;top:90px;font:700 22px Inter;color:#fff;letter-spacing:.08em;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);border-radius:999px;padding:10px 20px}
+.kick{position:absolute;left:90px;top:210px;font:700 25px Inter;letter-spacing:.16em;color:#34d5a0;text-transform:uppercase}
+.hl{position:absolute;left:90px;top:256px;width:920px;font:800 94px/1.0 "Inter Display";letter-spacing:-.045em;color:#fff}
+.hl em{font-family:"Serif";font-style:italic;font-weight:400;color:#34d5a0;font-size:1.1em;letter-spacing:-.01em}
+.vis{position:absolute;left:0;top:520px;width:1080px;height:500px}
+.fix{position:absolute;left:90px;right:90px;top:1060px;background:#fff;border-radius:30px;padding:26px 30px;display:flex;gap:24px;align-items:center;box-shadow:0 40px 90px rgba(0,0,0,.4)}
+.fix .ck{width:68px;height:68px;border-radius:50%;background:#0f2557;flex:none;display:grid;place-items:center}
+.fix .lb{font:800 18px Inter;letter-spacing:.16em;color:#12b886;text-transform:uppercase}
+.fix .tx{font:700 29px/1.25 Inter;color:#0d1b3e;letter-spacing:-.01em;margin-top:6px}
+.foot{position:absolute;left:90px;right:90px;top:1236px;display:flex;justify-content:space-between;font:600 23px Inter;color:rgba(255,255,255,.72)}
+.foot b{color:#34d5a0;font-weight:700}
+/* UI */
+.br{position:absolute;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 40px 100px rgba(0,0,0,.45)}
+.bb{height:46px;background:#eef1f5;display:flex;align-items:center;padding:0 18px;gap:8px;border-bottom:1px solid #e1e5ec}
+.bb i{width:12px;height:12px;border-radius:50%;display:block}
+.bb .u{margin-left:16px;flex:1;height:28px;border-radius:8px;background:#fff;display:flex;align-items:center;padding:0 12px;gap:8px;font:500 15px Inter;color:#4b5568;white-space:nowrap;overflow:hidden}
+.nv{height:56px;display:flex;align-items:center;padding:0 26px;border-bottom:1px solid #eef0f3}
+.nv .lg{font:800 21px "Inter Display";letter-spacing:.06em;color:#0f1f4d}
+.badge{position:absolute;display:inline-flex;align-items:center;gap:10px;border-radius:999px;font:700 21px Inter;padding:10px 18px 10px 10px;box-shadow:0 16px 36px rgba(0,0,0,.35);white-space:nowrap}
+.badge .c{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:800 18px Inter}
+.bad{background:#fff;color:#b4232a}.bad .c{background:#e5484d;color:#fff}
+.good{background:#34d5a0;color:#0d1b3e}.good .c{background:#0d1b3e;color:#34d5a0}
+.pop{position:absolute;background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(0,0,0,.35);padding:22px 24px;font-family:Inter;color:#0f172a}
+.pop .x{position:absolute;right:16px;top:12px;font:600 20px Inter;color:#94a3b8}
+.res{display:flex;align-items:center;gap:14px;padding:10px 16px}
+.res img{width:52px;height:52px;border-radius:10px;object-fit:contain}
+
+.ph{position:absolute;width:310px;height:470px;border-radius:46px;background:#0b1430;padding:11px;box-shadow:0 40px 100px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.08)}
+.ph .sc{position:relative;width:100%;height:100%;border-radius:36px;background:#fff;overflow:hidden;font-family:Inter}
+.ph .isl{position:absolute;left:50%;top:10px;width:92px;height:26px;border-radius:14px;background:#0b1430;transform:translateX(-50%);z-index:5}
+.ph .sb{height:44px;display:flex;align-items:center;padding:6px 26px 0;font:700 14px Inter;color:#0f172a}
+.ph .tp{height:42px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #eef1f5;font:800 16px "Inter Display";letter-spacing:.08em;color:#0f1f4d}
+.ph .pi{height:230px;background:#eceef1;display:grid;place-items:center;overflow:hidden}
+.ph .pd{padding:12px 18px 0}
+.ph .nm{font:800 20px "Inter Display";letter-spacing:-.02em;color:#0f172a}
+.ph .rt{font:600 12px Inter;color:#12b886;margin-top:4px}
+.ph .pr{font:800 18px Inter;color:#0f172a;margin-top:5px}
+.ph .tx{font:500 12px/1.5 Inter;color:#64748b;margin-top:8px}
+.ph .sz{display:flex;gap:6px;margin-top:10px}
+.ph .sz span{border:1.5px solid #dbe2ea;border-radius:8px;padding:5px 9px;font:600 12px Inter;color:#334155}
+.sticky{position:absolute;left:0;right:0;bottom:0;padding:12px 16px 18px;background:#fff;box-shadow:0 -10px 24px rgba(15,31,77,.12);display:flex;gap:10px;align-items:center}
+.sticky .b{flex:1;height:46px;border-radius:12px;background:#0f1f4d;color:#fff;font:700 15px Inter;display:grid;place-items:center}
+.lab{position:absolute;font:800 18px Inter;letter-spacing:.16em;text-transform:uppercase}
+</style></head><body>
+
+
+<!-- ============ TILE 4: ADD TO CART HIDDEN ON PHONES ============ -->
+<section class="s" id="s1"><div class="dots"></div><svg class="waves" viewBox="0 0 1080 1350"></svg>
+ <img class="logo" src="../assets/logo_white.png"><div class="num">04 / 05</div>
+ <div class="kick">Sales leak 04 · Phones</div>
+ <div class="hl">Add to cart <em>hiding on phones?</em></div>
+ <div class="vis">
+  <div class="lab" style="left:170px;top:-4px;color:#ff8a91">Before</div>
+  <div class="lab" style="left:650px;top:-4px;color:#34d5a0">After</div>
+  <div class="ph" style="left:140px;top:30px;transform:rotate(-2deg)"><div class="sc"><div class="isl"></div><div class="sb">9:41</div>
+   <div class="tp"><span>‹</span><span>NOVA</span><span>CRT</span></div>
+   <div class="pi" style="height:200px"><img src="../assets/p_sneaker.png" style="width:230px"></div>
+   <div class="pd"><div class="nm">Court Sneaker</div><div class="pr">$89.00</div>
+    <div class="tx">Our everyday court sneaker is made from soft leather with a padded collar and a cushioned insole, so it feels good from the first wear. The rubber sole gives grip on city streets and…</div>
+    <div class="tx" style="color:#94a3b8">Read more ▾</div></div>
+  </div></div>
+  <div class="badge bad" style="left:110px;top:462px;z-index:4"><span class="c">✕</span>Scroll, scroll… where’s the button?</div>
+  <div class="ph" style="left:620px;top:30px;box-shadow:0 0 0 4px #34d5a0,0 40px 100px rgba(0,0,0,.45)"><div class="sc"><div class="isl"></div><div class="sb">9:41</div>
+   <div class="tp"><span>‹</span><span>NOVA</span><span>CRT</span></div>
+   <div class="pi" style="height:170px"><img src="../assets/p_sneaker.png" style="width:210px"></div>
+   <div class="pd"><div class="nm">Court Sneaker</div><div class="rt">★★★★★ <span style="color:#64748b;font-weight:500">86 reviews</span></div><div class="pr">$89.00</div>
+    <div class="sz"><span>40</span><span style="border:2px solid #0f1f4d;color:#0f1f4d">41</span><span>42</span><span>43</span></div></div>
+   <div class="sticky"><div style="font:800 16px Inter;color:#0f172a">$89</div><div class="b">Add to cart</div></div>
+  </div></div>
+  <div class="badge good" style="left:650px;top:462px;z-index:4"><span class="c">✓</span>Always one tap away</div>
+ </div>
+ <div class="fix"><div class="ck">CHK</div><div><div class="lb">The fix</div><div class="tx">On phones, keep Add to cart stuck to the bottom of the screen.</div></div></div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</section>
+
+<!-- ============ TILE 5: SOLD OUT DEAD END ============ -->
+<section class="s" id="s2"><div class="dots"></div><svg class="waves" viewBox="0 0 1080 1350"></svg>
+ <img class="logo" src="../assets/logo_white.png"><div class="num">05 / 05</div>
+ <div class="kick">Sales leak 05 · Sold out</div>
+ <div class="hl">Sold out? Don’t lose <em>the customer.</em></div>
+ <div class="vis">
+  <div class="br" style="left:110px;top:20px;width:860px;height:460px">
+   <div class="bb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><div class="u">LOCK yourstore.com/products/tan-satchel</div></div>
+   <div style="display:flex;gap:28px;padding:22px 28px">
+    <div style="width:300px;height:360px;border-radius:16px;background:#f1ebe4;display:grid;place-items:center;overflow:hidden;position:relative"><img src="../assets/p_bag.png" style="width:270px;opacity:.85">
+     <span style="position:absolute;left:14px;top:14px;background:#0f172a;color:#fff;font:700 13px Inter;padding:6px 12px;border-radius:999px">Sold out</span></div>
+    <div style="flex:1"><div style="font:800 30px 'Inter Display';color:#0f172a;letter-spacing:-.02em">Tan Satchel</div>
+     <div style="font:600 16px Inter;color:#12b886;margin-top:6px">★★★★★ <span style="color:#64748b;font-weight:500">54 reviews</span></div>
+     <div style="font:800 24px Inter;color:#0f172a;margin-top:8px">$129.00</div>
+     <div style="margin-top:14px;height:50px;border-radius:12px;background:#e2e8f0;color:#94a3b8;font:700 17px Inter;display:grid;place-items:center;position:relative">Sold out<span style="position:absolute;inset:0;border-radius:12px;border:2.5px dashed rgba(229,72,77,.7)"></span></div>
+     <div style="margin-top:14px;border:2px solid #34d5a0;border-radius:14px;padding:12px 14px;background:#f3fbf8">
+      <div style="font:700 16px Inter;color:#0f172a">Back soon. Want an email when it is?</div>
+      <div style="display:flex;gap:8px;margin-top:10px"><div style="flex:1;height:40px;border:1.5px solid #dbe2ea;border-radius:10px;background:#fff;font:500 14px Inter;color:#94a3b8;display:flex;align-items:center;padding:0 12px">you@email.com</div><div style="background:#0f1f4d;color:#fff;font:700 14px Inter;border-radius:10px;padding:0 14px;display:grid;place-items:center">Notify me</div></div></div>
+     <div style="font:700 13px Inter;letter-spacing:.12em;color:#94a3b8;margin-top:14px">YOU MAY ALSO LIKE</div>
+     <div style="display:flex;gap:10px;margin-top:8px">
+      <div style="flex:1;display:flex;gap:10px;align-items:center;border:1px solid #e5e9f0;border-radius:12px;padding:6px"><img src="../assets/p_bag.png" style="width:46px;height:46px;object-fit:contain;background:#e9eef4;border-radius:8px;"><div style="font:600 14px Inter;color:#0f172a">Tan Tote<br><b>$129</b></div></div>
+      <div style="flex:1;display:flex;gap:10px;align-items:center;border:1px solid #e5e9f0;border-radius:12px;padding:6px"><img src="../assets/p_bag.png" style="width:46px;height:46px;object-fit:contain;background:#f1ebe4;border-radius:8px;transform:scaleX(-1)"><div style="font:600 14px Inter;color:#0f172a">Mini Satchel<br><b>$89</b></div></div>
+     </div></div></div>
+  </div>
+  <div class="badge bad" style="left:130px;top:452px"><span class="c">✕</span>A dead end</div>
+  <div class="badge good" style="left:700px;top:2px"><span class="c">✓</span>Catch their email</div>
+  <div class="badge good" style="left:700px;top:452px"><span class="c">✓</span>Show similar picks</div>
+ </div>
+ <div class="fix"><div class="ck">CHK</div><div><div class="lb">The fix</div><div class="tx">Add a “Notify me” button and show similar products on sold-out pages.</div></div></div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</section>
+<script>
+const lock='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.6"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>';
+const chk='<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#34d5a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+let h=document.body.innerHTML;
+h=h.replaceAll('LOCK ',lock).replaceAll('>CHK<','>'+chk+'<').replaceAll('SRCH',SEARCH).replaceAll('CRT',CART).replaceAll("${''}",'');
+document.body.innerHTML=h;
+const W=`<path d="M-40 1150 C 220 1090, 420 1210, 660 1150 S 980 1080, 1120 1120" stroke="#34d5a0" stroke-width="18" opacity=".25" fill="none" filter="url(#gl)"/>
+<path d="M-40 1150 C 220 1090, 420 1210, 660 1150 S 980 1080, 1120 1120" stroke="#34d5a0" stroke-width="5" fill="none" stroke-linecap="round"/>
+<path d="M-40 1290 C 260 1220, 520 1330, 780 1270 S 1000 1230, 1120 1260" stroke="#34d5a0" stroke-width="3" opacity=".22" fill="none"/>
+<path d="M-40 1330 C 260 1260, 520 1370, 780 1310 S 1000 1270, 1120 1300" stroke="#34d5a0" stroke-width="2" opacity=".12" fill="none"/>`;
+document.querySelectorAll('svg.waves').forEach(s=>s.innerHTML='<defs><filter id="gl"><feGaussianBlur stdDeviation="12"/></filter></defs>'+W);
+</script>
+</body></html>

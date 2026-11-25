@@ -1,0 +1,42 @@
+{
+ "dur": 21.41,
+ "engine": "kokoro",
+ "lines": [
+  {
+   "start": 0.3,
+   "end": 2.741,
+   "text": "Want more sales without buying more traffic?",
+   "wps": 2.87
+  },
+  {
+   "start": 3.091,
+   "end": 6.979,
+   "text": "Here's the trick: get each customer to add one more.",
+   "wps": 2.57
+  },
+  {
+   "start": 7.329,
+   "end": 10.507,
+   "text": "Show a ready-made bundle right on the product page.",
+   "wps": 2.83
+  },
+  {
+   "start": 10.857,
+   "end": 14.095,
+   "text": "Then suggest one small add-on in the cart.",
+   "wps": 2.47
+  },
+  {
+   "start": 14.595,
+   "end": 17.212,
+   "text": "Same customers, same traffic, but bigger orders.",
+   "wps": 2.67
+  },
+  {
+   "start": 17.562,
+   "end": 20.711,
+   "text": "Want help setting it up? DM us GROWTH.",
+   "wps": 2.54
+  }
+ ]
+}

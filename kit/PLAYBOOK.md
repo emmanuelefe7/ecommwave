@@ -60,7 +60,7 @@ The owner rejected light-grey 3D renders ("not professional, doesn't communicate
 - Footer small: `ecommwave.org` (and/or `DM “GROWTH”`), logo small at top.
 
 ## 3c. LIGHT look (REQUIRED in the mix — owner: "not every post should be blue background")
-Reference: `ref/light_style.jpg` (the owner's example) and the ready template `tpl_light_style.html` (render: `ref/light_style_template_render.jpg`). Copy its `.lt` classes.
+Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `light.css` + `light.js` (`lightIcons()`, write `>i:mail<` etc.). Approved examples to adapt: `tpl_light_carousel.html` (6-slide carousel with slanted navy slabs, stacked cards, realistic email UI, CTA arch) and `tpl_light_single.html` (single-image checklist); also `tpl_light_style.html`. Don't link `common.css` in carousel pages (it fixes the body to 1920 px). Slabs never overlap other text: put an accent (mint icon circle / arrow) beside a slab, not on it.
 - Background: soft light blue-grey `#ebf2fa` with a white glow behind the focal element (and a faint mint glow). Never flat grey, never 3D renders.
 - Headline: navy `#14254f`. Key words in white UPPERCASE Inter Display Black inside navy `#152a59` slanted blocks (parallelogram clip-path), staggered; mint `#4fd1a0` "&" or accent word.
 - Focal visual: stacked navy gradient cards (`#3356b0` → `#162a5c`, rounded 24 px, soft shadow), each with a mint icon circle + white title + short line; top card slightly tilted. Realistic UI (phone/browser mockups, order cards) also works on this background.

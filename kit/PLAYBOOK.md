@@ -79,6 +79,9 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
   2. `tpl_light_photos.html` – editorial: graph-paper bg, big headline with serif mint accent, illustration in a white card with mint blob, 2×2 tip tiles.
   3. `tpl_light_numbered_carousel.html` – soft organic blobs, huge navy numerals with mint dot, illustration "stage" cards, progress dots.
   4. `tpl_light_timeline.html` – vertical mint timeline with white step cards, big mint circle holding an illustration.
+  5. `tpl_light_shipping_carousel.html` – realistic cart-drawer UI, value bar with markers, navy card stack + illustrations (owner-approved set, Nov 2026).
+  6. `tpl_light_copy_carousel.html` – before/after comparison cards, 2×2 navy rule tiles, FAQ accordion UI + illustrations.
+  7. `tpl_light_myths.html` – single: myth (white, struck-through) → what works (navy card) rows.
   Also invent new ones (before/after split, comparison table, quote card, big stat-free "myth vs fact", phone mockup hero) in the same palette.
 **Illustrations:** use real professional illustrations from `assets/ill/` (unDraw scenes already recolored to brand mint/green + navy; see `assets/ill/README.md` to add more from `npm pack undraw-svg`). Pick scenes that match the topic; never scenes with real brand logos. Combine with realistic UI where it helps.
 **Mix rule (every set):** 1 or 2 posts per set use the LIGHT look, the rest NAVY, so the grid alternates. Carousel = LIGHT on every other run (check the log); when the carousel is NAVY, the growth video is LIGHT. Mark the look in the log's Topic column with `[LIGHT]` or `[NAVY]`. Connected TRIPTYCH banners stay NAVY.

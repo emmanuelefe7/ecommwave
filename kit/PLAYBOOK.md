@@ -67,6 +67,13 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
 - Decoration: blurred mint rings and grey `#acb7cb` rings near the edges, a small grey dot grid. Keep it airy and premium.
 - Footer: `assets/logo_navy.png` bottom-left, `ecommwave.org` bottom-right in navy bold. CTA pill: navy with mint arrow circle (`.cta-l`).
 - Videos in the LIGHT look: same palette on 1080×1920; dark text on light, cards/blocks animate in as the voice says them.
+**Vary the LIGHT layouts (owner: "don't just use a single style").** Same palette and brand every time, but rotate the layout; never reuse the layout of the previous LIGHT post. Approved layouts to adapt:
+  1. `tpl_light_style.html` / `tpl_light_carousel.html` / `tpl_light_single.html` – slanted navy slabs + stacked navy cards + rings.
+  2. `tpl_light_photos.html` – editorial: graph-paper bg, big headline with serif mint accent, illustration in a white card with mint blob, 2×2 tip tiles.
+  3. `tpl_light_numbered_carousel.html` – soft organic blobs, huge navy numerals with mint dot, illustration "stage" cards, progress dots.
+  4. `tpl_light_timeline.html` – vertical mint timeline with white step cards, big mint circle holding an illustration.
+  Also invent new ones (before/after split, comparison table, quote card, big stat-free "myth vs fact", phone mockup hero) in the same palette.
+**Illustrations:** use real professional illustrations from `assets/ill/` (unDraw scenes already recolored to brand mint/green + navy; see `assets/ill/README.md` to add more from `npm pack undraw-svg`). Pick scenes that match the topic; never scenes with real brand logos. Combine with realistic UI where it helps.
 **Mix rule (every set):** 1 or 2 posts per set use the LIGHT look, the rest NAVY, so the grid alternates. Carousel = LIGHT on every other run (check the log); when the carousel is NAVY, the growth video is LIGHT. Mark the look in the log's Topic column with `[LIGHT]` or `[NAVY]`. Connected TRIPTYCH banners stay NAVY.
 
 ## 4. Format specs

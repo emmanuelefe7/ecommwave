@@ -12,9 +12,9 @@
 .stage img{position:absolute;inset:40px 60px;width:calc(100% - 120px);height:calc(100% - 80px);object-fit:contain}
 .bignum{color:var(--lnavy);font:900 210px/0.8 "Inter Display";letter-spacing:-.06em;position:absolute;left:70px;top:190px}.bignum b{color:var(--lmint)}
 .numf{position:absolute;left:72px;top:170px;font:900 250px/0.8 "Inter Display";letter-spacing:-.04em;color:var(--lmint);clip-path:inset(62% 0 0 0)}
-.st{position:absolute;left:80px;top:420px;width:920px;font:800 72px/1.04 "Inter Display";letter-spacing:-.04em}
+.st{position:absolute;left:80px;top:410px;width:940px;font:800 68px/1.12 "Inter Display";letter-spacing:-.04em}
 .st em{font-family:Serif;font-style:italic;font-weight:400;color:var(--lgreen);letter-spacing:-.01em;font-size:1.08em}
-.ss{position:absolute;left:80px;top:590px;width:900px;font:500 29px/1.4 Inter;color:var(--lmuted)}
+.ss{position:absolute;left:80px;top:600px;width:900px;font:500 29px/1.4 Inter;color:var(--lmuted)}
 .mini{position:absolute;right:80px;top:200px;background:var(--lnavy);color:#fff;border-radius:22px;padding:18px 22px;font:700 22px Inter;display:flex;gap:12px;align-items:center;box-shadow:0 16px 34px rgba(21,42,89,.25)}
 .mini .d{width:40px;height:40px;border-radius:50%;background:var(--lmint);display:grid;place-items:center}
 .counter{font:700 22px Inter;letter-spacing:.12em;padding:11px 20px;border-radius:999px;border:2px solid rgba(21,42,89,.16);color:var(--lnavy);background:#fff}
@@ -27,9 +27,10 @@
   <div class="ring m" style="left:-160px;top:760px;width:260px;height:260px;border-width:30px"></div>
   <div class="ring g" style="right:-180px;top:-120px;width:260px;height:260px;border-width:28px"></div>
   <div class="top"><img src="assets/logo_navy.png"><div class="counter">01 / 06</div></div>
-  <div class="C" style="top:180px"><span class="tag">TRUST CHECKLIST</span></div>
-  <div class="C T" style="top:260px">Would you buy from <em>your own store?</em></div>
-  <div class="stage" style="top:560px;height:560px"><img src="assets/ill/web-shopping.svg"></div>
+  <div class="abs kick" style="left:0;right:0;top:170px;text-align:center">Would you buy from</div>
+  <div class="slab" style="left:140px;top:242px">Your own</div>
+  <div class="slab" style="left:380px;top:372px">Store?</div>
+  <div class="stage" style="top:540px;height:560px"><img src="assets/ill/web-shopping.svg"></div>
   <div class="dots3"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="swipe">4 things shoppers check <i>i:arroww</i></div>
 </section>
@@ -39,7 +40,7 @@
   <div class="top"><img src="assets/logo_navy.png"><div class="counter">02 / 06</div></div>
   <div class="bignum">01<b>.</b></div>
   <div class="mini"><span class="d">i:star</span>Social proof</div>
-  <div class="st">Real reviews on <em>every product</em></div>
+  <div class="st">Real reviews on <span class="hl">every product</span></div>
   <div class="ss">Shoppers trust other buyers more than your description. Show stars near the price and let people add photos.</div>
   <div class="stage" style="top:740px;height:440px"><img src="assets/ill/reviews.svg"></div>
   <div class="dots3"><i></i><i class="on"></i><i></i><i></i><i></i><i></i></div>
@@ -51,7 +52,7 @@
   <div class="top"><img src="assets/logo_navy.png"><div class="counter">03 / 06</div></div>
   <div class="bignum">02<b>.</b></div>
   <div class="mini"><span class="d">i:truck</span>No surprises</div>
-  <div class="st">Clear shipping <em>&amp; returns</em></div>
+  <div class="st">Clear shipping <span class="hl">&amp; returns</span></div>
   <div class="ss">Say how long delivery takes, what it costs and how returns work, on the product page, not hidden in the footer.</div>
   <div class="stage" style="top:740px;height:440px"><img src="assets/ill/order-delivered.svg"></div>
   <div class="dots3"><i></i><i></i><i class="on"></i><i></i><i></i><i></i></div>
@@ -63,7 +64,7 @@
   <div class="top"><img src="assets/logo_navy.png"><div class="counter">04 / 06</div></div>
   <div class="bignum">03<b>.</b></div>
   <div class="mini"><span class="d">i:check</span>Feels safe</div>
-  <div class="st">A checkout that <em>feels safe</em></div>
+  <div class="st">A checkout that <span class="hl">feels safe</span></div>
   <div class="ss">Familiar payment options, a secure checkout and no surprise steps. Let people check out as a guest.</div>
   <div class="stage" style="top:740px;height:440px"><img src="assets/ill/mobile-payments.svg"></div>
   <div class="dots3"><i></i><i></i><i></i><i class="on"></i><i></i><i></i></div>
@@ -75,7 +76,7 @@
   <div class="top"><img src="assets/logo_navy.png"><div class="counter">05 / 06</div></div>
   <div class="bignum">04<b>.</b></div>
   <div class="mini"><span class="d">i:mail</span>Real people</div>
-  <div class="st">Easy ways to <em>reach you</em></div>
+  <div class="st">Easy ways to <span class="hl">reach you</span></div>
   <div class="ss">A real email, a contact page and fast replies. Shoppers want to know someone is there if something goes wrong.</div>
   <div class="stage" style="top:740px;height:440px"><img src="assets/ill/messaging.svg"></div>
   <div class="dots3"><i></i><i></i><i></i><i></i><i class="on"></i><i></i></div>
@@ -86,10 +87,11 @@
   <div class="ring m" style="left:-160px;top:-100px;width:260px;height:260px;border-width:30px"></div>
   <div class="ring g" style="right:-200px;top:820px;width:270px;height:270px;border-width:28px"></div>
   <div class="top"><img src="assets/logo_navy.png"><div class="counter">06 / 06</div></div>
-  <div class="C" style="top:180px"><span class="tag">FREE FOR STORE OWNERS</span></div>
-  <div class="C T" style="top:260px">Get a free <em>trust check.</em></div>
-  <div class="C" style="top:385px;font:500 30px/1.4 Inter;color:var(--lmuted)">We'll look at your store the way a new shopper does.</div>
-  <div class="stage" style="top:480px;height:560px"><img src="assets/ill/happy-customer.svg"></div>
+  <div class="abs kick" style="left:0;right:0;top:170px;text-align:center">Free for store owners</div>
+  <div class="slab" style="left:120px;top:242px">Get a free</div>
+  <div class="slab" style="left:200px;top:372px">Trust check</div>
+  
+  <div class="stage" style="top:520px;height:540px"><img src="assets/ill/happy-customer.svg"></div>
   <div class="C" style="top:1090px"><span class="cta-l">DM us “GROWTH” <span class="arrow">i:arrowm</span></span></div>
   <div class="C" style="top:1215px;font:800 28px 'Inter Display';color:var(--ltext)">ecommwave.org</div>
 </section>

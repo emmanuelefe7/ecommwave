@@ -175,7 +175,26 @@ def rb_stretch(a, sr, factor):
                     f'rubberband=tempo={factor:.4f}:pitchq=quality:formant=preserved:transients=mixed', '/tmp/_rb_out.wav'], check=True)
     b, _ = sf.read('/tmp/_rb_out.wav'); return b
 
-def tighten_words(k, a, sr, wt, toks):
+LETTERS = {'A': 'ˈeɪ', 'B': 'bˈiː', 'C': 'sˈiː', 'D': 'dˈiː', 'E': 'ˈiː', 'F': 'ˈɛf', 'G': 'dʒˈiː', 'H': 'ˈeɪtʃ', 'J': 'dʒˈeɪ',
+           'K': 'kˈeɪ', 'L': 'ˈɛl', 'M': 'ˈɛm', 'N': 'ˈɛn', 'O': 'ˈoʊ', 'P': 'pˈiː', 'Q': 'kjˈuː', 'R': 'ˈɑːɹ', 'S': 'ˈɛs',
+           'T': 'tˈiː', 'U': 'jˈuː', 'V': 'vˈiː', 'W': 'dˈʌbəljuː', 'X': 'ˈɛks', 'Y': 'wˈaɪ', 'Z': 'zˈiː'}
+def bare(tok): return re.sub(r'[^A-Za-z0-9\']', '', tok)
+def letter_flags(all_toks):
+    """Lone capital letters are LETTER NAMES ("B" = bee). "A" counts as the letter only when the script also uses another
+    lone capital letter (A or B, plan A / plan B); otherwise "A" stays the article. "I" is always the pronoun."""
+    lone = {bare(t) for t in all_toks if len(bare(t)) == 1 and bare(t).isupper() and bare(t) not in 'AI'}
+    return [len(bare(t)) == 1 and bare(t).isupper() and bare(t) != 'I' and (bare(t) != 'A' or bool(lone)) for t in all_toks]
+
+def spoken_phonemes(k, text, letters):
+    """phonemize the passage, then swap letter tokens for their letter-name sounds (keeps punctuation)."""
+    ph = k.tokenizer.phonemize(text, LANG); pt = ph.split(' '); tt = text.split()
+    if len(pt) != len(tt) or not any(letters): return text, False
+    for j, (t, isl) in enumerate(zip(tt, letters)):
+        if isl:
+            tail = re.sub(r'^[^,.?!;:…"”]*', '', pt[j]); pt[j] = LETTERS[bare(t)] + tail
+    return ' '.join(pt), True
+
+def tighten_words(k, a, sr, wt, toks, letters=None):
     """Owner feedback: some words come out dragged ("buy" too long). The model has no per-word duration control, so
     every word whose spoken length is well over what its sounds need is shortened (pitch kept), and all later
     timings move with it. Expected length = 0.052 s per phoneme + 0.045 s (sentence-final words may be 45 % longer)."""
@@ -188,7 +207,9 @@ def tighten_words(k, a, sr, wt, toks):
         final = bool(re.search(r'[.?!]["”*]*$', tok))
         exp = (0.052 * n + 0.045) * (1.45 if final else 1.0)
         piece = a[int(s0 * sr):int(e0 * sr)]; d = e0 - s0
-        if d > exp * 1.12 and len(piece) > int(0.06 * sr):
+        if letters and letters[j]:            # a letter name is a label: give it a clear, unhurried length
+            if d < 0.24 and len(piece) > int(0.03 * sr): piece = rb_stretch(piece, sr, max(0.55, d / 0.24))
+        elif d > exp * 1.12 and len(piece) > int(0.06 * sr):
             f = min(1.7, d / (exp * 1.05)); piece = rb_stretch(piece, sr, f)
         new.append([pos, pos + len(piece) / sr]); out.append(piece); pos += len(piece) / sr
         nxt = wt[j + 1][0] if j + 1 < len(wt) else len(a) / sr
@@ -234,8 +255,16 @@ def plan_flow(k, spec, out, voice):
     t = LEAD; lines = [None] * len(L0)
     for g in groups:
         text = ' '.join(clean(L0[i]['text']).strip() for i in g)
-        try: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang=LANG, sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE, continuous=True)
-        except Exception: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang=LANG, sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE)
+        gl = letter_flags(text.split()) if spec.get('letters', True) else [False] * len(text.split())
+        if any(gl) and not any(letter_flags([t for i in g for t in L0[i]['text'].split()])): gl = [False] * len(gl)
+        allt = [t for ln in L0 for t in clean(ln['text']).split()]
+        if spec.get('letters', True) and any(letter_flags(allt)):      # decide "A" using the whole script
+            lone = any(len(bare(t)) == 1 and bare(t).isupper() and bare(t) not in 'AI' for t in allt)
+            gl = [len(bare(t)) == 1 and bare(t).isupper() and bare(t) != 'I' and (bare(t) != 'A' or lone) for t in text.split()]
+        src, isph = spoken_phonemes(k, text, gl)
+        kw = dict(voice=style, speed=speed, lang=LANG, sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE, is_phonemes=isph)
+        try: a, sr, ph = k.create_timed(src, continuous=True, **kw)
+        except Exception: a, sr, ph = k.create_timed(src, **kw)
         wt = []; cur = None
         for p in ph:
             if p.phoneme == ' ':
@@ -249,7 +278,7 @@ def plan_flow(k, spec, out, voice):
         flags = [f for i in g for f in hl_flags(L0[i]['text'])]
         toks = [x for i in g for x in clean(L0[i]['text']).split()]
         a = a.astype(np.float64)
-        if spec.get('tighten', True): a, wt = tighten_words(k, a, sr, wt, toks)
+        if spec.get('tighten', True): a, wt = tighten_words(k, a, sr, wt, toks, gl)
         if spec.get('emphasis', True):          # gentle lift on accent words (with 25 ms ramps)
             gain = np.ones(len(a)); rp = int(0.025 * sr)
             for (x0, x1), f in zip(wt, flags):

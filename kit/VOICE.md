@@ -49,6 +49,9 @@ Plain, simple words in the script (short sentences, everyday vocabulary).
   a person talks; questions as real questions.
 - **No dragged words**: any word spoken longer than its sounds need (e.g. "buy") is shortened automatically with
   pitch kept (`tighten_words`, owner feedback 2026-11-26).
+- **Letters said as letters**: a lone capital letter is spoken as its letter name ("A" = ay, "B" = bee) with a clear,
+  unhurried length; "A" is treated as a letter only when the script also uses another lone letter (A or B), otherwise it's
+  the normal word "a". The caption still shows the letter (owner feedback 2026-11-26).
 - **Consistency**: one voice and ONE fixed voice style for the whole video, one speed, loudness −13 LUFS.
 - Limits of the engine: it can't take free-text acting directions, so tone comes from the voice choice, pace,
   punctuation and accent marks. Write the script for the ear.

@@ -28,10 +28,10 @@ Avoid robotic pronunciation, monotonous delivery, exaggerated expressions, unnat
 
 The goal is a smooth, believable, professionally recorded commercial voice-over with excellent timing, clarity and natural human expression.
 
-## Accent (owner, 2026-11-26)
-**British English accent** for every voice-over: `"lang": "en-gb"` with a British voice (default male `bm_george`;
-other British voices: bm_fable, bm_lewis, bm_daniel, bf_emma, bf_isabella, bf_alice, bf_lily). Never an American voice.
-Write captions/scripts in British spelling (colour, favourite, organise, cheque, personalise).
+## Accent (owner, 2026-11-26, updated)
+**Simple, neutral English accent** — clear and easy for everyone to understand, not a strong British or regional accent:
+`"lang": "en-us"`, default voice `am_michael` (male). Don't use the British voices unless the owner asks again.
+Plain, simple words in the script (short sentences, everyday vocabulary).
 
 ## How `tools/voiceover.py` carries this out (don't bypass it)
 - **Exactly as written**: the text in `script.json` is spoken as is — the tool never adds, removes or changes words or

@@ -1,6 +1,6 @@
 {
  "engine": "kokoro",
- "voice": "bm_george",
+ "voice": "am_michael",
  "music": false,
  "lines": [
   {
@@ -135,5 +135,5 @@
    "word": "GROWTH"
   }
  ],
- "lang": "en-gb"
+ "lang": "en-us"
 }

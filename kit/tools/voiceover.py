@@ -24,7 +24,7 @@ SR = 48000
 TARGET_WPS = 3.0                     # brisk, conversational (owner's reference reel ~3 words/sec)
 LEAD, GAP, MAX_GAP, TAIL = 0.25, 0.15, 0.45, 0.60   # lines almost back to back
 MAX_HOLD = 3.6
-LANG = 'en-gb'   # owner, 2026-11-26: British English accent (voice + pronunciation); MAX_HOLD above = optional countdown pause
+LANG = 'en-us'   # owner, 2026-11-26: simple, neutral English accent (clear, easy to understand); MAX_HOLD above = optional countdown pause
 
 def kokoro():
     d = os.path.expanduser('~/.kokoro'); os.makedirs(d, exist_ok=True)
@@ -270,7 +270,7 @@ def plan(script, out):
         try: PHON = lambda w: len(re.sub(r'[^\w]', '', k.tokenizer.phonemize(w, LANG)))
         except Exception: PHON = None
     global LANG
-    LANG = spec.get('lang', 'en-gb'); voice = spec.get('voice', 'bm_george'); t = LEAD; lines = []
+    LANG = spec.get('lang', 'en-us'); voice = spec.get('voice', 'am_michael'); t = LEAD; lines = []
     if engine == 'kokoro' and spec.get('flow', True):
         lines, t = plan_flow(k, spec, out, voice)
     else:

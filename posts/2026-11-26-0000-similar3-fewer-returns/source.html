@@ -1,0 +1,208 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../kit/light.css"><script src="../../kit/light.js"></script>
+<!-- SIMILAR-3 LIGHT row: "Fewer returns" 01-03. Layout: kicker + slabs + micon (left aligned), phone product-page UI hero left, fix cards + illustration right. -->
+<style>
+.pill{position:absolute;left:80px;top:72px;font:800 21px Inter;letter-spacing:.14em;color:var(--lnavy);padding:12px 22px;border-radius:999px;background:rgba(255,255,255,.65);border:2px solid rgba(21,42,89,.14);display:flex;gap:12px;align-items:center}
+.pill i{width:12px;height:12px;border-radius:50%;background:var(--lmint);display:block}
+.pnum{position:absolute;right:80px;top:66px;font:900 56px/1 "Inter Display";color:rgba(21,42,89,.16);letter-spacing:-.02em}
+.kick{position:absolute;left:80px;top:168px;font-size:46px}
+.row{position:absolute;display:flex;align-items:center;gap:26px}
+.row .slab{position:relative}
+.row .micon{position:relative}
+.lt.g2{background:radial-gradient(520px 520px at 30% 68%,#ffffff 0%,rgba(255,255,255,0) 70%),radial-gradient(420px 300px at 32% 60%,rgba(79,209,160,.26),rgba(79,209,160,0) 70%),var(--lbg)}
+/* phone */
+.phone{position:absolute;left:96px;top:540px;width:404px;height:690px;border-radius:58px;background:#0d1b3e;padding:13px;box-shadow:0 46px 90px rgba(21,42,89,.32),0 0 0 2px #2a3a66 inset;z-index:4}
+.scr{width:100%;height:100%;border-radius:46px;background:#fff;overflow:hidden;position:relative;font-family:Inter;color:#0f172a}
+.sb{display:flex;justify-content:space-between;padding:16px 30px 6px;font:700 15px Inter}
+.isl{position:absolute;left:50%;top:12px;width:104px;height:28px;margin-left:-52px;border-radius:20px;background:#0d1b3e}
+.url{margin:8px 16px 0;height:34px;border-radius:12px;background:#f1f4f9;display:flex;align-items:center;justify-content:center;gap:6px;font:500 14px Inter;color:#64748b}
+.nv{display:flex;justify-content:space-between;align-items:center;padding:12px 20px 10px;border-bottom:1px solid #eef1f5}
+.nv b{font:900 20px "Inter Display";letter-spacing:.06em;color:#0d1b3e}
+.nv span{display:flex;gap:12px}.nv i{display:block;line-height:0}
+.ph{margin:14px 18px 0;height:196px;border-radius:16px;overflow:hidden;position:relative;background:#f1efec}
+.ph img{width:100%;height:100%;object-fit:cover}
+.ti{padding:14px 20px 0;font:800 21px "Inter Display";letter-spacing:-.01em}
+.pr{padding:4px 20px 0;display:flex;align-items:center;gap:10px;font:700 18px Inter}
+.pr .st{color:#f5b301;font-size:15px;letter-spacing:1px}.pr small{font:500 13px Inter;color:#94a3b8}
+.lab{padding:12px 20px 6px;font:700 13px Inter;color:#64748b;display:flex;justify-content:space-between;align-items:center}
+.sizes{display:flex;gap:8px;padding:0 20px}
+.sizes div{flex:1;height:38px;border-radius:10px;border:1.5px solid #dbe2ec;display:grid;place-items:center;font:700 14px Inter;color:#334155}
+.sizes .on{background:#0d1b3e;color:#fff;border-color:#0d1b3e}
+.atc{position:absolute;left:18px;right:18px;bottom:20px;height:52px;border-radius:999px;background:#0d1b3e;color:#fff;font:700 17px Inter;display:grid;place-items:center}
+.hlink i{display:block;line-height:0}.hlink{color:#0d1b3e;font:800 13px Inter;padding:4px 10px;border-radius:8px;outline:3px solid var(--lmint);background:#eafbf4;display:flex;gap:5px;align-items:center}
+/* bottom sheet */
+.sheet{margin:12px 18px 0;border:2px solid var(--lmint);border-radius:14px;padding:4px 12px 10px;background:#fff}
+.sheet .gr{width:44px;height:5px;border-radius:3px;background:#dbe2ec;margin:0 auto 10px}
+.sheet h4{font:800 18px "Inter Display";display:flex;justify-content:space-between}
+.sheet h4 span{font:600 12px Inter;color:#64748b;border:1.5px solid #dbe2ec;border-radius:999px;padding:3px 9px}
+table{width:100%;border-collapse:collapse;margin-top:2px;font:600 13.5px Inter}
+th{font:700 11.5px Inter;color:#94a3b8;text-align:left;padding:5px 4px;letter-spacing:.05em}
+td{padding:6px 4px;border-top:1px solid #f0f3f7;color:#334155}
+tr.on td{background:#eafbf4;color:#0d1b3e;font-weight:800}
+.mnote{margin-top:8px;font:600 13px Inter;color:#0d1b3e;background:#f1f4f9;border-radius:10px;padding:8px 10px}
+.dim{position:absolute;font:800 13px Inter;color:#0d1b3e;background:#fff;border-radius:8px;padding:3px 8px;box-shadow:0 4px 10px rgba(13,27,62,.15)}
+.acc{margin:10px 18px 0;border:1.5px solid #e6ebf2;border-radius:14px;overflow:hidden}
+.acc .r{display:flex;justify-content:space-between;padding:9px 14px;border-top:1px solid #eef1f5;font:500 14px Inter;color:#475569}
+.acc .r:first-child{border-top:0}
+.acc .r b{color:#0d1b3e;font-weight:700}
+.acc .hd{background:#f6f8fb;font:800 14px Inter;color:#0d1b3e;display:flex;justify-content:space-between;padding:10px 14px}
+.thumbs{display:flex;gap:8px;padding:10px 18px 0}
+.thumbs div{flex:1;height:62px;border-radius:10px;overflow:hidden;position:relative;background:#f1efec;border:2px solid transparent}
+.thumbs div.on{border-color:#0d1b3e}
+.thumbs img{width:100%;height:100%;object-fit:cover}
+.thumbs em{position:absolute;left:0;right:0;bottom:0;background:rgba(13,27,62,.72);color:#fff;font:700 10px Inter;font-style:normal;text-align:center;padding:2px 0}
+.call{position:absolute;z-index:8}
+/* right column */
+.fx{position:absolute;left:566px;width:434px;top:556px}
+.fx .lbl{margin:0 0 16px 6px}
+.fx .lc{height:104px;margin-bottom:16px;padding:0 22px;gap:18px}
+.fx .lc .ic{width:54px;height:54px}
+.fx .lc b{font-size:25px}
+.fx .lc span{font-size:18px}
+.ill{position:absolute;left:600px;top:952px;width:400px;height:250px;object-fit:contain}
+</style></head><body>
+
+<!-- ============ 01 SIZE GUIDE (LEFT) ============ -->
+<section class="s lt g2" id="s1">
+  <div class="ring m" style="right:-40px;top:300px;width:170px;height:170px;border-width:26px"></div>
+  <div class="ring g" style="left:-60px;top:1090px;width:150px;height:150px;border-width:22px"></div>
+  <div class="ring g" style="right:40px;top:470px;width:70px;height:70px;border-width:12px"></div>
+  <div class="dots" style="left:500px;top:1110px"></div>
+  <div class="pill"><i></i>FEWER RETURNS</div><div class="pnum">01</div>
+  <div class="kick">Too many returns?</div>
+  <div class="row" style="left:52px;top:240px"><div class="slab">Add a</div></div>
+  <div class="row" style="left:170px;top:370px"><div class="slab">Size guide</div><div class="micon">i:ruler</div></div>
+
+  <div class="phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+    <div class="url">🔒 yourstore.com</div>
+    <div class="nv"><b>NOVA</b><span><i>i:search</i><i>i:cart</i></span></div>
+    <div class="ph" style="height:104px"><img src="../../kit/assets/p_dress.png" style="object-position:50% 30%"></div>
+    <div class="ti">Linen Wrap Dress</div>
+    <div class="pr">$68.00</div>
+    <div class="lab"><span>SIZE</span><span class="hlink"><i>i:rulers</i>Size guide</span></div>
+    <div class="sizes"><div>XS</div><div class="on">S</div><div>M</div><div>L</div><div>XL</div></div>
+    <div class="sheet">
+      <table><tr><th>SIZE</th><th>BUST</th><th>WAIST</th><th>LENGTH</th></tr>
+                <tr class="on"><td>S</td><td>84 cm</td><td>66 cm</td><td>114 cm</td></tr>
+        <tr><td>M</td><td>88 cm</td><td>70 cm</td><td>116 cm</td></tr>
+        <tr><td>L</td><td>94 cm</td><td>76 cm</td><td>118 cm</td></tr>
+      </table>
+      <div class="mnote">Model is 175 cm and wears S</div>
+    </div>
+    <div class="atc">Add to cart · $68.00</div>
+  </div></div>
+
+  <div class="fx">
+    <div class="lbl">The fix</div>
+    <div class="lc" style="transform:rotate(-1.6deg)"><div class="ic">i:ruler</div><div><b>Guide next to the sizes</b><span>Not hidden in the footer</span></div></div>
+    <div class="lc"><div class="ic">i:list</div><div><b>Real measurements</b><span>Bust, waist, length. cm & in</span></div></div>
+    <div class="lc"><div class="ic">i:user</div><div><b>Say what the model wears</b><span>“175 cm, wears size S”</span></div></div>
+  </div>
+  <img class="ill" src="../../kit/assets/ill/online-shopping.svg">
+  <div class="foot"><img src="../../kit/assets/logo_navy.png"><span>ecommwave.org</span></div>
+</section>
+
+<!-- ============ 02 REAL SIZE (MIDDLE) ============ -->
+<section class="s lt g2" id="s2">
+  <div class="ring m" style="right:-40px;top:300px;width:170px;height:170px;border-width:26px"></div>
+  <div class="ring g" style="left:-60px;top:1090px;width:150px;height:150px;border-width:22px"></div>
+  <div class="ring g" style="right:40px;top:470px;width:70px;height:70px;border-width:12px"></div>
+  <div class="dots" style="left:500px;top:1110px"></div>
+  <div class="pill"><i></i>FEWER RETURNS</div><div class="pnum">02</div>
+  <div class="kick">“It looked bigger in the photo.”</div>
+  <div class="row" style="left:52px;top:240px"><div class="slab">Show the</div></div>
+  <div class="row" style="left:170px;top:370px"><div class="slab">Real size</div><div class="micon">i:camera</div></div>
+
+  <div class="phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+    <div class="url">🔒 yourstore.com</div>
+    <div class="nv"><b>NOVA</b><span><i>i:search</i><i>i:cart</i></span></div>
+    <div class="ph" style="height:166px">
+      <img src="../../kit/assets/p_bag.png">
+      <svg class="abs" style="left:0;top:0" width="342" height="166" viewBox="0 0 342 166">
+        <g stroke="#4fd1a0" stroke-width="3" fill="none" stroke-linecap="round">
+          <path d="M60 154H282"/><path d="M60 146v16M282 146v16"/>
+          <path d="M318 22V144"/><path d="M310 22h16M310 144h16"/>
+        </g>
+      </svg>
+      <div class="dim" style="left:142px;top:128px">28 cm</div>
+      <div class="dim" style="left:262px;top:70px">22 cm</div>
+    </div>
+    <div class="thumbs">
+      <div class="on"><img src="../../kit/assets/p_bag.png"><em>SIZE</em></div>
+      <div><img src="../../kit/assets/p_bag.png" style="object-position:20% 50%"><em>IN HAND</em></div>
+      <div><img src="../../kit/assets/p_bag.png" style="object-position:80% 50%"><em>INSIDE</em></div>
+      <div style="background:#0d1b3e;display:grid;place-items:center"><svg width="26" height="26" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="#4fd1a0"/></svg><em>VIDEO</em></div>
+    </div>
+    <div class="ti">Leather Day Bag</div>
+    <div class="pr">$120.00</div>
+    <div class="acc">
+      <div class="hd"><span>Size & fit</span><span>–</span></div>
+      <div class="r"><span>Size</span><b>28 × 22 × 10 cm</b></div>
+      <div class="r"><span>Fits</span><b>Phone, wallet, bottle</b></div>
+    </div>
+    <div class="atc">Add to cart · $120.00</div>
+  </div></div>
+
+  <div class="fx">
+    <div class="lbl">The fix</div>
+    <div class="lc" style="transform:rotate(-1.6deg)"><div class="ic">i:ruler</div><div><b>Size on the photo</b><span>Width, height, depth</span></div></div>
+    <div class="lc"><div class="ic">i:hand</div><div><b>A photo in someone’s hand</b><span>So the scale is clear</span></div></div>
+    <div class="lc"><div class="ic">i:cart</div><div><b>Say what fits inside</b><span>Phone, wallet, bottle</span></div></div>
+  </div>
+  <img class="ill" src="../../kit/assets/ill/product-photography.svg">
+  <div class="foot"><img src="../../kit/assets/logo_navy.png"><span>ecommwave.org</span></div>
+</section>
+
+<!-- ============ 03 DETAILS (RIGHT) ============ -->
+<section class="s lt g2" id="s3">
+  <div class="ring m" style="right:-40px;top:300px;width:170px;height:170px;border-width:26px"></div>
+  <div class="ring g" style="left:-60px;top:1090px;width:150px;height:150px;border-width:22px"></div>
+  <div class="ring g" style="right:40px;top:470px;width:70px;height:70px;border-width:12px"></div>
+  <div class="dots" style="left:500px;top:1110px"></div>
+  <div class="pill"><i></i>FEWER RETURNS</div><div class="pnum">03</div>
+  <div class="kick">Returns marked “not as described”?</div>
+  <div class="row" style="left:52px;top:240px"><div class="slab">Spell out</div></div>
+  <div class="row" style="left:118px;top:370px"><div class="slab">The details</div><div class="micon">i:list</div></div>
+
+  <div class="phone"><div class="scr">
+    <div class="isl"></div><div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+    <div class="url">🔒 yourstore.com</div>
+    <div class="nv"><b>NOVA</b><span><i>i:search</i><i>i:cart</i></span></div>
+    <div class="ph" style="height:132px"><img src="../../kit/assets/p_serum.png"></div>
+    <div class="ti">Daily Glow Serum</div>
+    <div class="pr">$32.00</div>
+    <div class="acc">
+      <div class="hd"><span>The details</span><span>–</span></div>
+      <div class="r"><span>Size</span><b>30 ml (1 fl oz)</b></div>
+      <div class="r"><span>Feels like</span><b>Light, not sticky</b></div>
+      <div class="r"><span>Scent</span><b>Fragrance-free</b></div>
+      <div class="r"><span>Best for</span><b>Dry & normal skin</b></div>
+      <div class="r"><span>Not for</span><b>Very oily skin</b></div>
+    </div>
+    <div class="atc">Add to cart · $32.00</div>
+  </div></div>
+
+  <div class="fx">
+    <div class="lbl">The fix</div>
+    <div class="lc" style="transform:rotate(-1.6deg)"><div class="ic">i:ruler</div><div><b>The exact size</b><span>“30 ml”, not just “bottle”</span></div></div>
+    <div class="lc"><div class="ic">i:hand</div><div><b>What it feels like</b><span>Texture, scent, material</span></div></div>
+    <div class="lc"><div class="ic">i:user</div><div><b>Who it’s for, and not for</b><span>The wrong customer skips it</span></div></div>
+  </div>
+  <img class="ill" src="../../kit/assets/ill/questions.svg">
+  <div class="foot"><img src="../../kit/assets/logo_navy.png"><span>ecommwave.org</span></div>
+</section>
+
+<script>
+LICONS.ruler=LI_('<path d="M3.5 15.5L15.5 3.5l5 5-12 12z"/><path d="M7 12l2 2M10 9l2 2M13 6l2 2"/>');
+LICONS.rulers=LI_('<path d="M3.5 15.5L15.5 3.5l5 5-12 12z"/><path d="M7 12l2 2M10 9l2 2M13 6l2 2"/>','#152a59',16);
+LICONS.user=LI_('<circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5a7.5 7.5 0 0115 0"/>');
+LICONS.list=LI_('<path d="M9 6.5h11M9 12h11M9 17.5h11"/><circle cx="4.5" cy="6.5" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="17.5" r="1.2"/>');
+LICONS.search=LI_('<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>','#0d1b3e',20);
+LICONS.cart=LI_('<path d="M4.5 8.5h15l-1.3 11.2a1.5 1.5 0 01-1.5 1.3H7.3a1.5 1.5 0 01-1.5-1.3z"/><path d="M8.5 11V7a3.5 3.5 0 017 0v4"/>');
+lightIcons();
+// nav icons smaller
+document.querySelectorAll('.nv svg').forEach(s=>{s.setAttribute('width',20);s.setAttribute('height',20)});
+document.querySelectorAll('.micon svg').forEach(s=>{s.setAttribute('width',44);s.setAttribute('height',44)});
+</script>
+</body></html>

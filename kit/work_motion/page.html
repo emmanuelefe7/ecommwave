@@ -1,0 +1,349 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<script src="assets/gsap.min.js"></script>
+<script src="assets/motion-kit.js"></script>
+<script src="vo/timing.js"></script>
+<!-- GROWTH reel: what growing stores get right. Register: editorial/premium, one expressive moment (review stars spring).
+     Voice drives the timeline (VO.lines). Motion: motion-kit curves, cuts on spoken words, lead + uneven reactions. -->
+<style>
+#stage{background:radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 2px,transparent 2.5px);background-size:44px 44px}
+#rig{position:absolute;inset:0}
+.hide{visibility:hidden;opacity:0}
+#logo{position:absolute;left:80px;top:178px;height:44px}
+.tagt{position:absolute;right:80px;top:176px;font:700 22px Inter;letter-spacing:.16em;color:#34d5a0;border:2px solid rgba(52,213,160,.4);padding:12px 22px;border-radius:999px}
+.hl{position:absolute;left:80px;width:940px;color:#fff;font:800 104px/1.02 "Inter Display";letter-spacing:-.045em}
+.hl .m{font-family:Serif;font-style:italic;font-weight:400;color:#34d5a0;letter-spacing:-.01em;font-size:1.1em}
+.mask{display:block;overflow:hidden;padding-bottom:.1em;margin-bottom:-.1em}
+.mask>span{display:block}
+.wd{display:inline-block}
+/* phone */
+#phoneWrap{position:absolute;left:80px;top:640px;width:430px;height:860px}
+#phone{position:absolute;inset:0;border-radius:64px;background:#060d24;padding:14px;box-shadow:0 60px 120px rgba(0,0,0,.45),0 0 0 2px #2b3a68 inset}
+#scr{position:relative;width:402px;height:832px;border-radius:50px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.island{position:absolute;left:50%;top:12px;width:112px;height:32px;margin-left:-56px;border-radius:20px;background:#060d24;z-index:30}
+.sbar{position:absolute;left:0;right:0;top:0;height:54px;display:flex;justify-content:space-between;align-items:center;padding:8px 32px 0;font:700 16px Inter;z-index:25;background:#fff}
+.addr{position:absolute;left:16px;right:16px;top:58px;height:36px;border-radius:12px;background:#f1f4f9;display:flex;align-items:center;justify-content:center;gap:8px;font:500 15px Inter;color:#64748b;z-index:25}
+.view{position:absolute;left:0;top:100px;width:402px;bottom:0;background:#fff}
+.nav{height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;border-bottom:1px solid #eef1f5}
+.nav b{font:900 21px "Inter Display";letter-spacing:.08em;color:#0d1b3e}
+.nav span{display:flex;gap:14px}
+/* home */
+.hero{position:relative;margin:14px 16px 0;height:200px;border-radius:18px;overflow:hidden;background:linear-gradient(90deg,#c2aa8d,#d9cab6)}
+.hero img{position:absolute;right:-30px;top:0;height:100%;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 30%)}
+.hero h3{position:absolute;left:20px;top:44px;font:400 38px/1 Serif;color:#2a2118}
+.hero h3 em{font-style:italic}
+.hero .b{position:absolute;left:20px;top:122px;background:#0d1b3e;color:#fff;font:600 14px Inter;padding:10px 18px;border-radius:999px}
+.sect{font:700 17px Inter;color:#0d1b3e;margin:18px 18px 10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:0 16px}
+.grid2 .im{border-radius:14px;overflow:hidden;height:150px;background:#f1efec}
+.grid2 .im img{width:100%;height:100%;object-fit:cover}
+.grid2 p{font:600 14px Inter;margin-top:7px;color:#0f172a}.grid2 p span{display:block;font-weight:700;color:#475569;margin-top:2px}
+/* product */
+.pimg{margin:14px 16px 0;height:230px;border-radius:18px;overflow:hidden;background:#f1efec}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.ptitle{margin:16px 20px 0;font:800 25px "Inter Display";letter-spacing:-.015em}
+.prow{margin:6px 20px 0;display:flex;align-items:center;gap:12px;height:34px}
+.prow .price{font:800 22px Inter}
+.stars{display:flex;align-items:center;gap:7px;background:#fff8e1;border-radius:999px;padding:5px 12px 5px 9px;font:700 14px Inter;color:#7a5a00}
+.stars i{color:#f5b301;font-style:normal;letter-spacing:1px;font-size:15px}
+.facts{margin:12px 16px 0;border:1.5px solid #e6ebf2;border-radius:16px;overflow:hidden}
+.fact{position:relative;display:flex;justify-content:space-between;align-items:center;padding:12px 14px;font:500 15px Inter;color:#475569;border-top:1px solid #eef1f5}
+.fact:first-child{border-top:0}
+.fact b{position:relative;color:#0d1b3e;font-weight:700;z-index:1}
+.fact span{position:relative;z-index:1}
+.fact .hlbar{position:absolute;inset:0;background:#e3f9f0;transform-origin:0 50%}
+.quote{margin:12px 16px 0;padding:12px 14px;border-radius:14px;background:#f6f8fb;font:500 14px/1.4 Inter;color:#334155}
+.quote b{display:block;font:700 12px Inter;color:#12b886;margin-top:4px}
+.atc{position:absolute;left:16px;right:16px;bottom:22px;height:56px;border-radius:999px;background:#0d1b3e;color:#fff;font:700 17px Inter;display:grid;place-items:center}
+/* checkout */
+.cohd{margin:16px 20px 0;font:800 26px "Inter Display";letter-spacing:-.02em}
+.express{margin:14px 16px 0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.express div{height:50px;border-radius:12px;background:#0d1b3e;color:#fff;font:700 15px Inter;display:grid;place-items:center}
+.express div+div{background:#34d5a0;color:#0d1b3e}
+.or{margin:14px 20px 0;font:600 12px Inter;color:#94a3b8;text-align:center;letter-spacing:.12em}
+.field{margin:10px 16px 0;height:52px;border-radius:12px;border:1.5px solid #dbe2ec;display:flex;align-items:center;padding:0 14px;font:500 15px Inter;color:#0f172a;justify-content:space-between}
+.field small{font:600 11px Inter;color:#94a3b8;display:block;letter-spacing:.06em}
+.guest{margin:12px 18px 0;display:flex;gap:10px;align-items:center;font:600 14px Inter;color:#0d1b3e}
+.guest i{width:22px;height:22px;border-radius:6px;background:#34d5a0;display:grid;place-items:center}
+.sum{margin:14px 16px 0;padding:12px 14px;border-radius:12px;background:#f6f8fb;display:flex;justify-content:space-between;font:600 15px Inter;color:#475569}
+.sum b{color:#0d1b3e}
+.pay{position:absolute;left:16px;right:16px;bottom:22px;height:58px;border-radius:999px;background:#0d1b3e;color:#fff;font:700 18px Inter;display:grid;place-items:center;overflow:hidden}
+.pay .ok{position:absolute;inset:0;background:#12b886;display:flex;align-items:center;justify-content:center;gap:10px;transform-origin:0 50%}
+.cursor{position:absolute;width:40px;height:40px;z-index:40}
+.ripple{position:absolute;width:70px;height:70px;border-radius:50%;border:3px solid #34d5a0;z-index:39}
+/* notifications */
+.lock{position:absolute;inset:0;z-index:28!important;background:linear-gradient(160deg,#1d3b7a,#0d1b3e 60%,#0e4a4a);z-index:20}
+.lock .time{position:absolute;left:0;right:0;top:120px;text-align:center;color:#fff;font:700 84px/1 "Inter Display";letter-spacing:-.03em}
+.lock .date{position:absolute;left:0;right:0;top:92px;text-align:center;color:rgba(255,255,255,.8);font:600 18px Inter}
+.note{position:absolute;left:14px;right:14px;height:104px;border-radius:22px;background:rgba(255,255,255,.94);display:flex;gap:12px;padding:14px}
+.note .ap{width:44px;height:44px;border-radius:11px;background:#0d1b3e;color:#34d5a0;font:900 13px "Inter Display";letter-spacing:.04em;display:grid;place-items:center;flex:none}
+.note .tx{flex:1;font:500 14px/1.35 Inter;color:#334155}
+.note .tx b{display:flex;justify-content:space-between;font:700 14px Inter;color:#0f172a}
+.note .tx b small{font:500 12px Inter;color:#94a3b8}
+/* step cards */
+.card{position:absolute;left:560px;width:440px;height:170px;border-radius:26px;background:linear-gradient(135deg,rgba(255,255,255,.10),rgba(255,255,255,.04));border:1.5px solid rgba(255,255,255,.12);padding:24px 26px;color:#fff}
+.card .n{font:800 22px Inter;letter-spacing:.14em;color:#34d5a0}
+.card h4{margin-top:10px;font:800 32px/1.12 "Inter Display";letter-spacing:-.02em}
+.card .ck{position:absolute;right:22px;top:20px;width:46px;height:46px;border-radius:50%;background:#34d5a0;display:grid;place-items:center}
+.card .bar{position:absolute;left:26px;bottom:20px;height:4px;width:120px;border-radius:2px;background:#34d5a0;transform-origin:0 50%}
+/* chips scene A */
+.stat{position:absolute;left:560px;width:440px;height:150px;border-radius:26px;background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.12);padding:22px 26px;color:#fff}
+.stat .k{font:700 20px Inter;letter-spacing:.14em;color:rgba(255,255,255,.7)}
+.stat svg{position:absolute;left:26px;bottom:22px}
+.stat .v{position:absolute;right:26px;top:20px;font:800 30px "Inter Display"}
+.vis{position:absolute;width:46px;height:46px;border-radius:50%;background:#1b3a80;border:2px solid #34d5a0;display:grid;place-items:center;z-index:5}
+/* end card */
+#end{position:absolute;inset:0}
+#endH{position:absolute;left:80px;right:80px;top:560px;text-align:center;color:#fff;font:800 118px/1.02 "Inter Display";letter-spacing:-.045em}
+#endH .m{font-family:Serif;font-style:italic;font-weight:400;color:#34d5a0;letter-spacing:-.01em;font-size:1.1em}
+#cta{position:absolute;left:0;right:0;top:1000px;display:flex;justify-content:center}
+#endSub{position:absolute;left:0;right:0;top:1180px;text-align:center;color:rgba(255,255,255,.75);font:500 38px Inter}
+#endSub b{color:#fff}
+#endLogo{position:absolute;left:50%;top:1340px;height:52px;transform:translateX(-50%)}
+#wave{position:absolute;left:0;top:1420px}
+</style></head><body>
+<div id="stage">
+  <div class="dots"></div>
+  <div id="rig">
+    <img id="logo" src="../assets/logo_white.png">
+    <div class="tagt" id="tag">GROWTH</div>
+
+    <!-- headline A -->
+    <div class="hl" id="hA" style="top:300px">
+      <div class="mask"><span id="hA1"><span class="wd">Want</span> <span class="wd">more</span> <span class="wd">sales?</span></span></div>
+      <div class="mask" style="font-size:66px;line-height:1.1;margin-top:18px;letter-spacing:-.035em"><span id="hA2"><span class="wd">You</span> <span class="wd">might</span> <span class="wd">not</span> <span class="wd">need</span> <span class="wd m">more visitors.</span></span></div>
+    </div>
+    <!-- headline B -->
+    <div class="hl" id="hB" style="top:300px">
+      <div class="mask"><span id="hB1"><span class="wd">What</span> <span class="wd">growing</span> <span class="wd">stores</span></span></div>
+      <div class="mask"><span id="hB2"><span class="wd">get</span> <span class="wd m">right.</span></span></div>
+    </div>
+
+    <!-- scene A stats -->
+    <div class="stat hide" id="stV" style="top:700px"><div class="k">VISITORS</div><div class="v" style="color:#34d5a0">↑</div>
+      <svg width="388" height="60" viewBox="0 0 388 60"><path id="lnV" d="M2 54 C70 50 110 44 160 36 S260 18 386 6" fill="none" stroke="#34d5a0" stroke-width="5" stroke-linecap="round"/></svg></div>
+    <div class="stat hide" id="stO" style="top:880px"><div class="k">ORDERS</div><div class="v" style="color:rgba(255,255,255,.55)">→</div>
+      <svg width="388" height="60" viewBox="0 0 388 60"><path id="lnO" d="M2 44 C100 46 200 42 386 45" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="5" stroke-linecap="round" stroke-dasharray="1 0"/></svg></div>
+    <div class="abs hide" id="stNote" style="left:560px;top:1060px;width:440px;font:500 30px/1.35 Inter;color:rgba(255,255,255,.78)">More traffic won’t fix a store that doesn’t <b style="color:#fff">turn visitors into customers.</b></div>
+
+    <!-- step cards -->
+    <div class="card hide" id="c1" style="top:640px"><div class="n">01</div><h4>A product page that answers every question</h4><div class="ck">i:check</div><div class="bar"></div></div>
+    <div class="card hide" id="c2" style="top:850px"><div class="n">02</div><h4>Real reviews, right next to the price</h4><div class="ck">i:check</div><div class="bar"></div></div>
+    <div class="card hide" id="c3" style="top:1060px"><div class="n">03</div><h4>A checkout that’s quick on any phone</h4><div class="ck">i:check</div><div class="bar"></div></div>
+    <div class="card hide" id="c4" style="top:1270px"><div class="n">04</div><h4>Emails that bring customers back</h4><div class="ck">i:check</div><div class="bar"></div></div>
+
+    <!-- visitors flowing through (scene A) -->
+    <div id="visitors"></div>
+
+    <!-- phone -->
+    <div id="phoneWrap"><div id="phone"><div id="scr">
+      <div class="island"></div>
+      <div class="sbar"><span>9:41</span><span>●●● ▮</span></div>
+      <div class="addr">🔒 yourstore.com</div>
+      <!-- home -->
+      <div class="view" id="vHome">
+        <div class="nav"><b>NOVA</b><span>i:search i:cart</span></div>
+        <div class="hero"><img src="../assets/hero_woman.png"><h3>New <em>season</em><br>essentials</h3><div class="b">Shop now</div></div>
+        <div class="sect">Best sellers</div>
+        <div class="grid2">
+          <div><div class="im"><img src="../assets/p_bag.png"></div><p>Tan Satchel<span>$129</span></p></div>
+          <div><div class="im"><img src="../assets/p_serum.png"></div><p>Glow Serum Set<span>$48</span></p></div>
+          <div><div class="im"><img src="../assets/p_sneaker.png"></div><p>Court Sneaker<span>$89</span></p></div>
+          <div><div class="im"><img src="../assets/p_dress.png"></div><p>Linen Dress<span>$75</span></p></div>
+        </div>
+      </div>
+      <!-- product -->
+      <div class="view" id="vProd">
+        <div class="nav"><b>NOVA</b><span>i:search i:cart</span></div>
+        <div class="pimg"><img src="../assets/p_bag.png"></div>
+        <div class="ptitle">Tan Leather Satchel</div>
+        <div class="prow"><span class="price">$129.00</span><span class="stars" id="stars"><i>★★★★★</i>Reviews</span></div>
+        <div class="facts">
+          <div class="fact" id="f1"><div class="hlbar"></div><span>Size</span><b>28 × 22 × 10 cm</b></div>
+          <div class="fact" id="f2"><div class="hlbar"></div><span>Delivery</span><b>Ships in 1–2 days</b></div>
+          <div class="fact" id="f3"><div class="hlbar"></div><span>Returns</span><b>Free, 30 days</b></div>
+        </div>
+        <div class="quote" id="quote">“Even nicer in person. Fits my laptop.”<b>✓ Verified customer</b></div>
+        <div class="atc">Add to cart</div>
+      </div>
+      <!-- checkout -->
+      <div class="view" id="vCo">
+        <div class="nav"><b>NOVA</b><span style="font:600 14px Inter;color:#64748b">🔒 Secure checkout</span></div>
+        <div class="cohd">Checkout</div>
+        <div class="express"><div>Express pay</div><div>Pay in 1 tap</div></div>
+        <div class="or">OR PAY BY CARD</div>
+        <div class="field"><div><small>EMAIL</small>maya@email.com</div></div>
+        <div class="field"><div><small>CARD</small>•••• •••• •••• 4242</div><span>🔒</span></div>
+        <div class="guest"><i>i:checks</i>Checkout as guest, no account needed</div>
+        <div class="sum"><span>Total · free shipping</span><b>$129.00</b></div>
+        <div class="pay" id="pay">Pay now · $129.00<div class="ok" id="payOk">i:checkw Order placed</div></div>
+      </div>
+      <!-- lock screen with notifications -->
+      <div class="lock" id="vLock">
+        <div style="position:absolute;left:32px;right:32px;top:16px;display:flex;justify-content:space-between;color:#fff;font:700 16px Inter"><span>9:41</span><span>●●● ▮</span></div><div class="date">Tuesday, 3 weeks later</div>
+        <div class="time">9:41</div>
+        <div class="note" id="n1" style="top:300px"><div class="ap">NOVA</div><div class="tx"><b>NOVA <small>now</small></b>Time for a refill? Your serum is running low. Tap to reorder.</div></div>
+        <div class="note" id="n2" style="top:416px"><div class="ap">NOVA</div><div class="tx"><b>NOVA <small>2d ago</small></b>Thanks for your order, Maya! Here’s what’s new this week.</div></div>
+      </div>
+      <div class="cursor hide" id="cur">CURSOR</div>
+      <div class="ripple hide" id="rip"></div>
+    </div></div></div>
+
+    <!-- end card -->
+    <div id="end">
+      <div id="endH"><span class="wd">Want</span> <span class="wd">to</span> <span class="wd">know</span> <span class="wd">what</span> <span class="wd">your</span> <span class="wd">store</span> <span class="wd">is</span> <span class="wd m">missing?</span></div>
+      <div id="cta"><div class="cta" id="ctaPill">DM us “GROWTH”<span class="arrow">ARROW</span></div></div>
+      <div id="endSub">Free store audit · <b>ecommwave.org</b></div>
+      <img id="endLogo" src="../assets/logo_white.png">
+    </div>
+  </div>
+  <svg id="wave" width="1080" height="260" viewBox="0 0 1080 260">
+    <path id="w1" d="M-20 120 C200 40 380 200 560 120 S900 40 1100 110" fill="none" stroke="#34d5a0" stroke-width="4" opacity=".8"/>
+    <path id="w2" d="M-20 170 C220 90 400 240 600 165 S920 95 1100 160" fill="none" stroke="#34d5a0" stroke-width="2.5" opacity=".4"/>
+  </svg>
+</div>
+<script>
+// ---- icons
+const IC=(d,c,w,sw=2.2)=>`<svg width="${w}" height="${w}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${sw}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const ICONS={search:IC('<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/>','#0d1b3e',21),
+  cart:IC('<path d="M4.5 8.5h15l-1.3 11.2a1.5 1.5 0 01-1.5 1.3H7.3a1.5 1.5 0 01-1.5-1.3z"/><path d="M8.5 11V7a3.5 3.5 0 017 0v4"/>','#0d1b3e',22),
+  check:IC('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#0d1b3e',24,3),
+  checks:IC('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#0d1b3e',14,3.4),
+  checkw:IC('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#ffffff',22,3)};
+document.body.innerHTML=document.body.innerHTML.replace(/i:(search|cart|checks|checkw|check)\b/g,(m,k)=>ICONS[k])
+  .replace('>CURSOR<','><svg viewBox="0 0 24 24" width="40" height="40"><path d="M4 2l15 11.2-6.6 1 3.9 7.6-2.9 1.5-3.9-7.7L4 20.5z" fill="#fff" stroke="#111" stroke-width="1.4" stroke-linejoin="round"/></svg><')
+  .replace('>ARROW<','><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#34d5a0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><');
+
+const { F, C, curve, dur, react, arc, cut, exitTo, spring, wiggle, wipe, trackIn } = MotionKit;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const L=VO.lines.map(l=>l.start);
+window.DUR=VO.dur;
+// word times inside a spoken line, weighted by length
+function wordTimes(i){const ln=VO.lines[i],w=ln.text.split(/\s+/),tot=w.reduce((a,x)=>a+x.length+1.5,0);let acc=0;
+  return w.map(x=>{const t=ln.start+(ln.end-ln.start)*acc/tot;acc+=x.length+1.5;return t;});}
+
+// visitor dots for scene A
+const vbox=$('#visitors');
+for(let i=0;i<7;i++){const d=document.createElement('div');d.className='vis';d.innerHTML=IC('<circle cx="12" cy="8" r="3.6"/><path d="M5 20a7 7 0 0114 0"/>','#34d5a0',24);vbox.appendChild(d);}
+
+const tl=gsap.timeline({paused:true});
+gsap.set('#end, #endH .wd, #ctaPill, #endSub, #endLogo',{autoAlpha:0});
+gsap.set('#hA .wd, #hB .wd',{autoAlpha:0});
+gsap.set('#hB',{autoAlpha:1});
+gsap.set('#vProd, #vCo',{x:402});
+gsap.set('#vLock',{yPercent:-102});
+gsap.set('.vis',{autoAlpha:0});
+gsap.set('#wave',{autoAlpha:.9});
+
+// ---- living hold: slow camera breath on the rig, whole piece
+wiggle(tl,'#rig',{x:5,y:4,rotation:0.15},{freq:0.35,at:0,until:VO.dur,seed:3});
+// phone arrives once (heavy, from below), everything else answers it
+tl.fromTo('#phoneWrap',{y:520},{y:0,duration:dur(520,1.35),ease:C.heavy},0);
+tl.fromTo('#phoneWrap',{rotation:-4},{rotation:0,duration:dur(520,1.35)*1.15,ease:C.land},0.05);
+cut(tl,'#logo',0); cut(tl,'#tag',0);
+
+// ---- line 0: hook, words cut on as spoken
+const w0=wordTimes(0), hA=$$('#hA .wd');
+// "Want more sales?" = words 0..2 ; "You might not need" 3..6 ; "more visitors." 7..8 (one span)
+[0,1,2,3,4,5,6].forEach((k,i)=>cut(tl,hA[i],w0[k]));
+cut(tl,hA[7],w0[7]);
+// stats: visitors line draws up, orders line stays flat (cause and effect: visitors flow, orders don't move)
+const lnV=$('#lnV'),lenV=lnV.getTotalLength(),lnO=$('#lnO'),lenO=lnO.getTotalLength();
+gsap.set(lnV,{strokeDasharray:lenV,strokeDashoffset:lenV});gsap.set(lnO,{strokeDasharray:lenO,strokeDashoffset:lenO});
+arc(tl,'#stV',{x:480,y:30},{x:0,y:0},w0[3]-0.15,{weight:1});cut(tl,'#stV',w0[3]-0.15);
+arc(tl,'#stO',{x:480,y:30},{x:0,y:0},w0[3]-0.15+react(2),{weight:1});cut(tl,'#stO',w0[3]-0.15+react(2));
+tl.fromTo(lnV,{strokeDashoffset:lenV},{strokeDashoffset:0,duration:1.5,ease:C.heavy},w0[3]+0.2);
+tl.fromTo(lnO,{strokeDashoffset:lenO},{strokeDashoffset:0,duration:1.5,ease:curve('m3.standard')},w0[3]+0.3);
+cut(tl,'#stNote',w0[7]);
+// visitors arc into the store and straight back out: they came, nobody bought
+$$('.vis').forEach((v,i)=>{
+  const t0=0.6+i*0.36+(i%3)*0.07, y=760+((i*137)%560);
+  tl.set(v,{autoAlpha:1,left:0,top:0},t0);
+  arc(tl,v,{x:-60,y:y+60},{x:240,y:y},t0,{duration:0.55});
+  tl.to(v,{x:620,y:y-40-(i%2)*50,duration:0.42,ease:C.leave},t0+0.62);
+  tl.set(v,{autoAlpha:0},t0+1.04);
+});
+
+// ---- line 1: headline swap. A leaves up through its mask (faster than it came), B cuts on with the voice
+const tB=L[1];
+tl.to('#hA1',{yPercent:-115,duration:dur(120,0.65),ease:C.leave},tB-0.12);
+tl.to('#hA2',{yPercent:-115,duration:dur(120,0.65),ease:C.leave},tB-0.12+react(1));
+exitTo(tl,'#stV',{x:560},tB-0.1); exitTo(tl,'#stO',{x:560},tB-0.1+react(1)); exitTo(tl,'#stNote',{x:560},tB-0.1+react(2));
+const w1=wordTimes(1), hB=$$('#hB .wd');
+// "Here's what growing stores get right." -> show "What growing stores / get right." on the matching spoken words
+cut(tl,hB[0],w1[1]);cut(tl,hB[1],w1[2]);cut(tl,hB[2],w1[3]);cut(tl,hB[3],w1[4]);cut(tl,hB[4],w1[5]);
+
+// ---- step card helper: card thrown in on an arc, check springs, bar wipes
+const sp=spring({response:0.42,damping:0.72});
+function step(id,t){
+  cut(tl,id,t);
+  arc(tl,id,{x:520,y:60},{x:0,y:0},t,{weight:1});
+  tl.fromTo(id+' .ck',{scale:0},{scale:1,duration:sp.duration,ease:sp.ease},t+react(3));
+  wipe(tl,id+' .bar',t+react(4),{duration:F(26)});
+}
+
+// ---- line 2: product page. Signature transition: screen push (home -> product), whip
+const t2=L[2];
+tl.fromTo('#vHome',{x:0},{x:-130,duration:F(34),ease:C.whip},t2-0.2);
+tl.fromTo('#vProd',{x:402},{x:0,duration:F(34),ease:C.whip},t2-0.2);
+step('#c1',t2+0.05);
+// facts highlight in turn as "answers every question" is spoken
+const w2=wordTimes(2);
+['#f1','#f2','#f3'].forEach((f,i)=>wipe(tl,f+' .hlbar',w2[4]+react(i,2.2),{duration:F(22)}));
+gsap.set('#stars, #quote',{autoAlpha:0});
+
+// ---- line 3: reviews. The one expressive beat: stars spring in beside the price
+const t3=L[3], sp2=spring({response:0.38,damping:0.62});
+cut(tl,'#stars',t3+0.25);
+tl.fromTo('#stars',{scale:0.2,rotation:-8},{scale:1,rotation:0,duration:sp2.duration,ease:sp2.ease},t3+0.25);
+cut(tl,'#quote',t3+0.9);
+arc(tl,'#quote',{x:0,y:40},{x:0,y:0},t3+0.9,{weight:0.7});
+step('#c2',t3+0.05);
+
+// ---- line 4: checkout. Push to checkout, cursor taps Pay, button fills green
+const t4=L[4];
+tl.fromTo('#vProd',{x:0},{x:-130,duration:F(34),ease:C.whip,immediateRender:false},t4-0.2);
+tl.fromTo('#vCo',{x:402},{x:0,duration:F(34),ease:C.whip},t4-0.2);
+step('#c3',t4+0.05);
+cut(tl,'#cur',t4+0.7);
+arc(tl,'#cur',{x:330,y:560},{x:210,y:760},t4+0.7,{weight:1});
+tl.fromTo('#cur',{scale:1},{scale:0.86,duration:F(6),ease:C.whip,yoyo:true,repeat:1},t4+1.65);
+cut(tl,'#rip',t4+1.7);
+tl.fromTo('#rip',{left:180,top:735,scale:0.3,opacity:1},{scale:1.8,opacity:0,duration:F(30),ease:curve('easings.outCubic')},t4+1.7);
+tl.fromTo('#payOk',{scaleX:0},{scaleX:1,duration:F(20),ease:C.whip},t4+1.75);
+exitTo(tl,'#cur',{y:1100},t4+2.3);
+
+// ---- line 5: follow-up emails. Lock screen drops in, notifications land with reactions
+const t5=L[5], sp3=spring({response:0.45,damping:0.85});
+tl.fromTo('#vLock',{yPercent:-102},{yPercent:0,duration:F(36),ease:C.heavy},t5-0.15);
+gsap.set('#n1, #n2',{autoAlpha:0});
+cut(tl,'#n2',t5+0.55); tl.fromTo('#n2',{y:-120},{y:0,duration:sp3.duration,ease:sp3.ease},t5+0.55);
+cut(tl,'#n1',t5+0.55+react(4)); tl.fromTo('#n1',{y:-120,scale:.96},{y:0,scale:1,duration:sp3.duration,ease:sp3.ease},t5+0.55+react(4));
+step('#c4',t5+0.05);
+
+// ---- line 6: end card. Everything leaves faster than it came (accelerating), end card cuts on with the words
+const t6=L[6];
+exitTo(tl,'#phoneWrap',{y:1300},t6-0.45,{weight:1.2});
+['#c1','#c2','#c3','#c4'].forEach((c,i)=>exitTo(tl,c,{x:620},t6-0.45+react(i)));
+tl.to(['#hB1','#hB2'],{yPercent:-115,duration:dur(120,0.65),ease:C.leave},t6-0.4);
+cut(tl,'#end',t6-0.05);
+const w6=wordTimes(6), we=$$('#endH .wd');
+we.forEach((w,i)=>cut(tl,w,w6[i]));
+// "DM us GROWTH": pill springs up on "DM"
+const tcta=w6[8]-0.05, sp4=spring({response:0.5,damping:0.8});
+cut(tl,'#ctaPill',tcta);
+tl.fromTo('#ctaPill',{scale:0.6,y:60},{scale:1,y:0,duration:sp4.duration,ease:sp4.ease},tcta);
+cut(tl,'#endSub',tcta+react(3));
+cut(tl,'#endLogo',tcta+react(5));
+// wave lines write on under the end card
+['#w1','#w2'].forEach((w,i)=>{const p=$(w),len=p.getTotalLength();gsap.set(p,{strokeDasharray:len,strokeDashoffset:len});
+  tl.fromTo(p,{strokeDashoffset:len},{strokeDashoffset:0,duration:1.6,ease:C.heavy},t6+react(i,2));});
+// bottom wave sits under everything; keep it out of the phone scenes
+gsap.set('#wave',{autoAlpha:0}); cut(tl,'#wave',t6);
+
+tl.set({}, {}, VO.dur);
+function render(t){ tl.seek(t,false); }
+render(0);
+</script>
+</body></html>

@@ -168,6 +168,34 @@ def align(a, text):
         out.append({'w': t.replace('*', ''), 's': round(b[j], 3), 'e': round(b[j + 1], 3), 'hl': hl})
     return out
 
+def rb_stretch(a, sr, factor):
+    """pitch- and formant-preserving tempo change (Rubber Band, high quality). factor > 1 = shorter."""
+    sf.write('/tmp/_rb_in.wav', a.astype(np.float32), sr)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', '/tmp/_rb_in.wav', '-af',
+                    f'rubberband=tempo={factor:.4f}:pitchq=quality:formant=preserved:transients=mixed', '/tmp/_rb_out.wav'], check=True)
+    b, _ = sf.read('/tmp/_rb_out.wav'); return b
+
+def tighten_words(k, a, sr, wt, toks):
+    """Owner feedback: some words come out dragged ("buy" too long). The model has no per-word duration control, so
+    every word whose spoken length is well over what its sounds need is shortened (pitch kept), and all later
+    timings move with it. Expected length = 0.052 s per phoneme + 0.045 s (sentence-final words may be 45 % longer)."""
+    if not wt: return a, wt
+    out = [a[:int(wt[0][0] * sr)]]; new = []; pos = wt[0][0]
+    for j, ((s0, e0), tok) in enumerate(zip(wt, toks)):
+        w = re.sub(r"[^A-Za-z0-9']", '', tok)
+        try: n = len(re.sub(r'[^\w]|[ˈˌːˑ]', '', k.tokenizer.phonemize(w, LANG))) if w else 3
+        except Exception: n = max(2, len(w))
+        final = bool(re.search(r'[.?!]["”*]*$', tok))
+        exp = (0.052 * n + 0.045) * (1.45 if final else 1.0)
+        piece = a[int(s0 * sr):int(e0 * sr)]; d = e0 - s0
+        if d > exp * 1.12 and len(piece) > int(0.06 * sr):
+            f = min(1.7, d / (exp * 1.05)); piece = rb_stretch(piece, sr, f)
+        new.append([pos, pos + len(piece) / sr]); out.append(piece); pos += len(piece) / sr
+        nxt = wt[j + 1][0] if j + 1 < len(wt) else len(a) / sr
+        gap = a[int(e0 * sr):int(nxt * sr)]; out.append(gap); pos += len(gap) / sr
+    b = np.concatenate(out)
+    return b, new
+
 def hl_flags(text):
     """accent flags per word from the script markup: *a phrase* and "a quote" are accented."""
     out = []; inq = inst = False
@@ -221,6 +249,7 @@ def plan_flow(k, spec, out, voice):
         flags = [f for i in g for f in hl_flags(L0[i]['text'])]
         toks = [x for i in g for x in clean(L0[i]['text']).split()]
         a = a.astype(np.float64)
+        if spec.get('tighten', True): a, wt = tighten_words(k, a, sr, wt, toks)
         if spec.get('emphasis', True):          # gentle lift on accent words (with 25 ms ramps)
             gain = np.ones(len(a)); rp = int(0.025 * sr)
             for (x0, x1), f in zip(wt, flags):
@@ -270,7 +299,7 @@ def plan(script, out):
         try: PHON = lambda w: len(re.sub(r'[^\w]', '', k.tokenizer.phonemize(w, LANG)))
         except Exception: PHON = None
     global LANG
-    LANG = spec.get('lang', 'en-us'); voice = spec.get('voice', 'am_michael'); t = LEAD; lines = []
+    LANG = spec.get('lang', 'en-us'); voice = spec.get('voice', 'am_puck'); t = LEAD; lines = []
     if engine == 'kokoro' and spec.get('flow', True):
         lines, t = plan_flow(k, spec, out, voice)
     else:

@@ -30,7 +30,7 @@ The goal is a smooth, believable, professionally recorded commercial voice-over 
 
 ## Accent (owner, 2026-11-26, updated)
 **Simple, neutral English accent** — clear and easy for everyone to understand, not a strong British or regional accent:
-`"lang": "en-us"`, default voice `am_michael` (male). Don't use the British voices unless the owner asks again.
+`"lang": "en-us"`, default voice `am_puck` (male, owner's pick). Don't use the British voices unless the owner asks again.
 Plain, simple words in the script (short sentences, everyday vocabulary).
 
 ## How `tools/voiceover.py` carries this out (don't bypass it)
@@ -47,6 +47,8 @@ Plain, simple words in the script (short sentences, everyday vocabulary).
   Mark only the 1–3 words per line that matter.
 - **Tone**: confident, warm, slightly energetic — pace `"speed"` 1.0–1.1 (default 1.05, ~3 words/sec). Write lines the way
   a person talks; questions as real questions.
+- **No dragged words**: any word spoken longer than its sounds need (e.g. "buy") is shortened automatically with
+  pitch kept (`tighten_words`, owner feedback 2026-11-26).
 - **Consistency**: one voice and ONE fixed voice style for the whole video, one speed, loudness −13 LUFS.
 - Limits of the engine: it can't take free-text acting directions, so tone comes from the voice choice, pace,
   punctuation and accent marks. Write the script for the ear.

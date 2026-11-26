@@ -167,19 +167,46 @@ def align(a, text):
         out.append({'w': t.replace('*', ''), 's': round(b[j], 3), 'e': round(b[j + 1], 3), 'hl': hl})
     return out
 
+def hl_flags(text):
+    """accent flags per word from the script markup: *a phrase* and "a quote" are accented."""
+    out = []; inq = inst = False
+    for j, t in enumerate(text.split()):
+        if t.startswith(('"', '“')): inq = True
+        if t.lstrip('"“').startswith('*'): inst = True
+        out.append(inq or inst)
+        if t.rstrip(',.?!…"”').endswith('*') or t.endswith('*'): inst = False
+        if t.rstrip(',.?!…').endswith(('"', '”')) and (inq or j): inq = False
+    return out
+
+def breath(sr, dur=0.24):
+    """a soft, short inhale (band-limited noise, rise/fall) used only in sentence pauses."""
+    r = np.random.default_rng(11); n = int(dur * sr); tt = np.arange(n) / sr
+    nz = r.normal(0, 1, n + 400)
+    nz = np.convolve(nz, np.ones(6) / 6, 'same') - np.convolve(nz, np.ones(60) / 60, 'same')   # ~band-pass 400-4k
+    env = np.sin(np.pi * np.clip(tt / dur, 0, 1)) ** 1.6 * (0.6 + 0.4 * tt / dur)
+    return nz[200:200 + n] * env
+
+# VOICE DELIVERY (owner's instructions, kit/VOICE.md): pauses follow punctuation exactly.
+COMMA_PAUSE, STOP_PAUSE = 0.16, 0.38    # brief pause at "," ; meaningful pause after "." "?" "!"
+
 def plan_flow(k, spec, out, voice):
-    """NATURAL FLOW (default): speak each section (lines up to the next "hold") as ONE continuous passage, the way a
-    person reads a script, then cut it into lines at the exact word times. No per-line speed forcing (that made words
-    drag and pause). "speed" (default 1.08) sets the overall pace; ~3 words/sec."""
-    speed = float(spec.get('speed', 1.08)); L0 = spec['lines']; groups = [[]]
+    """NATURAL FLOW (default): speak each section (lines up to the next "hold") as ONE continuous passage, exactly as
+    written (no words or punctuation added/removed), then cut it into lines at the exact word times.
+    - commas: brief pause, full stops / question marks: meaningful pause (sizes above), set via the model's timings
+    - one fixed voice style for the whole video (consistent pitch, tone, identity), one speed, continuous prosody
+    - accent words (*...*) get a gentle +2.5 dB lift = natural emphasis; soft breath in sentence pauses
+    "speed" (default 1.05) sets the overall pace (~3 words/sec)."""
+    speed = float(spec.get('speed', 1.05)); L0 = spec['lines']; groups = [[]]
     for i, ln in enumerate(L0):
         groups[-1].append(i)
         if ln.get('hold') and i < len(L0) - 1: groups.append([])
+    vs = k.get_voice_style(voice) if isinstance(voice, str) else voice
+    style = np.repeat(vs[int(spec.get('style_row', 160)):int(spec.get('style_row', 160)) + 1], len(vs), axis=0)  # constant identity
     t = LEAD; lines = [None] * len(L0)
     for g in groups:
-        texts = [clean(L0[i]['text']).strip() for i in g]
-        texts = [x if re.search(r'[.!?…"”]$', x) else x + '.' for x in texts]
-        a, sr, ph = k.create_timed(' '.join(texts), voice=voice, speed=speed, lang='en-us', sentence_pause=0.14, clause_pause=0.06)
+        text = ' '.join(clean(L0[i]['text']).strip() for i in g)
+        try: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang='en-us', sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE, continuous=True)
+        except Exception: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang='en-us', sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE)
         wt = []; cur = None
         for p in ph:
             if p.phoneme == ' ':
@@ -189,24 +216,44 @@ def plan_flow(k, spec, out, voice):
             cur = [p.start, p.end] if cur is None else [cur[0], p.end]
         if cur: wt.append(cur)
         counts = [len(L0[i]['text'].split()) for i in g]
-        if len(wt) != sum(counts): raise RuntimeError(f'word/phoneme mismatch in section starting line {g[0]} ({len(wt)} vs {sum(counts)}): simplify numbers/symbols in the text')
+        if len(wt) != sum(counts): raise RuntimeError(f'word/phoneme mismatch in section starting line {g[0]} ({len(wt)} vs {sum(counts)}): write numbers/symbols as words')
+        flags = [f for i in g for f in hl_flags(L0[i]['text'])]
+        toks = [x for i in g for x in clean(L0[i]['text']).split()]
+        a = a.astype(np.float64)
+        if spec.get('emphasis', True):          # gentle lift on accent words (with 25 ms ramps)
+            gain = np.ones(len(a)); rp = int(0.025 * sr)
+            for (x0, x1), f in zip(wt, flags):
+                if not f: continue
+                s0, s1 = int(x0 * sr), int(x1 * sr); seg = np.ones(s1 - s0) * 10 ** (2.5 / 20)
+                r = min(rp, len(seg) // 2)
+                if r: seg[:r] = np.linspace(1, seg[0], r); seg[-r:] = np.linspace(seg[0], 1, r)
+                gain[s0:s1] = np.maximum(gain[s0:s1], seg)
+            a = a * gain
+        if spec.get('breaths', True):           # soft breath before a new sentence when the pause is long enough
+            pk = np.abs(a).max(); br = breath(sr)
+            for j in range(1, len(wt)):
+                if re.search(r'[.?!]["”]?$', toks[j - 1]) and wt[j][0] - wt[j - 1][1] >= 0.3:
+                    e0 = int((wt[j][0] - 0.05) * sr); s0 = e0 - len(br)
+                    if s0 > int(wt[j - 1][1] * sr): a[s0:e0] += br / np.abs(br).max() * pk * 10 ** (-34 / 20)
         a = np.interp(np.arange(0, len(a), sr / SR), np.arange(len(a)), a)
         head = max(0.0, wt[0][0] - 0.03); gend = min(len(a) / SR, wt[-1][1] + 0.08)
         pos = 0
         for n, i in enumerate(g):
             w = wt[pos:pos + counts[n]]; pos += counts[n]
-            seg_s = max(head, w[0][0] - 0.03)
-            seg_e = (wt[pos][0] - 0.03) if n < len(g) - 1 else gend
+            seg_s = max(head, w[0][0] - 0.03) if n == 0 else lines[g[n - 1]]['_cut']
+            seg_e = (wt[pos][0] - 0.30 if n < len(g) - 1 else gend)
+            if n < len(g) - 1: seg_e = max(seg_e, w[-1][1] + 0.02)
             seg = a[int(seg_s * SR):int(seg_e * SR)]
             sf.write(f'{out}/line{i}.wav', seg.astype(np.float32), SR)
             off = t + seg_s - head
-            al = align(seg, L0[i]['text'])
-            words = [dict(x, s=round(t + y0 - head, 3), e=round(t + y1 - head, 3)) for x, (y0, y1) in zip(al, w)]
+            words = [{'w': x.replace('*', ''), 's': round(t + y0 - head, 3), 'e': round(t + y1 - head, 3), 'hl': f}
+                     for x, (y0, y1), f in zip(L0[i]['text'].split(), w, hl_flags(L0[i]['text']))]
             spoken = w[-1][1] - w[0][0]
             lines[i] = {'start': round(off, 3), 'end': round(off + len(seg) / SR, 3), 'text': clean(L0[i]['text']),
                         'wps': round(counts[n] / max(spoken, 0.3), 2), 'words': words, 'chapter': L0[i].get('chapter'),
-                        'hold': round(min(MAX_HOLD, float(L0[i].get('hold', 0))), 2), 'timing': 'exact'}
+                        'hold': round(min(MAX_HOLD, float(L0[i].get('hold', 0))), 2), 'timing': 'exact', '_cut': seg_e}
         t += (gend - head) + (lines[g[-1]]['hold'] or GAP)
+    for l in lines: l.pop('_cut', None)
     return lines, t
 
 def plan(script, out):

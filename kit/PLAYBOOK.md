@@ -121,6 +121,8 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
 - Save `cover.html` + `prefix_cover.jpg` in the post folder. In the log, add "designed cover" to the Topic.
 - Image posts and carousels are unchanged.
 
+**VOICE-OVER DELIVERY: follow `VOICE.md` (owner's instructions: exactly as written, punctuation = pauses/intonation, natural flow, breathing, emphasis, consistent voice).**
+
 **REEL STYLE — REQUIRED for every Reel (owner, 2026-11-26: "everything in that video in mine… match the same way").**
 Reference: the owner's word-synced reel (two phones "A or B", chapters THE SETUP / THE STUDY / PICTURE THIS). Working
 example to copy: `work_reel_demo/` (`script.json` + `reel.html`, final `final.mp4`). Engine: `reel.js` + `tools/voiceover.py`.

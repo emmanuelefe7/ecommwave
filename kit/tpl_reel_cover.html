@@ -1,27 +1,94 @@
 <!doctype html><html><head><meta charset="utf-8">
 <link rel="stylesheet" href="common.css">
 <style>
+/* REEL COVER template (owner, 2026-11-26): ONE big illustration that SHOWS the video's idea as a visual metaphor,
+   a short punchy headline (<= 6 words), logo, nothing else. Simple, professional, captivating.
+   Everything important inside the centre 3:4 zone (y 240-1680), >= 80 px from its edges.
+   Two examples below (#cover = A). Copy one, change the headline and draw the metaphor for your topic. */
 html,body{width:auto!important;height:auto!important;overflow:visible!important;background:#777}
-/* NAVY reel cover template: everything important sits in the centre 3:4 zone (y 240-1680) */
-#cover{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"Inter";
- background:radial-gradient(900px 800px at 100% 10%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(900px 800px at 0% 95%,#173a80 0%,rgba(23,58,128,0) 70%),#0a1a47}
-.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1.6px,transparent 1.7px);background-size:36px 36px}
-.kick{font:700 28px "Inter";letter-spacing:.16em;color:#34d5a0;text-transform:uppercase}
-.hl{font:800 116px/1.0 "Inter Display";letter-spacing:-.045em;color:#fff;margin-top:22px}
-.hl em{font-family:"Serif";font-style:italic;font-weight:400;color:#34d5a0;font-size:1.1em;letter-spacing:-.01em}
-.play{position:absolute;display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.25);color:#fff;font:700 26px Inter;padding:12px 24px 12px 14px;border-radius:999px}
-.play i{width:40px;height:40px;border-radius:50%;background:#34d5a0;display:grid;place-items:center}
+.cv{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"Inter";
+ background:radial-gradient(700px 700px at 50% 62%,#1d4fa3 0%,rgba(29,79,163,0) 72%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),#0a1a47}
+.cv .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.logo{position:absolute;left:50%;top:330px;height:50px;transform:translateX(-50%)}
+.hl{position:absolute;left:90px;right:90px;top:430px;text-align:center;font:900 112px/.98 "Inter Display";letter-spacing:-.05em;color:#fff;text-transform:uppercase}
+.hl em{display:block;font-family:"Serif";font-style:italic;font-weight:400;text-transform:none;color:#34d5a0;font-size:1.05em;letter-spacing:-.01em}
+.small{position:absolute;left:0;right:0;top:1560px;text-align:center;font:700 30px Inter;color:rgba(255,255,255,.85)}
+.small b{color:#34d5a0}
 </style></head><body>
-<div id="cover"><div class="dots"></div>
-  <img src="assets/logo_white.png" style="position:absolute;left:100px;top:340px;height:52px">
-  <div style="position:absolute;left:100px;top:450px;width:880px">
-    <div class="kick">Store owners, watch this</div>
-    <div class="hl">Can customers spot your <em>Add to cart?</em></div>
-  </div>
-  <div style="position:absolute;left:520px;top:1010px;width:420px;height:520px">
-    <div style="position:absolute;left:22px;top:22px;right:-22px;bottom:-22px;border-radius:210px 210px 30px 30px;background:#34d5a0"></div>
-    <div style="position:absolute;inset:0;border-radius:210px 210px 30px 30px;overflow:hidden;background:#d9e3ef"><img src="assets/man.png" style="position:absolute;left:50%;bottom:0;height:560px;transform:translateX(-50%)"></div>
-  </div>
-  <div class="play" style="left:100px;top:1100px"><i><svg width="18" height="18" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z" fill="#0a1a47"/></svg></i>Watch the fix</div>
-  <div style="position:absolute;left:100px;top:1500px;font:700 28px Inter;color:rgba(255,255,255,.8)">ecommwave.org</div>
-</div></body></html>
+
+<!-- A: "Can customers find your Add to cart?" -> a giant magnifier finds a glowing Add to cart button -->
+<div id="cover" class="cv"><div class="dots"></div>
+  <img class="logo" src="assets/logo_white.png">
+  <div class="hl">Can they find your <em>Add to cart?</em></div>
+  <svg style="position:absolute;left:0;top:780px" width="1080" height="760" viewBox="0 0 1080 760">
+    <defs>
+      <radialGradient id="lens" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#ffffff" stop-opacity=".22"/><stop offset="1" stop-color="#ffffff" stop-opacity=".04"/></radialGradient>
+      <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8eef8"/><stop offset="1" stop-color="#9fb0cc"/></linearGradient>
+      <linearGradient id="hdl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#34d5a0"/><stop offset="1" stop-color="#1aa77a"/></linearGradient>
+      <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="22"/></filter>
+      <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="30" stdDeviation="30" flood-color="#000" flood-opacity=".45"/></filter>
+      <clipPath id="lc"><circle cx="470" cy="330" r="230"/></clipPath>
+    </defs>
+    <!-- faded clutter outside the lens: what customers see -->
+    <g opacity=".28" fill="#8fa3c7">
+      <rect x="110" y="110" width="200" height="26" rx="13"/><rect x="110" y="160" width="140" height="26" rx="13"/>
+      <rect x="760" y="140" width="220" height="26" rx="13"/><rect x="800" y="190" width="160" height="26" rx="13"/>
+      <rect x="120" y="560" width="180" height="56" rx="16"/><rect x="780" y="520" width="190" height="56" rx="16"/>
+      <circle cx="880" cy="380" r="34"/><circle cx="160" cy="360" r="26"/>
+    </g>
+    <!-- inside the lens: the button, big and clear -->
+    <g clip-path="url(#lc)">
+      <circle cx="470" cy="330" r="230" fill="#0f2557"/>
+      <rect x="290" y="270" width="360" height="120" rx="60" fill="#34d5a0" filter="url(#glow)" opacity=".7"/>
+      <rect x="290" y="270" width="360" height="120" rx="60" fill="#34d5a0"/>
+      <g transform="translate(322 304)" fill="none" stroke="#0a1a47" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="52" r="5"/><circle cx="44" cy="52" r="5"/><path d="M0 4h9l7 34h32l7-24H13"/></g>
+      <text x="532" y="344" text-anchor="middle" font-family="Inter Display" font-weight="800" font-size="40" letter-spacing="-1" fill="#0a1a47">Add to cart</text>
+      <circle cx="470" cy="330" r="230" fill="url(#lens)"/>
+      <path d="M330 200 A200 200 0 0 1 520 130" stroke="#fff" stroke-opacity=".45" stroke-width="16" fill="none" stroke-linecap="round"/>
+    </g>
+    <!-- rim + handle -->
+    <g filter="url(#sh)">
+      <circle cx="470" cy="330" r="244" fill="none" stroke="url(#rim)" stroke-width="30"/>
+      <path d="M648 508 L800 660" stroke="url(#rim)" stroke-width="40" stroke-linecap="round"/>
+      <path d="M700 560 L860 720" stroke="url(#hdl)" stroke-width="64" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="small">Watch: <b>3 quick fixes</b> · ecommwave.org</div>
+</div>
+
+<!-- B: "Ads running, no orders?" -> a leaky bucket: visitors pour in, orders leak out -->
+<div id="coverB" class="cv" style="margin-top:40px"><div class="dots"></div>
+  <img class="logo" src="assets/logo_white.png">
+  <div class="hl">Ads running. <em>No orders?</em></div>
+  <svg style="position:absolute;left:0;top:760px" width="1080" height="800" viewBox="0 0 1080 800">
+    <defs>
+      <linearGradient id="bk" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#3356b0"/><stop offset=".55" stop-color="#22418c"/><stop offset="1" stop-color="#162a5c"/></linearGradient>
+      <filter id="sh2" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="30" stdDeviation="30" flood-color="#000" flood-opacity=".45"/></filter>
+      <filter id="gl2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"/></filter>
+    </defs>
+    <!-- visitors pouring in (cursors falling into the bucket) -->
+    <g fill="#fff"><g transform="translate(470 110) rotate(170)" opacity="0.95"><path d="M0 0 L0 54 L14 41 L24 64 L34 59 L24 37 L42 37 Z"/></g><g transform="translate(580 80) rotate(195)" opacity="0.95"><path d="M0 0 L0 54 L14 41 L24 64 L34 59 L24 37 L42 37 Z"/></g><g transform="translate(530 200) rotate(180)" opacity="0.95"><path d="M0 0 L0 54 L14 41 L24 64 L34 59 L24 37 L42 37 Z"/></g><g transform="translate(640 190) rotate(205)" opacity="0.75"><path d="M0 0 L0 54 L14 41 L24 64 L34 59 L24 37 L42 37 Z"/></g><g transform="translate(420 210) rotate(160)" opacity="0.75"><path d="M0 0 L0 54 L14 41 L24 64 L34 59 L24 37 L42 37 Z"/></g><g transform="translate(700 110) rotate(210)" opacity="0.75"><path d="M0 0 L0 54 L14 41 L24 64 L34 59 L24 37 L42 37 Z"/></g></g>
+    <!-- bucket -->
+    <g filter="url(#sh2)">
+      <ellipse cx="540" cy="250" rx="250" ry="50" fill="#0b1638"/>
+      <path d="M290 250 L350 640 Q540 700 730 640 L790 250 Q540 310 290 250Z" fill="url(#bk)"/>
+      <ellipse cx="540" cy="250" rx="250" ry="50" fill="none" stroke="#c9d4e8" stroke-width="14"/>
+      <path d="M360 330 L372 600" stroke="#fff" stroke-opacity=".12" stroke-width="22" stroke-linecap="round"/>
+    </g>
+    <!-- leaks (mint) with tiny carts falling out -->
+    <g fill="#34d5a0">
+      <circle cx="430" cy="470" r="14" fill="#0a1a47"/><circle cx="600" cy="540" r="14" fill="#0a1a47"/><circle cx="690" cy="420" r="13" fill="#0a1a47"/>
+      <path d="M430 484 Q410 560 370 620" stroke="#34d5a0" stroke-width="10" fill="none" stroke-linecap="round" filter="url(#gl2)"/>
+      <path d="M430 484 Q410 560 370 620" stroke="#34d5a0" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M600 554 Q610 630 650 700" stroke="#34d5a0" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <path d="M704 425 Q790 470 850 560" stroke="#34d5a0" stroke-width="10" fill="none" stroke-linecap="round"/>
+    </g>
+    <g fill="none" stroke="#34d5a0" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+      <g transform="translate(320 650) rotate(-18)"><circle cx="13" cy="40" r="4"/><circle cx="33" cy="40" r="4"/><path d="M0 4h7l6 26h24l6-18H11"/></g>
+      <g transform="translate(660 715) rotate(14)"><circle cx="13" cy="40" r="4"/><circle cx="33" cy="40" r="4"/><path d="M0 4h7l6 26h24l6-18H11"/></g>
+      <g transform="translate(860 575) rotate(24)"><circle cx="13" cy="40" r="4"/><circle cx="33" cy="40" r="4"/><path d="M0 4h7l6 26h24l6-18H11"/></g>
+    </g>
+  </svg>
+  <div class="small">Watch: <b>plug the leaks</b> · ecommwave.org</div>
+</div>
+</body></html>

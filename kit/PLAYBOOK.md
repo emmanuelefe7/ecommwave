@@ -124,7 +124,7 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
 **REEL STYLE — REQUIRED for every Reel (owner, 2026-11-26: "everything in that video in mine… match the same way").**
 Reference: the owner's word-synced reel (two phones "A or B", chapters THE SETUP / THE STUDY / PICTURE THIS). Working
 example to copy: `work_reel_demo/` (`script.json` + `reel.html`, final `final.mp4`). Engine: `reel.js` + `tools/voiceover.py`.
-- **Voice**: fast, conversational, ~3 words/sec, lines almost back to back (0.15 s gaps). Short lines (3–8 words), 9–12
+- **Voice**: fast, conversational, ~3 words/sec. The voice tool speaks each section as ONE continuous passage (natural flow, like a person reading — never line by line, which made words drag and pause; owner feedback 2026-11-26) and cuts it into lines at the exact word times; pace via `"speed"` (default 1.08), never force each line's speed. Loudness −13 LUFS. Short lines (3–8 words), 9–12
   lines, 20–30 s. Write like a person talks ("Sounds smart, right?", "Now picture this."). Kokoro is the default engine
   because it gives EXACT word timings (from the model's own phoneme durations).
 - **Captions**: word-by-word, every word appears exactly when it's spoken (rise + blur-in), centred under the visual

@@ -167,6 +167,48 @@ def align(a, text):
         out.append({'w': t.replace('*', ''), 's': round(b[j], 3), 'e': round(b[j + 1], 3), 'hl': hl})
     return out
 
+def plan_flow(k, spec, out, voice):
+    """NATURAL FLOW (default): speak each section (lines up to the next "hold") as ONE continuous passage, the way a
+    person reads a script, then cut it into lines at the exact word times. No per-line speed forcing (that made words
+    drag and pause). "speed" (default 1.08) sets the overall pace; ~3 words/sec."""
+    speed = float(spec.get('speed', 1.08)); L0 = spec['lines']; groups = [[]]
+    for i, ln in enumerate(L0):
+        groups[-1].append(i)
+        if ln.get('hold') and i < len(L0) - 1: groups.append([])
+    t = LEAD; lines = [None] * len(L0)
+    for g in groups:
+        texts = [clean(L0[i]['text']).strip() for i in g]
+        texts = [x if re.search(r'[.!?…"”]$', x) else x + '.' for x in texts]
+        a, sr, ph = k.create_timed(' '.join(texts), voice=voice, speed=speed, lang='en-us', sentence_pause=0.14, clause_pause=0.06)
+        wt = []; cur = None
+        for p in ph:
+            if p.phoneme == ' ':
+                if cur: wt.append(cur); cur = None
+                continue
+            if p.phoneme in ',.!?;:…"“”': continue
+            cur = [p.start, p.end] if cur is None else [cur[0], p.end]
+        if cur: wt.append(cur)
+        counts = [len(L0[i]['text'].split()) for i in g]
+        if len(wt) != sum(counts): raise RuntimeError(f'word/phoneme mismatch in section starting line {g[0]} ({len(wt)} vs {sum(counts)}): simplify numbers/symbols in the text')
+        a = np.interp(np.arange(0, len(a), sr / SR), np.arange(len(a)), a)
+        head = max(0.0, wt[0][0] - 0.03); gend = min(len(a) / SR, wt[-1][1] + 0.08)
+        pos = 0
+        for n, i in enumerate(g):
+            w = wt[pos:pos + counts[n]]; pos += counts[n]
+            seg_s = max(head, w[0][0] - 0.03)
+            seg_e = (wt[pos][0] - 0.03) if n < len(g) - 1 else gend
+            seg = a[int(seg_s * SR):int(seg_e * SR)]
+            sf.write(f'{out}/line{i}.wav', seg.astype(np.float32), SR)
+            off = t + seg_s - head
+            al = align(seg, L0[i]['text'])
+            words = [dict(x, s=round(t + y0 - head, 3), e=round(t + y1 - head, 3)) for x, (y0, y1) in zip(al, w)]
+            spoken = w[-1][1] - w[0][0]
+            lines[i] = {'start': round(off, 3), 'end': round(off + len(seg) / SR, 3), 'text': clean(L0[i]['text']),
+                        'wps': round(counts[n] / max(spoken, 0.3), 2), 'words': words, 'chapter': L0[i].get('chapter'),
+                        'hold': round(min(MAX_HOLD, float(L0[i].get('hold', 0))), 2), 'timing': 'exact'}
+        t += (gend - head) + (lines[g[-1]]['hold'] or GAP)
+    return lines, t
+
 def plan(script, out):
     os.makedirs(out, exist_ok=True); spec = json.load(open(script))
     engine = spec.get('engine', 'kokoro'); m = None   # kokoro = exact word timings
@@ -180,12 +222,15 @@ def plan(script, out):
         try: PHON = lambda w: len(re.sub(r'[^\w]', '', k.tokenizer.phonemize(w, 'en-us')))
         except Exception: PHON = None
     voice = spec.get('voice', 'af_heart'); t = LEAD; lines = []
-    for i, ln in enumerate(spec['lines']):
+    if engine == 'kokoro' and spec.get('flow', True):
+        lines, t = plan_flow(k, spec, out, voice)
+    else:
+      for i, ln in enumerate(spec['lines']):
         txt = clean(ln['text'])
         a, wps, wt = synth_cb(m, txt, spec) if m is not None else synth(k, txt, voice)
         sf.write(f'{out}/line{i}.wav', a.astype(np.float32), SR)
         L = len(a) / SR
-        al = align(a, ln['text'])                       # markup (accent words) + fallback timing
+        al = align(a, ln['text'])
         if wt: al = [dict(w, s=round(x, 3), e=round(y, 3)) for w, (x, y) in zip(al, wt)]; src = 'exact'
         else: src = 'estimated'
         words = [dict(w, s=round(t + w['s'], 3), e=round(t + w['e'], 3)) for w in al]
@@ -216,8 +261,12 @@ def check(p, vid_dur):
     errs = []; lines = p['lines']
     if abs(vid_dur - p['dur']) > 0.15: errs.append(f'video is {vid_dur:.2f}s but the voiceover plan is {p["dur"]}s: set window.DUR = VO.dur')
     if lines[0]['start'] > 0.5: errs.append('first word starts later than 0.5s')
+    words = sum(len(l['words']) for l in lines); spoken = sum(l['words'][-1]['e'] - l['words'][0]['s'] for l in lines)
+    flow = all(l.get('timing') == 'exact' for l in lines)
+    if flow and not 2.6 <= words / spoken <= 3.8: errs.append(f'overall pace {words/spoken:.2f} w/s (needs 2.6-3.8): adjust "speed"')
     for i, l in enumerate(lines):
-        if not 2.5 <= l['wps'] <= 3.5: errs.append(f'line {i} pace {l["wps"]} w/s (needs 2.5-3.5): rewrite it shorter/longer')
+        if flow: pass
+        elif not 2.5 <= l['wps'] <= 3.5: errs.append(f'line {i} pace {l["wps"]} w/s (needs 2.5-3.5): rewrite it shorter/longer')
         if i and not lines[i-1].get('hold') and l['start'] - lines[i-1]['end'] > 0.5: errs.append(f'silent gap of {l["start"]-lines[i-1]["end"]:.2f}s before line {i}')
     if vid_dur - lines[-1]['end'] > 1.2: errs.append(f'{vid_dur-lines[-1]["end"]:.2f}s of silence at the end')
     cov = sum(l['end'] - l['start'] for l in lines) / (vid_dur - sum(l.get('hold', 0) for l in lines))
@@ -264,9 +313,13 @@ def mix(out, vid, final):
     for c in p.get('cues', []):
         a = sfx(c['sfx']); s0 = int(c['t'] * SR); e = min(n, s0 + len(a))
         if 0 <= s0 < n: fx[s0:e] += a[:e - s0]
-    mixd += fx * 0.8
+    mixd += fx * 0.6
     sf.write('/tmp/vo_raw.wav', mixd.astype(np.float32), SR)
-    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', '/tmp/vo_raw.wav', '-af', 'highpass=f=80,acompressor=threshold=-18dB:ratio=3:attack=5:release=120,loudnorm=I=-14:TP=-1.5:LRA=9', '-ac', '2', '-ar', '48000', '/tmp/vo.wav'], check=True)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', '/tmp/vo_raw.wav', '-af', 'highpass=f=80,acompressor=threshold=-18dB:ratio=3:attack=5:release=120,loudnorm=I=-13.5:TP=-1.0:LRA=8', '-ac', '2', '-ar', '48000', '/tmp/vo.wav'], check=True)
+    meas = subprocess.run(['ffmpeg', '-i', '/tmp/vo.wav', '-af', 'ebur128', '-f', 'null', '-'], capture_output=True, text=True).stderr
+    I = float(re.findall(r'I:\s+(-?[\d.]+) LUFS', meas)[-1]); gain = -13.0 - I   # second pass: land on -13 LUFS (reference ~-14)
+    subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', '/tmp/vo.wav', '-af', f'volume={gain:.2f}dB,alimiter=limit=0.93:level=false', '/tmp/vo2.wav'], check=True)
+    os.replace('/tmp/vo2.wav', '/tmp/vo.wav')
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', vid, '-i', '/tmp/vo.wav', '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', final + '.tmp.mp4'], check=True)
     os.replace(final + '.tmp.mp4', final)
     print(f'ok {final}  (speech covers {cov*100:.0f}% of {vd:.1f}s)')

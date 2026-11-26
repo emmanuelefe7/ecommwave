@@ -21,7 +21,7 @@ Every post must open with a strong hook aimed at Shopify / online STORE OWNERS: 
 ## 1. Account and tools
 - Instagram account: **@ecommwaveagency**, Windsor.ai connector `instagram`, account id `17841480747517150`.
   - Carousel: action `create_carousel_post` with `items` (each `image_url` + `alt_text`) and `caption`.
-  - Video (posts as a Reel): action `create_video_post` with `video_url`, `caption`, `share_to_feed: true`, `thumb_offset` (ms of a frame where the headline is fully shown, never 0).
+  - Video (posts as a Reel): action `create_video_post` with `video_url`, `caption`, `share_to_feed: true`, `cover_url` (a designed cover JPEG, REQUIRED — see “Reel covers” in §4; never thumb_offset).
   - Media must be at a public URL. Host it in GitHub repo `emmanuelefe7/ecommwave`, branch `instagram-media` (public). URL pattern:
     `https://raw.githubusercontent.com/emmanuelefe7/ecommwave/instagram-media/<path>`. Push, wait ~5 s, and `curl -sI` the URL: it must return HTTP 200 before you post.
 - This kit lives in `kit/` on that branch. Work inside `kit/` so relative paths (`common.css`, `common.js`, `assets/`, `fonts/`) resolve.
@@ -109,6 +109,14 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
 
 ## 4. Format specs
 **Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping cover in the post's look (NAVY §3b or LIGHT §3c), slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (in the post's look, woman or man photo in the arch like the template). Each slide gets alt text when posting.
+
+**Reel covers (owner's rule, 2026-11-26 — REQUIRED for every Reel):** on the profile grid a Reel must show a DESIGNED COVER IMAGE, not a frame of the video; the animated video plays when someone taps it (this is what makes the profile look professional). For every Reel:
+- Build a separate cover page with `#cover` 1080×1920 in the SAME template/look as the other posts of its row (NAVY §3b or LIGHT §3c): one bold hook headline (≤ 9 words, same words as the video's hook) with the serif mint accent, one focal visual (brand photo in the arch, phone/UI card or illustration), small logo. It must read as a finished post on its own.
+- The grid shows only the centre 3:4 area (1080×1440, y 240–1680): put the headline, face and key visual fully inside it, ≥ 80 px from its edges; above/below that area only background.
+- Starting point: `tpl_reel_cover.html` (NAVY cover; make a LIGHT one in the §3c look when the row slot is light). Render with `python3 tools/render_cover.py cover.html out_dir prefix` → `prefix_cover.jpg` + `prefix_cover_grid.jpg`; LOOK at the grid crop next to the row's other tiles (they should look like one consistent set).
+- Host `prefix_cover.jpg` with the video, check it returns 200, and publish with `create_video_post` using `cover_url` = that JPEG (do NOT pass `thumb_offset`; the two can't be combined), `share_to_feed: true`.
+- Save `cover.html` + `prefix_cover.jpg` in the post folder. In the log, add "designed cover" to the Topic.
+- Image posts and carousels are unchanged.
 
 **Videos**: 1080×1920, 30 fps, 15–22 s, ALWAYS with voiceover. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook → animated realistic UI demo that SHOWS the point → end card with CTA. Crossfades: keep the old scene at opacity 1 and fade the new scene in on top (never scale/shrink the old scene, never dip to black).
 

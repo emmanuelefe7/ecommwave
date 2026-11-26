@@ -40,6 +40,8 @@ understand, and not all users see all 6 posts at once."** Never again split one 
 - Do NOT repeat the 2026-11-25 "4-fix path" or 2026-11-26 "comeback path" style (one story split into numbered tiles) —
   the owner rejected it.
 
+**Every Reel in any row gets a designed cover image (PLAYBOOK §4 “Reel covers”): the grid shows the cover in the row's template, the video plays on tap.**
+
 ## SIMILAR-3 (1 row)
 - 3 posts built from ONE template (same layout, colors, headline style, decoration positions) so the row looks like a set,
   but each says something different (e.g. 3 quick tips, 3 services, 3 mistakes, problem/solution/result, 3 questions).

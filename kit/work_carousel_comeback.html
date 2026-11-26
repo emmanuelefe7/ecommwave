@@ -1,0 +1,188 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="common.css">
+<script src="common.js"></script>
+<style>
+html,body{width:auto!important;height:auto!important;overflow:visible!important;background:#777;margin:0}
+#pano{position:relative;width:6480px;height:1350px;overflow:hidden;font-family:"Inter";
+ background:radial-gradient(1100px 900px at 1080px 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(1000px 800px at 0% 1350px,#173a80 0%,rgba(23,58,128,0) 70%),radial-gradient(1100px 900px at 3600px 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(1000px 800px at 2700px 1350px,#123f6e 0%,rgba(18,63,110,0) 70%),radial-gradient(1100px 900px at 6480px 1350px,#11306b 0%,rgba(17,48,107,0) 70%),radial-gradient(900px 700px at 5000px 0%,#145466 0%,rgba(20,84,102,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1.6px,transparent 1.7px);background-size:36px 36px}
+.t{position:absolute;width:1080px;height:1350px}
+.kick{font:700 26px "Inter";letter-spacing:.16em;color:#34d5a0;text-transform:uppercase}
+.hl{font:800 92px/1.02 "Inter Display";letter-spacing:-.045em;color:#fff;margin-top:22px}
+.hl em{font-family:"Serif";font-style:italic;font-weight:400;color:#34d5a0;font-size:1.1em;letter-spacing:-.01em}
+.sub{font:500 32px/1.35 "Inter";color:rgba(255,255,255,.72);margin-top:22px}
+.card{position:absolute;background:#fff;border-radius:30px;box-shadow:0 40px 90px rgba(0,0,0,.45);font-family:"Inter";color:#0f172a}
+.chip{display:inline-flex;align-items:center;gap:14px;background:#fff;color:#0d1b3e;font:700 27px "Inter";padding:13px 26px 13px 13px;border-radius:999px;box-shadow:0 18px 40px rgba(0,0,0,.3)}
+.chip .ck{width:42px;height:42px;border-radius:50%;background:#0f2557;display:grid;place-items:center}
+.node{position:absolute;width:104px;height:104px;margin:-52px 0 0 -52px;border-radius:50%;background:#0a1a47;border:7px solid #34d5a0;box-shadow:0 0 0 12px rgba(52,213,160,.14),0 0 50px rgba(52,213,160,.55);display:grid;place-items:center;font:800 40px "Inter Display";color:#34d5a0;box-sizing:border-box}
+.node.small{font:800 22px "Inter";letter-spacing:.08em}
+.nlab{position:absolute;font:700 24px "Inter";letter-spacing:.14em;color:rgba(255,255,255,.65);text-transform:uppercase}
+.cta2{display:inline-flex;align-items:center;gap:22px;background:#34d5a0;color:#0d1b3e;font:800 42px "Inter Display";letter-spacing:-.02em;padding:22px 26px 22px 44px;border-radius:999px;box-shadow:0 20px 50px rgba(52,213,160,.35)}
+.cta2 i{width:62px;height:62px;border-radius:50%;background:#0d1b3e;display:grid;place-items:center}
+.foot{position:absolute;font:700 28px "Inter";color:rgba(255,255,255,.8)}
+.stars{color:#f5b301;letter-spacing:2px}
+.btn{background:#0f1f4d;color:#fff;border-radius:16px;font:700 24px Inter;text-align:center;padding:20px}
+.pg{position:absolute;top:80px;font:700 22px Inter;letter-spacing:.08em;color:#fff;border:2px solid rgba(255,255,255,.25);border-radius:999px;padding:10px 20px}
+.sw{position:absolute;top:1240px;font:700 24px Inter;color:rgba(255,255,255,.7);width:140px;text-align:right}
+.arrowc{position:absolute;width:0;height:0}
+.mini{font:600 19px Inter;color:#64748b}
+.trk{display:flex;align-items:flex-start;justify-content:space-between;position:relative;margin-top:26px}
+.trk:before{content:"";position:absolute;left:30px;right:30px;top:15px;height:5px;background:#e5e9f0;border-radius:3px}
+.trk:after{content:"";position:absolute;left:30px;width:58%;top:15px;height:5px;background:#12b886;border-radius:3px}
+.st{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:10px;width:150px;font:600 18px Inter;color:#64748b;text-align:center}
+.st b{width:34px;height:34px;border-radius:50%;background:#e5e9f0;display:grid;place-items:center}
+.st.on b{background:#12b886}.st.on{color:#0f172a}
+</style></head><body>
+<div id="pano">
+  <div class="dots"></div>
+  <svg width="6480" height="1350" viewBox="0 0 6480 1350" style="position:absolute;inset:0">
+    <defs><filter id="gl" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="14"/></filter></defs>
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M230 1130 L5960 1130" stroke="#34d5a0" stroke-width="36" opacity=".42" filter="url(#gl)"/>
+      <path d="M230 1130 L5960 1130" stroke="#34d5a0" stroke-width="14"/>
+      <g stroke="#34d5a0" stroke-width="12"><path d="M905 1092 L945 1130 L905 1168"/><path d="M1950 1092 L1990 1130 L1950 1168"/><path d="M3020 1092 L3060 1130 L3020 1168"/><path d="M4100 1092 L4140 1130 L4100 1168"/><path d="M5180 1092 L5220 1130 L5180 1168"/></g></g></svg>
+  <div class="node small" style="left:230px;top:1130px">CART1</div>
+  <div class="nlab" style="left:310px;top:1190px">Order #1</div>
+  <div class="node" style="left:1620px;top:1130px">1</div>
+  <div class="nlab" style="left:1700px;top:1190px">Thank you</div>
+  <div class="node" style="left:2700px;top:1130px">2</div>
+  <div class="nlab" style="left:2780px;top:1190px">Shipped</div>
+  <div class="node" style="left:3780px;top:1130px">3</div>
+  <div class="nlab" style="left:3860px;top:1190px">Review</div>
+  <div class="node" style="left:4860px;top:1130px">4</div>
+  <div class="nlab" style="left:4940px;top:1190px">Come back</div>
+  <div class="node" style="left:6000px;top:1130px;width:128px;height:128px;margin:-64px 0 0 -64px;background:#34d5a0;border-color:#34d5a0">REPEAT</div>
+  <div class="nlab" style="left:6090px;top:1210px;color:#34d5a0">Order #2</div>
+  <div class="pg" style="left:860px">01 / 06</div>
+  <div class="sw" style="left:830px">Swipe →</div>
+  <div class="pg" style="left:1940px">02 / 06</div>
+  <div class="sw" style="left:1910px">Swipe →</div>
+  <div class="pg" style="left:3020px">03 / 06</div>
+  <div class="sw" style="left:2990px">Swipe →</div>
+  <div class="pg" style="left:4100px">04 / 06</div>
+  <div class="sw" style="left:4070px">Swipe →</div>
+  <div class="pg" style="left:5180px">05 / 06</div>
+  <div class="sw" style="left:5150px">Swipe →</div>
+  <div class="pg" style="left:6260px">06 / 06</div>
+
+  <!-- TILE 1 : hook -->
+  <div class="t" style="left:0;top:0">
+    <img src="assets/logo_white.png" style="position:absolute;left:110px;top:80px;height:54px">
+    <div style="position:absolute;left:110px;top:240px;width:860px">
+      <div class="kick">Store owners, read this</div>
+      <div class="hl" style="font-size:98px">Customers buy once, then <em>disappear?</em></div>
+    </div>
+    <div style="position:absolute;left:600px;top:610px;width:320px;height:390px">
+      <div style="position:absolute;left:20px;top:20px;right:-20px;bottom:-20px;border-radius:160px 160px 28px 28px;background:#34d5a0"></div>
+      <div style="position:absolute;inset:0;border-radius:160px 160px 28px 28px;overflow:hidden;background:#d9e3ef"><img src="assets/woman.png" style="position:absolute;left:50%;bottom:0;height:420px;transform:translateX(-50%)"></div>
+    </div>
+    <div style="position:absolute;left:110px;top:640px;display:flex;flex-direction:column;gap:22px;align-items:flex-start">
+      <span class="chip">CK Order #1</span>
+      <span class="chip" style="opacity:.92">IC_Q Order #2?</span>
+    </div>
+    <div class="sub" style="position:absolute;left:110px;top:850px;width:440px;font-size:30px">Follow the path to customers who come back.</div>
+  </div>
+
+  <!-- TILE 2 : thank you -->
+  <div class="t" style="left:1080px;top:0">
+    <div style="position:absolute;left:110px;top:150px;width:860px">
+      <div class="kick">Step 1 · Right after the order</div>
+      <div class="hl">Say <em>thank you</em> right away.</div>
+    </div>
+    <div class="card" style="left:150px;top:560px;width:780px;padding:32px 36px;box-sizing:border-box">
+      <div style="display:flex;align-items:center;gap:16px"><div style="width:56px;height:56px;border-radius:50%;background:#0f1f4d;color:#fff;display:grid;place-items:center;font:800 18px 'Inter Display'">N</div>
+        <div style="flex:1"><div style="font:700 23px Inter">NOVA</div><div class="mini">Order confirmed</div></div><div style="font:500 18px Inter;color:#94a3b8">now</div></div>
+      <div style="font:800 38px/1.1 'Inter Display';letter-spacing:-.02em;margin-top:22px">Thank you for your order!</div>
+      <div style="font:500 21px/1.4 Inter;color:#475569;margin-top:8px">We’re packing it today. Here’s what happens next.</div>
+      <div style="display:flex;gap:20px;align-items:center;margin-top:20px;padding:14px;border-radius:18px;background:#f4f6fa">
+        <img src="assets/p_bag.png" style="width:110px;height:80px;object-fit:cover;border-radius:12px">
+        <div style="flex:1"><div style="font:700 23px Inter">Tan Satchel</div><div class="mini">Qty 1</div></div><div style="font:800 26px 'Inter Display'">$129</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TILE 3 : shipped -->
+  <div class="t" style="left:2160px;top:0">
+    <div style="position:absolute;left:110px;top:150px;width:860px">
+      <div class="kick">Step 2 · While they wait</div>
+      <div class="hl">Tell them when it <em>ships.</em></div>
+    </div>
+    <div class="card" style="left:130px;top:560px;width:780px;padding:32px 36px;box-sizing:border-box;transform:rotate(-1.2deg)">
+      <div style="display:flex;align-items:center;gap:16px"><div style="width:56px;height:56px;border-radius:50%;background:#0f1f4d;display:grid;place-items:center">TRUCK</div>
+        <div style="flex:1"><div style="font:700 23px Inter">Your order is on its way</div><div class="mini">NOVA · Tan Satchel</div></div></div>
+      <div class="trk">
+        <div class="st on"><b>CKS</b>Ordered</div>
+        <div class="st on"><b>CKS</b>Shipped</div>
+        <div class="st on"><b>CKS</b>Out for delivery</div>
+        <div class="st"><b></b>Delivered</div>
+      </div>
+      <div class="btn" style="margin-top:26px">Track my order</div>
+    </div>
+  </div>
+
+  <!-- TILE 4 : review -->
+  <div class="t" style="left:3240px;top:0">
+    <div style="position:absolute;left:110px;top:150px;width:860px">
+      <div class="kick">Step 3 · After delivery</div>
+      <div class="hl">Ask for a <em>review.</em></div>
+    </div>
+    <div class="card" style="left:150px;top:560px;width:780px;padding:32px 36px;box-sizing:border-box">
+      <div style="display:flex;gap:22px;align-items:center">
+        <img src="assets/p_bag.png" style="width:120px;height:100px;object-fit:cover;border-radius:14px">
+        <div><div class="mini">NOVA</div><div style="font:800 32px/1.1 'Inter Display';letter-spacing:-.02em;margin-top:4px">How’s your Tan Satchel?</div></div>
+      </div>
+      <div style="display:flex;gap:14px;margin-top:24px;justify-content:center">STARS5</div>
+      <div class="btn" style="margin-top:22px">Leave a review</div>
+    </div>
+  </div>
+
+  <!-- TILE 5 : reason to return -->
+  <div class="t" style="left:4320px;top:0">
+    <div style="position:absolute;left:110px;top:150px;width:860px">
+      <div class="kick">Step 4 · A few weeks later</div>
+      <div class="hl">Give them a reason to <em>come back.</em></div>
+    </div>
+    <div class="card" style="left:150px;top:600px;width:780px;padding:28px 34px;box-sizing:border-box">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span style="font:800 28px 'Inter Display'">Picked for you</span><span class="mini">Goes with your satchel</span></div>
+      <div style="display:flex;gap:18px;margin-top:18px">
+        <div style="flex:1;display:flex;gap:14px;align-items:center;padding:12px;border-radius:16px;background:#f4f6fa"><img src="assets/p_sneaker.png" style="width:96px;height:72px;object-fit:cover;border-radius:10px"><div><div style="font:700 20px Inter">Court Sneaker</div><div style="font:600 19px Inter;color:#12b886">$89</div></div></div>
+        <div style="flex:1;display:flex;gap:14px;align-items:center;padding:12px;border-radius:16px;background:#f4f6fa"><img src="assets/p_serum.png" style="width:96px;height:72px;object-fit:cover;border-radius:10px"><div><div style="font:700 20px Inter">Glow Serum</div><div style="font:600 19px Inter;color:#12b886">$48</div></div></div>
+      </div>
+      <div class="btn" style="margin-top:18px">Shop new picks</div>
+    </div>
+  </div>
+
+  <!-- TILE 6 : CTA -->
+  <div class="t" style="left:5400px;top:0">
+    <div style="position:absolute;left:110px;top:150px;width:860px">
+      <div class="kick">Want more repeat customers?</div>
+      <div class="hl" style="font-size:86px">We’ll build your <em>comeback</em> path.</div>
+    </div>
+    <div class="card" style="left:110px;top:470px;width:520px;padding:20px 24px;box-sizing:border-box;display:flex;gap:16px;align-items:center;border-radius:22px">
+      <div style="width:52px;height:52px;border-radius:14px;background:#0f1f4d;display:grid;place-items:center">BAG</div>
+      <div style="flex:1"><div style="font:700 22px Inter">New order #1042</div><div style="font:600 18px Inter;color:#12b886">Returning customer</div></div>
+    </div>
+    <div style="position:absolute;left:110px;top:620px"><span class="cta2" style="font-size:38px">DM us “GROWTH” <i>ARM</i></span></div>
+    <div class="foot" style="left:110px;top:760px;color:#34d5a0">ecommwave.org</div>
+    <div style="position:absolute;left:690px;top:470px;width:240px;height:300px">
+      <div style="position:absolute;left:16px;top:16px;right:-16px;bottom:-16px;border-radius:120px 120px 24px 24px;background:#34d5a0"></div>
+      <div style="position:absolute;inset:0;border-radius:120px 120px 24px 24px;overflow:hidden;background:#d9e3ef"><img src="assets/man.png" style="position:absolute;left:50%;bottom:0;height:320px;transform:translateX(-50%)"></div>
+    </div>
+  </div>
+</div>
+<script>
+const ic=(d,c,w,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const star='<svg width="62" height="62" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z" fill="#f5b301"/></svg>';
+let h=document.body.innerHTML;
+h=h.replaceAll('CKS','CKSS').replaceAll('CK ','<span class="ck">'+ic('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#34d5a0',3,22)+'</span>')
+ .replaceAll('CKSS',ic('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#fff',3.4,20))
+ .replace('IC_Q ','<span class="ck" style="background:#e8edf5">'+ic('<path d="M9.2 9a3 3 0 0 1 5.6 1c0 2-3 2.5-3 4.2M12 18h.01"/>','#5b6b86',2.6,24)+'</span>')
+ .replace('CART1',ic('<circle cx="9" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/><path d="M2.5 3.5h2.6l2.3 11.2h10.4l2.2-7.7H6.2"/>','#34d5a0',2.4,46))
+ .replace('REPEAT',ic('<path d="M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4"/>','#0a1a47',2.6,60))
+ .replace('TRUCK',ic('<path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/>','#34d5a0',2,30))
+ .replace('BAG',ic('<circle cx="9" cy="20" r="1.4"/><circle cx="17.5" cy="20" r="1.4"/><path d="M2.5 3.5h2.6l2.3 11.2h10.4l2.2-7.7H6.2"/>','#34d5a0',2.2,28))
+ .replace('STARS5',star.repeat(5))
+ .replace('ARM',ic('<path d="M5 12h14M13 6l6 6-6 6"/>','#34d5a0',2.6,30));
+document.body.innerHTML=h;
+</script>
+</body></html>

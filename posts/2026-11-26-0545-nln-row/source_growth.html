@@ -1,0 +1,164 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../common.css"><script src="../common.js"></script><script src="vo_g/timing.js"></script>
+<style>
+#logo{left:80px;top:170px;height:46px}
+#tag1{right:80px;top:162px;font-size:22px;padding:12px 22px}
+.headline .serif{color:var(--mint);font-size:1.12em}
+.hh{left:80px;top:270px;width:940px;font-size:100px;color:#fff}
+/* grid of too many products */
+#grid{left:80px;top:640px;width:920px;background:#fff;border-radius:30px;box-shadow:0 50px 120px rgba(0,0,0,.4);padding:26px;font-family:Inter}
+#grid .gh{display:flex;justify-content:space-between;align-items:center;font:800 24px "Inter Display";letter-spacing:.08em;color:#0f1f4d;padding:4px 6px 18px}
+#grid .gh span{font:600 18px Inter;letter-spacing:0;color:#94a3b8}
+.gg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gi .im{height:150px;border-radius:12px;overflow:hidden;background:#f1efec}
+.gi .im img{width:100%;height:100%;object-fit:cover}
+.gi b{display:block;font:600 15px Inter;color:#0f172a;margin-top:8px;white-space:nowrap;overflow:hidden}
+.gi span{display:block;font:600 14px Inter;color:#64748b;margin-top:2px}
+#heroc{left:280px;top:650px;width:520px;background:#fff;border-radius:34px;box-shadow:0 0 0 5px #34d5a0,0 50px 120px rgba(0,0,0,.45);overflow:hidden;font-family:Inter;opacity:0}
+#heroc .im{height:430px;background:#efe6db}
+#heroc .im img{width:100%;height:100%;object-fit:cover}
+#heroc .tx{padding:24px 30px 30px}
+#heroc b{display:block;font:800 36px "Inter Display";color:#0f172a;letter-spacing:-.02em}
+#heroc span{display:block;font:600 22px Inter;color:#12b886;margin-top:6px}
+#badge{left:520px;top:610px;z-index:6;opacity:0;background:var(--mint);color:var(--ink);font:800 26px Inter;letter-spacing:.12em;padding:14px 24px;border-radius:999px;box-shadow:0 18px 40px rgba(52,213,160,.35)}
+/* homepage phone */
+.phone{width:500px;height:880px;border-radius:66px;background:#0b1430;padding:15px;box-shadow:0 50px 120px rgba(0,0,0,.45),0 0 0 2px rgba(255,255,255,.08)}
+.phone .scr{position:relative;width:100%;height:100%;border-radius:52px;background:#fff;overflow:hidden;font-family:Inter}
+.sb{height:60px;display:flex;align-items:center;justify-content:space-between;padding:10px 36px 0 42px;font:700 19px Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:13px;width:130px;height:36px;border-radius:20px;background:#0b1430;transform:translateX(-50%);z-index:5}
+.top{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid #eef1f5}
+.top .lg{font:800 23px "Inter Display";letter-spacing:.08em;color:#0f1f4d}
+.top .x{font:500 24px Inter;color:#64748b;width:36px;text-align:center}
+.ann{height:40px;background:#0f1f4d;color:#fff;font:600 15px Inter;display:grid;place-items:center}
+.hb{position:relative;height:470px;background:#efe6db;overflow:hidden}
+.hb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hb .ov{position:absolute;left:0;right:0;bottom:0;padding:24px 26px;background:linear-gradient(0deg,rgba(42,33,24,.72),rgba(42,33,24,0))}
+.hb .k{font:700 14px Inter;letter-spacing:.16em;color:#e9dccb}
+.hb h4{font:400 46px/1.02 "Serif";font-style:italic;color:#fff;margin-top:6px}
+.hb .bt{display:inline-block;margin-top:14px;background:#fff;color:#0f1f4d;font:700 17px Inter;padding:12px 24px;border-radius:999px}
+.rw{padding:18px 26px;font:700 18px Inter;color:#0f172a}
+.rw .st{color:#12b886;font-size:16px;margin-top:4px}
+#home{left:290px;top:620px;opacity:0}
+/* ad + email */
+.card{position:absolute;background:#fff;border-radius:28px;box-shadow:0 40px 90px rgba(0,0,0,.4);overflow:hidden;font-family:Inter;opacity:0}
+#ad{left:560px;top:600px;width:440px}
+#ad .h{display:flex;gap:12px;align-items:center;padding:16px 18px}
+#ad .av{width:44px;height:44px;border-radius:50%;background:#0f1f4d;color:#fff;font:800 14px "Inter Display";display:grid;place-items:center;letter-spacing:.06em}
+#ad .h b{display:block;font:700 17px Inter;color:#0f172a}#ad .h span{display:block;font:500 14px Inter;color:#94a3b8}
+#ad .im{height:300px;background:#efe6db}#ad .im img{width:100%;height:100%;object-fit:cover}
+#ad .f{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;font:700 17px Inter;color:#0f172a}
+#ad .f i{font-style:normal;background:#0f1f4d;color:#fff;padding:9px 18px;border-radius:10px;font-size:15px}
+#mail{left:560px;top:1080px;width:440px}
+#mail .mh{display:flex;gap:12px;align-items:center;padding:16px 18px;border-bottom:1px solid #eef1f5}
+#mail .av{width:44px;height:44px;border-radius:50%;background:#34d5a0;color:#0f1f4d;font:800 14px "Inter Display";display:grid;place-items:center}
+#mail .mh b{display:block;font:700 17px Inter;color:#0f172a}#mail .mh span{display:block;font:500 14px Inter;color:#94a3b8}
+#mail .sj{font:800 24px "Inter Display";color:#0f172a;letter-spacing:-.01em;padding:14px 18px 4px}
+#mail .tx{font:500 16px Inter;color:#64748b;padding:0 18px 18px}
+/* reviews + more */
+#rv{left:80px;top:640px;width:920px;opacity:0}
+.rc{display:flex;gap:18px;align-items:center;background:#fff;border-radius:24px;padding:20px 24px;box-shadow:0 24px 60px rgba(0,0,0,.3);font-family:Inter;margin-bottom:16px;opacity:0}
+.rc .av{width:58px;height:58px;border-radius:50%;background:#e8faf3;color:#0f1f4d;font:800 20px "Inter Display";display:grid;place-items:center;flex:none}
+.rc .s{font:700 20px Inter;color:#12b886;letter-spacing:.06em}
+.rc b{display:block;font:700 23px Inter;color:#0f172a;margin-top:2px}
+.rc span{display:block;font:500 16px Inter;color:#94a3b8;margin-top:2px}
+#more{left:80px;top:990px;width:920px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.mo{position:relative;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.3);opacity:0;font-family:Inter}
+.mo .im{height:200px;background:#f1efec}.mo .im img{width:100%;height:100%;object-fit:cover}
+.mo b{display:block;font:700 18px Inter;color:#0f172a;padding:12px 16px}
+.mo i{position:absolute;right:12px;top:12px;font-style:normal;background:#34d5a0;color:#0f1f4d;font:800 14px Inter;letter-spacing:.1em;padding:6px 12px;border-radius:999px}
+#ch1{left:60px;top:1150px;z-index:8;opacity:0}
+#ch2{left:740px;top:540px;z-index:8;opacity:0}#ch3{left:740px;top:1290px;z-index:8;opacity:0}
+/* end */
+#end{opacity:0}
+#elogo{left:50%;top:170px;height:46px;transform:translateX(-50%)}
+#e1{left:70px;top:270px;width:940px;font-size:108px;color:#fff;text-align:center}
+#arch{left:290px;top:580px;width:500px;height:640px}
+#arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--mint)}
+#arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+#arch .ph img{position:absolute;left:50%;bottom:0;height:620px;transform:translateX(-50%)}
+#c1{left:40px;top:740px}#c2{left:640px;top:930px}#c3{left:60px;top:1100px}
+#cta{left:50%;top:1290px;white-space:nowrap}
+#url{left:0;right:0;top:1450px;text-align:center;color:#a9b8d6;font:600 36px "Inter"}
+</style></head><body><div id="stage">
+<div class="scene bg-dark" id="main">
+  <img id="logo" class="abs" src="../assets/logo_white.png">
+  <div id="tag1" class="abs tag">GROW YOUR STORE</div>
+  <div id="h1" class="abs headline hh">Selling <span class="serif">everything</span> at once?</div>
+  <div id="h2" class="abs headline hh" style="opacity:0">Pick one <span class="serif">hero product.</span></div>
+  <div id="h3" class="abs headline hh" style="opacity:0">Make it the <span class="serif">star</span> everywhere.</div>
+  <div id="h4" class="abs headline hh" style="opacity:0">Reviews, <span class="serif">then more.</span></div>
+  <div id="grid" class="abs"><div class="gh">NOVA<span>48 products</span></div><div class="gg" id="gg"></div></div>
+  <div id="heroc" class="abs"><div class="im"><img src="../assets/p_bag.png"></div><div class="tx"><b>Leather Day Bag</b><span>★★★★★ Your hero product</span></div></div>
+  <div id="badge" class="abs">★ HERO PRODUCT</div>
+  <div id="home" class="abs phone"><div class="scr"><div class="isl"></div><div class="sb"><span>9:41</span>ST</div>
+    <div class="top"><span class="x">☰</span><span class="lg">NOVA</span><span class="x">CRT</span></div>
+    <div class="ann">Free shipping on the Day Bag</div>
+    <div class="hb"><img src="../assets/p_bag.png"><div class="ov"><div class="k">OUR BESTSELLER</div><h4>The Day Bag</h4><div class="bt">Shop the Day Bag</div></div></div>
+    <div class="rw">Leather Day Bag · $120<div class="st">★★★★★ Loved by our customers</div></div>
+  </div></div>
+  <div id="ch1" class="abs chip"><span class="ck">CK</span>Homepage</div>
+  <div id="ad" class="card"><div class="h"><div class="av">NOVA</div><div><b>nova.store</b><span>Sponsored</span></div></div><div class="im"><img src="../assets/p_bag.png"></div><div class="f">Meet the Day Bag<i>Shop now</i></div></div>
+  <div id="mail" class="card"><div class="mh"><div class="av">N</div><div><b>NOVA</b><span>to you · 9:02</span></div></div><div class="sj">Meet the Day Bag 👜</div><div class="tx">The one bag our customers take everywhere.</div></div>
+  <div id="ch2" class="abs chip"><span class="ck">CK</span>Ads</div>
+  <div id="ch3" class="abs chip"><span class="ck">CK</span>Emails</div>
+  <div id="rv" class="abs">
+    <div class="rc"><div class="av">AM</div><div><div class="s">★★★★★</div><b>“Fits my laptop and everything else.”</b><span>Verified customer · Leather Day Bag</span></div></div>
+    <div class="rc"><div class="av">JL</div><div><div class="s">★★★★★</div><b>“Soft leather, and it looks even better.”</b><span>Verified customer · Leather Day Bag</span></div></div>
+  </div>
+  <div id="more" class="abs">
+    <div class="mo"><div class="im"><img src="../assets/p_sneaker.png"></div><b>Court Sneaker</b><i>NEW</i></div>
+    <div class="mo"><div class="im"><img src="../assets/p_serum.png"></div><b>Glow Serum</b><i>NEW</i></div>
+    <div class="mo"><div class="im"><img src="../assets/p_dress.png" style="object-position:85% 30%"></div><b>Linen Dress</b><i>NEW</i></div>
+  </div>
+</div>
+<div class="scene bg-dark" id="end">
+  <img id="elogo" class="abs" src="../assets/logo_white.png">
+  <div id="e1" class="abs headline">One hero.<br><span class="serif">Then grow.</span></div>
+  <div id="arch" class="abs"><div class="back"></div><div class="ph"><img src="../assets/woman.png"></div></div>
+  <div id="c1" class="abs chip"><span class="ck">CK</span>Hero product</div>
+  <div id="c2" class="abs chip"><span class="ck">CK</span>Ads & emails</div>
+  <div id="c3" class="abs chip"><span class="ck">CK</span>Free store audit</div>
+  <div id="cta" class="abs cta">DM us “GROWTH” <span class="arrow">AR</span></div>
+  <div id="url" class="abs">ecommwave.org</div>
+</div>
+</div>
+<script>
+const items=[['p_serum','Glow Serum','$48'],['p_sneaker','Court Sneaker','$89'],['p_bag','Day Bag','$120'],['p_dress','Linen Dress','$75'],['p_sneaker','Sneaker II','$95'],['p_serum','Night Cream','$39'],['p_dress','Wrap Dress','$82'],['p_bag','Mini Bag','$79'],['p_bag','Tote','$99'],['p_serum','Toner','$24'],['p_sneaker','Runner','$110'],['p_dress','Midi Dress','$88']];
+$('#gg').innerHTML=items.map(([p,n,pr])=>`<div class="gi"><div class="im"><img src="../assets/${p}.png"${p==='p_dress'?' style="object-position:85% 30%"':''}></div><b>${n}</b><span>${pr}</span></div>`).join('');
+document.body.innerHTML=document.body.innerHTML.replaceAll('>CK<','>'+CHECK+'<').replace('>AR<','>'+ARROW+'<').replaceAll('>ST<','>'+STATUS+'<').replace('>CRT<','>'+CART+'<');
+const H=['#h1','#h2','#h3','#h4'].map(s=>splitWords($(s))), ew=splitWords($('#e1'));
+const L=i=>VO.lines[i].start;
+function popc(id,t,s,fl,out){const k=back(P(t,s,.5)); let o=clamp(k); if(out!==undefined) o*=1-eo(P(t,out,.3)); tf($(id),`translateY(${Math.sin(t*1.6+fl)*5}px) scale(${Math.max(0,k)})`); op($(id),o);}
+function head(i,t,s,e){ const el=$(['#h1','#h2','#h3','#h4'][i]); op(el,(t>=s-.05&&(e===undefined||t<e))?1:0); wordsIn(H[i],t,s,.08,.7); if(e!==undefined) wordsOut(H[i],t,e-.4,.03,.35);}
+function render(t){
+  op($('#tag1'),eo(P(t,L(0)+.4,.5)));
+  head(0,t,L(0),L(1)-.05); head(1,t,L(1)-.05,L(3)-.05); head(2,t,L(3)-.05,L(4)-.05); head(3,t,L(4)-.05);
+  // line 0: crowded grid
+  const gi=eo5(P(t,L(0)+.5,.9)), go=eio(P(t,L(1)+.2,.6)); tf($('#grid'),`translateY(${(1-gi)*240}px) scale(${1-go*.06})`); op($('#grid'),gi*(1-go));
+  $$('.gi').forEach((g,i)=>{const k=eo(P(t,L(0)+.7+i*.12,.4)); op(g,k); g.style.transform=`translateY(${(1-k)*20}px)`;});
+  // line 1: hero product
+  const hc=back(P(t,L(1)+.5,.7)), ho=eio(P(t,L(2)-.3,.5)); op($('#heroc'),clamp(hc)*(1-ho)); tf($('#heroc'),`scale(${lerp(.7,1,clamp(hc))})`);
+  popc('#badge',t,L(1)+1.1,0,L(2)-.3);
+  // line 2: homepage
+  const hm=eo5(P(t,L(2)-.1,.8)); const sh=eio(P(t,L(3)+.1,.7));
+  op($('#home'),hm*(1-eio(P(t,L(4)-.4,.4)))); tf($('#home'),`translate(${-210*sh}px,${(1-hm)*200}px) scale(${1-.08*sh})`);
+  popc('#ch1',t,L(2)+.7,0,L(3));
+  // line 3: ads + emails
+  [['#ad',L(3)+.4],['#mail',L(3)+1.4]].forEach(([id,s])=>{const k=eo5(P(t,s,.7)); op($(id),k*(1-eio(P(t,L(4)-.4,.4)))); tf($(id),`translateX(${(1-k)*160}px) rotate(${id==='#ad'?1.5:-1.5}deg)`);});
+  popc('#ch2',t,L(3)+.6,1,L(4)-.4); popc('#ch3',t,L(3)+1.6,2,L(4)-.4);
+  // line 4: reviews then more products
+  op($('#rv'),t>L(4)-.2?1:0);
+  $$('.rc').forEach((r,i)=>{const k=eo5(P(t,L(4)+.1+i*.5,.6)); op(r,k); r.style.transform=`translateY(${(1-k)*80}px)`;});
+  $$('.mo').forEach((m,i)=>{const k=back(P(t,L(4)+1.6+i*.25,.6)); op(m,clamp(k)); m.style.transform=`scale(${Math.max(0,k)})`;});
+  // end
+  const E=L(5); op($('#end'),eio(P(t,E-.35,.5)));
+  op($('#elogo'),eo(P(t,E-.2,.5)));
+  wordsIn(ew,t,E-.1,.08,.7);
+  const a=eo5(P(t,E+.2,.9)); tf($('#arch'),`translateY(${(1-a)*140}px)`); op($('#arch'),a);
+  $('#arch .ph img').style.transform=`translateX(-50%) scale(${1.06-.06*eo(P(t,E+.2,3))})`;
+  ['#c1','#c2','#c3'].forEach((id,i)=>{const k=back(P(t,E+.6+i*.2,.55)); tf($(id),`translateY(${Math.sin(t*1.6+i*2)*6}px) scale(${Math.max(0,k)})`); op($(id),clamp(k));});
+  const cx2=back(P(t,E+1.1,.6)); tf($('#cta'),`translateX(-50%) scale(${Math.max(0,cx2)*(1+Math.sin(Math.max(0,t-E-1.8)*4)*.015)})`); op($('#cta'),clamp(cx2));
+  $('#cta .arrow').style.transform=`translateX(${Math.max(0,Math.sin((t-E-1.8)*4))*8}px)`;
+  op($('#url'),eo(P(t,E+1.3,.6)));
+}
+window.DUR=VO.dur; render(0);
+</script></body></html>

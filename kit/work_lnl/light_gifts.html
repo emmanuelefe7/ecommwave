@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../light.css"><script src="../light.js"></script>
+<style>
+.card{position:absolute;left:80px;top:500px;width:920px;height:440px}
+.card img{position:absolute;left:40px;top:10px;width:560px;height:420px;object-fit:contain}
+.badge{position:absolute;background:var(--lnavy);color:#fff;font:700 22px Inter;padding:14px 22px;border-radius:999px;display:flex;gap:12px;align-items:center;box-shadow:0 16px 30px rgba(21,42,89,.25);white-space:nowrap}
+.badge i{width:12px;height:12px;border-radius:50%;background:var(--lmint);display:block}
+.tiles{position:absolute;left:80px;top:965px;width:920px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.tile{background:linear-gradient(90deg,var(--lcard1),var(--lcard2));border-radius:24px;padding:22px 24px;display:flex;gap:18px;align-items:center;box-shadow:0 18px 34px rgba(21,42,89,.24),inset 0 1px 0 rgba(255,255,255,.18)}
+.tile .k{width:58px;height:58px;border-radius:50%;background:var(--lmint);display:grid;place-items:center;flex:none}
+.tile b{display:block;font:800 27px "Inter Display";color:#fff;letter-spacing:-.02em}
+.tile span{display:block;font:500 19px Inter;color:rgba(255,255,255,.86);margin-top:3px}
+.bot{position:absolute;left:80px;right:80px;bottom:56px;display:flex;justify-content:space-between;align-items:center;font:700 25px Inter;color:var(--ltext)}
+.bot b{font:800 27px "Inter Display"}
+.pill{color:#fff;background:var(--lnavy);font:700 21px Inter;letter-spacing:.14em;padding:11px 20px;border-radius:999px}
+.mini{position:absolute;background:#fff;border-radius:22px;box-shadow:0 30px 60px rgba(21,42,89,.18);font-family:Inter;padding:20px 22px;width:340px}
+.mini .r{display:flex;align-items:center;gap:12px;padding:9px 0;font:600 18px Inter;color:#0f172a}
+.mini .bx{width:26px;height:26px;border-radius:7px;background:var(--lnavy);display:grid;place-items:center;flex:none}
+.mini .in{margin-top:6px;border:1.5px solid #dbe2ea;border-radius:10px;padding:10px 12px;font:500 15px Inter;color:#94a3b8}
+</style></head><body>
+<section class="s lt" id="s1">
+  <div class="top"><img src="../assets/logo_navy.png"><div class="pill">GIFT SEASON</div></div>
+  <div class="abs kick" style="left:0;right:0;top:160px;text-align:center">Your customers are buying gifts.</div>
+  <div class="slab" style="left:140px;top:232px">Make it</div>
+  <div class="micon" style="left:640px;top:238px">i:gift</div>
+  <div class="slab" style="left:330px;top:362px">easy</div>
+  <div class="ring m" style="left:-40px;top:520px;width:150px;height:150px;border-width:24px"></div><div class="ring g" style="right:-40px;top:380px;width:130px;height:130px;border-width:18px"></div><div class="dots" style="right:50px;top:200px"></div>
+  <div class="card"><img src="gift-box.svg"></div>
+  <div class="mini" style="left:620px;top:560px">
+    <div style="font:800 20px 'Inter Display';color:#0f172a;margin-bottom:4px">Is this a gift?</div>
+    <div class="r"><span class="bx">i:checkw</span>Add gift wrap</div>
+    <div class="r"><span class="bx">i:checkw</span>Hide prices on the slip</div>
+    <div class="in">Write a gift note…</div>
+  </div>
+  <div class="tiles">
+    <div class="tile"><div class="k">i:gift</div><div><b>Gift wrap option</b><span>One tick box in the cart</span></div></div>
+    <div class="tile"><div class="k">i:mail</div><div><b>Free gift note</b><span>A short message field</span></div></div>
+    <div class="tile"><div class="k">i:search</div><div><b>Gift guide page</b><span>Ideas sorted by budget</span></div></div>
+    <div class="tile"><div class="k">i:hand</div><div><b>Easy exchanges</b><span>No prices on the slip</span></div></div>
+  </div>
+  <div class="bot"><span>DM us <b>“GROWTH”</b> for a free store audit</span><b>ecommwave.org</b></div>
+</section>
+<script>LICONS.gift=LI_('<rect x="3.5" y="9" width="17" height="11.5" rx="1.5"/><path d="M2.5 9h19v-0.5M12 9v11.5M12 9c-1.5-3.5-6-4-6-1.5C6 9 9 9 12 9zm0 0c1.5-3.5 6-4 6-1.5C18 9 15 9 12 9z"/>');LICONS.checkw=LI_('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#4fd1a0',18);lightIcons();</script>
+</body></html>

@@ -1,22 +1,17 @@
-"""Voiceover-first timing for Reels. The VOICE sets the timeline; the animation follows it.
+"""Voiceover-first timing for ALL ecommwave reels and videos. The VOICE sets the timeline; the animation follows it.
+OWNER-APPROVED SETTINGS (2026-11-26, see kit/VOICE.md) are the defaults — don't override them unless the owner asks:
+  Kokoro voice am_puck ("voice 2"), simple neutral English (en-us), speed 1.05, each section spoken as one continuous
+  passage, punctuation-driven pauses (comma ~0.16 s, full stop / question ~0.38 s), *accent* emphasis, soft breaths,
+  dragged words shortened (pitch kept), lone letters said as letters (A = ay, B = bee), EXACT word timings,
+  voice + sound-effect cues, no music, -13 LUFS.
 
 Step 1  plan:  python3 tools/voiceover.py plan script.json vo/
-        script.json = {"voice":"af_heart","lines":[{"text":"..."},{"text":"...","pause_after":0.5}, ...]}
-        - Synthesizes every line at a natural pace (each line auto-tuned to ~2.8 words/sec).
-        - Packs lines back to back: starts at 0.30 s, 0.35 s between lines (pause_after can raise one gap, max 0.6 s),
-          video ends 0.7 s after the last word.
-        - Writes vo/timing.json and vo/timing.js (window.VO = {dur, lines:[{start,end,text}]}) + vo/lineN.wav.
-Step 2  build the video page with <script src="vo/timing.js"></script>, set window.DUR = VO.dur, and start each
-        scene's animation at VO.lines[i].start (on-screen words appear as they are spoken).
-Step 3  mix:   python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4
-        - Places each line exactly at its planned time, adds a quiet music pad, loudness -14 LUFS.
-        - QUALITY GATE: refuses to write final.mp4 if the video length doesn't match the plan (±0.15 s),
-          a line is too fast/slow (outside 2.3-3.3 words/sec), a silent gap > 0.7 s, first word later than 0.5 s,
-          ending silence > 1.2 s, or speech covers < 75 % of the video.
-Engines: "engine":"kokoro" (DEFAULT: exact word timings from the model). "chatterbox" (natural voice, NO exact word timings; needs `pip install --break-system-packages chatterbox-tts`
-         and huggingface.co reachable; optional "voice_ref":"path/to/clip.wav" to use a specific voice; "exaggeration" 0.3-0.7)
-         falls back automatically to "kokoro" (af_heart warm female / am_michael male) if Chatterbox can't load.
-Model files download once (Chatterbox -> HF cache, Kokoro -> ~/.kokoro)."""
+        script.json = {"lines":[{"text":"Which store will *you* buy from?","chapter":"THE QUESTION"},
+                                {"text":"A shows the *delivery date,* B *doesn't.*","hold":2.6}, ...],
+                       "cues":[{"sfx":"pop","line":1,"word":"delivery"}, {"sfx":"tick","line":1,"after":0.35}, ...]}
+        -> vo/timing.js  (window.VO = {dur, lines:[{start,end,text,words:[{w,s,e,hl}],chapter,hold}], cues:[{t,sfx}]})
+Step 2  build the page with reel.js (RL.caption, RL.W('word', line), RL.cam, ...) and window.DUR = VO.dur.
+Step 3  mix:   python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4   (quality gate: length, pace, gaps, coverage)"""
 import sys, os, json, subprocess
 import numpy as np, soundfile as sf
 

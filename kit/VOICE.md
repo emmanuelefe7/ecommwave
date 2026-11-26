@@ -1,4 +1,10 @@
-# Voice-over delivery (owner's standing instructions, 2026-11-26) — applies to EVERY Reel
+# Voice-over delivery (owner's standing instructions, 2026-11-26) — applies to EVERY reel AND every video
+
+**APPROVED by the owner ("Good 👍 save this for all my reels and videos voice overs. Match everything together"):**
+the settings below, exactly as in `work_reel_demo/` (`final.mp4`), are locked for every voice-over: one-off videos,
+reels in every row type, ads, anything with a voice. Use `tools/voiceover.py` with its defaults — voice `am_puck`,
+`lang` en-us (simple neutral English), `speed` 1.05, flow/tighten/letters/emphasis/breaths on, no music, −13 LUFS —
+and `reel.js` word-synced captions/cues. Don't change any of it unless the owner asks.
 
 ## The owner's instructions (verbatim)
 VOICE-OVER DELIVERY INSTRUCTIONS

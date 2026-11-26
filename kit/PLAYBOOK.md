@@ -29,7 +29,7 @@ Every post must open with a strong hook aimed at Shopify / online STORE OWNERS: 
 - Tools (Python + Playwright + Chrome + ffmpeg):
   - `python3 tools/render_carousel.py page.html out_dir prefix` → one 1080×1350 JPEG per `<section class="s" id="sN">`.
   - `python3 tools/render_video.py page.html --frames 2,6,11` → preview JPEGs in /tmp; `python3 tools/render_video.py page.html out.mp4` → silent 1080×1920 30 fps MP4 (page defines `window.DUR` and `render(t)`).
-  - `python3 tools/voiceover.py plan script.json vo/` then `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4` → voice-first timing + natural voiceover + quiet music pad, −14 LUFS, with an automatic pacing/silence gate (see §4). Voice engine: **Chatterbox** (natural, human-sounding; owner asked for no robotic AI voice). Install `pip install --break-system-packages chatterbox-tts kokoro-onnx soundfile` (Chatterbox model downloads from huggingface.co on first use; generation on CPU takes a few minutes, that's fine). `script.json` defaults to `"engine":"chatterbox"`; if it can't load, `plan` prints a WARNING and falls back to Kokoro. If that happens, still post, but mention the fallback in the final message to the owner. Write lines the way a person talks (contractions, "here's the thing", short sentences), not ad copy.
+  - `python3 tools/voiceover.py plan script.json vo/` then `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4` → the owner's APPROVED VOICE (see `VOICE.md`): Kokoro `am_puck` ("voice 2"), simple neutral English accent, natural continuous flow, punctuation-driven pauses, emphasis, soft breaths, no dragged words, letters said as letters, exact word timings, voice + sound effects (no music), −13 LUFS, with an automatic pacing/silence gate. Install `pip install --break-system-packages kokoro-onnx onnx soundfile` (model downloads once to ~/.kokoro). Don't change voice, accent or engine unless the owner asks.
 - Templates to copy and adapt (study them first, they define the look):
   - `profile/banner2_full.png` + `tpl_triptych_banner.html` — THE look the owner loves (navy, mint wave, clean UI, photo arch).
   - `tpl_carousel_seo.html` — carousel: phone mockups, real search results, before/after cards, callouts, chart, CTA slide.
@@ -126,9 +126,9 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
 **REEL STYLE — REQUIRED for every Reel (owner, 2026-11-26: "everything in that video in mine… match the same way").**
 Reference: the owner's word-synced reel (two phones "A or B", chapters THE SETUP / THE STUDY / PICTURE THIS). Working
 example to copy: `work_reel_demo/` (`script.json` + `reel.html`, final `final.mp4`). Engine: `reel.js` + `tools/voiceover.py`.
-- **Voice**: fast, conversational, ~3 words/sec. The voice tool speaks each section as ONE continuous passage (natural flow, like a person reading — never line by line, which made words drag and pause; owner feedback 2026-11-26) and cuts it into lines at the exact word times; pace via `"speed"` (default 1.08), never force each line's speed. Loudness −13 LUFS. Short lines (3–8 words), 9–12
-  lines, 20–30 s. Write like a person talks ("Sounds smart, right?", "Now picture this."). Kokoro is the default engine
-  because it gives EXACT word timings (from the model's own phoneme durations).
+- **Voice**: fast, conversational, ~3 words/sec. The voice tool speaks each section as ONE continuous passage (natural flow, like a person reading — never line by line, which made words drag and pause; owner feedback 2026-11-26) and cuts it into lines at the exact word times; pace via `"speed"` (default 1.05), never force each line's speed. Loudness −13 LUFS. Short lines (3–8 words), 9–12
+  lines, 20–30 s. Write like a person talks ("Sounds smart, right?", "Now picture this."). Voice, accent and delivery: `VOICE.md` (approved
+  2026-11-26: voice 2 `am_puck`, neutral English). Exact word timings come from the model's own phoneme durations.
 - **Captions**: word-by-word, every word appears exactly when it's spoken (rise + blur-in), centred under the visual
   (`RL.caption`). Mark accent phrases in `script.json` with `*like this*`; quotes ("…") are accented too.
 - **Every visual cue lands on its WORD, not its line**: use `RL.W('word', line)` for boxes drawing around UI parts,

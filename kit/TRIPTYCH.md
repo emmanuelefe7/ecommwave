@@ -1,3 +1,5 @@
+> **Owner rule 2026-11-26:** connected sets must be SEPARATE, self-contained posts that only look connected on the grid — never one design or message split across tiles. See GRID_PLAN.md › CONNECTED-6. Where this file says otherwise, GRID_PLAN.md wins.
+
 # Daily connected grid set (3 posts that join into one banner)
 
 The owner LOVES the connected 3-post banner (see `profile/banner2_full.png`, template `tpl_triptych_banner.html`). Once a day you design a NEW connected set and post its 3 tiles back to back. Read `PLAYBOOK.md` first (brand rules §3, the navy look §3b, publishing §7) — everything there applies.

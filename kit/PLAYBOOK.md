@@ -121,13 +121,37 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
 - Save `cover.html` + `prefix_cover.jpg` in the post folder. In the log, add "designed cover" to the Topic.
 - Image posts and carousels are unchanged.
 
+**REEL STYLE — REQUIRED for every Reel (owner, 2026-11-26: "everything in that video in mine… match the same way").**
+Reference: the owner's word-synced reel (two phones "A or B", chapters THE SETUP / THE STUDY / PICTURE THIS). Working
+example to copy: `work_reel_demo/` (`script.json` + `reel.html`, final `final.mp4`). Engine: `reel.js` + `tools/voiceover.py`.
+- **Voice**: fast, conversational, ~3 words/sec, lines almost back to back (0.15 s gaps). Short lines (3–8 words), 9–12
+  lines, 20–30 s. Write like a person talks ("Sounds smart, right?", "Now picture this."). Kokoro is the default engine
+  because it gives EXACT word timings (from the model's own phoneme durations).
+- **Captions**: word-by-word, every word appears exactly when it's spoken (rise + blur-in), centred under the visual
+  (`RL.caption`). Mark accent phrases in `script.json` with `*like this*`; quotes ("…") are accented too.
+- **Every visual cue lands on its WORD, not its line**: use `RL.W('word', line)` for boxes drawing around UI parts,
+  pins/labels popping in, tap ripples, screen changes, error shakes, scribbles. Something changes about every second.
+- **Chapters**: small navy pill at the top that pops when a section starts — set `"chapter"` on the first line of each
+  section (e.g. THE QUESTION / THE SETUP / PICTURE THIS / THE FIX).
+- **Camera**: ONE continuous shot — zoom into the phone/UI part being talked about, pull back, move to the next
+  (`RL.cam`), no hard cuts and no crossfaded scenes. Realistic NOVA phone/browser UI is the main visual.
+- **Handwritten notes** (`.hand`, Caveat font) for small asides ("comment A or B", "sale lost"), revealed with `RL.scribble`.
+- **Sound**: voice + small UI sound effects only, NO music (`"music": false`). Put cues in `script.json` on their words:
+  `pop` (label/pin), `tap`, `swoosh`/`whoosh` (camera move/scene), `ding` (the fix), `error`, `tick` (countdown), `type`.
+- **OPTIONAL, only when the topic really is a comparison**: the "A or B?" two-phone compare and the 3-2-1 countdown with
+  "comment A or B" (`"hold": 2.6` on the line before it + three `tick` cues + `RL.countdown`). Not mandatory.
+- Honesty: a "THE STUDY" chapter only for a real, checkable source — never invent research, numbers or results.
+- Keep the brand: LIGHT look (#e6ecf7 bg, navy text, green accent #0ea472) or NAVY look (navy bg, white text, mint accent).
+- Check: preview frames at several word times (`render_video.py page.html --frames …`) and confirm each cue is on screen
+  at its word; `voiceover.py mix` must print `ok`.
+
 **Videos**: 1080×1920, 30 fps, 15–22 s, ALWAYS with voiceover. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook → animated realistic UI demo that SHOWS the point → end card with CTA. Crossfades: keep the old scene at opacity 1 and fade the new scene in on top (never scale/shrink the old scene, never dip to black).
 
 **Voiceover sync (mandatory, the VOICE drives the timeline):**
-1. Write `script.json` FIRST: 5–7 short spoken lines, plain conversational English, 5–11 words each, one idea per line, last line = CTA ("…DM us GROWTH" / free audit). Use `"pause_after": 0.5` only before a big scene change (max 0.6).
+1. Write `script.json` FIRST: 9–12 short spoken lines (see REEL STYLE), plain conversational English, 3–8 words each, one idea per line, last line = CTA ("…DM us GROWTH" / free audit). Use `"pause_after": 0.5` only before a big scene change (max 0.6).
 2. `python3 tools/voiceover.py plan script.json vo/` → natural pace (~2.8 words/sec per line), lines packed with 0.35 s gaps, writes `vo/timing.js` and prints the timeline + video length.
 3. Build the page with `<script src="vo/timing.js"></script>` after `common.js`. Either drive every animation directly from `VO.lines[i].start`, or author on a design timeline and lock it with `const T = voWarp([designTimeOfLine0, …, designTimeOfLineN], designEnd)` + `function render(t){ draw(T(t)) }` + `window.DUR = VO.dur` (see `tpl_video_black_friday.html` + `tpl_vo/`). Every line must have something on screen that matches it AT THAT MOMENT: the words being spoken appear (headline reveal, label, callout, checklist item) as they are said; the end card + CTA appear exactly when the CTA line starts. Never let a scene sit still for more than ~2 s; never let the visuals run ahead of or behind the voice.
-4. Render silent → `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4`. This is a hard gate: it refuses to output if the video length doesn't match the plan, a line is too fast/slow (outside 2.3–3.3 words/sec), any silent gap > 0.7 s, first word after 0.5 s, more than 1.2 s silence at the end, or speech covers < 75 % of the video. If it fails, fix the script or timing and re-run; never post a video that didn't pass.
+4. Render silent → `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4`. This is a hard gate: it refuses to output if the video length doesn't match the plan, a line is too fast/slow (outside 2.5–3.5 words/sec), any silent gap > 0.5 s (except a planned "hold"), first word after 0.5 s, more than 1.2 s silence at the end, or speech covers < 75 % of the video. If it fails, fix the script or timing and re-run; never post a video that didn't pass.
 5. Preview frames AT each line's start time (+0.8 s) and check that what's on screen matches what's being said.
 
 ## 5. Quality check before posting (required)

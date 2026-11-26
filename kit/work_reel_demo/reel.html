@@ -1,0 +1,164 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<script src="../common.js"></script>
+<script src="vo/timing.js"></script>
+<script src="../reel.js"></script>
+<style>
+@font-face{font-family:"Hand";src:url(../fonts/hand.woff2) format("woff2")}
+:root{--bg:#e6ecf7;--ink:#14254f;--acc:#0ea472;--acc2:#34d5a0;--bad:#e5484d}
+body{background:var(--bg)}
+#stage{background:radial-gradient(700px 600px at 50% 40%,#ffffff 0%,rgba(255,255,255,0) 70%),var(--bg)}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(20,37,79,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+.phone{position:absolute;width:370px;height:760px;margin:-380px 0 0 -185px;border-radius:58px;background:#0b1020;padding:12px;
+  box-shadow:0 50px 90px rgba(20,37,79,.28),0 10px 24px rgba(20,37,79,.12),inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:11px;width:96px;height:28px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:5}
+.sb{height:46px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+.nv{height:46px;display:flex;align-items:center;justify-content:center;font:800 19px "Inter Display";letter-spacing:.08em;color:#0f1f4d}
+.pimg{margin:0 14px;height:300px;border-radius:18px;background:#eef1f5;overflow:hidden;position:relative}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.pi{padding:14px 18px 0}
+.t1{display:flex;justify-content:space-between;align-items:baseline}
+.t1 b{font:800 24px "Inter Display";letter-spacing:-.02em}.t1 span{font:800 22px "Inter Display"}
+.st{font:500 13px Inter;color:#64748b;margin-top:4px}.st i{color:#f5b301;font-style:normal;letter-spacing:1px}
+.sw{display:flex;gap:8px;margin-top:12px}.sw div{width:34px;height:34px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px #cbd5e1}
+.dl{margin-top:14px;height:50px;border-radius:12px;background:#f1f5f9;display:flex;align-items:center;gap:10px;padding:0 12px;font:600 14px Inter}
+.dl.no{background:transparent}
+.btn{position:absolute;left:18px;right:18px;bottom:24px;height:56px;border-radius:16px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px Inter}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font:700 24px Inter;padding:9px 20px 9px 9px;border-radius:999px;box-shadow:0 12px 30px rgba(20,37,79,.16);white-space:nowrap;transform-origin:center}
+.chip .k{width:38px;height:38px;border-radius:50%;background:#152a59;color:#fff;display:grid;place-items:center;font:800 19px "Inter Display"}
+.pin{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font:700 22px Inter;padding:9px 18px 9px 10px;border-radius:999px;box-shadow:0 12px 30px rgba(20,37,79,.16);white-space:nowrap}
+.pin .d{width:26px;height:26px;border-radius:50%;background:var(--acc);box-shadow:0 0 0 5px rgba(14,164,114,.18)}
+.pin.bad .d{background:var(--bad);box-shadow:0 0 0 5px rgba(229,72,77,.18)}
+.box{position:absolute;pointer-events:none;overflow:visible}
+#chap{position:absolute;left:50%;top:190px;background:#152a59;color:#fff;font:800 22px Inter;letter-spacing:.16em;padding:12px 24px;border-radius:999px;transform-origin:center}
+#cap{position:absolute;left:70px;right:70px;top:1335px;text-align:center;font:800 64px/1.12 "Inter Display";letter-spacing:-.035em;color:var(--ink)}
+#cap .rw{display:inline-block;will-change:transform,opacity,filter}
+#cap .hl{color:var(--acc)}
+.hand{position:absolute;font:700 46px Hand;color:var(--acc);white-space:nowrap}
+#aorb{position:absolute;left:0;right:0;top:300px;text-align:center;font:900 120px "Inter Display";letter-spacing:-.05em;color:var(--ink)}
+#cd{position:absolute;left:540px;top:760px;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:50%;background:#fff;box-shadow:0 30px 70px rgba(20,37,79,.22)}
+#cd .cd-n{position:absolute;inset:0;display:grid;place-items:center;font:800 130px "Inter Display";color:var(--ink)}
+.rip{position:absolute;width:120px;height:120px;border-radius:50%;border:6px solid var(--acc2);background:rgba(52,213,160,.18)}
+#cursor{position:absolute;width:64px;height:64px}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:40px;opacity:0}
+.cta{background:#152a59;color:#fff;font:800 50px "Inter Display";letter-spacing:-.02em;padding:26px 30px 26px 50px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 24px 50px rgba(20,37,79,.3)}
+.cta i{width:70px;height:70px;border-radius:50%;background:var(--acc2);display:grid;place-items:center}
+</style></head><body>
+<div id="stage"><div class="dots"></div>
+  <div id="world">
+    <div class="phone" id="pA" style="left:300px;top:760px"><div class="scr"><div class="isl"></div><div id="scrA"></div></div></div>
+    <div class="phone" id="pB" style="left:780px;top:760px"><div class="scr"><div class="isl"></div><div id="scrB"></div>
+      <div id="scrB2" style="position:absolute;inset:0;background:#fff"></div></div></div>
+    <div class="chip" id="chA" style="left:300px;top:330px"><span class="k">A</span>Shows delivery</div>
+    <div class="chip" id="chB" style="left:780px;top:330px"><span class="k">B</span>Hides it</div>
+    <svg class="box" id="bxA" style="left:122px;top:0" width="360" height="1920"><rect id="rA" x="6" y="0" width="348" height="62" rx="14" fill="none" stroke="#0ea472" stroke-width="6"/></svg>
+    <svg class="box" id="bxB" style="left:602px;top:0" width="360" height="1920"><rect id="rB" x="6" y="0" width="348" height="62" rx="14" fill="none" stroke="#e5484d" stroke-width="6" stroke-dasharray="14 10"/></svg>
+    <div class="pin bad" id="pin1" style="left:965px;top:780px"><span class="d"></span>Only at checkout</div>
+    <div class="pin" id="pin2" style="left:595px;top:470px"><span class="d"></span>Clean page</div>
+    <div class="pin" id="pin3" style="left:965px;top:650px"><span class="d"></span>Less to read</div>
+    <div class="pin" id="pin4" style="left:115px;top:740px"><span class="d"></span>Right under the price</div>
+    <div class="rip" id="rip" style="left:780px;top:1100px"></div>
+    <svg id="cursor" viewBox="0 0 24 24"><path d="M5 3l14 8-6 1.6L10 19z" fill="#fff" stroke="#14254f" stroke-width="1.6" stroke-linejoin="round"/></svg>
+  </div>
+  <div id="aorb">A or B?</div>
+  <div id="cd"><svg width="260" height="260" style="position:absolute;inset:0"><circle cx="130" cy="130" r="120" fill="none" stroke="#e2e8f0" stroke-width="12"/><circle class="cd-ring" cx="130" cy="130" r="120" fill="none" stroke="#0ea472" stroke-width="12" stroke-linecap="round" transform="rotate(-90 130 130)"/></svg><div class="cd-n">3</div></div>
+  <div class="hand" id="h1" style="left:540px;top:1185px;transform:translateX(-50%)">comment A or B</div>
+  <div class="hand" id="h2" style="left:720px;top:300px;color:#e5484d;font-size:58px;transform:rotate(-6deg)">sale lost</div>
+  <div id="chap"></div>
+  <div id="cap"></div>
+  <div id="end">
+    <img src="../assets/logo_navy.png" style="height:64px">
+    <div style="font:900 96px/1 'Inter Display';letter-spacing:-.05em;color:#14254f;text-align:center">More orders,<br><span style="font-family:Serif;font-style:italic;font-weight:400;color:#0ea472">same visitors.</span></div>
+    <span class="cta">DM us “GROWTH” <i><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0a1a47" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
+    <div style="font:700 34px Inter;color:#14254f">ecommwave.org</div>
+  </div>
+</div>
+<script>
+const truck='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0ea472" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17.5" cy="17.5" r="1.8"/></svg>';
+function product(del){return `<div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="nv">NOVA</div>
+ <div class="pimg"><img src="../assets/p_bag.png"></div>
+ <div class="pi"><div class="t1"><b>Tan Satchel</b><span>$129</span></div>
+ <div class="st"><i>★★★★★</i> 4.8 · Reviews</div>
+ <div class="sw"><div style="background:#b07a4f"></div><div style="background:#2b2b2b"></div><div style="background:#d8c3a5"></div></div>
+ ${del?`<div class="dl">${truck}<span>Get it by <b>Fri, Dec 5</b></span></div>`:`<div class="dl no"></div>`}
+ </div><div class="btn">Add to cart · $129</div>`}
+const checkout=`<div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="nv">Checkout</div>
+ <div style="padding:10px 18px;font-family:Inter">
+  <div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:#f4f6fa"><img src="../assets/p_bag.png" style="width:70px;height:56px;object-fit:cover;border-radius:10px"><div style="flex:1"><div style="font:700 16px Inter">Tan Satchel</div><div style="font:500 13px Inter;color:#64748b">Qty 1</div></div><b style="font:800 17px 'Inter Display'">$129</b></div>
+  <div style="margin-top:18px;font:700 15px Inter">Shipping</div>
+  <div id="ship" style="margin-top:8px;padding:14px;border-radius:14px;border:2px solid #e5e9f0;display:flex;justify-content:space-between;font:600 15px Inter"><span>Standard</span><span id="shipT">Arrives in 2 weeks</span></div>
+  <div style="margin-top:12px;padding:14px;border-radius:14px;border:2px solid #e5e9f0;display:flex;justify-content:space-between;font:600 15px Inter;color:#94a3b8"><span>Express</span><span>+$24</span></div>
+  <div style="margin-top:18px;display:flex;justify-content:space-between;font:800 19px 'Inter Display'"><span>Total</span><span>$129</span></div>
+ </div><div class="btn">Pay now</div>`;
+document.getElementById('scrA').innerHTML=product(true);
+document.getElementById('scrB').innerHTML=product(false);
+document.getElementById('scrB2').innerHTML=checkout;
+const G=id=>document.getElementById(id), W=(w,l)=>RL.W(w,l), L=i=>RL.L(i);
+const C=clamp;
+// delivery row sits at y (phone top 380 + 12 pad + ~495) in world coords
+const ROWY=760-380+12+46+46+300+14+29+4+17+12+34+14-6;
+G('rA').setAttribute('y',ROWY);G('rB').setAttribute('y',ROWY);
+const LEN=2*(348+62);['rA','rB'].forEach(i=>{G(i).style.strokeDasharray=i=='rA'?LEN:'14 10'});
+
+window.DUR=VO.dur;
+function render(t){
+  const tCD=L(1).end+0.35, tSet=L(2).start-0.15, tPic=L(5).start-0.15, tFix=L(9).start-0.15, tEnd=L(10).start;
+  // camera keys: intro -> countdown pull-back -> zoom to B -> breathe out -> B close -> fix on A -> out
+  const cam=RL.cam(t,[
+    {t:0,s:.92,x:0,y:40},
+    {t:L(1).end+0.1,s:.72,x:0,y:60,d:.5},
+    {t:tSet,s:1.32,x:-(780-540)*1.32,y:60,d:.7},
+    {t:W('Sounds',4)-0.1,s:1.05,x:-(780-540)*1.05,y:40,d:.6},
+    {t:tPic,s:1.38,x:-(780-540)*1.38,y:30,d:.6},
+    {t:W('close',8),s:1.2,x:-(780-540)*1.2,y:120,r:-3,d:.6},
+    {t:tFix,s:1.32,x:-(300-540)*1.32,y:60,r:0,d:.7},
+    {t:tEnd,s:.7,x:-(300-540)*.7,y:0,d:.6},
+  ]);
+  G('world').style.transform=cam.css;
+  // phones slide in, apart during countdown
+  const inA=RL.ease(t,0.05,.6,'expo'), inB=RL.ease(t,0.2,.6,'expo');
+  const spread=RL.ease(t,L(1).end+0.1,.5,'inout')*(1-RL.ease(t,tSet,.5,'inout'))*150;
+  G('pA').style.transform=`translate(${-spread}px,${(1-inA)*900}px)`; G('pB').style.transform=`translate(${spread}px,${(1-inB)*900}px)`;
+  const bOff=C((t-tFix)/.3), aOff=C((t-tSet)/.3)*(1-C((t-(tFix-0.2))/.3));
+  G('pA').style.opacity=1-aOff*0.85; G('pB').style.opacity=(1-bOff*0.85)*(1-0.6*RL.ease(t,W('close',8),.5));
+  // A / B chips
+  [['chA',0.8,-1],['chB',1.0,1]].forEach(([id,t0,sg])=>{const p=RL.pop(t,t0); const off=C((t-tSet)/.25);
+    G(id).style.opacity=C(p*1.5)*(1-off); G(id).style.transform=`translateX(calc(-50% + ${sg*spread}px)) scale(${p})`});
+  G('bxA').style.transform=`translateX(${-spread}px)`; G('bxB').style.transform=`translateX(${spread}px)`;
+  // boxes on the delivery row
+  const dA=RL.draw(t,W('delivery',1)), dB=RL.draw(t,W("doesn't",1)), boxOff=C((t-tSet)/.25);
+  G('rA').style.strokeDashoffset=LEN*(1-dA); G('bxA').style.opacity=(dA>0?1:0)*(1-boxOff)+ (C((t-W('under',9))/.01)*(1-C((t-tEnd)/.3)));
+  if(t>=W('under',9)){ G('rA').style.strokeDashoffset=LEN*(1-RL.draw(t,W('under',9))); }
+  G('bxB').style.opacity=RL.ease(t,W("doesn't",1),.25)*(1-boxOff);
+  // A or B + countdown (optional component)
+  const ab=RL.pop(t,L(1).end+0.05), abOff=C((t-tSet)/.25);
+  G('aorb').style.opacity=C(ab*1.5)*(1-abOff); G('aorb').style.transform=`scale(${0.7+0.3*ab})`;
+  RL.countdown(G('cd'),t,tCD,3,.8);
+  RL.scribble(G('h1'),t,tCD+0.2,.5); G('h1').style.opacity=(t>tCD+0.2&&t<tSet)?1:0;
+  // pins
+  const pin=(id,t0,t1)=>{const p=RL.pop(t,t0),o=C((t-t1)/.2);G(id).style.opacity=C(p*1.5)*(1-o);G(id).style.transform=`translate(-50%,-50%) scale(${p})`};
+  pin('pin1',W('checkout',2),W('Sounds',4)); pin('pin2',W('clean',3),W('Sounds',4)); pin('pin3',W('Less',3),W('Sounds',4));
+  pin('pin4',W('under',9),tEnd);
+  // cursor + tap + checkout screen + error
+  const cx0=1000,cy0=1500,cx1=780,cy1=760+380-12-24-28;
+  const mv=RL.ease(t,W('find',5),.9,'inout');
+  G('cursor').style.left=(cx0+(cx1-cx0)*mv-10)+'px'; G('cursor').style.top=(cy0+(cy1-cy0)*mv-6)+'px';
+  const tap=W('tap',6)+0.1, press=t>tap&&t<tap+0.15?0.85:1;
+  G('cursor').style.transform=`scale(${press})`; G('cursor').style.opacity=(t>W('find',5)&&t<W('then',6)+0.3)?1:0;
+  G('rip').style.left=cx1+'px';G('rip').style.top=cy1+'px'; RL.ripple(G('rip'),t,tap);
+  const co=RL.ease(t,W('then',6),.35); G('scrB2').style.transform=`translateX(${(1-co)*100}%)`;
+  const err=t>=W('Arrives',7); G('ship').style.borderColor=err?'#e5484d':'#e5e9f0'; G('ship').style.background=err?'#fff1f2':'#fff';
+  G('shipT').style.color=err?'#e5484d':'inherit';
+  const shake=err&&t<W('Arrives',7)+.35?Math.sin((t-W('Arrives',7))*60)*8*(1-(t-W('Arrives',7))/.35):0;
+  G('pB').style.marginLeft=(-185+shake)+'px';
+  RL.scribble(G('h2'),t,W('tab',8),.4); G('h2').style.opacity=(t>W('tab',8)&&t<tFix)?1:0;
+  // end card
+  const e=RL.ease(t,tEnd,.5); G('end').style.opacity=e; G('end').style.transform=`scale(${0.94+0.06*e})`;
+  G('world').style.opacity=1-e;
+  RL.chapter(G('chap'),t); G('chap').style.opacity*=1-e;
+  RL.caption(G('cap'),t);
+}
+render(0);
+</script></body></html>

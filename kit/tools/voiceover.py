@@ -13,7 +13,7 @@ Step 3  mix:   python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4
         - QUALITY GATE: refuses to write final.mp4 if the video length doesn't match the plan (±0.15 s),
           a line is too fast/slow (outside 2.3-3.3 words/sec), a silent gap > 0.7 s, first word later than 0.5 s,
           ending silence > 1.2 s, or speech covers < 75 % of the video.
-Engines: "engine":"chatterbox" (DEFAULT, natural human-sounding voice; needs `pip install --break-system-packages chatterbox-tts`
+Engines: "engine":"kokoro" (DEFAULT: exact word timings from the model). "chatterbox" (natural voice, NO exact word timings; needs `pip install --break-system-packages chatterbox-tts`
          and huggingface.co reachable; optional "voice_ref":"path/to/clip.wav" to use a specific voice; "exaggeration" 0.3-0.7)
          falls back automatically to "kokoro" (af_heart warm female / am_michael male) if Chatterbox can't load.
 Model files download once (Chatterbox -> HF cache, Kokoro -> ~/.kokoro)."""
@@ -21,16 +21,24 @@ import sys, os, json, subprocess
 import numpy as np, soundfile as sf
 
 SR = 48000
-TARGET_WPS = 2.8
-LEAD, GAP, MAX_GAP, TAIL = 0.30, 0.35, 0.60, 0.70
+TARGET_WPS = 3.0                     # brisk, conversational (owner's reference reel ~3 words/sec)
+LEAD, GAP, MAX_GAP, TAIL = 0.25, 0.15, 0.45, 0.60   # lines almost back to back
+MAX_HOLD = 3.6                       # a deliberate "hold" (e.g. A-or-B countdown) after a line, only when used
 
 def kokoro():
     d = os.path.expanduser('~/.kokoro'); os.makedirs(d, exist_ok=True)
     for f, u in [('kokoro.onnx', 'https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/kokoro-v1.0.onnx'),
                  ('voices.bin', 'https://github.com/thewh1teagle/kokoro-onnx/releases/download/model-files-v1.0/voices-v1.0.bin')]:
         if not os.path.exists(f'{d}/{f}'): subprocess.run(['curl', '-sSL', '-o', f'{d}/{f}', u], check=True)
+    if not os.path.exists(f'{d}/kokoro_timed.onnx'):   # expose the model's own phoneme durations -> exact word timings
+        import onnx
+        from onnx import helper, TensorProto
+        mm = onnx.load(f'{d}/kokoro.onnx')
+        mm.graph.node.append(helper.make_node('Identity', ['/encoder/Round_output_0'], ['duration'], name='expose_duration'))
+        mm.graph.output.append(helper.make_tensor_value_info('duration', TensorProto.FLOAT, None))
+        onnx.save(mm, f'{d}/kokoro_timed.onnx')
     from kokoro_onnx import Kokoro
-    return Kokoro(f'{d}/kokoro.onnx', f'{d}/voices.bin')
+    return Kokoro(f'{d}/kokoro_timed.onnx', f'{d}/voices.bin')
 
 def trim(a, sr, thr=0.01):
     idx = np.where(np.abs(a) > thr)[0]
@@ -39,17 +47,30 @@ def trim(a, sr, thr=0.01):
     return a[s:e]
 
 def synth(k, text, voice):
+    """Kokoro line + EXACT word timings from the model's phoneme durations (kokoro_timed.onnx)."""
     words = len(text.split()); speed = 1.0
     best = None
     for _ in range(6):
-        a, sr = k.create(text, voice=voice, speed=speed, lang='en-us'); a = trim(a, sr)
+        a, sr, sp = k.create_timed(text, voice=voice, speed=speed, lang='en-us')
+        idx = np.where(np.abs(a) > 0.01)[0]; head = max(0, idx[0] - int(0.02 * sr)) if len(idx) else 0
+        tail = min(len(a), idx[-1] + int(0.05 * sr)) if len(idx) else len(a)
+        a = a[head:tail]; off = head / sr
         wps = words / (len(a) / sr)
-        if best is None or abs(wps - TARGET_WPS) < abs(best[1] - TARGET_WPS): best = (a, wps)
-        if 2.6 <= wps <= 3.0: break
-        speed = float(np.clip(speed * (TARGET_WPS / wps) ** 1.3, 0.65, 1.15))
-    a, wps = best
+        wt = []; cur = None
+        for ph in sp:                       # group phonemes into words at spaces
+            if ph.phoneme == ' ':
+                if cur: wt.append(cur); cur = None
+                continue
+            if ph.phoneme in ',.!?;:…"“”': continue
+            cur = [ph.start - off, ph.end - off] if cur is None else [cur[0], ph.end - off]
+        if cur: wt.append(cur)
+        wt = [[max(0, x), max(0, y)] for x, y in wt] if len(wt) == words else None
+        if best is None or abs(wps - TARGET_WPS) < abs(best[1] - TARGET_WPS): best = (a, wps, wt)
+        if 2.8 <= wps <= 3.2: break
+        speed = float(np.clip(speed * (TARGET_WPS / wps) ** 1.3, 0.65, 1.25))
+    a, wps, wt = best
     a = np.interp(np.arange(0, len(a), sr / SR), np.arange(len(a)), a)
-    return a, wps
+    return a, wps, wt
 
 def chatterbox():
     import torch
@@ -74,33 +95,121 @@ def synth_cb(m, text, spec):
         a = m.generate(text, **kw).squeeze(0).cpu().numpy(); a = trim(a, m.sr, thr=0.015)
         wps = words / (len(a) / m.sr)
         if best is None or abs(wps - TARGET_WPS) < abs(best[1] - TARGET_WPS): best = (a, wps)
-        if 2.5 <= wps <= 3.1: break
+        if 2.7 <= wps <= 3.3: break
     a, wps = best
-    if not 2.5 <= wps <= 3.1:   # gentle pitch-preserving tempo fix, max ±12 %
+    if not 2.7 <= wps <= 3.3:   # gentle pitch-preserving tempo fix, max ±12 %
         f = float(np.clip(TARGET_WPS / wps, 0.88, 1.12)); a = stretch(a, m.sr, f); wps = words / (len(a) / m.sr)
     a = np.interp(np.arange(0, len(a), m.sr / SR), np.arange(len(a)), a)
-    return a, wps
+    return a, wps, None
+
+import re
+def clean(text):
+    """script markup: *word* = accent word (caption colour), "..." quotes are accented too. TTS gets plain text."""
+    return re.sub(r'\*', '', text)
+
+def syl(w):
+    w = re.sub(r'[^a-z0-9]', '', w.lower())
+    if not w: return 0.5
+    if w.isdigit(): return 1.5 * len(w)
+    n = len(re.findall(r'[aeiouy]+', w)) - (1 if w.endswith('e') and len(w) > 3 else 0)
+    return max(1, n)
+
+PHON = None   # set to a word -> phoneme-count function when Kokoro is loaded (much better duration weights)
+def weight(t):
+    w = re.sub(r'[^A-Za-z0-9\']', '', t)
+    if PHON and w:
+        try: return max(1.0, float(PHON(w)))
+        except Exception: pass
+    return syl(t) * 2.6 + 0.5
+
+def align(a, text):
+    """Word timestamps inside one synthesized line. 1) find the real pauses in the audio (runs of >= 60 ms near-silence),
+    2) pin the boundary after every punctuated word to its pause, 3) split the rest by phoneme count, 4) snap each
+    boundary to the quietest frame within ±50 ms. Typically within ~40 ms of the true word onset."""
+    toks = text.split(); fr = int(0.01 * SR); L = len(a) / SR
+    env = np.array([np.sqrt((a[i:i + fr] ** 2).mean()) for i in range(0, max(1, len(a) - fr), fr)]) + 1e-6
+    env = np.convolve(env, np.ones(3) / 3, mode='same')
+    thr = np.median(env[env > np.percentile(env, 40)]) * 0.12
+    quiet = env < thr; pauses = []; j = 0
+    while j < len(quiet):
+        if quiet[j]:
+            k = j
+            while k < len(quiet) and quiet[k]: k += 1
+            if k - j >= 6 and j > 3 and k < len(quiet) - 3: pauses.append(((j + k) / 2) * 0.01)
+            j = k
+        else: j += 1
+    wts = [weight(t) for t in toks]
+    cum = np.cumsum([0] + wts) / sum(wts) * L; b = list(cum)
+    punct = [bool(re.search(r'[,.;:?!…]["”*]*$', t)) for t in toks]
+    anchors = {0: 0.0, len(toks): L}
+    for j in range(len(toks) - 1):
+        if punct[j] and pauses:
+            c = min(pauses, key=lambda x: abs(x - b[j + 1]))
+            if abs(c - b[j + 1]) < 0.35: anchors[j + 1] = c
+    keys = sorted(anchors)
+    for x, y in zip(keys, keys[1:]):       # re-split by weight between anchors
+        tot = sum(wts[x:y]); acc = anchors[x]
+        for j in range(x, y):
+            b[j] = acc; acc += (anchors[y] - anchors[x]) * wts[j] / tot
+        b[y] = anchors[y]
+    for j in range(1, len(b) - 1):
+        if j in anchors: continue
+        c = int(b[j] / 0.01); lo, hi = max(1, c - 5), min(len(env) - 1, c + 6)
+        if hi > lo: b[j] = (lo + int(np.argmin(env[lo:hi]))) * 0.01
+    for j in range(1, len(b)): b[j] = max(b[j], b[j - 1] + 0.08)
+    out = []; inq = False; inst = False
+    for j, t in enumerate(toks):            # *a phrase* and "a quote" are accent spans (can cover several words)
+        if t.startswith(('"', '“')): inq = True
+        if t.lstrip('"“').startswith('*'): inst = True
+        hl = inq or inst
+        if t.rstrip(',.?!…"”').endswith('*') or t.endswith('*'): inst = False
+        if t.rstrip(',.?!…').endswith(('"', '”')) and (inq or j): inq = False
+        out.append({'w': t.replace('*', ''), 's': round(b[j], 3), 'e': round(b[j + 1], 3), 'hl': hl})
+    return out
 
 def plan(script, out):
     os.makedirs(out, exist_ok=True); spec = json.load(open(script))
-    engine = spec.get('engine', 'chatterbox'); m = None
+    engine = spec.get('engine', 'kokoro'); m = None   # kokoro = exact word timings
     if engine == 'chatterbox':
         try: m = chatterbox(); print('voice engine: chatterbox (natural)')
         except Exception as e:
             print(f'WARNING: Chatterbox unavailable ({type(e).__name__}: {str(e)[:120]}) -> falling back to Kokoro'); engine = 'kokoro'
-    if engine == 'kokoro': k = kokoro(); print('voice engine: kokoro')
+    if engine == 'kokoro':
+        global PHON
+        k = kokoro(); print('voice engine: kokoro')
+        try: PHON = lambda w: len(re.sub(r'[^\w]', '', k.tokenizer.phonemize(w, 'en-us')))
+        except Exception: PHON = None
     voice = spec.get('voice', 'af_heart'); t = LEAD; lines = []
     for i, ln in enumerate(spec['lines']):
-        a, wps = synth_cb(m, ln['text'], spec) if m is not None else synth(k, ln['text'], voice)
+        txt = clean(ln['text'])
+        a, wps, wt = synth_cb(m, txt, spec) if m is not None else synth(k, txt, voice)
         sf.write(f'{out}/line{i}.wav', a.astype(np.float32), SR)
         L = len(a) / SR
-        lines.append({'start': round(t, 3), 'end': round(t + L, 3), 'text': ln['text'], 'wps': round(wps, 2)})
-        t += L + min(MAX_GAP, max(GAP, ln.get('pause_after', GAP)))
+        al = align(a, ln['text'])                       # markup (accent words) + fallback timing
+        if wt: al = [dict(w, s=round(x, 3), e=round(y, 3)) for w, (x, y) in zip(al, wt)]; src = 'exact'
+        else: src = 'estimated'
+        words = [dict(w, s=round(t + w['s'], 3), e=round(t + w['e'], 3)) for w in al]
+        hold = min(MAX_HOLD, float(ln.get('hold', 0)))
+        lines.append({'start': round(t, 3), 'end': round(t + L, 3), 'text': txt, 'wps': round(wps, 2), 'words': words,
+                      'chapter': ln.get('chapter'), 'hold': round(hold, 2), 'timing': src})
+        t += L + (hold if hold else min(MAX_GAP, max(GAP, ln.get('pause_after', GAP))))
     dur = round(lines[-1]['end'] + TAIL, 2)
-    plan = {'dur': dur, 'engine': engine, 'lines': lines}
+    cues = []
+    for c in spec.get('cues', []):   # {"sfx":"pop","line":3,"word":"clutter"} | {"sfx":"tick","line":2,"after":0.0} (after = s past line end)
+        l = lines[c['line']]
+        if 'word' in c:
+            hit = [w for w in l['words'] if re.sub(r'[^a-z0-9]', '', w['w'].lower()) == re.sub(r'[^a-z0-9]', '', c['word'].lower())]
+            if not hit: print(f'WARNING: cue word "{c["word"]}" not in line {c["line"]}'); continue
+            tt = hit[0]['s'] + c.get('offset', 0)
+        else: tt = l['end'] + c.get('after', 0)
+        cues.append({'t': round(tt, 3), 'sfx': c['sfx'], 'id': c.get('id', c.get('word', c['sfx']))})
+    plan = {'dur': dur, 'engine': engine, 'music': bool(spec.get('music', False)), 'lines': lines, 'cues': sorted(cues, key=lambda c: c['t'])}
     json.dump(plan, open(f'{out}/timing.json', 'w'), indent=1)
     open(f'{out}/timing.js', 'w').write('window.VO=' + json.dumps(plan) + ';\n')
-    for l in lines: print(f"{l['start']:6.2f}-{l['end']:6.2f}s  {l['wps']:.2f} w/s  {l['text']}")
+    for l in lines:
+        print(f"{l['start']:6.2f}-{l['end']:6.2f}s  {l['wps']:.2f} w/s  {l['text']}" + (f"  [hold {l['hold']}s]" if l['hold'] else ''))
+        print(f"        [{l['timing']}] " + ' '.join(f"{w['w']}@{w['s']:.2f}" for w in l['words']))
+    for c in plan['cues']: print(f"  cue {c['sfx']:7s} {c['t']:6.2f}s  ({c['id']})")
     print(f'video length (window.DUR) = {dur}s')
 
 def check(p, vid_dur):
@@ -108,12 +217,31 @@ def check(p, vid_dur):
     if abs(vid_dur - p['dur']) > 0.15: errs.append(f'video is {vid_dur:.2f}s but the voiceover plan is {p["dur"]}s: set window.DUR = VO.dur')
     if lines[0]['start'] > 0.5: errs.append('first word starts later than 0.5s')
     for i, l in enumerate(lines):
-        if not 2.3 <= l['wps'] <= 3.3: errs.append(f'line {i} pace {l["wps"]} w/s (needs 2.3-3.3): rewrite it shorter/longer')
-        if i and l['start'] - lines[i-1]['end'] > 0.7: errs.append(f'silent gap of {l["start"]-lines[i-1]["end"]:.2f}s before line {i}')
+        if not 2.5 <= l['wps'] <= 3.5: errs.append(f'line {i} pace {l["wps"]} w/s (needs 2.5-3.5): rewrite it shorter/longer')
+        if i and not lines[i-1].get('hold') and l['start'] - lines[i-1]['end'] > 0.5: errs.append(f'silent gap of {l["start"]-lines[i-1]["end"]:.2f}s before line {i}')
     if vid_dur - lines[-1]['end'] > 1.2: errs.append(f'{vid_dur-lines[-1]["end"]:.2f}s of silence at the end')
-    cov = sum(l['end'] - l['start'] for l in lines) / vid_dur
+    cov = sum(l['end'] - l['start'] for l in lines) / (vid_dur - sum(l.get('hold', 0) for l in lines))
     if cov < 0.75: errs.append(f'speech covers only {cov*100:.0f}% of the video (needs 75%+)')
     return errs, cov
+
+def sfx(kind):
+    """Small, clean UI sound effects (synthesized, royalty-free). Levels are relative to the voice."""
+    r = np.random.default_rng(7)
+    def env(d, a=0.003, k=30): tt = np.arange(int(d * SR)) / SR; return tt, np.clip(tt / a, 0, 1) * np.exp(-k * tt)
+    if kind == 'tick':   tt, e = env(0.06, 0.001, 70); y = np.sin(2*np.pi*2600*tt) * e * 0.55
+    elif kind == 'pop':  tt, e = env(0.12, 0.002, 38); f = 520 + 500 * np.exp(-30 * tt); y = np.sin(2*np.pi*np.cumsum(f)/SR) * e * 0.45
+    elif kind == 'tap':  tt, e = env(0.05, 0.001, 90); y = (np.sin(2*np.pi*1500*tt) * 0.5 + r.normal(0, .3, len(tt))) * e * 0.5
+    elif kind == 'whoosh':
+        tt = np.arange(int(0.45 * SR)) / SR; nz = np.convolve(r.normal(0, 1, len(tt)), np.ones(30) / 30, 'same')
+        y = nz * np.sin(np.pi * tt / 0.45) ** 2 * 0.35
+    elif kind == 'swoosh':   # short UI slide
+        tt = np.arange(int(0.25 * SR)) / SR; nz = np.convolve(r.normal(0, 1, len(tt)), np.ones(12) / 12, 'same')
+        y = nz * np.sin(np.pi * tt / 0.25) ** 2 * 0.28
+    elif kind == 'ding':  tt, e = env(0.6, 0.003, 6); y = (np.sin(2*np.pi*1318.5*tt) + .5*np.sin(2*np.pi*1975.5*tt)) * e * 0.3
+    elif kind == 'error': tt, e = env(0.28, 0.003, 9); y = np.sign(np.sin(2*np.pi*170*tt)) * e * 0.12
+    elif kind == 'type':  y = np.concatenate([sfx('tap') * 0.4, np.zeros(int(0.06 * SR))] * 3)
+    else: raise ValueError(f'unknown sfx {kind}: use tick pop tap whoosh swoosh ding error type')
+    return y
 
 def mix(out, vid, final):
     p = json.load(open(f'{out}/timing.json'))
@@ -124,12 +252,19 @@ def mix(out, vid, final):
     n = int(SR * vd); voice = np.zeros(n + SR)
     for i, l in enumerate(p['lines']):
         a, _ = sf.read(f'{out}/line{i}.wav'); s = int(l['start'] * SR); e = min(len(voice), s + len(a)); voice[s:e] += a[:e - s]
-    voice = voice[:n]; t = np.arange(n) / SR; pad = np.zeros(n)
-    for i, f in enumerate([87.31, 130.81, 174.61, 220.0, 261.63, 329.63]):
-        for det in (-0.6, 0.6): pad += np.sin(2 * np.pi * (f + det) * t + i) * (0.9 if f < 200 else 0.5)
-    pad *= (0.75 + 0.25 * np.sin(2 * np.pi * 0.18 * t)) * np.clip(t / 1.5, 0, 1) * np.clip((vd - t) / 1.0, 0, 1)
-    pad = np.convolve(pad, np.ones(40) / 40, mode='same'); pad /= np.abs(pad).max()
-    mixd = voice / max(np.abs(voice).max(), 1e-6) * 0.8 + pad * 0.8 * 10 ** (-24 / 20)
+    voice = voice[:n]; t = np.arange(n) / SR
+    mixd = voice / max(np.abs(voice).max(), 1e-6) * 0.8
+    if p.get('music'):   # off by default: the reference style is voice + sound effects only
+        pad = np.zeros(n)
+        for i, f in enumerate([87.31, 130.81, 174.61, 220.0, 261.63, 329.63]):
+            for det in (-0.6, 0.6): pad += np.sin(2 * np.pi * (f + det) * t + i) * (0.9 if f < 200 else 0.5)
+        pad *= (0.75 + 0.25 * np.sin(2 * np.pi * 0.18 * t)) * np.clip(t / 1.5, 0, 1) * np.clip((vd - t) / 1.0, 0, 1)
+        pad = np.convolve(pad, np.ones(40) / 40, mode='same'); pad /= np.abs(pad).max(); mixd += pad * 0.8 * 10 ** (-24 / 20)
+    fx = np.zeros(n)
+    for c in p.get('cues', []):
+        a = sfx(c['sfx']); s0 = int(c['t'] * SR); e = min(n, s0 + len(a))
+        if 0 <= s0 < n: fx[s0:e] += a[:e - s0]
+    mixd += fx * 0.8
     sf.write('/tmp/vo_raw.wav', mixd.astype(np.float32), SR)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', '/tmp/vo_raw.wav', '-af', 'highpass=f=80,acompressor=threshold=-18dB:ratio=3:attack=5:release=120,loudnorm=I=-14:TP=-1.5:LRA=9', '-ac', '2', '-ar', '48000', '/tmp/vo.wav'], check=True)
     subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', vid, '-i', '/tmp/vo.wav', '-map', '0:v', '-map', '1:a', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-shortest', '-movflags', '+faststart', final + '.tmp.mp4'], check=True)

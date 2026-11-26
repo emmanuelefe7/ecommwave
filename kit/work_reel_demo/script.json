@@ -1,31 +1,139 @@
-{"engine":"kokoro","voice":"am_michael","music":false,
- "lines":[
-  {"text":"Which store would *you* buy from?","chapter":"THE QUESTION"},
-  {"text":"A shows the *delivery date.* B *doesn't.*","hold":2.6},
-  {"text":"Most stores only show it at *checkout.*","chapter":"THE SETUP"},
-  {"text":"One clean page. *Less to read.*"},
-  {"text":"Sounds smart, *right?*"},
-  {"text":"You find the *perfect bag.*","chapter":"PICTURE THIS"},
-  {"text":"You tap *Add to cart,* then checkout.","pause_after":0.2},
-  {"text":"\"Arrives in *two weeks.*\""},
-  {"text":"And you *close the tab.*"},
-  {"text":"Show the date *under the price.*","chapter":"THE FIX"},
-  {"text":"Want more orders? DM us *GROWTH.*"}
+{
+ "engine": "kokoro",
+ "voice": "bm_george",
+ "music": false,
+ "lines": [
+  {
+   "text": "Which store would *you* buy from?",
+   "chapter": "THE QUESTION"
+  },
+  {
+   "text": "A shows the *delivery date.* B *doesn't.*",
+   "hold": 2.6
+  },
+  {
+   "text": "Most stores only show it at *checkout.*",
+   "chapter": "THE SETUP"
+  },
+  {
+   "text": "One clean page. *Less to read.*"
+  },
+  {
+   "text": "Sounds smart, *right?*"
+  },
+  {
+   "text": "You find the *perfect bag.*",
+   "chapter": "PICTURE THIS"
+  },
+  {
+   "text": "You tap *Add to cart,* then checkout.",
+   "pause_after": 0.2
+  },
+  {
+   "text": "\"Arrives in *two weeks.*\""
+  },
+  {
+   "text": "And you *close the tab.*"
+  },
+  {
+   "text": "Show the date *under the price.*",
+   "chapter": "THE FIX"
+  },
+  {
+   "text": "Want more orders? DM us *GROWTH.*"
+  }
  ],
- "cues":[
-  {"sfx":"swoosh","line":0,"word":"Which","offset":-0.1},
-  {"sfx":"pop","line":1,"word":"delivery"},
-  {"sfx":"pop","line":1,"word":"doesn't"},
-  {"sfx":"tick","line":1,"after":0.35},{"sfx":"tick","line":1,"after":1.15},{"sfx":"tick","line":1,"after":1.95},
-  {"sfx":"whoosh","line":2,"word":"Most","offset":-0.2},
-  {"sfx":"pop","line":2,"word":"checkout"},
-  {"sfx":"pop","line":3,"word":"clean"},
-  {"sfx":"pop","line":3,"word":"Less"},
-  {"sfx":"whoosh","line":5,"word":"You","offset":-0.2},
-  {"sfx":"tap","line":6,"word":"tap","offset":0.1},
-  {"sfx":"error","line":7,"word":"Arrives"},
-  {"sfx":"swoosh","line":8,"word":"close"},
-  {"sfx":"whoosh","line":9,"word":"Show","offset":-0.2},
-  {"sfx":"ding","line":9,"word":"under"},
-  {"sfx":"pop","line":10,"word":"GROWTH"}
- ]}
+ "cues": [
+  {
+   "sfx": "swoosh",
+   "line": 0,
+   "word": "Which",
+   "offset": -0.1
+  },
+  {
+   "sfx": "pop",
+   "line": 1,
+   "word": "delivery"
+  },
+  {
+   "sfx": "pop",
+   "line": 1,
+   "word": "doesn't"
+  },
+  {
+   "sfx": "tick",
+   "line": 1,
+   "after": 0.35
+  },
+  {
+   "sfx": "tick",
+   "line": 1,
+   "after": 1.15
+  },
+  {
+   "sfx": "tick",
+   "line": 1,
+   "after": 1.95
+  },
+  {
+   "sfx": "whoosh",
+   "line": 2,
+   "word": "Most",
+   "offset": -0.2
+  },
+  {
+   "sfx": "pop",
+   "line": 2,
+   "word": "checkout"
+  },
+  {
+   "sfx": "pop",
+   "line": 3,
+   "word": "clean"
+  },
+  {
+   "sfx": "pop",
+   "line": 3,
+   "word": "Less"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 5,
+   "word": "You",
+   "offset": -0.2
+  },
+  {
+   "sfx": "tap",
+   "line": 6,
+   "word": "tap",
+   "offset": 0.1
+  },
+  {
+   "sfx": "error",
+   "line": 7,
+   "word": "Arrives"
+  },
+  {
+   "sfx": "swoosh",
+   "line": 8,
+   "word": "close"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 9,
+   "word": "Show",
+   "offset": -0.2
+  },
+  {
+   "sfx": "ding",
+   "line": 9,
+   "word": "under"
+  },
+  {
+   "sfx": "pop",
+   "line": 10,
+   "word": "GROWTH"
+  }
+ ],
+ "lang": "en-gb"
+}

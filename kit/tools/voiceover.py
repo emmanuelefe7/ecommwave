@@ -23,7 +23,8 @@ import numpy as np, soundfile as sf
 SR = 48000
 TARGET_WPS = 3.0                     # brisk, conversational (owner's reference reel ~3 words/sec)
 LEAD, GAP, MAX_GAP, TAIL = 0.25, 0.15, 0.45, 0.60   # lines almost back to back
-MAX_HOLD = 3.6                       # a deliberate "hold" (e.g. A-or-B countdown) after a line, only when used
+MAX_HOLD = 3.6
+LANG = 'en-gb'   # owner, 2026-11-26: British English accent (voice + pronunciation); MAX_HOLD above = optional countdown pause
 
 def kokoro():
     d = os.path.expanduser('~/.kokoro'); os.makedirs(d, exist_ok=True)
@@ -51,7 +52,7 @@ def synth(k, text, voice):
     words = len(text.split()); speed = 1.0
     best = None
     for _ in range(6):
-        a, sr, sp = k.create_timed(text, voice=voice, speed=speed, lang='en-us')
+        a, sr, sp = k.create_timed(text, voice=voice, speed=speed, lang=LANG)
         idx = np.where(np.abs(a) > 0.01)[0]; head = max(0, idx[0] - int(0.02 * sr)) if len(idx) else 0
         tail = min(len(a), idx[-1] + int(0.05 * sr)) if len(idx) else len(a)
         a = a[head:tail]; off = head / sr
@@ -205,8 +206,8 @@ def plan_flow(k, spec, out, voice):
     t = LEAD; lines = [None] * len(L0)
     for g in groups:
         text = ' '.join(clean(L0[i]['text']).strip() for i in g)
-        try: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang='en-us', sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE, continuous=True)
-        except Exception: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang='en-us', sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE)
+        try: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang=LANG, sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE, continuous=True)
+        except Exception: a, sr, ph = k.create_timed(text, voice=style, speed=speed, lang=LANG, sentence_pause=STOP_PAUSE, clause_pause=COMMA_PAUSE)
         wt = []; cur = None
         for p in ph:
             if p.phoneme == ' ':
@@ -266,9 +267,10 @@ def plan(script, out):
     if engine == 'kokoro':
         global PHON
         k = kokoro(); print('voice engine: kokoro')
-        try: PHON = lambda w: len(re.sub(r'[^\w]', '', k.tokenizer.phonemize(w, 'en-us')))
+        try: PHON = lambda w: len(re.sub(r'[^\w]', '', k.tokenizer.phonemize(w, LANG)))
         except Exception: PHON = None
-    voice = spec.get('voice', 'af_heart'); t = LEAD; lines = []
+    global LANG
+    LANG = spec.get('lang', 'en-gb'); voice = spec.get('voice', 'bm_george'); t = LEAD; lines = []
     if engine == 'kokoro' and spec.get('flow', True):
         lines, t = plan_flow(k, spec, out, voice)
     else:

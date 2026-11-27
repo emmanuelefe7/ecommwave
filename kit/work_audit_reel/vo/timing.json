@@ -1,0 +1,542 @@
+{
+ "dur": 21.0,
+ "engine": "kokoro",
+ "music": false,
+ "lines": [
+  {
+   "start": 0.25,
+   "end": 1.87,
+   "text": "Getting visitors, but no sales?",
+   "wps": 3.13,
+   "words": [
+    {
+     "w": "Getting",
+     "s": 0.25,
+     "e": 0.45,
+     "hl": false
+    },
+    {
+     "w": "visitors,",
+     "s": 0.5,
+     "e": 0.875,
+     "hl": false
+    },
+    {
+     "w": "but",
+     "s": 1.075,
+     "e": 1.175,
+     "hl": false
+    },
+    {
+     "w": "no",
+     "s": 1.225,
+     "e": 1.4,
+     "hl": true
+    },
+    {
+     "w": "sales?",
+     "s": 1.475,
+     "e": 1.85,
+     "hl": true
+    }
+   ],
+   "chapter": "THE PROBLEM",
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 1.87,
+   "end": 3.245,
+   "text": "Your store is leaking orders.",
+   "wps": 3.85,
+   "words": [
+    {
+     "w": "Your",
+     "s": 1.925,
+     "e": 2.05,
+     "hl": false
+    },
+    {
+     "w": "store",
+     "s": 2.1,
+     "e": 2.35,
+     "hl": false
+    },
+    {
+     "w": "is",
+     "s": 2.4,
+     "e": 2.5,
+     "hl": false
+    },
+    {
+     "w": "leaking",
+     "s": 2.55,
+     "e": 2.825,
+     "hl": true
+    },
+    {
+     "w": "orders.",
+     "s": 2.875,
+     "e": 3.225,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 3.245,
+   "end": 4.41,
+   "text": "Let's find the leaks.",
+   "wps": 4.52,
+   "words": [
+    {
+     "w": "Let's",
+     "s": 3.3,
+     "e": 3.45,
+     "hl": false
+    },
+    {
+     "w": "find",
+     "s": 3.5,
+     "e": 3.675,
+     "hl": false
+    },
+    {
+     "w": "the",
+     "s": 3.7,
+     "e": 3.75,
+     "hl": false
+    },
+    {
+     "w": "leaks.",
+     "s": 3.8,
+     "e": 4.185,
+     "hl": false
+    }
+   ],
+   "chapter": "THE AUDIT",
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 4.41,
+   "end": 6.55,
+   "text": "First, speed. Does it load fast?",
+   "wps": 3.52,
+   "words": [
+    {
+     "w": "First,",
+     "s": 4.71,
+     "e": 4.985,
+     "hl": false
+    },
+    {
+     "w": "speed.",
+     "s": 5.19,
+     "e": 5.54,
+     "hl": true
+    },
+    {
+     "w": "Does",
+     "s": 5.59,
+     "e": 5.69,
+     "hl": false
+    },
+    {
+     "w": "it",
+     "s": 5.715,
+     "e": 5.765,
+     "hl": false
+    },
+    {
+     "w": "load",
+     "s": 5.815,
+     "e": 6.04,
+     "hl": false
+    },
+    {
+     "w": "fast?",
+     "s": 6.09,
+     "e": 6.415,
+     "hl": false
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 6.55,
+   "end": 8.645,
+   "text": "Then the product page. Any reviews?",
+   "wps": 3.64,
+   "words": [
+    {
+     "w": "Then",
+     "s": 6.85,
+     "e": 6.95,
+     "hl": false
+    },
+    {
+     "w": "the",
+     "s": 6.975,
+     "e": 7.025,
+     "hl": false
+    },
+    {
+     "w": "product",
+     "s": 7.075,
+     "e": 7.4,
+     "hl": false
+    },
+    {
+     "w": "page.",
+     "s": 7.45,
+     "e": 7.825,
+     "hl": false
+    },
+    {
+     "w": "Any",
+     "s": 7.875,
+     "e": 8.025,
+     "hl": false
+    },
+    {
+     "w": "reviews?",
+     "s": 8.075,
+     "e": 8.5,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 8.645,
+   "end": 10.915,
+   "text": "Then checkout. Any surprise costs?",
+   "wps": 2.74,
+   "words": [
+    {
+     "w": "Then",
+     "s": 8.945,
+     "e": 9.12,
+     "hl": false
+    },
+    {
+     "w": "checkout.",
+     "s": 9.17,
+     "e": 9.62,
+     "hl": false
+    },
+    {
+     "w": "Any",
+     "s": 9.67,
+     "e": 9.82,
+     "hl": false
+    },
+    {
+     "w": "surprise",
+     "s": 9.87,
+     "e": 10.27,
+     "hl": true
+    },
+    {
+     "w": "costs?",
+     "s": 10.32,
+     "e": 10.77,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 10.915,
+   "end": 14.11,
+   "text": "Small leaks like these add up, and cost you orders every day.",
+   "wps": 4.17,
+   "words": [
+    {
+     "w": "Small",
+     "s": 11.215,
+     "e": 11.465,
+     "hl": false
+    },
+    {
+     "w": "leaks",
+     "s": 11.515,
+     "e": 11.74,
+     "hl": false
+    },
+    {
+     "w": "like",
+     "s": 11.765,
+     "e": 11.89,
+     "hl": false
+    },
+    {
+     "w": "these",
+     "s": 11.915,
+     "e": 12.09,
+     "hl": false
+    },
+    {
+     "w": "add",
+     "s": 12.165,
+     "e": 12.315,
+     "hl": true
+    },
+    {
+     "w": "up,",
+     "s": 12.34,
+     "e": 12.465,
+     "hl": true
+    },
+    {
+     "w": "and",
+     "s": 12.665,
+     "e": 12.74,
+     "hl": false
+    },
+    {
+     "w": "cost",
+     "s": 12.79,
+     "e": 13.065,
+     "hl": false
+    },
+    {
+     "w": "you",
+     "s": 13.09,
+     "e": 13.165,
+     "hl": false
+    },
+    {
+     "w": "orders",
+     "s": 13.215,
+     "e": 13.49,
+     "hl": false
+    },
+    {
+     "w": "every",
+     "s": 13.54,
+     "e": 13.79,
+     "hl": false
+    },
+    {
+     "w": "day.",
+     "s": 13.84,
+     "e": 14.09,
+     "hl": false
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 14.11,
+   "end": 15.67,
+   "text": "We find them, and show you the fix.",
+   "wps": 5.39,
+   "words": [
+    {
+     "w": "We",
+     "s": 14.165,
+     "e": 14.24,
+     "hl": false
+    },
+    {
+     "w": "find",
+     "s": 14.29,
+     "e": 14.54,
+     "hl": false
+    },
+    {
+     "w": "them,",
+     "s": 14.565,
+     "e": 14.665,
+     "hl": false
+    },
+    {
+     "w": "and",
+     "s": 14.715,
+     "e": 14.79,
+     "hl": false
+    },
+    {
+     "w": "show",
+     "s": 14.865,
+     "e": 14.99,
+     "hl": false
+    },
+    {
+     "w": "you",
+     "s": 15.04,
+     "e": 15.115,
+     "hl": false
+    },
+    {
+     "w": "the",
+     "s": 15.14,
+     "e": 15.19,
+     "hl": true
+    },
+    {
+     "w": "fix.",
+     "s": 15.265,
+     "e": 15.65,
+     "hl": true
+    }
+   ],
+   "chapter": "THE FIX",
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 15.67,
+   "end": 18.006,
+   "text": "The best part? The audit is free.",
+   "wps": 3.25,
+   "words": [
+    {
+     "w": "The",
+     "s": 15.835,
+     "e": 15.885,
+     "hl": false
+    },
+    {
+     "w": "best",
+     "s": 15.935,
+     "e": 16.135,
+     "hl": false
+    },
+    {
+     "w": "part?",
+     "s": 16.185,
+     "e": 16.56,
+     "hl": false
+    },
+    {
+     "w": "The",
+     "s": 17.005,
+     "e": 17.105,
+     "hl": false
+    },
+    {
+     "w": "audit",
+     "s": 17.18,
+     "e": 17.455,
+     "hl": false
+    },
+    {
+     "w": "is",
+     "s": 17.505,
+     "e": 17.605,
+     "hl": false
+    },
+    {
+     "w": "free.",
+     "s": 17.68,
+     "e": 17.986,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 18.006,
+   "end": 20.396,
+   "text": "Want yours? DM us GROWTH.",
+   "wps": 2.27,
+   "words": [
+    {
+     "w": "Want",
+     "s": 18.111,
+     "e": 18.361,
+     "hl": false
+    },
+    {
+     "w": "yours?",
+     "s": 18.411,
+     "e": 18.797,
+     "hl": false
+    },
+    {
+     "w": "DM",
+     "s": 19.292,
+     "e": 19.557,
+     "hl": false
+    },
+    {
+     "w": "us",
+     "s": 19.582,
+     "e": 19.707,
+     "hl": false
+    },
+    {
+     "w": "GROWTH.",
+     "s": 19.757,
+     "e": 20.316,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  }
+ ],
+ "cues": [
+  {
+   "t": 0.15,
+   "sfx": "swoosh",
+   "id": "Getting"
+  },
+  {
+   "t": 3.5,
+   "sfx": "whoosh",
+   "id": "find"
+  },
+  {
+   "t": 5.19,
+   "sfx": "pop",
+   "id": "speed"
+  },
+  {
+   "t": 8.075,
+   "sfx": "pop",
+   "id": "reviews"
+  },
+  {
+   "t": 9.17,
+   "sfx": "tap",
+   "id": "checkout"
+  },
+  {
+   "t": 9.87,
+   "sfx": "error",
+   "id": "surprise"
+  },
+  {
+   "t": 15.265,
+   "sfx": "ding",
+   "id": "fix"
+  },
+  {
+   "t": 17.68,
+   "sfx": "pop",
+   "id": "free"
+  },
+  {
+   "t": 18.111,
+   "sfx": "whoosh",
+   "id": "Want"
+  }
+ ]
+}

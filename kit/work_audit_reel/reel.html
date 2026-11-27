@@ -1,0 +1,133 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<script src="../common.js"></script>
+<script src="vo/timing.js"></script>
+<script src="../reel.js"></script>
+<style>
+@font-face{font-family:"Hand";src:url(../fonts/hand.woff2) format("woff2")}
+:root{--ink:#ffffff;--acc:#34d5a0;--bad:#ff5d66}
+#stage{background:radial-gradient(900px 800px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(900px 800px at 0% 100%,#173a80 0%,rgba(23,58,128,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+.phone{position:absolute;left:540px;top:760px;width:380px;height:780px;margin:-390px 0 0 -190px;border-radius:60px;background:#05080f;padding:12px;
+  box-shadow:0 60px 120px rgba(0,0,0,.55),inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:49px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:11px;width:98px;height:28px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:5}
+.sb{height:46px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+.nv{height:46px;display:flex;align-items:center;justify-content:center;font:800 19px "Inter Display";letter-spacing:.08em;color:#0f1f4d}
+.pimg{margin:0 14px;height:300px;border-radius:18px;background:#f1ebe3;overflow:hidden;position:relative}
+.pimg img{width:100%;height:100%;object-fit:cover}
+.pi{padding:14px 18px 0}
+.t1{display:flex;justify-content:space-between;align-items:baseline}
+.t1 b{font:800 24px "Inter Display";letter-spacing:-.02em}.t1 span{font:800 22px "Inter Display"}
+.st{font:500 14px Inter;color:#94a3b8;margin-top:6px;height:20px}.st i{color:#f5b301;font-style:normal;letter-spacing:1px}
+.sw{display:flex;gap:8px;margin-top:12px}.sw div{width:34px;height:34px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px #cbd5e1}
+.btn{position:absolute;left:18px;right:18px;bottom:24px;height:56px;border-radius:16px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px Inter}
+.load{position:absolute;inset:46px 0 0 0;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+.spin{width:54px;height:54px;border-radius:50%;border:5px solid #eef1f5;border-top-color:#0f1f4d}
+.bar{position:absolute;left:0;top:0;height:4px;background:#ff5d66}
+.pin{position:absolute;display:inline-flex;align-items:center;gap:12px;background:#fff;color:#0d1b3e;font:800 28px Inter;padding:12px 24px 12px 12px;border-radius:999px;box-shadow:0 18px 40px rgba(0,0,0,.35);white-space:nowrap}
+.pin .d{width:40px;height:40px;border-radius:50%;background:var(--bad);display:grid;place-items:center}
+.pin.ok .d{background:#12b886}
+#chap{position:absolute;left:50%;top:190px;background:#34d5a0;color:#0a1a47;font:800 22px Inter;letter-spacing:.16em;padding:12px 24px;border-radius:999px;transform-origin:center}
+#cap{position:absolute;left:70px;right:70px;top:1360px;text-align:center;font:800 66px/1.12 "Inter Display";letter-spacing:-.035em;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.35)}
+#cap .rw{display:inline-block;will-change:transform,opacity,filter}
+#cap .hl{color:var(--acc)}
+.hand{position:absolute;font:700 52px Hand;color:var(--acc);white-space:nowrap}
+.rip{position:absolute;width:120px;height:120px;border-radius:50%;border:6px solid var(--acc);background:rgba(52,213,160,.18)}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:42px;opacity:0}
+.cta{background:#34d5a0;color:#0a1a47;font:800 52px "Inter Display";letter-spacing:-.02em;padding:26px 30px 26px 52px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 24px 60px rgba(52,213,160,.35)}
+.cta i{width:72px;height:72px;border-radius:50%;background:#0a1a47;display:grid;place-items:center}
+</style></head><body>
+<div id="stage"><div class="dots"></div>
+  <div id="world">
+    <div class="phone" id="ph"><div class="scr"><div class="isl"></div>
+      <div id="pp"></div>
+      <div id="co" style="position:absolute;inset:0;background:#fff"></div>
+      <div class="load" id="load"><div class="bar" id="bar"></div><div class="spin" id="spin"></div><div style="font:600 15px Inter;color:#94a3b8">Loading…</div></div>
+    </div></div>
+    <div class="pin" id="p1" style="left:790px;top:455px"><span class="d" id="d1"></span><span id="t1">Slow to load</span></div>
+    <div class="pin" id="p2" style="left:300px;top:850px"><span class="d" id="d2"></span><span id="t2">No reviews</span></div>
+    <div class="pin" id="p3" style="left:790px;top:600px"><span class="d" id="d3"></span><span id="t3">Surprise cost</span></div>
+    <div class="rip" id="rip"></div>
+  </div>
+  <div class="hand" id="h1" style="left:640px;top:250px;transform:rotate(-5deg)">sales leaking</div>
+  <div id="chap"></div>
+  <div id="cap"></div>
+  <div id="end">
+    <img src="../assets/logo_white.png" style="height:62px">
+    <div style="font:900 104px/1.02 'Inter Display';letter-spacing:-.05em;color:#fff;text-align:center">Get your <span style="font-family:Serif;font-style:italic;font-weight:400;color:#34d5a0">free</span><br>store audit.</div>
+    <div style="display:flex;gap:16px">
+      <span class="pin" style="position:static;font-size:26px"><span class="d" style="background:#0f2557">CK</span>Speed</span>
+      <span class="pin" style="position:static;font-size:26px"><span class="d" style="background:#0f2557">CK</span>Product page</span>
+      <span class="pin" style="position:static;font-size:26px"><span class="d" style="background:#0f2557">CK</span>Checkout</span>
+    </div>
+    <span class="cta">DM us “GROWTH” <i>ARR</i></span>
+    <div style="font:700 34px Inter;color:#a9b8d6">ecommwave.org</div>
+  </div>
+</div>
+<script>
+const ic=(d,c,w,s)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const X=ic('<path d="M7 7l10 10M17 7L7 17"/>','#fff',3,22), CKI=ic('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#fff',3,22);
+document.getElementById('end').innerHTML=document.getElementById('end').innerHTML.replaceAll('>CK<','>'+ic('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#34d5a0',3,22)+'<').replace('ARR',ic('<path d="M5 12h14M13 6l6 6-6 6"/>','#34d5a0',2.6,34));
+const SB='<div class="sb"><span>9:41</span><span>●●● ▮</span></div>';
+const product=`${SB}<div class="nv">NOVA</div><div class="pimg"><img src="../assets/p_bag.png"></div>
+ <div class="pi"><div class="t1"><b>Tan Satchel</b><span>$129</span></div>
+ <div class="st" id="rev">No reviews yet</div>
+ <div class="sw"><div style="background:#b07a4f"></div><div style="background:#2b2b2b"></div><div style="background:#d8c3a5"></div></div></div>
+ <div class="btn">Add to cart · $129</div>`;
+const checkout=`${SB}<div class="nv">Checkout</div><div style="padding:10px 18px">
+ <div style="display:flex;gap:12px;align-items:center;padding:12px;border-radius:14px;background:#f4f6fa"><img src="../assets/p_bag.png" style="width:70px;height:56px;object-fit:cover;border-radius:10px"><div style="flex:1"><div style="font:700 16px Inter">Tan Satchel</div><div style="font:500 13px Inter;color:#64748b">Qty 1</div></div><b style="font:800 17px 'Inter Display'">$129</b></div>
+ <div style="margin-top:18px;font:700 15px Inter">Shipping</div>
+ <div id="ship" style="margin-top:8px;padding:14px;border-radius:14px;border:2px solid #e5e9f0;display:flex;justify-content:space-between;font:600 15px Inter"><span>Standard</span><span id="shipT">+$14.99</span></div>
+ <div style="margin-top:18px;display:flex;justify-content:space-between;font:800 19px 'Inter Display'"><span>Total</span><span id="tot">$143.99</span></div>
+ </div><div class="btn">Pay now</div>`;
+document.getElementById('pp').innerHTML=product; document.getElementById('co').innerHTML=checkout;
+const G=id=>document.getElementById(id), W=(w,l)=>RL.W(w,l), L=i=>RL.L(i), C=clamp;
+window.DUR=VO.dur;
+// world points (phone centre 540,760; screen top 392): speed = top of screen, reviews row, shipping row
+const PT={top:[540,500],rev:[540,840],ship:[540,660],mid:[540,760]};
+const at=(p,s,dy=0)=>({s,x:-(p[0]-540)*s,y:-(p[1]-760)*s+dy});
+function render(t){
+  const tAud=L(2).start-0.1, tFix=L(7).start, tEnd=L(9).start;
+  const k=[{t:0,...at(PT.mid,1.05,10)},
+    {t:L(1).start,...at(PT.mid,1.1,0),d:.6},
+    {t:W('speed',3)-0.15,...at(PT.top,1.25,-250),d:.6},
+    {t:W('product',4)-0.1,...at(PT.rev,1.25,40),d:.6},
+    {t:W('checkout',5)-0.1,...at(PT.ship,1.25,-60),d:.6},
+    {t:L(6).start,...at(PT.mid,1.0,0),d:.7},
+    {t:W('fix',7),...at(PT.mid,1.1,0),d:.6},
+    {t:tEnd,...at(PT.mid,.8,0),d:.6}];
+  G('world').style.transform=RL.cam(t,k).css;
+  const inP=RL.ease(t,0.0,.7,'expo'); G('ph').style.transform=`translateY(${(1-inP)*900}px)`;
+  // leaking note
+  RL.scribble(G('h1'),t,W('leaking',1),.5); G('h1').style.opacity=(t>W('leaking',1)&&t<tAud+0.3)?1:0;
+  // loading screen on "speed"
+  const ls=W('speed',3), le=W('reviews',4)-0.9;
+  const loading=t>=ls-0.05&&t<le; G('load').style.opacity=loading?1:0;
+  G('bar').style.width=(C((t-ls)/(le-ls))*70)+'%'; G('spin').style.transform=`rotate(${t*540}deg)`;
+  // checkout screen slides in on "checkout"
+  const co=RL.ease(t,W('checkout',5),.35); G('co').style.transform=`translateX(${(1-co)*100}%)`;
+  // fixed state after "fix"
+  const fixed=t>=W('fix',7);
+  G('rev').innerHTML=fixed?'<i>★★★★★</i> 4.8 · 212 reviews':'No reviews yet'; G('rev').style.color=fixed?'#64748b':'#94a3b8';
+  const err=t>=W('surprise',5)&&!fixed; G('ship').style.borderColor=err?'#ff5d66':(fixed?'#12b886':'#e5e9f0'); G('ship').style.background=err?'#fff1f2':(fixed?'#effcf6':'#fff');
+  G('shipT').textContent=fixed?'Free':'+$14.99'; G('shipT').style.color=err?'#e5484d':(fixed?'#0b8a63':'inherit'); G('tot').textContent=fixed?'$129.00':'$143.99';
+  const sh=err&&t<W('surprise',5)+.35?Math.sin((t-W('surprise',5))*60)*8*(1-(t-W('surprise',5))/.35):0; G('ph').style.marginLeft=(-190+sh)+'px';
+  // pins: pop on their word, turn green on "fix", hide at end
+  [['p1','d1','t1',W('speed',3),'Fast on phones'],['p2','d2','t2',W('reviews',4),'Real reviews'],['p3','d3','t3',W('surprise',5),'Shipping shown early']].forEach(([p,d,tx,t0,good],i)=>{
+    const pp=RL.pop(t,t0), off=C((t-tEnd)/.25); G(p).style.opacity=C(pp*1.5)*(1-off);
+    const g=t>=W('fix',7)+i*0.18, gp=RL.pop(t,W('fix',7)+i*0.18,.35);
+    G(p).style.transform=`translate(-50%,-50%) scale(${(g?0.85+0.15*gp:pp).toFixed(3)})`;
+    G(p).classList.toggle('ok',g); G(d).innerHTML=g?CKI:X; G(tx).textContent=g?good:G(tx).dataset.bad||(G(tx).dataset.bad=G(tx).textContent);
+    if(!g) G(tx).textContent=G(tx).dataset.bad;
+  });
+  // tap ripple on checkout
+  G('rip').style.left='540px'; G('rip').style.top='1110px'; RL.ripple(G('rip'),t,W('checkout',5)-0.15);
+  // end card
+  const e=RL.ease(t,tEnd,.5); G('end').style.opacity=e; G('end').style.transform=`scale(${0.94+0.06*e})`; G('world').style.opacity=1-e;
+  RL.chapter(G('chap'),t); G('chap').style.opacity*=1-e;
+  RL.caption(G('cap'),t); G('cap').style.opacity=1-e;
+}
+render(0);
+</script></body></html>

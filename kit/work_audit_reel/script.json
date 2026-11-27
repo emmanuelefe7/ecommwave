@@ -1,0 +1,88 @@
+{
+ "engine": "kokoro",
+ "voice": "am_puck",
+ "music": false,
+ "lines": [
+  {
+   "text": "Getting visitors, but *no sales?*",
+   "chapter": "THE PROBLEM"
+  },
+  {
+   "text": "Your store is *leaking orders.*"
+  },
+  {
+   "text": "Let's find the leaks.",
+   "chapter": "THE AUDIT"
+  },
+  {
+   "text": "First, *speed.* Does it load fast?"
+  },
+  {
+   "text": "Then the product page. Any *reviews?*"
+  },
+  {
+   "text": "Then checkout. Any *surprise costs?*"
+  },
+  {
+   "text": "Small leaks like these *add up,* and cost you orders every day."
+  },
+  {
+   "text": "We find them, and show you *the fix.*",
+   "chapter": "THE FIX"
+  },
+  {
+   "text": "The best part? The audit is *free.*"
+  },
+  {
+   "text": "Want yours? DM us *GROWTH.*"
+  }
+ ],
+ "cues": [
+  {
+   "sfx": "swoosh",
+   "line": 0,
+   "word": "Getting",
+   "offset": -0.1
+  },
+  {
+   "sfx": "whoosh",
+   "line": 2,
+   "word": "find"
+  },
+  {
+   "sfx": "pop",
+   "line": 3,
+   "word": "speed"
+  },
+  {
+   "sfx": "pop",
+   "line": 4,
+   "word": "reviews"
+  },
+  {
+   "sfx": "tap",
+   "line": 5,
+   "word": "checkout"
+  },
+  {
+   "sfx": "error",
+   "line": 5,
+   "word": "surprise"
+  },
+  {
+   "sfx": "ding",
+   "line": 7,
+   "word": "fix"
+  },
+  {
+   "sfx": "pop",
+   "line": 8,
+   "word": "free"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 9,
+   "word": "Want"
+  }
+ ]
+}

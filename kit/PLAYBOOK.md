@@ -69,7 +69,21 @@ The profile grid holds connected 3-tile banners (TRIPTYCH rows, plus the `profil
 - Honesty: no invented statistics, percentages or client results. Example charts get the label "Example for illustration. Results vary by store." Speak in plain, simple words a beginner store owner understands.
 
 
-## 3a. REAL GRAPHICS, NOT MOCK-UPS (owner, 2026-11-27 — REQUIRED)
+## 3a. EVERYTHING LOOKS REAL (owner, 2026-11-27 — REQUIRED, overrides older rules below)
+Owner: "every photo should look like real photo, every illustration look real, every display of store look real".
+- PHOTOS: real photographs only (`assets/photos/` high-res first, `man.png`/`woman.png`, `p_*.png` small). No drawn,
+  cartoon or clip-art versions of products, people, places or objects.
+- ILLUSTRATIONS / KEY VISUALS: must look real — a real photo (or a clean composite of real photos: object cut-outs,
+  real shadows, real lighting), or realistic UI. The flat unDraw illustrations (`assets/ill/`) and flat vector
+  drawings are RETIRED — don't use them anywhere (light posts, covers, carousels, videos).
+- STORE DISPLAYS: realistic, detailed store UI like a real Shopify store on a real device — real photos, real prices,
+  stars and review counts, real buttons, status bar, proper spacing and fonts. No grey placeholder bars, no wireframes.
+- Allowed decoration only: the brand background (gradients, dot grid, rings, mint glow), text slabs, cards and icons
+  inside UI. No 3D renders (owner rejected them).
+- When no real photo exists for an idea, choose a layout built from realistic UI + real photos + strong typography
+  instead of drawing it.
+
+(Earlier wording of this rule:) REAL GRAPHICS, NOT MOCK-UPS (owner, 2026-11-27)
 The owner rejected a slide whose "products" were hand-drawn flat shapes (cartoon bag, bottle, T-shirt, shoe on coloured
 squares): "I want real graphic not mock up". So:
 - Owner confirmed: phone/browser screens of the NOVA store are FINE (e.g. the 2026-11-25 "fast on phones" tile) as long as
@@ -81,8 +95,7 @@ squares): "I want real graphic not mock up". So:
   with small real thumbnails, a real brand photo `man.png` / `woman.png`, or a typographic slide) — never fake it.
 - Before/after comparisons use the SAME real photos shown two ways (e.g. mixed backgrounds/crops/lighting vs. one
   clean consistent style), not drawings.
-- Brand-recoloured unDraw scenes stay allowed only as decoration/illustration of an idea (people, concepts) — never
-  as stand-ins for products or store screenshots.
+- unDraw / flat illustrations: retired (see top of §3a).
 
 ## 3b. The look the owner loves (REQUIRED) — NAVY look (one of two looks, see §3c)
 The owner rejected light-grey 3D renders ("not professional, doesn't communicate my colors, not clean") and loves the connected navy grid banner (profile/banner2_*.jpg) and the navy reels. NAVY posts look like this:
@@ -106,7 +119,7 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
   - Decoration: blurred mint rings `#4fd1a0` + grey rings `#acb7cb` at the edges, small grey dot grid.
   - Headline: navy kicker line (Inter Display ExtraBold) + white UPPERCASE text in slanted navy `#152a59` slabs (`.slab`, or `.hl` inline); a mint circle icon/arrow beside a slab as accent.
   - Navy gradient cards `#3356b0→#162a5c` with white text and mint icon circles; navy pills, navy CTA pill with mint arrow; navy logo; `ecommwave.org`.
-  ONLY change: the layout/arrangement (stack, timeline, 2×2 tiles, big numerals, illustration hero, email/phone UI…) and the illustration (`assets/ill/`).
+  ONLY change: the layout/arrangement (stack, timeline, 2×2 tiles, big numerals, illustration hero, email/phone UI…) and the real visual (real photo or realistic UI — the old flat illustrations in `assets/ill/` are retired`).
 **STRICT LIGHT PALETTE (owner feedback: "this color is different, this is white background"):** every LIGHT post must use exactly the reference colors — background light blue-grey `#e6ecf7` (the `.lt` class: `var(--lbg)` + a soft white glow only behind the focal visual), never white/near-white (#f5f8fc, #f8fbfe, #fff) as the page background, no pale-mint fills (#dff7ee) or blobs. Navy `#152a59` must be strongly present (navy gradient cards `#3356b0→#162a5c` with white text, navy pills/slabs), mint `#4fd1a0` for icon circles, rings and accents, grey rings `#acb7cb`, navy text `#14254f`. Illustrations sit directly on the background (no big white cards). Compare your render side by side with `ref/light_style.jpg` before posting; if the background or accents look different, fix it.
 **Vary the LIGHT layouts (owner: "don't just use a single style").** Same palette and brand every time, but rotate the layout; never reuse the layout of the previous LIGHT post. Approved layouts to adapt:
   1. `tpl_light_style.html` / `tpl_light_carousel.html` / `tpl_light_single.html` – slanted navy slabs + stacked navy cards + rings.
@@ -120,16 +133,16 @@ Reference: `ref/light_style.jpg` (the owner's example). Shared styles/icons: `li
   9. `tpl_light_checklist_hero.html` – kicker + slabs + micon, left column of navy check cards, illustration hero on the right (owner-approved).
   10. `tpl_light_checkout.html` – variant of the photos layout (illustration + 2×2 navy tiles).
   Also invent new ones (before/after split, comparison table, quote card, big stat-free "myth vs fact", phone mockup hero) in the same palette.
-**Illustrations:** use real professional illustrations from `assets/ill/` (unDraw scenes already recolored to brand mint/green + navy; see `assets/ill/README.md` to add more from `npm pack undraw-svg`). Pick scenes that match the topic; never scenes with real brand logos. Combine with realistic UI where it helps.
+**Visuals (updated 2026-11-27):** the flat unDraw illustrations are RETIRED (owner: everything must look real). In the light layouts below, wherever a template shows an illustration, use a real photo (`assets/photos/`, `man.png`, `woman.png`) or realistic store/email/phone UI with real product photos instead.
 **Mix rule (every set):** 1 or 2 posts per set use the LIGHT look, the rest NAVY, so the grid alternates. Carousel = LIGHT on every other run (check the log); when the carousel is NAVY, the growth video is LIGHT. Mark the look in the log's Topic column with `[LIGHT]` or `[NAVY]`. Connected TRIPTYCH banners stay NAVY.
 
 ## 4. Format specs
 **Carousel**: 1080×1350 JPEG slides, slide 1 = scroll-stopping cover in the post's look (NAVY §3b or LIGHT §3c), slide counter pill top-right ("01 / 08"), "Swipe →" bottom-right on every slide but the last, last slide = CTA (in the post's look, woman or man photo in the arch like the template). Each slide gets alt text when posting.
 
 **Reel covers (owner's rule, 2026-11-26 — REQUIRED for every Reel):** on the profile grid a Reel must show a DESIGNED COVER IMAGE, not a frame of the video; the animated video plays when someone taps it (this is what makes the profile look professional). For every Reel:
-- **The cover SHOWS what the video is about with ONE big illustration (owner, 2026-11-26; refs `ref/cover_refs_*.jpg`).** Think of a visual metaphor a store owner gets in one second: magnifier finding the Add to cart button, a leaky bucket (visitors in, carts leaking out), a door/key for checkout, a magnet pulling customers, a boomerang for repeat customers, a megaphone for ads, a trophy/stars for reviews, a stopwatch for slow pages, a tangled vs straight path for confusing menus. Draw it as a clean vector illustration (SVG, navy/blue gradients + mint glow + white highlights, soft drop shadow) that fills ~45 % of the cover, centred. An unDraw scene from `assets/ill/` is OK only when it clearly shows the topic.
-- **Simple, professional, captivating:** headline ≤ 6 words, UPPERCASE Inter Display Black + one serif-italic mint phrase, centred above the illustration; logo small at top; one small line at the bottom ("Watch: … · ecommwave.org"). Nothing else: no UI screenshots, no chips, no paragraphs, no person photo unless the person IS the idea. No 3D renders, no stock photos, no real brand logos.
-- Copy a layout from `tpl_reel_cover.html` (example A magnifier, example B leaky bucket) and use the row's look (NAVY §3b, or the LIGHT §3c palette on light rows). Never reuse the same metaphor twice in a row of covers.
+- **The cover SHOWS what the video is about with ONE big illustration (owner, 2026-11-26; refs `ref/cover_refs_*.jpg`).** Think of a visual metaphor a store owner gets in one second: magnifier finding the Add to cart button, a leaky bucket (visitors in, carts leaking out), a door/key for checkout, a magnet pulling customers, a boomerang for repeat customers, a megaphone for ads, a trophy/stars for reviews, a stopwatch for slow pages, a tangled vs straight path for confusing menus. Show it with REAL imagery (owner 2026-11-27: everything must look real): a real photo or a clean composite of real photo cut-outs from `assets/photos/` (real shadows/light), or a realistic object built from real UI (a real-looking phone showing the NOVA store with real product photos). Fills ~45 % of the cover, centred. NO flat vector drawings or unDraw scenes.
+- **Simple, professional, captivating:** headline ≤ 6 words, UPPERCASE Inter Display Black + one serif-italic mint phrase, centred above the illustration; logo small at top; one small line at the bottom ("Watch: … · ecommwave.org"). Nothing else: no UI screenshots, no chips, no paragraphs, no person photo unless the person IS the idea. No 3D renders, no real brand logos; free-licence stock photos are fine.
+- Copy the LAYOUT (headline position, sizes, spacing) from `tpl_reel_cover.html` — its flat vector drawings are only placeholders, never reuse them as the visual — and use the row's look (NAVY §3b, or the LIGHT §3c palette on light rows). Never reuse the same metaphor twice in a row of covers.
 - The grid shows only the centre 3:4 area (1080×1440, y 240–1680): put the headline, face and key visual fully inside it, ≥ 80 px from its edges; above/below that area only background.
 - Render with `python3 tools/render_cover.py cover.html out_dir prefix` → `prefix_cover.jpg` + `prefix_cover_grid.jpg`; LOOK at the grid crop next to the row's other tiles (they should look like one consistent set).
 - Host `prefix_cover.jpg` with the video, check it returns 200, and publish with `create_video_post` using `cover_url` = that JPEG (do NOT pass `thumb_offset`; the two can't be combined), `share_to_feed: true`.

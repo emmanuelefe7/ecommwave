@@ -1,0 +1,109 @@
+{
+ "engine": "kokoro",
+ "voice": "am_puck",
+ "music": false,
+ "lang": "en-us",
+ "lines": [
+  {
+   "text": "Running a *sale* every single week?",
+   "chapter": "THE QUESTION"
+  },
+  {
+   "text": "Customers learn to *wait for it.*"
+  },
+  {
+   "text": "And every order earns you *less.*"
+  },
+  {
+   "text": "Growing stores give *more value* instead.",
+   "chapter": "THE FIX"
+  },
+  {
+   "text": "A *free gift* with bigger orders."
+  },
+  {
+   "text": "*Free shipping* over a set amount."
+  },
+  {
+   "text": "*Early access* for your email list."
+  },
+  {
+   "text": "Little extras that feel *special.*"
+  },
+  {
+   "text": "Same price. *More reasons* to buy.",
+   "chapter": "THE RESULT"
+  },
+  {
+   "text": "Customers *stop waiting* for sales."
+  },
+  {
+   "text": "Want more orders? DM us *GROWTH.*"
+  }
+ ],
+ "cues": [
+  {
+   "sfx": "swoosh",
+   "line": 0,
+   "word": "Running",
+   "offset": -0.1
+  },
+  {
+   "sfx": "pop",
+   "line": 0,
+   "word": "sale"
+  },
+  {
+   "sfx": "tick",
+   "line": 1,
+   "word": "wait"
+  },
+  {
+   "sfx": "error",
+   "line": 2,
+   "word": "less"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 3,
+   "word": "Growing",
+   "offset": -0.2
+  },
+  {
+   "sfx": "pop",
+   "line": 4,
+   "word": "gift"
+  },
+  {
+   "sfx": "ding",
+   "line": 5,
+   "word": "shipping"
+  },
+  {
+   "sfx": "pop",
+   "line": 6,
+   "word": "access"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 8,
+   "word": "Same",
+   "offset": -0.2
+  },
+  {
+   "sfx": "pop",
+   "line": 7,
+   "word": "special"
+  },
+  {
+   "sfx": "ding",
+   "line": 9,
+   "word": "stop"
+  },
+  {
+   "sfx": "pop",
+   "line": 10,
+   "word": "GROWTH"
+  }
+ ]
+}

@@ -1,0 +1,203 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<script src="../common.js"></script>
+<script src="vo_g/timing.js"></script>
+<script src="../reel.js"></script>
+<!-- NAVY Reel (N-L-N LEFT, growth): grow with value instead of a sale every week (free gift, free shipping threshold, early access).
+     REEL STYLE: word-synced captions, cues on words (RL.W), chapter pills, one continuous camera on a realistic NOVA phone
+     with a REAL product photo, handwritten asides, voice + sfx, no music. -->
+<style>
+@font-face{font-family:"Hand";src:url(../fonts/hand.woff2) format("woff2")}
+:root{--ink:#0d1b3e;--mint:#34d5a0;--bad:#ff6b7a}
+body{background:#0a1a47}
+#stage{background:radial-gradient(760px 640px at 50% 42%,rgba(52,213,160,.16) 0%,rgba(52,213,160,0) 70%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.wave{position:absolute;left:0;width:1080px;opacity:.55}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+.phone{position:absolute;left:540px;top:760px;width:370px;height:760px;margin:-380px 0 0 -185px;border-radius:58px;background:#0b1020;padding:12px;
+  box-shadow:0 50px 100px rgba(0,0,0,.45),0 0 0 2px #33406a,inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:11px;width:96px;height:28px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:9}
+.view{position:absolute;inset:0;background:#fff}
+.sb{height:46px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+.nv{height:46px;display:flex;align-items:center;justify-content:center;font:800 19px "Inter Display";letter-spacing:.08em;color:#0f1f4d;position:relative}
+.nv .mi{position:absolute;left:20px;top:15px;width:20px;height:14px;border-top:2.5px solid #0f1f4d;border-bottom:2.5px solid #0f1f4d}
+.nv .mi:after{content:"";position:absolute;left:0;right:0;top:3.5px;border-top:2.5px solid #0f1f4d}
+.nv .bag{position:absolute;right:20px;top:12px;width:20px;height:22px}
+.nv .cnt{position:absolute;right:12px;top:6px;width:18px;height:18px;border-radius:50%;background:#e5484d;color:#fff;font:800 11px Inter;display:grid;place-items:center}
+.pimg{margin:0 14px;height:290px;border-radius:18px;background:#e9e0d4;overflow:hidden;position:relative}
+.pi{padding:14px 18px 0}
+.t1{display:flex;justify-content:space-between;align-items:baseline}
+.t1 b{font:800 23px "Inter Display";letter-spacing:-.02em}.t1 span{font:800 22px "Inter Display"}
+.st{font:500 13px Inter;color:#64748b;margin-top:4px}.st i{color:#f5b301;font-style:normal;letter-spacing:1px}
+.lb{font:700 13px Inter;margin-top:14px;color:#334155}
+.sz{display:flex;gap:8px;margin-top:8px}.sz div{width:52px;height:40px;border-radius:10px;border:1.5px solid #cbd5e1;display:grid;place-items:center;font:700 14px Inter}
+.sz div.on{border-color:#0f1f4d;background:#0f1f4d;color:#fff}
+.btn{position:absolute;left:18px;right:18px;bottom:24px;height:56px;border-radius:16px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px Inter;z-index:3}
+.heart{position:absolute;right:26px;top:106px;width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.15);z-index:3}
+.mini{display:flex;align-items:center;gap:10px;margin-top:14px;padding:8px;border-radius:12px;background:#f8fafc;border:1px solid #eef1f5}
+.mini .th{width:46px;height:46px;border-radius:8px;overflow:hidden;position:relative;background:#e9e0d4;flex:none}
+.mini b{font:700 13px Inter;display:block}.mini span{font:500 12px Inter;color:#64748b}
+.mini em{margin-left:auto;font:800 15px "Inter Display";font-style:normal}
+/* overlays */
+.pin{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font:700 24px Inter;padding:10px 20px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.3);white-space:nowrap}
+.pin .d{width:26px;height:26px;border-radius:50%;background:#0ea472;box-shadow:0 0 0 5px rgba(14,164,114,.22)}
+.pin.bad .d{background:#e5484d;box-shadow:0 0 0 5px rgba(229,72,77,.2)}
+.hbox{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:20}
+.rip{position:absolute;width:110px;height:110px;border-radius:50%;border:6px solid var(--mint);background:rgba(52,213,160,.2);z-index:21;opacity:0}
+#chap{position:absolute;left:50%;top:190px;background:#fff;color:#0a1a47;font:800 22px Inter;letter-spacing:.16em;padding:12px 24px;border-radius:999px;transform-origin:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#cap{position:absolute;left:70px;right:70px;top:1335px;text-align:center;font:800 64px/1.12 "Inter Display";letter-spacing:-.035em;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+#cap .rw{display:inline-block;will-change:transform,opacity,filter}
+#cap .hl{color:var(--mint)}
+.hand{position:absolute;font:700 54px Hand;color:var(--mint);white-space:nowrap}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;opacity:0;padding-bottom:180px}
+.cta{background:var(--mint);color:#0a1a47;font:800 50px "Inter Display";letter-spacing:-.02em;padding:24px 28px 24px 50px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 24px 50px rgba(52,213,160,.3)}
+.cta i{width:70px;height:70px;border-radius:50%;background:#0a1a47;display:grid;place-items:center}
+/* growth reel */
+.bar{height:34px;display:flex;align-items:center;justify-content:center;font:800 12.5px Inter;letter-spacing:.08em;color:#fff;position:relative;overflow:hidden}
+.bar div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+#barS{background:#e5484d}#barV{background:#0f1f4d}
+.pr{display:flex;align-items:baseline;gap:8px;margin-top:6px}
+.pr b{font:800 24px "Inter Display"}.pr s{font:600 16px Inter;color:#94a3b8}.pr em{font:800 12px Inter;font-style:normal;color:#fff;background:#e5484d;border-radius:6px;padding:3px 6px}
+#gift{overflow:hidden;height:0}
+.gf{display:flex;align-items:center;gap:10px;margin-top:12px;padding:8px;border-radius:12px;background:#f0fbf6;border:1.5px solid #bfe9d6}
+.gf .th{width:56px;height:56px;border-radius:9px;overflow:hidden;background:#f3e3df;flex:none;position:relative}
+.gf b{font:700 13.5px Inter;display:block}.gf span{font:500 12px Inter;color:#475569}
+#cart{position:absolute;left:8px;right:8px;bottom:8px;height:300px;border-radius:26px 26px 38px 38px;background:#fff;box-shadow:0 -10px 40px rgba(15,23,42,.22);z-index:6;padding:16px 18px}
+#cart h5{font:800 20px "Inter Display";letter-spacing:-.02em}
+.ship{margin-top:12px;font:600 13.5px Inter;color:#0f172a}.ship b{color:#0ea472}
+.track{margin-top:8px;height:10px;border-radius:6px;background:#e2e8f0;overflow:hidden}.track i{display:block;height:100%;background:#0ea472;border-radius:6px}
+.cbtn{margin-top:14px;height:50px;border-radius:14px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 15.5px Inter}
+#mail{position:absolute;left:12px;right:12px;top:10px;border-radius:22px;background:rgba(245,247,250,.97);box-shadow:0 14px 34px rgba(15,23,42,.28);padding:12px 14px;z-index:12;display:flex;gap:11px}
+#mail .ic{width:38px;height:38px;border-radius:9px;background:#0f1f4d;color:#fff;display:grid;place-items:center;font:800 15px "Inter Display";flex:none}
+#mail b{font:700 13.5px Inter;display:block}#mail span{font:500 12.5px/1.35 Inter;color:#334155;display:block;margin-top:2px}
+#mail small{margin-left:auto;font:500 11px Inter;color:#94a3b8}
+#toast{position:absolute;left:12px;right:12px;top:10px;border-radius:22px;background:rgba(245,247,250,.97);box-shadow:0 14px 34px rgba(15,23,42,.28);padding:12px 14px;z-index:13;display:flex;gap:11px;align-items:center}
+#toast .ic{width:38px;height:38px;border-radius:9px;background:#0ea472;display:grid;place-items:center;flex:none}
+#toast b{font:700 13.5px Inter;display:block}#toast span{font:500 12.5px Inter;color:#334155}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#152a59;color:#fff;font:700 26px Inter;padding:10px 22px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.35),inset 0 0 0 2px rgba(52,213,160,.45);white-space:nowrap}
+.chip .k{width:36px;height:36px;border-radius:50%;background:var(--mint);display:grid;place-items:center}
+.wk{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:#0d1b3e;font:700 24px Inter;padding:10px 20px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.3);white-space:nowrap}
+.wk em{font-style:normal;background:#e5484d;color:#fff;font:800 20px Inter;padding:5px 10px;border-radius:999px}
+</style></head><body>
+<div id="stage"><div class="dots"></div>
+  <svg class="wave" style="top:1560px" height="260" viewBox="0 0 1080 260"><path d="M-20 150 C 200 60, 380 230, 600 140 S 960 60, 1100 120" fill="none" stroke="#34d5a0" stroke-width="3"/><path d="M-20 190 C 220 100, 400 260, 620 175 S 980 100, 1100 160" fill="none" stroke="#34d5a0" stroke-opacity=".45" stroke-width="2"/></svg>
+  <div id="world">
+    <div class="phone" id="ph"><div class="scr" id="scr"><div class="isl"></div>
+      <div class="view" id="vA">
+        <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="nv"><i class="mi"></i>NOVA</div>
+        <div class="bar"><div id="barV">NEW · THE LINEN COLLECTION</div><div id="barS">SALE · 40% OFF EVERYTHING</div></div>
+        <div class="pimg" style="height:250px;margin-top:10px"><img src="../assets/hero_woman.png" style="position:absolute;right:-90px;top:0;height:100%"></div>
+        <div class="pi">
+          <div class="t1"><b>Linen Wrap Dress</b></div>
+          <div class="st"><i>★★★★★</i> 4.7 · 126 reviews</div>
+          <div class="pr" id="price"><b id="pNow">$45</b><s id="pOld">$75</s><em id="pOff">−40%</em></div>
+          <div id="gift"><div class="gf" id="gfIn"><div class="th"><img src="../assets/p_serum.png" style="position:absolute;left:-2px;top:0;height:100%"></div><div><b>Free Glow Serum mini</b><span>with orders over $100</span></div></div></div>
+          <div class="lb">Size</div>
+          <div class="sz"><div>XS</div><div class="on">S</div><div>M</div><div>L</div><div>XL</div></div>
+        </div>
+        <div class="btn" id="btnA">Add to cart</div>
+      </div>
+      <div id="cart"><h5>Your cart</h5>
+        <div class="mini"><div class="th"><img src="../assets/hero_woman.png" style="position:absolute;left:-44px;top:0;height:100%"></div><div><b>Linen Wrap Dress</b><span>Size S · Qty 1</span></div><em>$75</em></div>
+        <div class="ship" id="shipT">You’re <b>$25</b> away from <b>free shipping</b></div>
+        <div class="track"><i id="trk"></i></div>
+        <div class="cbtn">Checkout · $75</div>
+      </div>
+      <div id="mail"><div class="ic">N</div><div><b>NOVA · Early access</b><span>Subscribers shop the new linen drop first, today only.</span></div><small>now</small></div>
+      <div id="toast"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></div><div><b>New order · $75</b><span>Linen Wrap Dress, full price</span></div></div>
+      <svg class="hbox" width="346" height="736"><rect id="rP" fill="none" stroke="#e5484d" stroke-width="5" stroke-dasharray="12 9" rx="10"/><rect id="rV" fill="none" stroke="#34d5a0" stroke-width="5" rx="10"/><rect id="rGf" fill="none" stroke="#34d5a0" stroke-width="5" rx="14"/></svg>
+    </div></div>
+    <div class="wk" id="w1"><em>−30%</em>Week 1</div>
+    <div class="wk" id="w2"><em>−40%</em>Week 2</div>
+    <div class="wk" id="w3"><em>−30%</em>Week 3</div>
+    <div class="pin bad" id="pWait">Waiting for the next sale</div>
+    <div class="pin bad" id="pLess">Less per order</div>
+    <div class="pin" id="pFull">Full price</div>
+    <div class="chip" id="c1"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a1a47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Free gift</div>
+    <div class="chip" id="c2"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a1a47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Free shipping</div>
+    <div class="chip" id="c3"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a1a47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Early access</div>
+    <div class="hand" id="hWait" style="left:120px;top:1170px;color:#ff6b7a;transform:rotate(-4deg)">“I’ll wait for the next one…”</div>
+    <div class="hand" id="hFull" style="left:520px;top:310px;transform:rotate(-5deg)">no sale needed</div>
+  </div>
+  <div id="chap"></div>
+  <div id="cap"></div>
+  <div id="end">
+    <img src="../assets/logo_white.png" style="height:58px">
+    <div style="font:900 100px/1 'Inter Display';letter-spacing:-.05em;color:#fff;text-align:center;text-transform:uppercase">Give value,<br><span style="font-family:Serif;font-style:italic;font-weight:400;text-transform:none;color:#34d5a0;letter-spacing:-.01em">not discounts.</span></div>
+    <span class="cta">DM us “GROWTH” <i><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#34d5a0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
+    <div style="font:700 34px Inter;color:#fff">ecommwave.org</div>
+  </div>
+</div>
+<script>
+const G=id=>document.getElementById(id), W=(w,l)=>RL.W(w,l), L=i=>RL.L(i), C=clamp;
+const SX=540-185+12, SY=760-380+12;
+const scr=G('scr');
+function rel(el){let x=0,y=0;while(el&&el!==scr){x+=el.offsetLeft;y+=el.offsetTop;el=el.offsetParent;}return{x,y};}
+function box(rect,el,pad,dt,dy=0){const p=rel(el);rect.setAttribute('x',p.x-pad);rect.setAttribute('y',p.y-pad+dy);
+  const w=el.offsetWidth+2*pad,h=el.offsetHeight+2*pad;rect.setAttribute('width',w);rect.setAttribute('height',h);
+  if(rect.getAttribute('stroke-dasharray'))return; const LEN=2*(w+h);rect.style.strokeDasharray=LEN;rect.style.strokeDashoffset=LEN*(1-dt);}
+function pin(id,t,t0,t1,x,y){const p=RL.pop(t,t0),o=C((t-t1)/.2);const el=G(id);el.style.opacity=C(p*1.5)*(1-o);el.style.left=x+'px';el.style.top=y+'px';el.style.transform=`translate(-50%,-50%) scale(${p})`;}
+const GH=G('gfIn').offsetHeight+12;
+window.DUR=VO.dur;
+function render(t){
+  const tFix=W('Growing',3)-0.15, tCart=W('Free',5)-0.15, tMail=W('Early',6)-0.15, tChips=W('Little',7)-0.15, tSame=W('Same',8)-0.15, tStop=W('Customers',9)-0.1, tEnd=L(10).start;
+  const cam=RL.cam(t,[
+    {t:0,s:.95,x:0,y:90},
+    {t:W('wait',1)-0.2,s:1.1,x:0,y:40,d:.6},
+    {t:W('order',2)-0.15,s:1.3,x:0,y:10,d:.6},
+    {t:tFix,s:1.2,x:0,y:60,d:.7},
+    {t:W('gift',4)-0.15,s:1.3,x:0,y:-10,d:.6},
+    {t:tCart,s:1.3,x:0,y:-15,d:.6},
+    {t:tMail,s:1.3,x:0,y:40,d:.6},
+    {t:tChips,s:.92,x:0,y:60,d:.7},
+    {t:tSame,s:1.25,x:0,y:30,d:.6},
+    {t:tStop,s:1.2,x:0,y:60,d:.6},
+    {t:tEnd,s:.7,x:0,y:0,d:.6},
+  ]);
+  G('world').style.transform=cam.css;
+  const inP=RL.ease(t,0.02,.6,'expo'); G('ph').style.transform=`translateY(${(1-inP)*1000}px)`;
+  // L0: weekly sale chips pop on "sale", "every", "week"; they fade on "learn"
+  const wks=[['w1',W('sale',0),300],['w2',W('single',0),540],['w3',W('week',0),780]];
+  wks.forEach(([id,t0,x])=>pin(id,t,t0,W('wait',1),x,345));
+  // sale mode until "value"
+  const val=RL.ease(t,W('value',3),.35);
+  G('barS').style.transform=`translateY(${-val*100}%)`;
+  G('pNow').textContent=t>=W('value',3)?'$75':'$45';
+  G('pOld').style.display=G('pOff').style.display=t>=W('value',3)?'none':'';
+  // L1: waiting pin + handwritten aside
+  pin('pWait',t,W('wait',1),W('every',2),540,SY+200);
+  RL.scribble(G('hWait'),t,W('it',1)-0.05,.5); G('hWait').style.opacity=(t>W('it',1)-0.05&&t<W('every',2))?1:0;
+  // L2: red dashed box around the sale price + pin on "less"
+  box(G('rP'),G('price'),8,1); G('rP').style.opacity=(t>=W('order',2)&&t<W('value',3))?1:0;
+  pin('pLess',t,W('less',2),tFix,800,SY+rel(G('price')).y+14);
+  // L3: full price, mint box on "value", "Full price" pin
+  box(G('rV'),G('price'),8,RL.draw(t,W('value',3))); G('rV').style.opacity=(t>=W('value',3)&&t<W('gift',4))?1:0;
+  pin('pFull',t,W('value',3)+0.1,W('gift',4),800,SY+rel(G('price')).y+14);
+  // L4: free gift row grows in on "free", box on "gift"
+  const gf=RL.ease(t,W('free',4)-0.05,.45,'inout'); G('gift').style.height=(GH*gf)+'px';
+  box(G('rGf'),G('gfIn'),5,RL.draw(t,W('gift',4))); G('rGf').style.opacity=(t>=W('gift',4)&&t<tCart+0.2)?1:0;
+  // L5: cart drawer slides up, free-shipping bar fills on "amount"
+  const ct=RL.ease(t,tCart,.45)*(1-RL.ease(t,tChips,.4)); G('cart').style.transform=`translateY(${(1-ct)*340}px)`;
+  const fill=0.75*RL.ease(t,W('shipping',5),.6); G('trk').style.width=(fill*100)+'%';
+  // L6: early-access email notification drops in on "access"
+  const ml=RL.ease(t,W('Early',6),.4,'back')*(1-RL.ease(t,tChips+0.6,.35)); G('mail').style.transform=`translateY(${(1-ml)*-140}px)`; G('mail').style.opacity=C(ml*1.4);
+  // L7: three chips pop on "Little", "extras", "special"; stay until stop
+  const cx=[[ 'c1',W('Little',7),250,560],['c2',W('extras',7),830,760],['c3',W('special',7),250,960]];
+  cx.forEach(([id,t0,x,y])=>pin(id,t,t0,tStop,x,y));
+  // L8: "Same price" -> box on price; chips pulse on "reasons"
+  box(G('rV'),G('price'),8,RL.draw(t,W('price',8)));
+  if(t>=W('price',8)&&t<tStop) G('rV').style.opacity=1;
+  const pul=t>W('reasons',8)&&t<W('reasons',8)+.5?Math.sin((t-W('reasons',8))/.5*Math.PI)*0.08:0;
+  ['c1','c2','c3'].forEach(id=>{if(t>W('reasons',8)&&t<tStop)G(id).style.transform=`translate(-50%,-50%) scale(${1+pul})`;});
+  // L9: new full-price order toast on "stop", handwritten "no sale needed" on "sales"
+  const to=RL.ease(t,W('stop',9),.4,'back'); G('toast').style.transform=`translateY(${(1-to)*-140}px)`; G('toast').style.opacity=C(to*1.4);
+  RL.scribble(G('hFull'),t,W('sales',9),.5); G('hFull').style.opacity=(t>W('sales',9)&&t<tEnd)?1:0;
+  const e=RL.ease(t,tEnd,.5); G('end').style.opacity=e; G('end').style.transform=`scale(${0.94+0.06*e})`;
+  G('world').style.opacity=1-e;
+  RL.chapter(G('chap'),t); G('chap').style.opacity*=1-e;
+  RL.caption(G('cap'),t);
+}
+render(0);
+</script></body></html>

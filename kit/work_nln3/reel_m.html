@@ -1,0 +1,252 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<script src="../common.js"></script>
+<script src="vo_m/timing.js"></script>
+<script src="../reel.js"></script>
+<!-- NAVY Reel (N-L-N RIGHT, mistakes): forcing customers to create an account before they can pay.
+     REEL STYLE: word-synced captions, cues on words (RL.W), chapter pills, one continuous camera on a realistic NOVA phone
+     with a REAL product photo, handwritten asides, voice + sfx, no music. -->
+<style>
+@font-face{font-family:"Hand";src:url(../fonts/hand.woff2) format("woff2")}
+:root{--ink:#0d1b3e;--mint:#34d5a0;--bad:#ff6b7a}
+body{background:#0a1a47}
+#stage{background:radial-gradient(760px 640px at 50% 42%,rgba(52,213,160,.16) 0%,rgba(52,213,160,0) 70%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.wave{position:absolute;left:0;width:1080px;opacity:.55}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+.phone{position:absolute;left:540px;top:760px;width:370px;height:760px;margin:-380px 0 0 -185px;border-radius:58px;background:#0b1020;padding:12px;
+  box-shadow:0 50px 100px rgba(0,0,0,.45),0 0 0 2px #33406a,inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:11px;width:96px;height:28px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:9}
+.view{position:absolute;inset:0;background:#fff}
+.sb{height:46px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+.nv{height:46px;display:flex;align-items:center;justify-content:center;font:800 19px "Inter Display";letter-spacing:.08em;color:#0f1f4d;position:relative}
+.nv .mi{position:absolute;left:20px;top:15px;width:20px;height:14px;border-top:2.5px solid #0f1f4d;border-bottom:2.5px solid #0f1f4d}
+.nv .mi:after{content:"";position:absolute;left:0;right:0;top:3.5px;border-top:2.5px solid #0f1f4d}
+.nv .bag{position:absolute;right:20px;top:12px;width:20px;height:22px}
+.nv .cnt{position:absolute;right:12px;top:6px;width:18px;height:18px;border-radius:50%;background:#e5484d;color:#fff;font:800 11px Inter;display:grid;place-items:center}
+.pimg{margin:0 14px;height:290px;border-radius:18px;background:#e9e0d4;overflow:hidden;position:relative}
+.pi{padding:14px 18px 0}
+.t1{display:flex;justify-content:space-between;align-items:baseline}
+.t1 b{font:800 23px "Inter Display";letter-spacing:-.02em}.t1 span{font:800 22px "Inter Display"}
+.st{font:500 13px Inter;color:#64748b;margin-top:4px}.st i{color:#f5b301;font-style:normal;letter-spacing:1px}
+.lb{font:700 13px Inter;margin-top:14px;color:#334155}
+.sz{display:flex;gap:8px;margin-top:8px}.sz div{width:52px;height:40px;border-radius:10px;border:1.5px solid #cbd5e1;display:grid;place-items:center;font:700 14px Inter}
+.sz div.on{border-color:#0f1f4d;background:#0f1f4d;color:#fff}
+.btn{position:absolute;left:18px;right:18px;bottom:24px;height:56px;border-radius:16px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px Inter;z-index:3}
+.heart{position:absolute;right:26px;top:106px;width:44px;height:44px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.15);z-index:3}
+/* account wall */
+.wall{padding:4px 22px}
+.lock{width:58px;height:58px;border-radius:50%;background:#fff1f2;display:grid;place-items:center;margin:10px auto 0}
+.wall h4{font:800 25px/1.15 "Inter Display";letter-spacing:-.02em;text-align:center;margin-top:12px}
+.wall p{font:500 13px Inter;color:#64748b;text-align:center;margin-top:6px}
+.fl{margin-top:14px}.fl label{font:700 12.5px Inter;color:#334155}
+.fl div{margin-top:6px;height:44px;border-radius:10px;border:1.5px solid #e2e8f0;display:flex;align-items:center;padding:0 12px;font:500 15px Inter;color:#0f172a;letter-spacing:.12em}
+.mini{display:flex;align-items:center;gap:10px;margin-top:14px;padding:8px;border-radius:12px;background:#f8fafc;border:1px solid #eef1f5}
+.mini .th{width:46px;height:46px;border-radius:8px;overflow:hidden;position:relative;background:#e9e0d4;flex:none}
+.mini b{font:700 13px Inter;display:block}.mini span{font:500 12px Inter;color:#64748b}
+.mini em{margin-left:auto;font:800 15px "Inter Display";font-style:normal}
+.wbtn{margin-top:16px;height:50px;border-radius:14px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px Inter}
+.small{font:500 12.5px Inter;color:#64748b;text-align:center;margin-top:10px}.small u{color:#0f1f4d;font-weight:700;text-decoration:none}
+/* guest checkout */
+.ck{padding:4px 20px}
+.ck h4{font:800 24px "Inter Display";letter-spacing:-.02em;margin-top:6px}
+.ck .sum{margin-top:12px}
+.gbtn{margin-top:16px;height:54px;border-radius:14px;background:#0ea472;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16.5px Inter}
+.or{display:flex;align-items:center;gap:10px;margin-top:14px;font:600 12px Inter;color:#94a3b8}.or:before,.or:after{content:"";flex:1;border-top:1px solid #e2e8f0}
+.obtn{margin-top:12px;height:46px;border-radius:14px;border:1.5px solid #cbd5e1;color:#0f1f4d;display:flex;align-items:center;justify-content:center;font:700 14.5px Inter}
+/* order confirmed */
+.ok{padding:4px 20px}
+.okc{width:62px;height:62px;border-radius:50%;background:#0ea472;display:grid;place-items:center;margin:14px auto 0}
+.ok h4{font:800 25px "Inter Display";letter-spacing:-.02em;text-align:center;margin-top:12px}
+.ok p{font:500 13px Inter;color:#64748b;text-align:center;margin-top:4px}
+.save{margin-top:18px;border-radius:16px;background:#f0fbf6;border:1.5px solid #bfe9d6;padding:14px}
+.save b{font:800 16px "Inter Display";display:block}.save span{font:500 12.5px/1.4 Inter;color:#475569;display:block;margin-top:4px}
+.sbtn{margin-top:12px;height:46px;border-radius:12px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 14.5px Inter}
+/* overlays */
+.pin{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font:700 24px Inter;padding:10px 20px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.3);white-space:nowrap}
+.pin .d{width:26px;height:26px;border-radius:50%;background:#0ea472;box-shadow:0 0 0 5px rgba(14,164,114,.22)}
+.pin.bad .d{background:#e5484d;box-shadow:0 0 0 5px rgba(229,72,77,.2)}
+.hbox{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:20}
+.rip{position:absolute;width:110px;height:110px;border-radius:50%;border:6px solid var(--mint);background:rgba(52,213,160,.2);z-index:21;opacity:0}
+#chap{position:absolute;left:50%;top:190px;background:#fff;color:#0a1a47;font:800 22px Inter;letter-spacing:.16em;padding:12px 24px;border-radius:999px;transform-origin:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#cap{position:absolute;left:70px;right:70px;top:1335px;text-align:center;font:800 64px/1.12 "Inter Display";letter-spacing:-.035em;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+#cap .rw{display:inline-block;will-change:transform,opacity,filter}
+#cap .hl{color:var(--mint)}
+.hand{position:absolute;font:700 54px Hand;color:var(--mint);white-space:nowrap}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;opacity:0;padding-bottom:180px}
+.cta{background:var(--mint);color:#0a1a47;font:800 50px "Inter Display";letter-spacing:-.02em;padding:24px 28px 24px 50px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 24px 50px rgba(52,213,160,.3)}
+.cta i{width:70px;height:70px;border-radius:50%;background:#0a1a47;display:grid;place-items:center}
+</style></head><body>
+<div id="stage"><div class="dots"></div>
+  <svg class="wave" style="top:1560px" height="260" viewBox="0 0 1080 260"><path d="M-20 150 C 200 60, 380 230, 600 140 S 960 60, 1100 120" fill="none" stroke="#34d5a0" stroke-width="3"/><path d="M-20 190 C 220 100, 400 260, 620 175 S 980 100, 1100 160" fill="none" stroke="#34d5a0" stroke-opacity=".45" stroke-width="2"/></svg>
+  <div id="world">
+    <div class="phone" id="ph"><div class="scr" id="scr"><div class="isl"></div>
+      <!-- A: product page -->
+      <div class="view" id="vA">
+        <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="nv"><i class="mi"></i>NOVA<svg class="bag" viewBox="0 0 24 24" fill="none" stroke="#0f1f4d" stroke-width="2.2" stroke-linejoin="round"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg><span class="cnt" id="cnt">1</span></div>
+        <div class="pimg"><img src="../assets/hero_woman.png" style="position:absolute;right:-150px;top:0;height:100%"></div>
+        <div class="heart" id="heart"><svg width="22" height="22" viewBox="0 0 24 24" id="hsv" fill="none" stroke="#e5484d" stroke-width="2.4"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg></div>
+        <div class="pi">
+          <div class="t1"><b>Linen Wrap Dress</b><span>$75</span></div>
+          <div class="st"><i>★★★★★</i> 4.7 · 126 reviews</div>
+          <div class="lb">Size</div>
+          <div class="sz"><div>XS</div><div class="on">S</div><div>M</div><div>L</div><div>XL</div></div>
+        </div>
+        <div class="btn" id="btnA">Add to cart · $75</div>
+      </div>
+      <!-- B: forced account wall -->
+      <div class="view" id="vB">
+        <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="nv"><i class="mi"></i>NOVA</div>
+        <div class="wall">
+          <div class="lock"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="2.4" stroke-linecap="round"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg></div>
+          <h4 id="wallH">Create an account<br>to continue</h4>
+          <p>You need an account to check out.</p>
+          <div class="fl" id="fE"><label>Email</label><div id="tE"></div></div>
+          <div class="fl" id="fP"><label>Password</label><div id="tP"></div></div>
+          <div class="fl" id="fC"><label>Confirm password</label><div id="tC"></div></div>
+          <div class="wbtn">Create account</div>
+          <div class="small">Already have an account? <u>Log in</u></div>
+        </div>
+      </div>
+      <!-- C: guest checkout -->
+      <div class="view" id="vC">
+        <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="nv"><i class="mi"></i>NOVA</div>
+        <div class="ck">
+          <h4>Checkout</h4>
+          <div class="mini sum"><div class="th"><img src="../assets/hero_woman.png" style="position:absolute;left:-44px;top:0;height:100%"></div><div><b>Linen Wrap Dress</b><span>Size S · Qty 1</span></div><em>$75</em></div>
+          <div class="fl"><label>Email for order updates</label><div style="letter-spacing:0">sam@email.com</div></div>
+          <div class="gbtn" id="gBtn">Continue as guest</div>
+          <div class="or">or</div>
+          <div class="obtn">Log in for faster checkout</div>
+          <div class="small" style="margin-top:14px">No account needed to order.</div>
+        </div>
+      </div>
+      <!-- D: order confirmed + optional account -->
+      <div class="view" id="vD">
+        <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="nv"><i class="mi"></i>NOVA</div>
+        <div class="ok">
+          <div class="okc"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+          <h4>Thank you, Sam!</h4>
+          <p>Order #1042 is confirmed.</p>
+          <div class="mini"><div class="th"><img src="../assets/hero_woman.png" style="position:absolute;left:-44px;top:0;height:100%"></div><div><b>Linen Wrap Dress</b><span>Arrives in 3–5 days</span></div><em>$75</em></div>
+          <div class="save" id="save"><b>Save your details?</b><span>Faster checkout next time. Your email is already filled in.</span>
+            <div class="sbtn" id="sBtn">Save my details</div></div>
+        </div>
+      </div>
+      <svg class="hbox" width="346" height="736"><rect id="rWall" fill="none" stroke="#e5484d" stroke-width="5" stroke-dasharray="12 9" rx="12"/><rect id="rF" fill="none" stroke="#e5484d" stroke-width="4" rx="12"/><rect id="rG" fill="none" stroke="#34d5a0" stroke-width="5" rx="16"/><rect id="rS" fill="none" stroke="#34d5a0" stroke-width="5" rx="18"/></svg>
+      <div class="rip" id="rip1"></div><div class="rip" id="rip2"></div>
+    </div></div>
+    <div class="pin bad" id="pSign">Sign-up required</div>
+    <div class="pin bad" id="pWall">Account first</div>
+    <div class="pin" id="pGuest">Guest checkout</div>
+    <div class="pin" id="pAfter">After the order</div>
+    <div class="pin" id="pSaved">Saved for next time</div>
+    <div class="hand" id="hLove" style="left:660px;top:330px;transform:rotate(-5deg)">perfect!</div>
+    <div class="hand" id="hJust" style="left:140px;top:1150px;color:#ff6b7a;transform:rotate(-4deg)">for one dress?</div>
+    <div class="hand" id="hLost" style="left:600px;top:300px;color:#ff6b7a;font-size:66px;transform:rotate(-6deg)">sale lost</div>
+  </div>
+  <div id="chap"></div>
+  <div id="cap"></div>
+  <div id="end">
+    <img src="../assets/logo_white.png" style="height:58px">
+    <div style="font:900 100px/1 'Inter Display';letter-spacing:-.05em;color:#fff;text-align:center;text-transform:uppercase">Let them<br>check out<br><span style="font-family:Serif;font-style:italic;font-weight:400;text-transform:none;color:#34d5a0;letter-spacing:-.01em">as a guest.</span></div>
+    <span class="cta">DM us “GROWTH” <i><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#34d5a0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
+    <div style="font:700 34px Inter;color:#fff">ecommwave.org</div>
+  </div>
+</div>
+<script>
+const G=id=>document.getElementById(id), W=(w,l)=>RL.W(w,l), L=i=>RL.L(i), C=clamp;
+const Wk=(l,k)=>VO.lines[l].words[k].s;
+const SX=540-185+12, SY=760-380+12;
+const scr=G('scr');
+function rel(el){let x=0,y=0;while(el&&el!==scr){x+=el.offsetLeft;y+=el.offsetTop;el=el.offsetParent;}return{x,y};}
+function box(rect,el,pad,dt){const p=rel(el);rect.setAttribute('x',p.x-pad);rect.setAttribute('y',p.y-pad);
+  const w=el.offsetWidth+2*pad,h=el.offsetHeight+2*pad;rect.setAttribute('width',w);rect.setAttribute('height',h);
+  if(rect.getAttribute('stroke-dasharray'))return; const LEN=2*(w+h);rect.style.strokeDasharray=LEN;rect.style.strokeDashoffset=LEN*(1-dt);}
+function pin(id,t,t0,t1,x,y){const p=RL.pop(t,t0),o=C((t-t1)/.2);const el=G(id);el.style.opacity=C(p*1.5)*(1-o);el.style.left=x+'px';el.style.top=y+'px';el.style.transform=`translate(-50%,-50%) scale(${p})`;}
+function rip(id,t,t0,el){const p=rel(el);const r=G(id);r.style.left=(p.x+el.offsetWidth/2)+'px';r.style.top=(p.y+el.offsetHeight/2)+'px';RL.ripple(r,t,t0);}
+// views slide: returns translateX % for a view visible between tIn and tOut (enters from right, leaves to left)
+function slide(id,t,tIn,tOut,first){const a=first?1:RL.ease(t,tIn,.45,'inout'),b=tOut?RL.ease(t,tOut,.45,'inout'):0;
+  G(id).style.transform=`translateX(${((1-a)*100-b*100).toFixed(2)}%)`;G(id).style.zIndex=Math.round(a*10);G(id).style.visibility=(a>0&&b<1)?'visible':'hidden';}
+function type(el,txt,t,t0,d,mask){const n=Math.floor(C((t-t0)/d)*txt.length);const s=mask?'•'.repeat(n):txt.slice(0,n);el.textContent=s+(t>t0&&n<txt.length?'|':'');}
+window.DUR=VO.dur;
+function render(t){
+  const tPic=W('Picture',1)-0.15, tWall=W('Create',3)-0.1, tFix=W('Let',7)-0.15, tOffer=W('Offer',8)-0.1, tEnd=L(10).start;
+  // ---------- camera: one continuous shot ----------
+  const cam=RL.cam(t,[
+    {t:0,s:1.2,x:0,y:20},
+    {t:tPic,s:.95,x:0,y:40,d:.7},
+    {t:W('linen',1)-0.1,s:1.2,x:0,y:80,d:.6},
+    {t:W('tap',2)-0.2,s:1.2,x:0,y:-50,d:.6},
+    {t:tWall,s:1.3,x:0,y:40,d:.6},
+    {t:W('Email',4)-0.15,s:1.3,x:0,y:5,d:.5},
+    {t:W('confirm',4)-0.15,s:1.3,x:0,y:-15,d:.5},
+    {t:W('They',5)-0.1,s:1.0,x:0,y:40,d:.6},
+    {t:W('close',6)-0.1,s:.9,x:0,y:40,r:-3,d:.6},
+    {t:tFix,s:1.25,x:0,y:20,r:0,d:.7},
+    {t:tOffer,s:1.25,x:0,y:20,d:.6},
+    {t:W('tap',9)-0.2,s:1.3,x:0,y:-15,d:.6},
+    {t:tEnd,s:.7,x:0,y:0,d:.6},
+  ]);
+  G('world').style.transform=cam.css;
+  const inP=RL.ease(t,0.02,.6,'expo'); G('ph').style.transform=`translateY(${(1-inP)*1000}px)`;
+  // views: B (wall) at the start (hook), A from "Picture", B again on "Create", C on "Let", D on "Offer"
+  const wallOn=t<tPic+0.45||(t>=tWall&&t<tFix+0.45);
+  slide('vA',t,tPic,tWall,false);
+  if(t<tPic+0.5){G('vB').style.transform=`translateX(${-RL.ease(t,tPic,.45,'inout')*100}%)`;G('vB').style.zIndex=5;G('vB').style.visibility=RL.ease(t,tPic,.45,'inout')<1?'visible':'hidden';}
+  else slide('vB',t,tWall,tFix,false);
+  slide('vC',t,tFix,tOffer,false); slide('vD',t,tOffer,0,false);
+  // wall fields: typing on L4 words (empty at the hook)
+  const tE=W('Email',4), tP=Wk(4,1), tC=W('confirm',4);
+  type(G('tE'),'sam@email.com',t,tE,.55,false); G('tE').style.letterSpacing='0';
+  type(G('tP'),'xxxxxxxx',t,tP,.5,true); type(G('tC'),'xxxxxxxx',t,tC,.5,true);
+  // L0: hook pin on "sign", dashed box around the wall heading
+  box(G('rWall'),G('wallH'),8,RL.draw(t,W('sign',0)));
+  const wallBox=(t>=W('sign',0)&&t<tPic)||(t>=W('Create',3)&&t<W('Email',4)-0.1);
+  if(t>=tWall) box(G('rWall'),G('wallH'),8,RL.draw(t,W('Create',3)));
+  G('rWall').style.opacity=wallBox?1:0;
+  pin('pSign',t,W('sign',0),tPic,770,SY+170);
+  // L1: heart fills on "love", handwritten "perfect!" on "linen"
+  const hl=RL.pop(t,W('love',1)); G('heart').style.transform=`scale(${0.8+0.2*hl})`; G('hsv').setAttribute('fill',t>W('love',1)?'#e5484d':'none');
+  RL.scribble(G('hLove'),t,W('linen',1),.45); G('hLove').style.opacity=(t>W('linen',1)&&t<W('tap',2))?1:0;
+  // L2: tap ripple on Add to cart, bag count pops on "cart", button says Checkout on "then"
+  rip('rip1',t,W('tap',2),G('btnA'));
+  const cn=RL.pop(t,W('cart',2)); G('cnt').style.transform=`scale(${cn})`; G('cnt').style.opacity=t>W('cart',2)?1:0;
+  G('btnA').textContent=t>=W('then',2)?'Checkout →':'Add to cart · $75';
+  if(t>=W('checkout',2)&&t<tWall) rip('rip1',t,W('checkout',2),G('btnA'));
+  // L3: error shake on "Create"
+  const sh=t>W('Create',3)&&t<W('Create',3)+.4?Math.sin((t-W('Create',3))*60)*10*(1-(t-W('Create',3))/.4):0;
+  G('ph').style.marginLeft=(-185+sh)+'px';
+  pin('pWall',t,W('account',3),W('Email',4),780,SY+150);
+  // L4: field boxes on each word
+  const fld=t<tP?'fE':(t<tC?'fP':'fC'); box(G('rF'),G(fld).lastElementChild,4,1);
+  G('rF').style.opacity=(t>=tE-0.05&&t<W('They',5))?1:0;
+  // L5: "for one dress?"
+  RL.scribble(G('hJust'),t,W('buy',5),.45); G('hJust').style.opacity=(t>W('buy',5)&&t<W('close',6))?1:0;
+  // L6: close the tab -> phone dims + "sale lost"
+  const lost=RL.ease(t,W('close',6),.4)*(1-RL.ease(t,tFix,.35));
+  G('ph').style.opacity=1-0.55*lost; G('ph').style.filter=`grayscale(${lost.toFixed(2)})`;
+  RL.scribble(G('hLost'),t,W('tab',6),.45); G('hLost').style.opacity=(t>W('tab',6)&&t<tFix)?1:0;
+  // L7: guest button box on "guest" + pin
+  box(G('rG'),G('gBtn'),6,RL.draw(t,W('guest',7))); G('rG').style.opacity=(t>=W('guest',7)&&t<tOffer)?1:0;
+  pin('pGuest',t,W('guest',7),tOffer,770,SY+rel(G('gBtn')).y-40);
+  // L8: order confirmed, pin on "after", box around save card on "order"
+  pin('pAfter',t,W('after',8),W('tap',9),300,SY+150);
+  box(G('rS'),G('save'),6,RL.draw(t,W('order',8))); G('rS').style.opacity=(t>=W('order',8)&&t<tEnd)?1:0;
+  // L9: tap "Save my details" -> Saved ✓, chip
+  rip('rip2',t,W('tap',9),G('sBtn'));
+  const sv=t>=W('saved',9); G('sBtn').textContent=sv?'Saved ✓':'Save my details'; G('sBtn').style.background=sv?'#0ea472':'#0f1f4d';
+  pin('pSaved',t,W('saved',9),tEnd,770,SY+rel(G('save')).y+150);
+  // end card
+  const e=RL.ease(t,tEnd,.5); G('end').style.opacity=e; G('end').style.transform=`scale(${0.94+0.06*e})`;
+  G('world').style.opacity=1-e;
+  RL.chapter(G('chap'),t); G('chap').style.opacity*=1-e;
+  RL.caption(G('cap'),t);
+}
+render(0);
+</script></body></html>

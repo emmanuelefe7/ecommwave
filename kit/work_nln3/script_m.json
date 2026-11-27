@@ -1,0 +1,31 @@
+{
+ "engine": "kokoro", "voice": "am_puck", "music": false, "lang": "en-us",
+ "lines": [
+  {"text": "Making customers *sign up* before they pay?", "chapter": "THE MISTAKE"},
+  {"text": "Picture this. They love the *linen dress.*", "chapter": "PICTURE THIS"},
+  {"text": "They tap *Add to cart,* then checkout."},
+  {"text": "\"Create an *account* to continue.\""},
+  {"text": "Email, password, *confirm password.*"},
+  {"text": "They just wanted to *buy a dress.*"},
+  {"text": "So they *close the tab.*"},
+  {"text": "Let them check out as a *guest.*", "chapter": "THE FIX"},
+  {"text": "Offer the account *after* the order."},
+  {"text": "One tap, and it's *saved for next time.*"},
+  {"text": "Want more orders? DM us *GROWTH.*"}
+ ],
+ "cues": [
+  {"sfx": "swoosh", "line": 0, "word": "Making", "offset": -0.1},
+  {"sfx": "pop", "line": 0, "word": "sign"},
+  {"sfx": "whoosh", "line": 1, "word": "Picture", "offset": -0.2},
+  {"sfx": "tap", "line": 2, "word": "tap", "offset": 0.1},
+  {"sfx": "error", "line": 3, "word": "Create"},
+  {"sfx": "type", "line": 4, "word": "Email"},
+  {"sfx": "type", "line": 4, "word": "confirm"},
+  {"sfx": "swoosh", "line": 6, "word": "close"},
+  {"sfx": "whoosh", "line": 7, "word": "Let", "offset": -0.2},
+  {"sfx": "ding", "line": 7, "word": "guest"},
+  {"sfx": "pop", "line": 8, "word": "after"},
+  {"sfx": "tap", "line": 9, "word": "tap"},
+  {"sfx": "pop", "line": 10, "word": "GROWTH"}
+ ]
+}

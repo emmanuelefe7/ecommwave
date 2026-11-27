@@ -1,0 +1,3 @@
+High-res product/lifestyle photos for posts (owner-supplied or free-licence stock, e.g. Unsplash/Pexels licence).
+No real brand logos visible, no recognisable real people unless the owner supplied them.
+Name files by what they show: bag_tan_white-bg.jpg, sneaker_white_lifestyle.jpg …

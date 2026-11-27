@@ -69,6 +69,19 @@ The profile grid holds connected 3-tile banners (TRIPTYCH rows, plus the `profil
 - Honesty: no invented statistics, percentages or client results. Example charts get the label "Example for illustration. Results vary by store." Speak in plain, simple words a beginner store owner understands.
 
 
+## 3a. REAL GRAPHICS, NOT MOCK-UPS (owner, 2026-11-27 — REQUIRED)
+The owner rejected a slide whose "products" were hand-drawn flat shapes (cartoon bag, bottle, T-shirt, shoe on coloured
+squares): "I want real graphic not mock up". So:
+- NEVER draw products, packaging, clothes, food or other real-world objects as simplified SVG/CSS shapes or clip-art.
+- Products are always REAL PHOTOS: `assets/photos/` (high-res, use these first when present) or the small cut-outs
+  `assets/p_*.png` (163×83 — only as small thumbnails, never enlarged past ~170 px wide, they go blurry).
+- If a slide needs a big product picture and no high-res photo exists, change the layout instead (real NOVA store UI
+  with small real thumbnails, a real brand photo `man.png` / `woman.png`, or a typographic slide) — never fake it.
+- Before/after comparisons use the SAME real photos shown two ways (e.g. mixed backgrounds/crops/lighting vs. one
+  clean consistent style), not drawings.
+- Brand-recoloured unDraw scenes stay allowed only as decoration/illustration of an idea (people, concepts) — never
+  as stand-ins for products or store screenshots.
+
 ## 3b. The look the owner loves (REQUIRED) — NAVY look (one of two looks, see §3c)
 The owner rejected light-grey 3D renders ("not professional, doesn't communicate my colors, not clean") and loves the connected navy grid banner (profile/banner2_*.jpg) and the navy reels. NAVY posts look like this:
 - **Deep brand navy dominates**: background = the navy gradient from `common.css` `.bg-dark` (#0a1a47 base, teal glow top-right, blue glow bottom-left), optional faint dot grid, and the mint wave lines as a signature element. Light (#f3f7fb) backgrounds only for inner slides that need contrast. (For a full light post use the LIGHT look in §3c.)

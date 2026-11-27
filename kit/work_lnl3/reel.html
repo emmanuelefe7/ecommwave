@@ -22,7 +22,7 @@ body{background:#0a1a47}
 .nv .mi{position:absolute;left:20px;top:15px;width:20px;height:14px;border-top:2.5px solid #0f1f4d;border-bottom:2.5px solid #0f1f4d}
 .nv .mi:after{content:"";position:absolute;left:0;right:0;top:3.5px;border-top:2.5px solid #0f1f4d}
 #pg{position:absolute;left:0;right:0;top:92px}
-.pimg{margin:0 14px;height:230px;border-radius:18px;background:linear-gradient(160deg,#eef2f8,#dfe6f1);overflow:hidden;position:relative}
+.pimg{margin:0 14px;height:190px;border-radius:18px;background:#e9e0d4;overflow:hidden;position:relative}
 .pi{padding:14px 18px 0}
 .t1{display:flex;justify-content:space-between;align-items:baseline}
 .t1 b{font:800 23px "Inter Display";letter-spacing:-.02em}.t1 span{font:800 22px "Inter Display"}
@@ -89,7 +89,7 @@ body{background:#0a1a47}
       <div id="pg">
         <div class="pimg" id="pimg"></div>
         <div class="pi">
-          <div class="t1"><b>Cloud Runner</b><span>$98</span></div>
+          <div class="t1"><b>Linen Wrap Dress</b><span>$75</span></div>
           <div class="st"><i>★★★★★</i> 4.7 · 126 reviews</div>
           <div id="faq"><div class="fq" id="fqIn">
             <div class="r">Does it run true to size? <em>–</em></div>
@@ -97,14 +97,14 @@ body{background:#0a1a47}
             <div class="r">When will it arrive? <em>+</em></div>
             <div class="r">Can I return it? <em>+</em></div>
           </div></div>
-          <div class="lb">Size (US)</div>
-          <div class="sz"><div>7</div><div>8</div><div class="on">9</div><div>10</div><div>11</div></div>
-          <div class="ds" id="desc">Lightweight everyday sneaker with a soft knit upper and a cushioned sole. Made for long days on your feet.</div>
+          <div class="lb">Size</div>
+          <div class="sz"><div>XS</div><div class="on">S</div><div>M</div><div>L</div><div>XL</div></div>
+          <div class="ds" id="desc">Light linen wrap dress with a tie waist. Easy to wear from a warm day into the evening.</div>
         </div>
       </div>
       <svg class="hbox" id="hbDesc" style="left:0;top:0" width="346" height="736"><rect id="rDesc" fill="none" stroke="#e5484d" stroke-width="5" stroke-dasharray="12 9" rx="12"/></svg>
       <svg class="hbox" id="hbFaq" style="left:0;top:0" width="346" height="736"><rect id="rFaq" fill="none" stroke="#0ea472" stroke-width="5" rx="14"/></svg>
-      <div class="btn">Add to cart · $98</div>
+      <div class="btn">Add to cart · $75</div>
       <div id="chatBtn"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
       <div id="chat">
         <div class="chh"><b>NOVA support</b><span id="rt"><i></i>Usually replies in under an hour</span></div>
@@ -142,15 +142,8 @@ body{background:#0a1a47}
   </div>
 </div>
 <script>
-// vector sneaker for the product photo (sharp at any zoom)
-document.getElementById('pimg').innerHTML=`<svg width="318" height="230" viewBox="0 0 318 230">
- <ellipse cx="160" cy="188" rx="118" ry="12" fill="#0f1f4d" opacity=".12"/>
- <path d="M48 150 C52 118 70 98 96 92 L132 86 C146 84 154 74 162 66 L176 58 C186 54 196 58 200 66 C210 88 232 104 262 112 C280 117 288 128 286 142 L284 156 L52 160 Z" fill="#ffffff" stroke="#cfd8e6" stroke-width="2"/>
- <path d="M96 92 L132 86 C146 84 154 74 162 66 L176 58 C186 54 196 58 200 66 C206 80 214 90 226 98 C196 104 150 104 112 120 C100 112 96 102 96 92Z" fill="#3356b0"/>
- <path d="M120 98 l10 14 M138 92 l10 14 M156 84 l10 14" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
- <path d="M50 156 L286 152 L288 166 C288 172 284 176 276 176 L60 178 C52 178 48 172 48 166 Z" fill="#34d5a0"/>
- <path d="M58 166 L280 163" stroke="#0f1f4d" stroke-opacity=".18" stroke-width="2"/>
- <circle cx="240" cy="128" r="5" fill="#3356b0"/></svg>`;
+// REAL product photo (owner rule 2026-11-27: everything looks real, no drawn products)
+document.getElementById('pimg').innerHTML='<img src="../assets/hero_woman.png" style="position:absolute;right:-40px;top:0;height:100%">';
 const G=id=>document.getElementById(id), W=(w,l)=>RL.W(w,l), L=i=>RL.L(i), C=clamp;
 const W2=(l,k)=>VO.lines[l].words[k].s;                 // k-th word of a line (for the second "wait")
 // positions: phone screen origin in world coords

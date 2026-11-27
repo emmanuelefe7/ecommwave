@@ -1,0 +1,234 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<script src="../common.js"></script>
+<script src="vo/timing.js"></script>
+<script src="../reel.js"></script>
+<!-- NAVY Reel (L-N-L middle): unanswered customer questions. REEL STYLE: word-synced captions, cues on words (RL.W),
+     chapter pills, one continuous camera on a NOVA phone, handwritten asides, voice + sfx, no music. -->
+<style>
+@font-face{font-family:"Hand";src:url(../fonts/hand.woff2) format("woff2")}
+:root{--ink:#0d1b3e;--mint:#34d5a0;--bad:#ff6b7a}
+body{background:#0a1a47}
+#stage{background:radial-gradient(760px 640px at 50% 42%,rgba(52,213,160,.16) 0%,rgba(52,213,160,0) 70%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.wave{position:absolute;left:0;width:1080px;opacity:.55}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+.phone{position:absolute;left:540px;top:760px;width:370px;height:760px;margin:-380px 0 0 -185px;border-radius:58px;background:#0b1020;padding:12px;
+  box-shadow:0 50px 100px rgba(0,0,0,.45),0 0 0 2px #33406a,inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:11px;width:96px;height:28px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:9}
+.sb{height:46px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+.nv{height:46px;display:flex;align-items:center;justify-content:center;font:800 19px "Inter Display";letter-spacing:.08em;color:#0f1f4d;position:relative}
+.nv .mi{position:absolute;left:20px;top:15px;width:20px;height:14px;border-top:2.5px solid #0f1f4d;border-bottom:2.5px solid #0f1f4d}
+.nv .mi:after{content:"";position:absolute;left:0;right:0;top:3.5px;border-top:2.5px solid #0f1f4d}
+#pg{position:absolute;left:0;right:0;top:92px}
+.pimg{margin:0 14px;height:190px;border-radius:18px;background:#e9e0d4;overflow:hidden;position:relative}
+.pi{padding:14px 18px 0}
+.t1{display:flex;justify-content:space-between;align-items:baseline}
+.t1 b{font:800 23px "Inter Display";letter-spacing:-.02em}.t1 span{font:800 22px "Inter Display"}
+.st{font:500 13px Inter;color:#64748b;margin-top:4px}.st i{color:#f5b301;font-style:normal;letter-spacing:1px}
+#faq{overflow:hidden;height:0}
+.fq{margin-top:12px;border:1.5px solid #e2e8f0;border-radius:14px;padding:4px 12px}
+.fq .r{display:flex;justify-content:space-between;align-items:center;padding:8px 0;font:700 13.5px Inter;border-bottom:1px solid #eef1f5}
+.fq .r:last-child{border-bottom:0}.fq .r em{font-style:normal;color:#94a3b8;font-weight:600}
+.fq .a{font:500 13px Inter;color:#0ea472;padding:0 0 8px;border-bottom:1px solid #eef1f5}
+.lb{font:700 13px Inter;margin-top:14px;color:#334155}
+.sz{display:flex;gap:8px;margin-top:8px}.sz div{width:52px;height:40px;border-radius:10px;border:1.5px solid #cbd5e1;display:grid;place-items:center;font:700 14px Inter}
+.sz div.on{border-color:#0f1f4d;background:#0f1f4d;color:#fff}
+.ds{font:500 14px/1.5 Inter;color:#475569;margin-top:14px}
+.btn{position:absolute;left:18px;right:18px;bottom:24px;height:56px;border-radius:16px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px Inter;z-index:3}
+/* contact form screen */
+#scrC{position:absolute;inset:0;background:#fff;z-index:4;padding-top:0}
+.ct{padding:6px 22px}
+.ct h4{font:800 26px "Inter Display";letter-spacing:-.02em;margin-top:6px}
+.ct p{font:500 13px Inter;color:#64748b;margin-top:4px}
+.fl{margin-top:14px}.fl label{font:700 12.5px Inter;color:#334155}
+.fl div{margin-top:6px;height:44px;border-radius:10px;border:1.5px solid #e2e8f0;display:flex;align-items:center;padding:0 12px;font:500 14px Inter;color:#0f172a}
+.fl div.big{height:96px;align-items:flex-start;padding-top:10px}
+#send{margin-top:18px;height:52px;border-radius:14px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px Inter}
+#sentNote{margin-top:12px;font:600 13px Inter;color:#64748b;text-align:center;opacity:0}
+/* chat */
+#chatBtn{position:absolute;right:16px;bottom:94px;width:56px;height:56px;border-radius:50%;background:#0ea472;display:grid;place-items:center;box-shadow:0 10px 22px rgba(14,164,114,.4);z-index:5}
+#chat{position:absolute;left:10px;right:10px;bottom:10px;height:370px;border-radius:26px 26px 38px 38px;background:#fff;box-shadow:0 -10px 40px rgba(15,23,42,.22);z-index:6;overflow:hidden}
+.chh{background:#0f1f4d;color:#fff;padding:14px 18px}
+.chh b{font:800 18px "Inter Display";display:block}
+.chh span{display:flex;align-items:center;gap:7px;font:600 13px Inter;color:#cfe9df;margin-top:4px}
+.chh span i{width:9px;height:9px;border-radius:50%;background:#34d5a0;display:block}
+.bub{position:absolute;max-width:240px;padding:10px 14px;border-radius:16px;font:500 14px/1.35 Inter}
+.bub.me{right:16px;top:96px;background:#eef2f8;color:#0f172a;border-bottom-right-radius:4px}
+.bub.us{left:16px;top:158px;background:#0ea472;color:#fff;border-bottom-left-radius:4px}
+.qr{position:absolute;left:14px;right:14px;bottom:20px;display:flex;gap:7px;flex-wrap:wrap}
+.qr div{padding:8px 12px;border-radius:999px;border:1.5px solid #0ea472;color:#0b7a56;font:700 12.5px Inter;background:#f0fbf6}
+/* overlays */
+.pin{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font:700 23px Inter;padding:10px 20px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.3);white-space:nowrap}
+.pin .d{width:26px;height:26px;border-radius:50%;background:#0ea472;box-shadow:0 0 0 5px rgba(14,164,114,.22)}
+.pin.bad .d{background:#e5484d;box-shadow:0 0 0 5px rgba(229,72,77,.2)}
+.hbox{position:absolute;pointer-events:none;overflow:visible;z-index:8}
+#bub{position:absolute;left:300px;top:330px;background:#fff;color:var(--ink);border-radius:30px 30px 30px 8px;padding:22px 30px 22px 22px;display:flex;align-items:center;gap:18px;box-shadow:0 24px 50px rgba(0,0,0,.35);white-space:nowrap;transform-origin:0 100%}
+#bub .av{width:62px;height:62px;border-radius:50%;background:linear-gradient(135deg,#3356b0,#162a5c);display:grid;place-items:center;font:800 24px "Inter Display";color:#fff}
+#bub b{font:800 32px "Inter Display";letter-spacing:-.02em}
+#bub small{display:block;font:600 18px Inter;color:#64748b;margin-bottom:4px}
+#clock{position:absolute;display:inline-flex;align-items:center;gap:12px;background:#fff;color:var(--ink);font:800 26px "Inter Display";padding:12px 24px 12px 12px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.3)}
+#clock .c{width:46px;height:46px;border-radius:50%;background:#fff1f2;display:grid;place-items:center}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#152a59;color:#fff;font:700 24px Inter;padding:10px 22px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.35),inset 0 0 0 2px rgba(52,213,160,.45);white-space:nowrap}
+.chip .k{width:34px;height:34px;border-radius:50%;background:var(--mint);display:grid;place-items:center}
+#chap{position:absolute;left:50%;top:190px;background:#fff;color:#0a1a47;font:800 22px Inter;letter-spacing:.16em;padding:12px 24px;border-radius:999px;transform-origin:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#cap{position:absolute;left:70px;right:70px;top:1335px;text-align:center;font:800 64px/1.12 "Inter Display";letter-spacing:-.035em;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+#cap .rw{display:inline-block;will-change:transform,opacity,filter}
+#cap .hl{color:var(--mint)}
+.hand{position:absolute;font:700 50px Hand;color:var(--mint);white-space:nowrap}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;opacity:0;padding-bottom:180px}
+.cta{background:var(--mint);color:#0a1a47;font:800 50px "Inter Display";letter-spacing:-.02em;padding:24px 28px 24px 50px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 24px 50px rgba(52,213,160,.3)}
+.cta i{width:70px;height:70px;border-radius:50%;background:#0a1a47;display:grid;place-items:center}
+</style></head><body>
+<div id="stage"><div class="dots"></div>
+  <svg class="wave" style="top:1560px" height="260" viewBox="0 0 1080 260"><path d="M-20 150 C 200 60, 380 230, 600 140 S 960 60, 1100 120" fill="none" stroke="#34d5a0" stroke-width="3"/><path d="M-20 190 C 220 100, 400 260, 620 175 S 980 100, 1100 160" fill="none" stroke="#34d5a0" stroke-opacity=".45" stroke-width="2"/></svg>
+  <div id="world">
+    <div class="phone" id="ph"><div class="scr" id="scr"><div class="isl"></div>
+      <div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="nv"><i class="mi"></i>NOVA</div>
+      <div id="pg">
+        <div class="pimg" id="pimg"></div>
+        <div class="pi">
+          <div class="t1"><b>Linen Wrap Dress</b><span>$75</span></div>
+          <div class="st"><i>★★★★★</i> 4.7 · 126 reviews</div>
+          <div id="faq"><div class="fq" id="fqIn">
+            <div class="r">Does it run true to size? <em>–</em></div>
+            <div class="a">Yes. Order your usual size.</div>
+            <div class="r">When will it arrive? <em>+</em></div>
+            <div class="r">Can I return it? <em>+</em></div>
+          </div></div>
+          <div class="lb">Size</div>
+          <div class="sz"><div>XS</div><div class="on">S</div><div>M</div><div>L</div><div>XL</div></div>
+          <div class="ds" id="desc">Light linen wrap dress with a tie waist. Easy to wear from a warm day into the evening.</div>
+        </div>
+      </div>
+      <svg class="hbox" id="hbDesc" style="left:0;top:0" width="346" height="736"><rect id="rDesc" fill="none" stroke="#e5484d" stroke-width="5" stroke-dasharray="12 9" rx="12"/></svg>
+      <svg class="hbox" id="hbFaq" style="left:0;top:0" width="346" height="736"><rect id="rFaq" fill="none" stroke="#0ea472" stroke-width="5" rx="14"/></svg>
+      <div class="btn">Add to cart · $75</div>
+      <div id="chatBtn"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
+      <div id="chat">
+        <div class="chh"><b>NOVA support</b><span id="rt"><i></i>Usually replies in under an hour</span></div>
+        <div class="bub me" id="cb1">Does it run true to size?</div>
+        <div class="bub us" id="cb2">Yes! Order your usual size. Free exchanges if not.</div>
+        <div class="qr" id="qr"><div>Sizing</div><div>Delivery times</div><div>Returns</div></div>
+      </div>
+      <svg class="hbox" id="hbRt" style="left:0;top:0" width="346" height="736"><rect id="rRt" fill="none" stroke="#34d5a0" stroke-width="5" rx="12"/></svg>
+      <div id="scrC"><div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="nv"><i class="mi"></i>NOVA</div>
+        <div class="ct"><h4>Contact us</h4><p>Fill in the form and we’ll get back to you.</p>
+          <div class="fl"><label>Name</label><div>Sam</div></div>
+          <div class="fl"><label>Email</label><div>sam@email.com</div></div>
+          <div class="fl"><label>Message</label><div class="big" id="msg"></div></div>
+          <div id="send">Send</div>
+          <div id="sentNote">Message sent. We’ll reply soon.</div>
+        </div></div>
+    </div></div>
+    <div id="bub"><div class="av">S</div><div><small>Customer</small><b>“Does it run true to size?”</b></div></div>
+    <div class="pin bad" id="pNo" style="left:770px;top:0">No size info</div>
+    <div class="pin bad" id="pChat" style="left:300px;top:0">No chat</div>
+    <div id="clock" style="left:700px;top:430px"><span class="c"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e5484d" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path id="hand1" d="M12 12V7.5"/><path d="M12 12l3 2"/></svg></span><span id="clockT">Waiting…</span></div>
+    <div class="hand" id="hWait" style="left:250px;top:1180px;color:#ff6b7a;transform:rotate(-4deg)">still no reply…</div>
+    <div class="hand" id="hLost" style="left:600px;top:300px;color:#ff6b7a;font-size:64px;transform:rotate(-6deg)">sale lost</div>
+    <div class="pin" id="pFaq" style="left:300px;top:0">Under the price</div>
+    <div class="pin" id="pRt" style="left:780px;top:0">Reply time shown</div>
+    <div class="chip" id="k1" style="left:250px;top:0"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a1a47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Saved reply</div>
+  </div>
+  <div id="chap"></div>
+  <div id="cap"></div>
+  <div id="end">
+    <img src="../assets/logo_white.png" style="height:58px">
+    <div style="font:900 100px/1 'Inter Display';letter-spacing:-.05em;color:#fff;text-align:center;text-transform:uppercase">Answer them<br><span style="font-family:Serif;font-style:italic;font-weight:400;text-transform:none;color:#34d5a0;letter-spacing:-.01em">before they leave.</span></div>
+    <span class="cta">DM us “GROWTH” <i><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#34d5a0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
+    <div style="font:700 34px Inter;color:#fff">ecommwave.org</div>
+  </div>
+</div>
+<script>
+// REAL product photo (owner rule 2026-11-27: everything looks real, no drawn products)
+document.getElementById('pimg').innerHTML='<img src="../assets/hero_woman.png" style="position:absolute;right:-40px;top:0;height:100%">';
+const G=id=>document.getElementById(id), W=(w,l)=>RL.W(w,l), L=i=>RL.L(i), C=clamp;
+const W2=(l,k)=>VO.lines[l].words[k].s;                 // k-th word of a line (for the second "wait")
+// positions: phone screen origin in world coords
+const SX=540-185+12, SY=760-380+12;
+function rel(el,stop){let x=0,y=0;while(el&&el!==stop){x+=el.offsetLeft;y+=el.offsetTop;el=el.offsetParent;}return{x,y};}
+const scr=G('scr');
+// FAQ block natural height
+const FAQH=G('fqIn').offsetHeight+12;
+function boxAround(rect,el,pad,extraY=0){const p=rel(el,scr);rect.setAttribute('x',p.x-pad);rect.setAttribute('y',p.y-pad+extraY);
+  rect.setAttribute('width',el.offsetWidth+2*pad);rect.setAttribute('height',el.offsetHeight+2*pad);return 2*(el.offsetWidth+el.offsetHeight+4*pad);}
+window.DUR=VO.dur;
+function render(t){
+  const tPic=L(3).start-0.15, tFix=L(7).start-0.15, tEnd=L(10).start;
+  const wait1=W('wait',5), wait2=W2(5,4), tSome=W('somewhere',6);
+  // ---------- camera: one continuous shot ----------
+  const cam=RL.cam(t,[
+    {t:0,s:.86,x:0,y:60},
+    {t:W('Does',1)-0.15,s:.9,x:40,y:120,d:.6},
+    {t:W('search',2)-0.1,s:1.28,x:0,y:-20,d:.7},
+    {t:W('nothing',3)-0.3,s:1.38,x:-20,y:-200,d:.6},
+    {t:W('contact',4)-0.1,s:1.3,x:0,y:-40,d:.6},
+    {t:wait1-0.1,s:1.12,x:-30,y:0,d:.6},
+    {t:tSome-0.1,s:.84,x:0,y:40,r:-3,d:.7},
+    {t:tFix,s:1.3,x:0,y:10,r:0,d:.7},
+    {t:W('chat',8)-0.1,s:1.18,x:0,y:-50,d:.7},
+    {t:W('ready',9)-0.1,s:1.12,x:0,y:-50,d:.6},
+    {t:tEnd,s:.7,x:0,y:0,d:.6},
+  ]);
+  G('world').style.transform=cam.css;
+  // phone in
+  const inP=RL.ease(t,0.02,.65,'expo'); G('ph').style.transform=`translateY(${(1-inP)*1000}px)`;
+  // customer question bubble (L0 "question" -> L1 "Does")
+  const bq=RL.pop(t,W('question',0)-0.05), bqOff=RL.ease(t,W('search',2),.3);
+  G('bub').style.opacity=C(bq*1.5)*(1-bqOff); G('bub').style.transform=`scale(${0.5+0.5*bq})`;
+  // L2: scroll the page to look for the answer; L7 back up
+  const sc=RL.ease(t,W('search',2),.7,'inout')*(1-RL.ease(t,tFix,.5,'inout'));
+  G('pg').style.transform=`translateY(${-150*sc}px)`;
+  // L3: red dashed box around description + pin "No size info"
+  const dsc=G('desc'); const pd=rel(dsc,scr);
+  const rD=G('rDesc'); rD.setAttribute('x',pd.x-8); rD.setAttribute('y',pd.y-8-150*sc); rD.setAttribute('width',dsc.offsetWidth+16); rD.setAttribute('height',dsc.offsetHeight+16);
+  const dOn=RL.ease(t,W('nothing',3)-0.05,.25)*(1-RL.ease(t,W('contact',4),.2)); G('hbDesc').style.opacity=dOn;
+  const pin=(id,t0,t1,y)=>{const p=RL.pop(t,t0),o=C((t-t1)/.2);const el=G(id);el.style.opacity=C(p*1.5)*(1-o);el.style.top=y+'px';el.style.transform=`translate(-50%,-50%) scale(${p})`};
+  pin('pNo',W('nothing',3),W('contact',4),SY+pd.y-150*sc-40);
+  // L4: "No chat" pin, then contact form slides in on "contact"
+  pin('pChat',W('chat',4),wait1,SY+640);
+  const cf=RL.ease(t,W('contact',4),.4)*(1-RL.ease(t,tFix,.4)); G('scrC').style.transform=`translateX(${(1-cf)*100}%)`;
+  const msg='Does it run true to size?'; const nType=Math.floor(C((t-W('contact',4)-0.35)/.75)*msg.length);
+  G('msg').textContent=msg.slice(0,nType)+(t>W('contact',4)+.3&&nType<msg.length?'|':'');
+  const sent=t>=wait1-0.05; G('send').textContent=sent?'Sent ✓':'Send'; G('send').style.background=sent?'#94a3b8':'#0f1f4d';
+  G('sentNote').style.opacity=RL.ease(t,wait1,.3);
+  // L5: waiting clock, then handwritten "still no reply…"
+  const ck=RL.pop(t,wait1), ckOff=RL.ease(t,tFix-0.2,.25);
+  G('clock').style.opacity=C(ck*1.5)*(1-ckOff); G('clock').style.transform=`translate(-50%,-50%) scale(${ck})`;
+  G('hand1').setAttribute('transform',`rotate(${((t-wait1)*360)%360} 12 12)`);
+  G('clockT').textContent=t>=tSome?'No reply':'Waiting…';
+  RL.scribble(G('hWait'),t,wait2,.45); G('hWait').style.opacity=(t>wait2&&t<tSome)?1:0;
+  // L6: buy somewhere else -> phone dims, "sale lost"
+  const lost=RL.ease(t,tSome,.4)*(1-RL.ease(t,tFix,.35));
+  G('ph').style.opacity=1-0.55*lost; G('ph').style.filter=`grayscale(${lost.toFixed(2)})`;
+  RL.scribble(G('hLost'),t,tSome+0.05,.45); G('hLost').style.opacity=(t>tSome&&t<tFix)?1:0;
+  // L7: FAQ appears under the price, mint box draws on "top", pin on "under"
+  const fq=RL.ease(t,W('Answer',7),.5,'inout'); G('faq').style.height=(FAQH*fq)+'px';
+  const LEN=boxAround(G('rFaq'),G('fqIn'),5);
+  const dF=RL.draw(t,W('top',7)); G('rFaq').style.strokeDasharray=LEN; G('rFaq').style.strokeDashoffset=LEN*(1-dF);
+  G('hbFaq').style.opacity=(t>W('top',7)?1:0)*(1-RL.ease(t,W('chat',8),.25));
+  pin('pFaq',W('under',7),W('chat',8),SY+rel(G('fqIn'),scr).y+FAQH/2-6);
+  // L8: chat button pops, chat opens, reply time box on "reply"
+  const cbtn=RL.pop(t,W('Add',8)); G('chatBtn').style.transform=`scale(${cbtn})`; G('chatBtn').style.opacity=t>W('Add',8)?1:0;
+  const co=RL.ease(t,W('chat',8),.45,'out'); G('chat').style.transform=`translateY(${(1-co)*420}px)`;
+  const rt=G('rt'); const prt=rel(rt,scr); const rR=G('rRt');
+  rR.setAttribute('x',prt.x-8);rR.setAttribute('y',prt.y-7+(1-co)*420);rR.setAttribute('width',rt.offsetWidth+16);rR.setAttribute('height',rt.offsetHeight+14);
+  const LR=2*(rt.offsetWidth+16+rt.offsetHeight+14); const dR=RL.draw(t,W('reply',8));
+  rR.style.strokeDasharray=LR; rR.style.strokeDashoffset=LR*(1-dR); G('hbRt').style.opacity=(t>W('reply',8)?1:0)*(1-RL.ease(t,W('ready',9),.25));
+  pin('pRt',W('reply',8),W('ready',9),SY+prt.y-60);
+  // chat bubbles: customer's question on "that", saved reply on "ready", quick replies on "common"
+  const b1=RL.pop(t,W('shows',8)); G('cb1').style.opacity=C(b1*1.5); G('cb1').style.transform=`scale(${b1})`; G('cb1').style.transformOrigin='100% 100%';
+  const b2=RL.pop(t,W('ready',9)); G('cb2').style.opacity=C(b2*1.5); G('cb2').style.transform=`scale(${b2})`; G('cb2').style.transformOrigin='0 100%';
+  [...G('qr').children].forEach((q,i)=>{const p=RL.pop(t,W('common',9)+i*0.12);q.style.opacity=C(p*1.5);q.style.transform=`scale(${p})`});
+  const k1=RL.pop(t,W('replies',9)); G('k1').style.opacity=C(k1*1.5)*(1-RL.ease(t,tEnd,.3)); G('k1').style.top=(SY+rel(G('cb2'),scr).y+(1-co)*420+20)+'px';
+  G('k1').style.transform=`translate(-50%,-50%) scale(${k1})`;
+  // end card
+  const e=RL.ease(t,tEnd,.5); G('end').style.opacity=e; G('end').style.transform=`scale(${0.94+0.06*e})`;
+  G('world').style.opacity=1-e;
+  RL.chapter(G('chap'),t); G('chap').style.opacity*=1-e;
+  RL.caption(G('cap'),t);
+}
+render(0);
+</script></body></html>

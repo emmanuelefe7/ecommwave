@@ -1,5 +1,5 @@
 <!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../light.css"><script src="../light.js"></script>
-<!-- LIGHT carousel (L-N-L left): collection page that sells. NEW layout: phone-UI hero + numbered tip slides that pair a
+<!-- v2 2026-11-27: REAL photos only (owner: everything looks real) — no drawn products, no unDraw. LIGHT carousel (L-N-L left): collection page that sells. NEW layout: phone-UI hero + numbered tip slides that pair a
      realistic collection-page UI (left) with one navy rule card (right column), locked LIGHT palette. -->
 <style>
 .arch{position:absolute;left:290px;top:450px;width:500px;height:640px}
@@ -14,7 +14,7 @@
 .ch{padding:6px 18px 0}.ch h5{font:800 24px "Inter Display";letter-spacing:-.02em}
 .bar{display:flex;gap:8px;margin-top:10px}.bar div{flex:1;height:38px;border-radius:10px;border:1.5px solid #e2e8f0;display:flex;align-items:center;justify-content:center;gap:6px;font:700 14px Inter}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px 18px}
-.pc .im{height:150px;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#eef2f8,#dfe6f1);display:grid;place-items:center}
+.pc .im{height:112px;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#eef2f8,#dfe6f1);display:grid;place-items:center}
 .pc b{display:block;font:700 14px Inter;margin-top:8px}
 .pc .p{display:flex;justify-content:space-between;align-items:center;margin-top:3px;font:800 15px "Inter Display"}
 .pc .p i{font:600 12px Inter;font-style:normal;color:#64748b}.pc .p i s{text-decoration:none;color:#f5b301}
@@ -25,7 +25,9 @@
 .ui{position:absolute;background:#fff;border-radius:28px;box-shadow:0 40px 90px rgba(21,42,89,.22),0 0 0 1px rgba(21,42,89,.05);font-family:Inter;color:#0f172a;overflow:hidden}
 .tag{position:absolute;font:800 20px Inter;letter-spacing:.14em;padding:9px 18px;border-radius:999px;color:#fff}
 .mini{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:16px}
-.mini .im{height:190px;border-radius:12px;display:grid;place-items:center;overflow:hidden}
+.mini.big .im{height:200px}
+.mini .im{height:118px;border-radius:12px;overflow:hidden;position:relative;background:#eef1f5}
+.im img{width:100%;height:100%;object-fit:cover;display:block}
 .opt{display:flex;align-items:center;justify-content:space-between;padding:22px 28px;font:600 25px Inter;border-top:1px solid #eef1f5}
 .opt.on{background:#f0fbf6;color:#0b7a56;font-weight:800}
 .fc{display:flex;flex-wrap:wrap;gap:10px;padding:0 24px}.fc div{padding:10px 18px;border-radius:999px;border:1.5px solid #cbd5e1;font:700 19px Inter}
@@ -47,9 +49,9 @@
   <div class="abs kick" style="left:80px;top:160px">Customers scroll… but never click?</div>
   <div class="slab" style="left:62px;top:240px">Fix your</div>
   <div class="slab" style="left:100px;top:368px;font-size:80px">Collection page</div>
-  <div class="phone" style="left:570px;top:500px;transform:rotate(3deg) scale(.82);transform-origin:50% 0"><div class="scr"><div class="isl"></div>
+  <div class="phone" style="left:570px;top:500px;height:620px;transform:rotate(3deg) scale(.82);transform-origin:50% 0"><div class="scr"><div class="isl"></div>
     <div class="sb"><span>9:41</span><span>●●● ▮</span></div><div class="nv">NOVA</div>
-    <div class="ch"><h5>Sneakers</h5><div class="bar"><div>Filter</div><div>Best selling ▾</div></div></div>
+    <div class="ch"><h5>New arrivals</h5><div class="bar"><div>Filter</div><div>Best selling ▾</div></div></div>
     <div class="grid" id="g1"></div></div></div>
   <div class="lc" style="position:absolute;left:80px;top:560px;width:440px;transform:rotate(-1.5deg)"><div class="ic">i:camera</div><div><b>One photo style</b><span>Every card looks alike</span></div></div>
   <div class="lc" style="position:absolute;left:80px;top:690px;width:440px"><div class="ic">i:star</div><div><b>Price & stars</b><span>On every product card</span></div></div>
@@ -65,11 +67,11 @@
   <div class="dots" style="right:80px;top:200px"></div>
   <div class="top"><img src="../assets/logo_navy.png"><div class="num">02 / 06</div></div>
   <div class="abs kick" style="left:80px;top:160px;width:900px;line-height:1.1">Mixed photos make your store look messy.</div>
-  <div class="ui" style="left:80px;top:330px;width:420px;transform:rotate(-2deg)"><div class="mini" id="messy"></div></div>
-  <div class="tag" style="left:110px;top:300px;background:#e5484d;transform:rotate(-2deg)">BEFORE</div>
-  <div class="ui" style="left:580px;top:330px;width:420px;transform:rotate(1.5deg)"><div class="mini" id="clean"></div></div>
-  <div class="tag" style="left:610px;top:300px;background:#152a59;transform:rotate(1.5deg)">AFTER</div>
-  <div class="rc" style="left:80px;top:860px;width:920px;display:flex;gap:36px;align-items:center"><div class="bn">01</div><div><b>Use one photo style for every product</b><span>Same background, same angle, same size. The page looks calm and professional, so the products stand out.</span></div></div>
+  <div class="ui" style="left:80px;top:360px;width:420px;transform:rotate(-2deg) scale(1.08);transform-origin:0 0"><div class="mini big" id="messy"></div></div>
+  <div class="tag" style="left:110px;top:325px;background:#e5484d;transform:rotate(-2deg)">BEFORE</div>
+  <div class="ui" style="left:560px;top:360px;width:420px;transform:rotate(1.5deg) scale(1.08);transform-origin:0 0"><div class="mini big" id="clean"></div></div>
+  <div class="tag" style="left:590px;top:325px;background:#152a59;transform:rotate(1.5deg)">AFTER</div>
+  <div class="rc" style="left:80px;top:920px;width:920px;display:flex;gap:36px;align-items:center"><div class="bn">01</div><div><b>Use one photo style for every product</b><span>Same crop, same size, same light. The page looks calm and professional, so the products stand out.</span></div></div>
   <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
 </section>
 
@@ -80,14 +82,17 @@
   <div class="dots" style="left:70px;top:420px"></div>
   <div class="top"><img src="../assets/logo_navy.png"><div class="num">03 / 06</div></div>
   <div class="abs kick" style="left:80px;top:160px;width:900px;line-height:1.1">Customers shouldn’t have to tap to see the price.</div>
-  <div class="ui" style="left:90px;top:330px;width:450px;padding:20px;transform:rotate(-2deg)"><div class="pc" style="font-size:0"><div class="im" id="big" style="height:400px"></div>
-    <b style="font-size:24px;margin-top:14px">Cloud Runner</b>
-    <div class="p" style="font-size:26px;margin-top:8px">$98 <i style="font-size:18px"><s>★★★★★</s> 4.7 (126)</i></div>
-    <div class="sw" style="padding:14px 0 4px"><div class="on" style="background:#3356b0"></div><div style="background:#1f2937"></div><div style="background:#e5e7eb"></div></div></div></div>
-  <div class="lab" style="left:610px;top:760px"><i></i>Price on the card</div>
-  <div class="lab" style="left:610px;top:820px"><i></i>Stars + review count</div>
-  <div class="lab" style="left:610px;top:880px"><i></i>Color options</div>
-  <img src="../assets/ill/online-review.svg" style="position:absolute;left:620px;top:950px;width:380px;height:250px;object-fit:contain"><div class="rc" style="left:600px;top:330px;width:400px"><div class="bn">02</div><b>Show price & stars on every card</b><span>Let customers compare right on the page, without opening ten tabs.</span></div>
+  <div class="ui" style="left:90px;top:330px;width:450px;padding:20px;transform:rotate(-2deg)"><div class="pc" style="font-size:0"><div class="im" id="big" style="height:220px"></div>
+    <b style="font-size:24px;margin-top:14px">Linen Wrap Dress</b>
+    <div class="p" style="font-size:26px;margin-top:8px">$75 <i style="font-size:18px"><s>★★★★★</s> 4.7 (126)</i></div>
+    <div class="sw" style="padding:14px 0 4px"><div class="on" style="background:#efe6d8"></div><div style="background:#1f2937"></div><div style="background:#b07a4f"></div></div></div></div>
+  <div class="lab" style="left:110px;top:900px"><i></i>Price on the card</div>
+  <div class="lab" style="left:110px;top:960px"><i></i>Stars + review count</div>
+  <div class="lab" style="left:110px;top:1020px"><i></i>Color options</div>
+  <div class="ui" style="left:640px;top:780px;width:330px;padding:16px;transform:rotate(2deg)"><div class="pc"><div class="im" id="noprice" style="height:120px"></div>
+    <b style="font-size:19px;margin-top:10px;color:#94a3b8">Tan Satchel</b>
+    <div style="margin-top:10px;font:700 16px Inter;color:#94a3b8;border:1.5px dashed #cbd5e1;border-radius:10px;padding:10px;text-align:center">Tap to see price</div></div></div>
+  <div class="tag" style="left:670px;top:752px;background:#e5484d;transform:rotate(2deg)">NO PRICE?</div><div class="rc" style="left:600px;top:330px;width:400px"><div class="bn">02</div><b>Show price & stars on every card</b><span>Let customers compare right on the page, without opening ten tabs.</span></div>
   <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
 </section>
 
@@ -98,13 +103,14 @@
   <div class="dots" style="right:80px;top:330px"></div>
   <div class="top"><img src="../assets/logo_navy.png"><div class="num">04 / 06</div></div>
   <div class="abs kick" style="left:80px;top:160px;width:900px;line-height:1.1">40 products and no filters? Customers give up.</div>
-  <img src="../assets/ill/web-shopping.svg" style="position:absolute;left:80px;top:800px;width:420px;height:330px;object-fit:contain"><div class="rc" style="left:80px;top:340px;width:420px"><div class="bn">03</div><b>Add the filters customers really use</b><span>Size, color and price first. Name them the way your customers talk.</span></div>
+  <div class="ui" style="left:80px;top:800px;width:420px;transform:rotate(-1.5deg)"><div style="padding:18px 20px 4px;font:800 22px 'Inter Display'">12 dresses <span style="font:600 16px Inter;color:#64748b">· Size S · $50–$100</span></div>
+    <div class="mini" id="res" style="padding:12px 16px 18px"></div></div><div class="rc" style="left:80px;top:340px;width:420px"><div class="bn">03</div><b>Add the filters customers really use</b><span>Size, color and price first. Name them the way your customers talk.</span></div>
   <div class="ui" style="left:560px;top:330px;width:440px;transform:rotate(2deg)">
     <div style="display:flex;justify-content:space-between;align-items:center;padding:22px 24px 6px;font:800 28px 'Inter Display'">Filter <span style="font:600 20px Inter;color:#64748b">Clear all</span></div>
-    <div class="fh">Size (US)</div><div class="fc"><div>7</div><div>8</div><div class="on">9</div><div>10</div><div>11</div></div>
-    <div class="fh">Color</div><div class="sw"><div class="on" style="background:#3356b0"></div><div style="background:#1f2937"></div><div style="background:#e5e7eb"></div><div style="background:#34d5a0"></div><div style="background:#b07a4f"></div></div>
+    <div class="fh">Size</div><div class="fc"><div>XS</div><div class="on">S</div><div>M</div><div>L</div><div>XL</div></div>
+    <div class="fh">Color</div><div class="sw"><div class="on" style="background:#efe6d8"></div><div style="background:#1f2937"></div><div style="background:#e5e7eb"></div><div style="background:#34d5a0"></div><div style="background:#b07a4f"></div></div>
     <div class="fh">Price</div><div class="fc"><div>Under $50</div><div class="on">$50–$100</div><div>$100+</div></div>
-    <div style="margin:26px 24px 24px;height:62px;border-radius:16px;background:#152a59;color:#fff;font:700 21px Inter;display:grid;place-items:center">Show 12 products</div>
+    <div style="margin:26px 24px 24px;height:62px;border-radius:16px;background:#152a59;color:#fff;font:700 21px Inter;display:grid;place-items:center">Show 12 dresses</div>
   </div>
   <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
 </section>
@@ -124,7 +130,8 @@
     <div class="opt">Price, high to low</div>
     <div class="opt" style="color:#94a3b8">Alphabetical, A–Z</div>
   </div>
-  <div class="chipl" style="left:120px;top:880px"><span class="ck">i:check</span>Start with what already sells</div><img src="../assets/ill/growth-analytics.svg" style="position:absolute;left:600px;top:780px;width:400px;height:380px;object-fit:contain">
+  <div class="chipl" style="left:120px;top:880px"><span class="ck">i:check</span>Start with what already sells</div><div class="ui" style="left:600px;top:800px;width:400px;transform:rotate(1.5deg)"><div style="padding:18px 20px 4px;font:800 22px 'Inter Display'">Best selling</div>
+    <div class="mini" id="best" style="padding:12px 16px 18px"></div></div>
   <div class="rc" style="left:600px;top:340px;width:400px"><div class="bn">04</div><b>Put best sellers first</b><span>Set the default sort to Best selling, so new customers see your proven products first.</span></div>
   <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
 </section>
@@ -145,20 +152,26 @@
   <div class="abs" style="left:0;right:0;top:1282px;text-align:center;font:700 28px 'Inter Display';color:#14254f">ecommwave.org</div>
 </section>
 <script>
-// vector product thumbnails (sharp, brand-coloured, no real brands)
-const P={
- shoe:(c='#3356b0')=>`<svg viewBox="0 0 240 140" width="100%" height="100%"><ellipse cx="120" cy="118" rx="90" ry="8" fill="#0f1f4d" opacity=".12"/><path d="M28 98 C30 76 44 62 64 58 L90 54 C100 52 106 46 112 40 L122 34 C130 31 137 34 140 40 C147 56 163 66 185 72 C198 75 204 83 203 93 L202 103 L30 106Z" fill="#fff" stroke="#cfd8e6" stroke-width="2"/><path d="M64 58 L90 54 C100 52 106 46 112 40 L122 34 C130 31 137 34 140 40 C144 50 150 57 158 62 C136 66 104 66 76 77 C68 72 64 65 64 58Z" fill="${c}"/><path d="M30 103 L203 100 L204 110 C204 114 201 117 196 117 L36 118 C31 118 28 114 28 110Z" fill="#34d5a0"/></svg>`,
- bag:(c='#b07a4f')=>`<svg viewBox="0 0 240 140" width="100%" height="100%"><ellipse cx="120" cy="124" rx="70" ry="7" fill="#0f1f4d" opacity=".12"/><path d="M90 46 Q90 18 120 18 Q150 18 150 46" fill="none" stroke="${c}" stroke-width="8"/><rect x="62" y="44" width="116" height="78" rx="14" fill="${c}"/><rect x="62" y="44" width="116" height="22" rx="10" fill="#000" opacity=".12"/><rect x="110" y="62" width="20" height="12" rx="3" fill="#f5d9a8"/></svg>`,
- bottle:(c='#152a59')=>`<svg viewBox="0 0 240 140" width="100%" height="100%"><ellipse cx="120" cy="126" rx="44" ry="6" fill="#0f1f4d" opacity=".12"/><rect x="108" y="12" width="24" height="22" rx="4" fill="#34d5a0"/><rect x="92" y="32" width="56" height="92" rx="16" fill="${c}"/><rect x="100" y="62" width="40" height="34" rx="6" fill="#fff" opacity=".9"/><path d="M104 40 L104 110" stroke="#fff" stroke-opacity=".25" stroke-width="6" stroke-linecap="round"/></svg>`,
- tee:(c='#34d5a0')=>`<svg viewBox="0 0 240 140" width="100%" height="100%"><ellipse cx="120" cy="128" rx="64" ry="6" fill="#0f1f4d" opacity=".12"/><path d="M96 16 Q120 30 144 16 L184 34 L170 62 L156 56 L156 124 L84 124 L84 56 L70 62 L56 34Z" fill="${c}"/><path d="M96 16 Q120 30 144 16" fill="none" stroke="#000" stroke-opacity=".15" stroke-width="5"/></svg>`,
-};
-const card=(img,name,price,rat,bg)=>`<div class="pc"><div class="im" ${bg?`style="background:${bg}"`:''}>${img}</div><b>${name}</b><div class="p">${price}<i><s>★</s> ${rat}</i></div></div>`;
-document.getElementById('g1').innerHTML=card(P.shoe(),'Cloud Runner','$98','4.7')+card(P.shoe('#1f2937'),'Night Runner','$104','4.8')+card(P.shoe('#b07a4f'),'Trail Walker','$112','4.6')+card(P.shoe('#e5484d'),'Court Classic','$89','4.7');
-const m=(img,bg,rot)=>`<div class="im" style="background:${bg};${rot?`transform:rotate(${rot}deg) scale(.92)`:''}">${img}</div>`;
-document.getElementById('messy').innerHTML=m(P.bag(),'#f7e7c6',-4)+m(P.bottle(),'#2b2b2b',3)+m(P.tee(),'radial-gradient(#ffffff,#9fb0cc)',0)+m(P.shoe(),'#d9f0ff',5);
-const cl='linear-gradient(160deg,#eef2f8,#dfe6f1)';
-document.getElementById('clean').innerHTML=m(P.bag(),cl)+m(P.bottle(),cl)+m(P.tee(),cl)+m(P.shoe(),cl);
-document.getElementById('big').innerHTML=P.shoe();
+// REAL product photos only (owner 2026-11-27). Small cut-outs are used at about their native size so they stay sharp.
+const IMG={bag:'../assets/p_bag.png',shoe:'../assets/p_sneaker.png',serum:'../assets/p_serum.png',dress:'../assets/hero_woman.png',dress2:'../assets/p_dress.png'};
+const ph=(k,st='')=>`<img src="${IMG[k]}" style="${st}">`;
+const card=(k,name,price,rat)=>`<div class="pc"><div class="im" style="background:#eef1f5">${ph(k,k=='dress'?'object-position:70% 50%':'')}</div><b>${name}</b><div class="p">${price}<i><s>★</s> ${rat}</i></div></div>`;
+document.getElementById('g1').innerHTML=card('dress','Linen Wrap Dress','$75','4.7')+card('bag','Tan Satchel','$129','4.8')+card('shoe','Court Sneaker','$89','4.6')+card('serum','Glow Serum','$48','4.9');
+// BEFORE: the same real photos, shown inconsistently (different crops, zoom, tilt, light)
+const m=(k,st,wrap='')=>`<div class="im" style="${wrap}">${ph(k,st)}</div>`;
+document.getElementById('messy').innerHTML=
+  m('bag','object-fit:contain;transform:scale(.8);filter:brightness(.85) saturate(1.3)','background:#2b2b2b;transform:rotate(-3deg)')+
+  m('serum','transform:scale(1.7);object-position:50% 20%','')+
+  m('dress','object-position:85% 50%;filter:brightness(1.15) contrast(.85)','transform:rotate(2deg)')+
+  m('shoe','object-fit:contain;filter:sepia(.4)','background:#d9f0ff');
+// AFTER: same photos, one style (same crop, same size, same light)
+const cs='object-position:50% 50%;filter:brightness(1.03) saturate(.92)';
+document.getElementById('clean').innerHTML=m('bag',cs)+m('serum',cs)+m('dress','object-position:70% 50%;filter:brightness(1.03) saturate(.92)')+m('shoe',cs);
+document.getElementById('big').innerHTML=ph('dress','object-position:70% 50%');
+document.getElementById('noprice').innerHTML=ph('bag','filter:saturate(.6) opacity(.85)');
+document.getElementById('res').innerHTML=m('dress','object-position:70% 50%')+m('dress2','object-position:80% 50%');
+const bs=(k,n,st='')=>`<div><div class="im">${ph(k,st)}<span style="position:absolute;left:8px;top:8px;background:#152a59;color:#fff;font:800 11px Inter;letter-spacing:.06em;padding:4px 8px;border-radius:6px">BEST SELLER</span></div><b style="display:block;font:700 15px Inter;margin-top:6px">${n}</b></div>`;
+document.getElementById('best').innerHTML=bs('bag','Tan Satchel')+bs('shoe','Court Sneaker');
 lightIcons();
 </script>
 </body></html>

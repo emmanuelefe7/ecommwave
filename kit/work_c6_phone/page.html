@@ -1,0 +1,197 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Serif";font-style:italic;src:url(../fonts/serif-italic.woff2) format("woff2")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#555;font-family:"Inter";-webkit-font-smoothing:antialiased}
+#pano{position:relative;width:3240px;height:2700px;overflow:hidden;background:#0a1a47}
+.t{position:absolute;width:1080px;height:1350px;overflow:hidden;
+ background:radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1.6px,transparent 1.7px);background-size:36px 36px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.8),transparent 45%)}
+.glow{position:absolute;left:140px;top:520px;width:800px;height:700px;border-radius:50%;background:radial-gradient(closest-side,rgba(52,213,160,.16),rgba(52,213,160,0))}
+.col{position:absolute;left:100px;right:100px;top:110px;bottom:210px;display:flex;flex-direction:column;align-items:center}
+.logo{height:42px;flex:none}
+.hl{margin-top:58px;text-align:center;font:900 94px/0.98 "Inter Display";letter-spacing:-.05em;color:#fff;text-transform:uppercase}
+.hl em{display:block;font-family:"Serif";font-style:italic;font-weight:400;color:#34d5a0;text-transform:none;font-size:1.04em;letter-spacing:-.01em;margin-top:8px}
+.vis{flex:1;display:flex;align-items:center;justify-content:center;width:100%;margin-top:24px}
+.foot{position:absolute;left:110px;right:110px;top:1262px;display:flex;justify-content:space-between;font:600 23px Inter;color:rgba(255,255,255,.7)}
+.foot b{color:#34d5a0;font-weight:700}
+
+/* phone screen */
+.phone{width:640px;background:#fff;border-radius:58px;border:14px solid #0b1022;box-shadow:0 0 0 2px #2b3552,0 60px 120px rgba(0,0,0,.55);overflow:hidden;color:#0f172a;font-family:Inter;position:relative}
+.sb{height:54px;display:flex;justify-content:space-between;align-items:center;padding:6px 38px 0;font:700 22px Inter}
+.sb .r{display:flex;gap:8px;align-items:center}
+.nav{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 30px;border-bottom:1px solid #eef1f5}
+.nav .brand{font:900 28px "Inter Display";letter-spacing:.28em}
+.pad{padding:24px 30px}
+.thumb{border-radius:14px;overflow:hidden;flex:none;background:#eee}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.pname{font:800 27px "Inter Display";letter-spacing:-.02em}
+.rev{font:500 22px Inter;color:#64748b;margin-top:4px}.rev b{color:#f5a524;letter-spacing:1px;font-weight:400}
+.pr{font:800 32px Inter;letter-spacing:-.02em;margin-top:6px}
+.btn{height:78px;border-radius:18px;background:#0f1f4d;color:#fff;font:700 26px Inter;display:grid;place-items:center}
+.muted{color:#64748b}
+.ring{box-shadow:0 0 0 4px #34d5a0,0 0 40px rgba(52,213,160,.45)}
+.p{font:500 23px/1.5 Inter;color:#334155}
+.h4{font:800 24px Inter;margin-bottom:10px}
+.li{display:flex;gap:14px;align-items:center;font:600 23px Inter;color:#0f2b24}
+.li+.li{margin-top:12px}
+.acc{border-top:1px solid #e7ebf1;padding:16px 30px;display:flex;justify-content:space-between;align-items:center;font:700 24px Inter}
+.field{border:2px solid #cfd6e1;border-radius:14px;padding:12px 20px}
+.field .lab{font:600 18px Inter;color:#64748b}
+.field .val{font:500 25px Inter;margin-top:2px}
+/* CTA arch */
+.arch{position:relative;width:360px;height:470px}
+.arch .off{position:absolute;left:34px;top:-22px;width:360px;height:470px;border-radius:180px 180px 26px 26px;background:#34d5a0}
+.arch .ph{position:absolute;inset:0;border-radius:180px 180px 26px 26px;overflow:hidden;background:#dde6f3}
+.arch .ph img{position:absolute;left:50%;top:0;height:510px;transform:translateX(-50%)}
+.cta{display:inline-flex;align-items:center;gap:20px;background:#34d5a0;color:#0d1b3e;font:800 38px "Inter Display";letter-spacing:-.02em;padding:18px 20px 18px 40px;border-radius:999px;box-shadow:0 20px 50px rgba(52,213,160,.35)}
+.cta i{width:56px;height:56px;border-radius:50%;background:#0d1b3e;display:grid;place-items:center}
+</style></head><body>
+<div id="pano">
+
+<!-- ROW 1 -->
+<div class="t" style="left:0;top:0"><div class="dots"></div><div class="glow"></div><svg class="w" width="1080" height="1350" style="position:absolute;inset:0"></svg>
+ <div class="col"><img class="logo" src="../assets/logo_white.png">
+  <div class="hl">Add to cart scrolled away?<em>Keep it on screen.</em></div>
+  <div class="vis"><div class="phone">
+   STATUS
+   <div class="pad" style="padding-top:20px">
+    <div class="h4">Details</div>
+    <div class="p">100% washed linen. Relaxed fit with a tie waist and side pockets. Falls just below the knee.</div>
+    <div class="h4" style="margin-top:22px">Reviews <span style="color:#f5a524;font-weight:400">★★★★★</span> <span class="muted" style="font-weight:500">4.8 (126)</span></div>
+    <div class="p">“Soft, light and the fit is perfect.” <span class="muted">— Maya R.</span></div>
+   </div>
+   <div style="margin:6px 18px 18px;border-radius:22px;background:#fff;display:flex;gap:18px;align-items:center;padding:14px" class="ring">
+    <div class="thumb" style="width:84px;height:84px;background:#d7c8b5"><img src="../assets/hero_woman.png" style="width:auto;height:181px;margin:-14px 0 0 -255px;object-fit:none"></div>
+    <div style="flex:1"><div style="font:700 23px Inter">Linen Wrap Dress</div><div style="font:800 26px Inter;margin-top:2px">$75</div></div>
+    <div class="btn" style="width:220px;height:72px;font-size:24px">Add to cart</div>
+   </div>
+  </div></div>
+ </div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</div>
+
+<div class="t" style="left:1080px;top:0"><div class="dots"></div><div class="glow"></div><svg class="w" width="1080" height="1350" style="position:absolute;inset:0"></svg>
+ <div class="col"><img class="logo" src="../assets/logo_white.png">
+  <div class="hl">Tiny size buttons?<em>Make them thumb-sized.</em></div>
+  <div class="vis"><div class="phone">
+   STATUS
+   <div class="pad" style="display:flex;gap:22px;align-items:center">
+    <div class="thumb" style="width:130px;height:150px;background:#d7c8b5"><img src="../assets/hero_woman.png" style="width:auto;height:181px;margin:-10px 0 0 -228px;object-fit:none"></div>
+    <div><div class="pname">Linen Wrap Dress</div><div class="rev"><b>★★★★★</b> 4.8 · 126 reviews</div><div class="pr">$75</div></div>
+   </div>
+   <div class="pad" style="padding-top:4px">
+    <div style="display:flex;justify-content:space-between;font:700 24px Inter"><span>Size: <span style="font-weight:500">M</span></span><span style="color:#0f1f4d;text-decoration:underline;font-weight:600">Size guide</span></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:16px">SIZES</div>
+    <div class="btn" style="margin-top:24px">Add to cart</div>
+   </div>
+  </div></div>
+ </div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</div>
+
+<div class="t" style="left:2160px;top:0"><div class="dots"></div><div class="glow"></div><svg class="w" width="1080" height="1350" style="position:absolute;inset:0"></svg>
+ <div class="col"><img class="logo" src="../assets/logo_white.png">
+  <div class="hl">Customers can’t find it?<em>Put search up top.</em></div>
+  <div class="vis"><div class="phone">
+   STATUS
+   <div style="padding:18px 24px 6px">
+    <div class="ring" style="display:flex;align-items:center;gap:14px;border-radius:16px;background:#f4f6fa;padding:16px 20px;font:500 25px Inter">SEARCH<span>white sneak<span style="display:inline-block;width:3px;height:28px;background:#0f1f4d;vertical-align:-5px;margin-left:2px"></span></span></div>
+   </div>
+   <div style="padding:10px 30px 0">
+    <div style="font:700 18px Inter;letter-spacing:.12em;color:#94a3b8">SUGGESTIONS</div>
+    <div class="li" style="margin-top:12px;font-weight:500;color:#334155">SRCH <span><b>white sneak</b>ers</span></div>
+    <div class="li" style="font-weight:500;color:#334155">SRCH <span><b>white sneak</b>ers for women</span></div>
+    <div style="font:700 18px Inter;letter-spacing:.12em;color:#94a3b8;margin-top:24px">PRODUCTS</div>
+   </div>
+   <div style="display:flex;gap:20px;align-items:center;padding:14px 30px 8px">
+    <div class="thumb" style="width:140px;height:96px"><img src="../assets/p_sneaker.png"></div>
+    <div><div style="font:700 24px Inter">White Leather Sneaker</div><div class="rev"><b>★★★★★</b> 4.7 · 212</div><div style="font:800 25px Inter;margin-top:2px">$89</div></div>
+   </div>
+   <div style="padding:10px 30px 26px;font:700 22px Inter;color:#0f1f4d">See all results →</div>
+  </div></div>
+ </div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</div>
+
+<!-- ROW 2 -->
+<div class="t" style="left:0;top:1350px"><div class="dots"></div><div class="glow"></div><svg class="w" width="1080" height="1350" style="position:absolute;inset:0"></svg>
+ <div class="col"><img class="logo" src="../assets/logo_white.png">
+  <div class="hl">Long product text?<em>Use short tabs.</em></div>
+  <div class="vis"><div class="phone">
+   STATUS
+   <div class="pad" style="display:flex;gap:22px;align-items:center">
+    <div class="thumb" style="width:140px;height:96px"><img src="../assets/p_serum.png"></div>
+    <div><div class="pname">Glow Face Serum</div><div class="rev"><b>★★★★★</b> 4.9 · 88 reviews</div><div class="pr">$38</div></div>
+   </div>
+   <div class="acc" style="border-top:1px solid #e7ebf1">Description <span style="font-size:30px;color:#0f1f4d">−</span></div>
+   <div style="padding:0 30px 22px">
+    <div class="li">CK Light, soaks in fast</div>
+    <div class="li">CK For dry and normal skin</div>
+    <div class="li">CK 2–3 drops, morning and night</div>
+   </div>
+   <div class="acc">Ingredients <span style="font-size:30px;color:#94a3b8">+</span></div>
+   <div class="acc">Shipping &amp; returns <span style="font-size:30px;color:#94a3b8">+</span></div>
+     </div></div>
+ </div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</div>
+
+<div class="t" style="left:1080px;top:1350px"><div class="dots"></div><div class="glow"></div><svg class="w" width="1080" height="1350" style="position:absolute;inset:0"></svg>
+ <div class="col"><img class="logo" src="../assets/logo_white.png">
+  <div class="hl">Typing an address?<em>Let it autofill.</em></div>
+  <div class="vis"><div class="phone">
+   STATUS
+   <div class="pad" style="padding-top:20px">
+    <div style="font:800 28px 'Inter Display'">Shipping address</div>
+    <div class="field ring" style="margin-top:18px;border-color:#34d5a0"><div class="lab">Address</div><div class="val">12 Map<span style="display:inline-block;width:3px;height:26px;background:#0f1f4d;vertical-align:-4px;margin-left:2px"></span></div></div>
+    <div style="margin-top:10px;border-radius:16px;box-shadow:0 14px 36px rgba(15,23,42,.16);border:1px solid #e7ebf1;overflow:hidden">
+     <div class="li" style="padding:18px 20px;background:#f0fbf6;margin:0">PIN <span><b>12 Map</b>le Street, Austin, TX</span></div>
+     <div class="li" style="padding:18px 20px;margin:0;border-top:1px solid #eef1f5;font-weight:500">PIN <span><b>12 Map</b>le Avenue, Denver, CO</span></div>
+    </div>
+    <div style="display:flex;gap:12px;margin-top:16px">
+     <div class="field" style="flex:1.3"><div class="lab">City</div><div class="val muted">City</div></div>
+     <div class="field" style="flex:1"><div class="lab">ZIP code</div><div class="val muted">ZIP</div></div>
+    </div>
+   </div>
+  </div></div>
+ </div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</div>
+
+<div class="t" style="left:2160px;top:1350px"><div class="dots"></div><div class="glow"></div><svg class="w" width="1080" height="1350" style="position:absolute;inset:0"></svg>
+ <div class="col"><img class="logo" src="../assets/logo_white.png">
+  <div class="hl">Is your store easy on phones?<em>Get a free audit.</em></div>
+  <div class="vis" style="flex-direction:column;gap:46px">
+   <div class="arch"><div class="off"></div><div class="ph"><img src="../assets/woman.png"></div></div>
+   <div class="cta">DM us “GROWTH” <i>ARROW</i></div>
+  </div>
+ </div>
+ <div class="foot" style="justify-content:center"><span>ecommwave.org</span></div>
+</div>
+
+</div>
+
+<script>
+const ic=(d,c,s=30,w=2.6)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" style="flex:none">${d}</svg>`;
+const STATUS=`<div class="sb"><span>9:41</span><span class="r"><svg width="30" height="20" viewBox="0 0 30 20"><rect x="0" y="13" width="5" height="7" rx="1" fill="#0f172a"/><rect x="8" y="9" width="5" height="11" rx="1" fill="#0f172a"/><rect x="16" y="5" width="5" height="15" rx="1" fill="#0f172a"/><rect x="24" y="1" width="5" height="19" rx="1" fill="#0f172a"/></svg><svg width="40" height="20" viewBox="0 0 40 20"><rect x="1" y="1" width="33" height="18" rx="5" fill="none" stroke="#0f172a" stroke-width="2" opacity=".5"/><rect x="4" y="4" width="25" height="12" rx="3" fill="#0f172a"/><rect x="36" y="7" width="3" height="6" rx="1" fill="#0f172a" opacity=".5"/></svg></span></div>
+<div class="nav">${ic('<path d="M4 7h16M4 12h16M4 17h16"/>','#0f172a',32,2.4)}<span class="brand">NOVA</span>${ic('<path d="M6 7h12l-1 13H7z"/><path d="M9 7a3 3 0 0 1 6 0"/>','#0f172a',32,2.2)}</div>`;
+let h=document.getElementById('pano').innerHTML;
+h=h.replaceAll('STATUS',STATUS)
+ .replaceAll('CK ',ic('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#12b886',28,3.2))
+ .replaceAll('SRCH ',ic('<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/>','#94a3b8',26,2.4))
+ .replace('SEARCH',ic('<circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/>','#0f1f4d',30,2.6))
+ .replaceAll('PIN ',ic('<path d="M12 21s-6.5-6-6.5-11a6.5 6.5 0 0 1 13 0c0 5-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/>','#0b8a63',28,2.4))
+ .replace('ARROW',ic('<path d="M5 12h14M13 6l6 6-6 6"/>','#34d5a0',30,3))
+ .replace('SIZES',['XS','S','M','L','XL'].map(s=>`<div style="height:84px;border-radius:16px;display:grid;place-items:center;font:700 26px Inter;${s==='M'?'background:#0f1f4d;color:#fff;box-shadow:0 0 0 4px #34d5a0':'border:2px solid #cfd6e1;color:#0f172a'}">${s}</div>`).join(''));
+document.getElementById('pano').innerHTML=h;
+// continuous decorative waves across each row (same rhythm in both rows)
+function wave(y,amp,ph){let d=`M-40 ${y}`;for(let x=-40;x<=3280;x+=20){d+=` L${x} ${(y+amp*Math.sin((x+ph)/170)+amp*0.5*Math.sin((x+ph)/61)).toFixed(1)}`}return d}
+let s='';
+for(const base of [0,1350]){
+ s+=`<path d="${wave(base+1188,22,0)}" stroke="#34d5a0" stroke-width="4" opacity=".75" fill="none"/>`;
+ s+=`<path d="${wave(base+1222,16,240)}" stroke="#34d5a0" stroke-width="2.5" opacity=".22" fill="none"/>`;
+}
+document.querySelectorAll('.t').forEach(t=>{const sv=t.querySelector('svg.w');sv.setAttribute('viewBox',`${t.offsetLeft} ${t.offsetTop} 1080 1350`);sv.innerHTML=s;});
+</script>
+</body></html>

@@ -2,7 +2,7 @@ Customers scroll your collection page… but never click a product? 👀
 
 Your collection page is where customers decide what to look at. If it's messy or hard to use, they leave before they ever see a product page.
 
-📸 One photo style: same background, angle and size on every card
+📸 One photo style: same crop, size and light on every card
 ⭐ Price and stars on every card, so customers can compare at a glance
 🔍 Filters customers really use: size, color, price
 📈 Best sellers first: set the default sort to Best selling

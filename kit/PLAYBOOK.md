@@ -72,6 +72,8 @@ The profile grid holds connected 3-tile banners (TRIPTYCH rows, plus the `profil
 ## 3a. REAL GRAPHICS, NOT MOCK-UPS (owner, 2026-11-27 — REQUIRED)
 The owner rejected a slide whose "products" were hand-drawn flat shapes (cartoon bag, bottle, T-shirt, shoe on coloured
 squares): "I want real graphic not mock up". So:
+- Owner confirmed: phone/browser screens of the NOVA store are FINE (e.g. the 2026-11-25 "fast on phones" tile) as long as
+  every product in them is a real photo. The ban is on DRAWN products, not on UI mock-ups.
 - NEVER draw products, packaging, clothes, food or other real-world objects as simplified SVG/CSS shapes or clip-art.
 - Products are always REAL PHOTOS: `assets/photos/` (high-res, use these first when present) or the small cut-outs
   `assets/p_*.png` (163×83 — only as small thumbnails, never enlarged past ~170 px wide, they go blurry).

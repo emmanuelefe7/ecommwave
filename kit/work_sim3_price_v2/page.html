@@ -1,0 +1,79 @@
+<!doctype html><html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"Serif";font-style:italic;src:url(../fonts/serif-italic.woff2) format("woff2")}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#555;font-family:"Inter";-webkit-font-smoothing:antialiased}
+section.s{position:relative;width:1080px;height:1350px;overflow:hidden;margin-bottom:20px;
+ background:radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.08) 1.6px,transparent 1.7px);background-size:36px 36px;-webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.8),transparent 45%)}
+.waves{position:absolute;inset:0}
+.glow{position:absolute;left:140px;top:500px;width:800px;height:700px;border-radius:50%;background:radial-gradient(closest-side,rgba(52,213,160,.16),rgba(52,213,160,0))}
+.logo{position:absolute;left:50%;top:110px;height:42px;transform:translateX(-50%)}
+.hl{position:absolute;left:0;right:0;top:225px;text-align:center;font:900 104px/0.98 "Inter Display";letter-spacing:-.05em;color:#fff;text-transform:uppercase}
+.hl em{display:block;font-family:"Serif";font-style:italic;font-weight:400;color:#34d5a0;text-transform:none;font-size:1.02em;letter-spacing:-.01em;margin-top:6px}
+.card{position:absolute;left:170px;width:740px;top:540px;background:#fff;border-radius:34px;padding:34px;box-shadow:0 60px 120px rgba(0,0,0,.5);font-family:Inter;color:#0f172a}
+.row{display:flex;gap:28px;align-items:center}
+.ph{width:181px;height:181px;border-radius:20px;overflow:hidden;background:#d7c8b5;flex:none}
+.ph img{height:181px;margin-left:-185px}
+.store{font:800 15px "Inter Display";letter-spacing:.14em;color:#94a3b8}
+.name{font:800 32px "Inter Display";letter-spacing:-.02em;margin-top:6px}
+.rev{font:500 18px Inter;color:#64748b;margin-top:8px}.rev b{color:#f5a524;letter-spacing:2px;font-weight:400}
+.price{font:800 46px Inter;letter-spacing:-.02em;margin-top:10px;display:flex;gap:14px;align-items:baseline}
+.price s{font:500 28px Inter;color:#94a3b8}
+.key{min-height:168px;display:flex;flex-direction:column;justify-content:center;margin-top:28px;border-radius:20px;background:#f0fbf6;box-shadow:0 0 0 3px #34d5a0;padding:22px 26px}
+.li{display:flex;gap:16px;align-items:center;font:600 25px Inter;color:#0f2b24}
+.li+.li{margin-top:14px}
+.btn{margin-top:26px;height:76px;border-radius:18px;background:#0f1f4d;color:#fff;font:700 25px Inter;display:grid;place-items:center}
+.foot{position:absolute;left:110px;right:110px;top:1262px;display:flex;justify-content:space-between;font:600 23px Inter;color:rgba(255,255,255,.7)}
+.foot b{color:#34d5a0;font-weight:700}
+</style></head><body>
+
+<section class="s" id="s1"><div class="dots"></div><svg class="waves" viewBox="0 0 1080 1350"></svg><div class="glow"></div>
+ <img class="logo" src="../assets/logo_white.png">
+ <div class="hl">Price too high?<em>Show the value.</em></div>
+ <div class="card">PRODUCT|<span>$75</span>
+  <div class="key">
+   <div class="li">CK 100% linen, softer every wash</div>
+   <div class="li">CK Free returns for 30 days</div>
+   <div class="li">CK Ships in 1 business day</div></div>
+  <div class="btn">Add to cart</div></div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</section>
+
+<section class="s" id="s2"><div class="dots"></div><svg class="waves" viewBox="0 0 1080 1350"></svg><div class="glow"></div>
+ <img class="logo" src="../assets/logo_white.png">
+ <div class="hl">Running a sale?<em>Show the savings.</em></div>
+ <div class="card">PRODUCT|<span>$75</span><s>$95</s>
+  <div class="key">
+   <div class="li" style="font-size:28px;font-weight:800;color:#0b8a63">TAG You save $20</div>
+   <div class="li">CLK Sale ends Sunday at midnight</div></div>
+  <div class="btn">Add to cart</div></div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</section>
+
+<section class="s" id="s3"><div class="dots"></div><svg class="waves" viewBox="0 0 1080 1350"></svg><div class="glow"></div>
+ <img class="logo" src="../assets/logo_white.png">
+ <div class="hl">Big price?<em>Show the split.</em></div>
+ <div class="card">PRODUCT|<span>$75</span>
+  <div class="key">
+   <div style="font:600 27px Inter;color:#0f2b24">or 4 payments of <b style="font-weight:800">$18.75</b></div>
+   <div style="display:flex;gap:12px;margin-top:18px">SEG</div></div>
+  <div class="btn">Add to cart</div></div>
+ <div class="foot"><span>ecommwave.org</span><span>DM us <b>“GROWTH”</b></span></div>
+</section>
+
+<script>
+const ic=(d,c,s=30,w=2.6)=>`<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" style="flex:none">${d}</svg>`;
+const PRODUCT=`<div class="row"><div class="ph"><img src="../assets/hero_woman.png"></div><div><div class="store">NOVA</div><div class="name">Linen Wrap Dress</div><div class="rev"><b>★★★★★</b> 4.8 · 126 reviews</div><div class="price">`;
+let h=document.body.innerHTML;
+h=h.replace(/PRODUCT\|([\s\S]*?)\n  <div class="key">/g,(m,p)=>PRODUCT+p+'</div></div></div>\n  <div class="key">');
+h=h.replaceAll('CK ',ic('<path d="M5 12.5l4.5 4.5L19 7.5"/>','#12b886',28,3.2))
+ .replaceAll('TAG ',ic('<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>','#0b8a63',30,2.4))
+ .replaceAll('CLK ',ic('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>','#0f2b24',28,2.4))
+ .replace('SEG',[1,0,0,0].map(a=>`<div style="flex:1"><div style="height:10px;border-radius:5px;background:${a?'#12b886':'#cfe9de'}"></div><div style="font:600 17px Inter;color:#4b6b60;margin-top:8px">$18.75</div></div>`).join(''));
+document.body.innerHTML=h;
+const W=`<path d="M-40 1190 C 220 1130, 420 1250, 660 1190 S 980 1120, 1120 1160" stroke="#34d5a0" stroke-width="4" opacity=".7" fill="none" stroke-linecap="round"/>
+<path d="M-40 1300 C 260 1230, 520 1340, 780 1280 S 1000 1240, 1120 1270" stroke="#34d5a0" stroke-width="2.5" opacity=".18" fill="none"/>`;
+document.querySelectorAll('svg.waves').forEach(s=>s.innerHTML=W);
+</script>
+</body></html>

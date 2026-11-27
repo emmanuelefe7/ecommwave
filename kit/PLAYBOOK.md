@@ -69,6 +69,16 @@ The profile grid holds connected 3-tile banners (TRIPTYCH rows, plus the `profil
 - Honesty: no invented statistics, percentages or client results. Example charts get the label "Example for illustration. Results vary by store." Speak in plain, simple words a beginner store owner understands.
 
 
+## 3. CLEAN & PROFESSIONAL (owner, 2026-11-27 — REQUIRED, check every post)
+Owner rejected the 2026-11-27 navy "Price tips" row (posts/2026-11-27-0745-similar3-price-tips/) as "doesn't look
+professional": each tile crammed a tag pill, kicker, headline, a "before" card, two badges, a paragraph and a phone with
+tiny text. At grid size that reads as clutter. Owner: "just make things look clean and professional".
+- Few elements, big and calm: small logo, a short bold headline, ONE focal visual, small footer. Lots of empty space.
+- No stacked extras: no kicker + pill + badges + paragraph on the same image. Details go in the caption or extra slides.
+- Every word on the image must be readable on the phone grid (UI text in visuals ≥ ~22 px at 1080 wide).
+- Check the grid preview at phone size and ask "would a premium agency post this?" If it looks busy, remove things.
+- Good example of the fix: `work_sim3_price_v2/` (same topics, one headline + one clean product card per tile).
+
 ## 3a. EVERYTHING LOOKS REAL (owner, 2026-11-27 — REQUIRED, overrides older rules below)
 Owner: "every photo should look like real photo, every illustration look real, every display of store look real".
 - PHOTOS: real photographs only (`assets/photos/` high-res first, `man.png`/`woman.png`, `p_*.png` small). No drawn,

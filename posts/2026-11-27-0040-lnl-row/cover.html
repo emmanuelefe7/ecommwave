@@ -1,0 +1,53 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<style>
+/* Reel cover (NAVY): "Unanswered questions cost you sales" -> a big customer speech bubble with a question mark,
+   left waiting: an hourglass running out beside it and three faded "typing" dots that never turn into a reply. */
+html,body{width:auto!important;height:auto!important;overflow:visible!important;background:#777}
+.cv{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"Inter";
+ background:radial-gradient(700px 700px at 50% 62%,#1d4fa3 0%,rgba(29,79,163,0) 72%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),#0a1a47}
+.cv .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.logo{position:absolute;left:50%;top:330px;height:50px;transform:translateX(-50%)}
+.hl{position:absolute;left:90px;right:90px;top:430px;text-align:center;font:900 108px/.98 "Inter Display";letter-spacing:-.05em;color:#fff;text-transform:uppercase}
+.hl em{display:block;font-family:"Serif";font-style:italic;font-weight:400;text-transform:none;color:#34d5a0;font-size:1.05em;letter-spacing:-.01em}
+.small{position:absolute;left:0;right:0;top:1560px;text-align:center;font:700 30px Inter;color:rgba(255,255,255,.85)}
+.small b{color:#34d5a0}
+</style></head><body>
+<div id="cover" class="cv"><div class="dots"></div>
+  <img class="logo" src="../assets/logo_white.png">
+  <div class="hl">Unanswered questions <em>cost you sales.</em></div>
+  <svg style="position:absolute;left:0;top:780px" width="1080" height="760" viewBox="0 0 1080 760">
+    <defs>
+      <linearGradient id="bb" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3f68c9"/><stop offset=".6" stop-color="#22418c"/><stop offset="1" stop-color="#162a5c"/></linearGradient>
+      <linearGradient id="gl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".5"/><stop offset="1" stop-color="#ffffff" stop-opacity=".08"/></linearGradient>
+      <linearGradient id="fr" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e8eef8"/><stop offset="1" stop-color="#9fb0cc"/></linearGradient>
+      <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="30" stdDeviation="30" flood-color="#000" flood-opacity=".45"/></filter>
+      <filter id="glow" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="40"/></filter>
+    </defs>
+    <!-- mint glow -->
+    <circle cx="430" cy="320" r="220" fill="#34d5a0" opacity=".22" filter="url(#glow)"/>
+    <!-- big customer speech bubble with a question mark -->
+    <g filter="url(#sh)">
+      <path d="M170 120 Q170 60 230 60 L630 60 Q690 60 690 120 L690 420 Q690 480 630 480 L340 480 L230 590 L250 480 L230 480 Q170 480 170 420 Z" fill="url(#bb)"/>
+      <path d="M200 110 Q205 85 240 85 L560 85" stroke="#fff" stroke-opacity=".35" stroke-width="12" fill="none" stroke-linecap="round"/>
+      <text x="430" y="400" text-anchor="middle" font-family="Inter Display" font-weight="900" font-size="320" fill="#34d5a0">?</text>
+    </g>
+    <!-- the reply that never comes: faded typing dots -->
+    <g filter="url(#sh)">
+      <rect x="520" y="560" width="230" height="96" rx="48" fill="#0f2557" stroke="#33406a" stroke-width="3"/>
+      <circle cx="585" cy="608" r="14" fill="#8fa3c7" opacity=".7"/><circle cx="635" cy="608" r="14" fill="#8fa3c7" opacity=".45"/><circle cx="685" cy="608" r="14" fill="#8fa3c7" opacity=".25"/>
+    </g>
+    <!-- hourglass running out -->
+    <g filter="url(#sh)" transform="translate(790 150)">
+      <rect x="-10" y="0" width="200" height="30" rx="12" fill="url(#fr)"/>
+      <rect x="-10" y="380" width="200" height="30" rx="12" fill="url(#fr)"/>
+      <path d="M15 30 L165 30 Q165 140 100 205 Q165 270 165 380 L15 380 Q15 270 80 205 Q15 140 15 30Z" fill="#ffffff" fill-opacity=".12" stroke="#c9d4e8" stroke-width="6"/>
+      <path d="M55 120 L125 120 Q115 160 90 190 Q65 160 55 120Z" fill="#34d5a0"/>
+      <path d="M90 205 L90 300" stroke="#34d5a0" stroke-width="6"/>
+      <path d="M30 370 Q90 290 150 370 Z" fill="#34d5a0"/>
+      <path d="M35 45 Q32 120 70 170" stroke="url(#gl)" stroke-width="8" fill="none" stroke-linecap="round"/>
+    </g>
+  </svg>
+  <div class="small">Watch: <b>answer before they leave</b> · ecommwave.org</div>
+</div>
+</body></html>

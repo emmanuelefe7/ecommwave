@@ -1,0 +1,129 @@
+{
+ "engine": "kokoro",
+ "voice": "am_puck",
+ "music": false,
+ "lang": "en-us",
+ "lines": [
+  {
+   "text": "A customer has *one question.*",
+   "chapter": "THE QUESTION"
+  },
+  {
+   "text": "\"Does it run *true to size?*\""
+  },
+  {
+   "text": "So they *search* the page."
+  },
+  {
+   "text": "The product page says *nothing.*",
+   "chapter": "PICTURE THIS"
+  },
+  {
+   "text": "No chat. Just a *contact form.*"
+  },
+  {
+   "text": "So they *wait,* and wait."
+  },
+  {
+   "text": "Then they buy it *somewhere else.*"
+  },
+  {
+   "text": "Answer the *top questions* under the price.",
+   "chapter": "THE FIX"
+  },
+  {
+   "text": "Add a chat that shows your *reply time.*"
+  },
+  {
+   "text": "Keep *ready replies* for common questions."
+  },
+  {
+   "text": "Want more orders? DM us *GROWTH.*"
+  }
+ ],
+ "cues": [
+  {
+   "sfx": "swoosh",
+   "line": 0,
+   "word": "A",
+   "offset": -0.1
+  },
+  {
+   "sfx": "pop",
+   "line": 1,
+   "word": "Does"
+  },
+  {
+   "sfx": "swoosh",
+   "line": 2,
+   "word": "search"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 3,
+   "word": "The",
+   "offset": -0.2
+  },
+  {
+   "sfx": "error",
+   "line": 3,
+   "word": "nothing"
+  },
+  {
+   "sfx": "pop",
+   "line": 4,
+   "word": "chat"
+  },
+  {
+   "sfx": "swoosh",
+   "line": 4,
+   "word": "contact"
+  },
+  {
+   "sfx": "tick",
+   "line": 5,
+   "word": "wait"
+  },
+  {
+   "sfx": "tick",
+   "line": 5,
+   "word": "and"
+  },
+  {
+   "sfx": "swoosh",
+   "line": 6,
+   "word": "somewhere"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 7,
+   "word": "Answer",
+   "offset": -0.2
+  },
+  {
+   "sfx": "ding",
+   "line": 7,
+   "word": "top"
+  },
+  {
+   "sfx": "pop",
+   "line": 8,
+   "word": "chat"
+  },
+  {
+   "sfx": "pop",
+   "line": 8,
+   "word": "reply"
+  },
+  {
+   "sfx": "pop",
+   "line": 9,
+   "word": "ready"
+  },
+  {
+   "sfx": "pop",
+   "line": 10,
+   "word": "GROWTH"
+  }
+ ]
+}

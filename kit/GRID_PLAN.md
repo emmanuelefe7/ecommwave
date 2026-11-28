@@ -2,6 +2,13 @@
 
 Every post on every row follows PLAYBOOK §0 HOOKS & LANGUAGE (strong store-owner hook, "customers" not "buyers", plain words).
 
+## TOPICS come from `TOPIC_PLAN.md` (owner, 2026-11-28)
+Before picking a topic yourself, open `TOPIC_PLAN.md` and take the first topics for your row type with an empty Status
+(SIMILAR-3 / N-L-N / L-N-L: that day's 3 topics for the row; CONNECTED-6: that day's theme). Use its Hook, "First 2 s",
+Keywords, 5 hashtags and Share/Save line as described at the top of that file, then mark the Status `DONE <media ids>`.
+Only when every topic for your row type is done, pick fresh topics yourself in the same style (and tell the owner the
+plan has run out).
+
 Every day the profile grid gets exactly these rows (15 posts). Every row is published as a block, back to back,
 so rows always stay whole. Read `PLAYBOOK.md` (brand, NAVY look §3b, LIGHT look §3c, captions, publishing, logging) first.
 

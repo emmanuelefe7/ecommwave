@@ -1,0 +1,131 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<style>
+
+@font-face{font-family:"Hand";src:url(../fonts/hand.woff2) format("woff2")}
+:root{--ink:#0d1b3e;--mint:#34d5a0;--bad:#ff6b7a}
+body{background:#0a1a47}
+#stage{background:radial-gradient(760px 640px at 50% 42%,rgba(52,213,160,.16) 0%,rgba(52,213,160,0) 70%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.wave{position:absolute;left:0;width:1080px;opacity:.55}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+.phone{position:absolute;left:540px;top:760px;width:370px;height:760px;margin:-380px 0 0 -185px;border-radius:58px;background:#0b1020;padding:12px;
+  box-shadow:0 50px 100px rgba(0,0,0,.45),0 0 0 2px #33406a,inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:11px;width:96px;height:28px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:9}
+.view{position:absolute;inset:0;background:#fff}
+.sb{height:46px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+/* admin customer */
+.ah{height:46px;display:flex;align-items:center;gap:10px;padding:0 18px;font:700 15px Inter;color:#334155;border-bottom:1px solid #eef1f5}
+.ah .bk{font:700 20px Inter;color:#64748b}
+.cust{padding:16px 18px 0}
+.ch{display:flex;align-items:center;gap:12px}
+.ch .av{width:52px;height:52px;border-radius:50%;background:#dbe4f3;color:#0f1f4d;font:800 19px "Inter Display";display:grid;place-items:center}
+.ch b{font:800 21px "Inter Display";letter-spacing:-.01em;display:block}.ch span{font:500 13px Inter;color:#64748b}
+.stat{display:flex;gap:8px;margin-top:14px}
+.stat div{flex:1;border:1px solid #e2e8f0;border-radius:12px;padding:9px 10px}
+.stat small{font:600 11px Inter;color:#64748b;display:block}.stat b{font:800 17px "Inter Display";display:block;margin-top:2px}
+.sec{font:700 12px Inter;color:#64748b;letter-spacing:.08em;margin:16px 0 8px}
+.ord{display:flex;align-items:center;gap:10px;padding:8px;border-radius:12px;background:#f8fafc;border:1px solid #eef1f5}
+.th{width:50px;height:50px;border-radius:8px;overflow:hidden;position:relative;background:#e9e0d4;flex:none}
+.ord b{font:700 13.5px Inter;display:block}.ord span{font:500 12px Inter;color:#64748b}
+.ord em{margin-left:auto;font:800 15px "Inter Display";font-style:normal}
+.act{display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid #f1f5f9;font:600 13.5px Inter;color:#334155}
+.act i{width:10px;height:10px;border-radius:50%;background:#0ea472;flex:none}
+.act.q{color:#94a3b8}.act.q i{background:#cbd5e1}
+.status{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font:700 12px Inter;color:#b45309;background:#fef3c7;border-radius:999px;padding:4px 10px}
+/* inbox */
+.ih{padding:6px 20px 10px}.ih b{font:800 30px "Inter Display";letter-spacing:-.02em}
+.srch{margin:0 16px 8px;height:38px;border-radius:12px;background:#f1f5f9;font:500 14px Inter;color:#94a3b8;display:flex;align-items:center;padding:0 12px}
+.ml{display:flex;gap:12px;padding:12px 18px;border-bottom:1px solid #f1f5f9;position:relative}
+.ml .av{width:42px;height:42px;border-radius:50%;flex:none;display:grid;place-items:center;font:800 15px "Inter Display";color:#fff}
+.ml .tx{flex:1;min-width:0}.ml .r1{display:flex;justify-content:space-between;font:700 14.5px Inter}.ml .r1 span{font:500 12px Inter;color:#94a3b8}
+.ml .sj{font:600 13.5px Inter;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ml .pv{font:500 12.5px Inter;color:#64748b;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ml.rd .r1,.ml.rd .sj{font-weight:500;color:#475569}
+.ml .dot{position:absolute;left:6px;top:28px;width:8px;height:8px;border-radius:50%;background:#2563eb}
+/* email */
+.em{padding:4px 18px}
+.from{display:flex;align-items:center;gap:10px;padding:6px 0 10px;border-bottom:1px solid #eef1f5}
+.from .av{width:38px;height:38px;border-radius:50%;background:#0f1f4d;color:#fff;font:800 14px "Inter Display";display:grid;place-items:center}
+.from b{font:700 14px Inter;display:block}.from span{font:500 12px Inter;color:#94a3b8}
+.em h4{font:800 27px/1.1 "Inter Display";letter-spacing:-.025em;margin-top:14px;text-align:center}
+.em .lead{font:500 13.5px/1.4 Inter;color:#475569;text-align:center;margin-top:6px}
+.newh{font:800 15px "Inter Display";margin-top:14px;display:inline-block;padding:2px 2px}
+.prods{display:flex;gap:10px;margin-top:8px}
+.pc{flex:1;border:1px solid #eef1f5;border-radius:14px;overflow:hidden}
+.pc .im{height:84px;overflow:hidden;background:#f1efec}.pc .im img{width:100%;height:100%;object-fit:cover}
+.pc .in{padding:8px 10px}.pc b{font:700 13px Inter;display:block}.pc span{font:800 14px "Inter Display";display:block;margin-top:2px}
+.pc small{font:600 11px Inter;color:#0ea472;display:block;margin-top:2px}
+.fs{margin-top:12px;border-radius:14px;background:#f0fbf6;border:1.5px solid #bfe9d6;padding:10px 12px;display:flex;gap:10px;align-items:center;font:600 13px/1.35 Inter;color:#0f5c43}
+.fs b{font-weight:800}
+.ebtn{margin-top:14px;height:50px;border-radius:14px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 16px Inter}
+/* store */
+.nv{height:46px;display:flex;align-items:center;justify-content:center;font:800 19px "Inter Display";letter-spacing:.08em;color:#0f1f4d;position:relative}
+.nv .mi{position:absolute;left:20px;top:15px;width:20px;height:14px;border-top:2.5px solid #0f1f4d;border-bottom:2.5px solid #0f1f4d}
+.nv .mi:after{content:"";position:absolute;left:0;right:0;top:3.5px;border-top:2.5px solid #0f1f4d}
+.wb{margin:4px 14px 0;border-radius:16px;background:#0f1f4d;color:#fff;padding:14px 16px}
+.wb b{font:800 21px "Inter Display";display:block}.wb span{font:500 12.5px Inter;color:rgba(255,255,255,.8)}
+.wb .chip{display:inline-block;margin-top:8px;background:#34d5a0;color:#0a1a47;font:800 11.5px Inter;border-radius:999px;padding:4px 9px}
+.hero{margin:12px 14px 0;height:181px;border-radius:16px;background:#e9e0d4;overflow:hidden;position:relative}
+.hero img{position:absolute;right:-90px;top:0;height:181px}
+.hero .lab{position:absolute;left:14px;bottom:14px;font:800 17px "Inter Display";color:#0f172a}
+.grid2{display:flex;gap:10px;margin:12px 14px 0}
+/* overlays */
+.pin{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font:700 24px Inter;padding:10px 20px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.3);white-space:nowrap}
+.pin .d{width:26px;height:26px;border-radius:50%;background:#0ea472;box-shadow:0 0 0 5px rgba(14,164,114,.22)}
+.pin.bad .d{background:#e5484d;box-shadow:0 0 0 5px rgba(229,72,77,.2)}
+.pin.cal .d{background:#f59e0b;box-shadow:0 0 0 5px rgba(245,158,11,.2)}
+.hbox{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:20}
+.rip{position:absolute;width:110px;height:110px;border-radius:50%;border:6px solid var(--mint);background:rgba(52,213,160,.2);z-index:21;opacity:0}
+#chap{position:absolute;left:50%;top:190px;background:#fff;color:#0a1a47;font:800 22px Inter;letter-spacing:.16em;padding:12px 24px;border-radius:999px;transform-origin:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#cap{position:absolute;left:70px;right:70px;top:1335px;text-align:center;font:800 64px/1.12 "Inter Display";letter-spacing:-.035em;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+#cap .rw{display:inline-block;will-change:transform,opacity,filter}
+#cap .hl{color:var(--mint)}
+.hand{position:absolute;font:700 54px/1 Hand;color:var(--mint);white-space:nowrap}
+.bridge{position:absolute;inset:0;display:grid;place-items:center;background:rgba(10,26,71,.82);opacity:0;z-index:50}
+.bridge .bt{font:900 96px/1.05 "Inter Display";letter-spacing:-.04em;color:#fff;text-align:center;padding:0 90px}
+.bridge .bw{display:inline-block}.bridge .hl{color:#34d5a0}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;opacity:0;padding-bottom:180px}
+.cta{background:var(--mint);color:#0a1a47;font:800 50px "Inter Display";letter-spacing:-.02em;padding:24px 28px 24px 50px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 24px 50px rgba(52,213,160,.3)}
+.cta i{width:70px;height:70px;border-radius:50%;background:#0a1a47;display:grid;place-items:center}
+
+html,body{width:auto!important;height:auto!important;overflow:visible!important;background:#777}
+.cv{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:"Inter";
+ background:radial-gradient(700px 700px at 50% 62%,#1d4fa3 0%,rgba(29,79,163,0) 72%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),#0a1a47}
+.cv .dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.logo{position:absolute;left:50%;top:330px;height:50px;transform:translateX(-50%)}
+.hlc{position:absolute;left:90px;right:90px;top:430px;text-align:center;font:900 108px/.98 "Inter Display";letter-spacing:-.05em;color:#fff;text-transform:uppercase}
+.hlc em{display:block;font-family:"Serif";font-style:italic;font-weight:400;text-transform:none;color:#34d5a0;font-size:1.05em;letter-spacing:-.01em}
+.small{position:absolute;left:0;right:0;top:1545px;text-align:center;font:700 30px Inter;color:rgba(255,255,255,.85)}
+.small b{color:#34d5a0}
+.cphone{position:absolute;left:50%;top:840px;width:370px;height:760px;margin-left:-185px;border-radius:58px;background:#0b1020;padding:12px;box-shadow:0 60px 110px rgba(0,0,0,.55),0 0 0 2px #33406a,inset 0 0 0 2px #2b3448;transform-origin:50% 0;transform:scale(.88) rotate(-3deg)}
+.cphone .view{position:absolute;inset:0}
+.float{position:absolute;background:#fff;border-radius:26px;box-shadow:0 40px 80px rgba(0,0,0,.45);font-family:Inter;color:#0f172a}
+</style></head><body>
+<div id="cover" class="cv"><div class="dots"></div>
+  <img class="logo" src="../assets/logo_white.png">
+  <div class="hlc">Bring old customers <em>back.</em></div>
+  <div style="position:absolute;left:50%;top:900px;width:700px;height:700px;margin-left:-350px;border-radius:50%;background:radial-gradient(circle,rgba(52,213,160,.2),rgba(0,0,0,0) 70%)"></div>
+  <div class="cphone"><div class="scr"><div class="isl"></div><div class="view" id="vC">
+        <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="em">
+          <div class="from"><div class="av">N</div><div><b>NOVA</b><span>to me · 9:41 AM</span></div></div>
+          <h4>We miss you, Sam</h4>
+          <div class="lead">Thanks again for choosing the Linen Wrap Dress.</div>
+          <div class="newh" id="newH">New since your last order</div>
+          <div class="prods" id="prods">
+            <div class="pc"><div class="im"><img src="../assets/p_bag.png"></div><div class="in"><b>Leather Tote</b><span>$89</span><small>Goes with your dress</small></div></div>
+            <div class="pc"><div class="im"><img src="../assets/p_sneaker.png"></div><div class="in"><b>White Sneaker</b><span>$65</span><small>Goes with your dress</small></div></div>
+          </div>
+          <div class="fs" id="fs"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0ea472" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="17.5" r="1.8"/><circle cx="17" cy="17.5" r="1.8"/></svg><span>A thank-you from us: <b>free shipping</b> on your next order.</span></div>
+          <div class="ebtn" id="eBtn">Shop what’s new</div>
+        </div>
+      </div>
+      </div></div>
+  <div class="float" style="left:520px;top:930px;width:470px;padding:20px 22px;display:flex;gap:16px;align-items:center;border-radius:28px;transform:rotate(3deg);background:rgba(255,255,255,.97)">
+   <div style="width:62px;height:62px;border-radius:16px;background:#0f1f4d;color:#fff;font:800 26px 'Inter Display';display:grid;place-items:center;flex:none">N</div>
+   <div style="flex:1;min-width:0"><div style="display:flex;justify-content:space-between;font:700 22px Inter">NOVA<span style="font:500 18px Inter;color:#94a3b8">now</span></div>
+   <div style="font:700 21px Inter;margin-top:3px">We miss you, Sam 💚</div><div style="font:500 18px Inter;color:#64748b;margin-top:2px">New since your last order…</div></div></div>
+  <div class="small">Watch: <b>the “we miss you” email</b> · ecommwave.org</div>
+</div></body></html>

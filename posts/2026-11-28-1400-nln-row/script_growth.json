@@ -1,0 +1,32 @@
+{
+ "engine": "kokoro", "voice": "am_puck", "music": false, "lang": "en-us",
+ "lines": [
+  {"text": "Old customers gone *quiet?*", "chapter": "THE PROBLEM"},
+  {"text": "They ordered once, *three months* ago."},
+  {"text": "Since then, *nothing.* No visit. No order."},
+  {"text": "But they already *know* your store.", "hold": 0.7},
+  {"text": "Want to fix this? *Here's how!*", "chapter": "THE FIX", "loud": true, "hold": 0.5},
+  {"text": "Send a *we miss you* email."},
+  {"text": "Show *what's new* since their last order."},
+  {"text": "Pick items that *go with* what they bought."},
+  {"text": "Add a small thank you, like *free shipping.*"},
+  {"text": "One tap, and they're *back in your store.*", "chapter": "THE RESULT"},
+  {"text": "Want more orders? DM us *GROWTH.*"}
+ ],
+ "cues": [
+  {"sfx": "swoosh", "line": 0, "word": "Old", "offset": -0.1},
+  {"sfx": "pop", "line": 0, "word": "quiet"},
+  {"sfx": "pop", "line": 1, "word": "three"},
+  {"sfx": "error", "line": 2, "word": "nothing"},
+  {"sfx": "pop", "line": 3, "word": "know"},
+  {"sfx": "whoosh", "line": 4, "word": "Want"},
+  {"sfx": "ding", "line": 4, "word": "how"},
+  {"sfx": "swoosh", "line": 5, "word": "Send"},
+  {"sfx": "pop", "line": 6, "word": "new"},
+  {"sfx": "pop", "line": 7, "word": "go"},
+  {"sfx": "ding", "line": 8, "word": "shipping"},
+  {"sfx": "tap", "line": 9, "word": "tap"},
+  {"sfx": "whoosh", "line": 9, "word": "back"},
+  {"sfx": "pop", "line": 10, "word": "GROWTH"}
+ ]
+}

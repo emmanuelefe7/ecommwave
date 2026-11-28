@@ -1,0 +1,129 @@
+{
+ "engine": "kokoro",
+ "voice": "am_puck",
+ "music": false,
+ "lang": "en-us",
+ "lines": [
+  {
+   "text": "Got a *countdown timer* on your store?",
+   "chapter": "THE MISTAKE"
+  },
+  {
+   "text": "Picture this. The sale ends in *ten minutes.*",
+   "chapter": "PICTURE THIS"
+  },
+  {
+   "text": "The customer comes back *tomorrow.*"
+  },
+  {
+   "text": "Same sale. *Ten minutes* left. Again."
+  },
+  {
+   "text": "Now they *don't trust* the timer."
+  },
+  {
+   "text": "Or *your prices.*",
+   "hold": 0.7
+  },
+  {
+   "text": "Want to fix this? *Here's how!*",
+   "chapter": "THE FIX",
+   "loud": true,
+   "hold": 0.5
+  },
+  {
+   "text": "Only use a timer when the deadline is *real.*"
+  },
+  {
+   "text": "Show the *real end date,* like Sunday at midnight."
+  },
+  {
+   "text": "When it ends, the price *goes back.*"
+  },
+  {
+   "text": "Honest deadlines build *trust.*"
+  },
+  {
+   "text": "Want more orders? DM us *GROWTH.*"
+  }
+ ],
+ "cues": [
+  {
+   "sfx": "swoosh",
+   "line": 0,
+   "word": "Got",
+   "offset": -0.1
+  },
+  {
+   "sfx": "tick",
+   "line": 0,
+   "word": "countdown"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 1,
+   "word": "Picture",
+   "offset": -0.2
+  },
+  {
+   "sfx": "tick",
+   "line": 1,
+   "word": "ten"
+  },
+  {
+   "sfx": "swoosh",
+   "line": 2,
+   "word": "tomorrow"
+  },
+  {
+   "sfx": "error",
+   "line": 3,
+   "word": "Again"
+  },
+  {
+   "sfx": "pop",
+   "line": 4,
+   "word": "trust"
+  },
+  {
+   "sfx": "error",
+   "line": 5,
+   "word": "prices"
+  },
+  {
+   "sfx": "whoosh",
+   "line": 6,
+   "word": "Want"
+  },
+  {
+   "sfx": "ding",
+   "line": 6,
+   "word": "how"
+  },
+  {
+   "sfx": "pop",
+   "line": 7,
+   "word": "real"
+  },
+  {
+   "sfx": "ding",
+   "line": 8,
+   "word": "date"
+  },
+  {
+   "sfx": "pop",
+   "line": 9,
+   "word": "back"
+  },
+  {
+   "sfx": "ding",
+   "line": 10,
+   "word": "trust"
+  },
+  {
+   "sfx": "pop",
+   "line": 11,
+   "word": "GROWTH"
+  }
+ ]
+}

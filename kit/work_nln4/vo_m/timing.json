@@ -1,0 +1,684 @@
+{
+ "dur": 28.78,
+ "engine": "kokoro",
+ "music": false,
+ "lines": [
+  {
+   "start": 0.25,
+   "end": 2.22,
+   "text": "Got a countdown timer on your store?",
+   "wps": 3.89,
+   "words": [
+    {
+     "w": "Got",
+     "s": 0.25,
+     "e": 0.4,
+     "hl": false
+    },
+    {
+     "w": "a",
+     "s": 0.425,
+     "e": 0.45,
+     "hl": false
+    },
+    {
+     "w": "countdown",
+     "s": 0.5,
+     "e": 1.025,
+     "hl": true
+    },
+    {
+     "w": "timer",
+     "s": 1.1,
+     "e": 1.425,
+     "hl": true
+    },
+    {
+     "w": "on",
+     "s": 1.45,
+     "e": 1.525,
+     "hl": false
+    },
+    {
+     "w": "your",
+     "s": 1.55,
+     "e": 1.625,
+     "hl": false
+    },
+    {
+     "w": "store?",
+     "s": 1.675,
+     "e": 2.05,
+     "hl": false
+    }
+   ],
+   "chapter": "THE MISTAKE",
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 2.22,
+   "end": 5.252,
+   "text": "Picture this. The sale ends in ten minutes.",
+   "wps": 3.12,
+   "words": [
+    {
+     "w": "Picture",
+     "s": 2.52,
+     "e": 2.82,
+     "hl": false
+    },
+    {
+     "w": "this.",
+     "s": 2.87,
+     "e": 3.176,
+     "hl": false
+    },
+    {
+     "w": "The",
+     "s": 3.466,
+     "e": 3.541,
+     "hl": false
+    },
+    {
+     "w": "sale",
+     "s": 3.616,
+     "e": 3.882,
+     "hl": false
+    },
+    {
+     "w": "ends",
+     "s": 3.957,
+     "e": 4.207,
+     "hl": false
+    },
+    {
+     "w": "in",
+     "s": 4.257,
+     "e": 4.357,
+     "hl": false
+    },
+    {
+     "w": "ten",
+     "s": 4.432,
+     "e": 4.632,
+     "hl": true
+    },
+    {
+     "w": "minutes.",
+     "s": 4.682,
+     "e": 5.082,
+     "hl": true
+    }
+   ],
+   "chapter": "PICTURE THIS",
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 5.252,
+   "end": 7.447,
+   "text": "The customer comes back tomorrow.",
+   "wps": 2.94,
+   "words": [
+    {
+     "w": "The",
+     "s": 5.552,
+     "e": 5.602,
+     "hl": false
+    },
+    {
+     "w": "customer",
+     "s": 5.652,
+     "e": 6.077,
+     "hl": false
+    },
+    {
+     "w": "comes",
+     "s": 6.127,
+     "e": 6.352,
+     "hl": false
+    },
+    {
+     "w": "back",
+     "s": 6.402,
+     "e": 6.627,
+     "hl": false
+    },
+    {
+     "w": "tomorrow.",
+     "s": 6.677,
+     "e": 7.252,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 7.447,
+   "end": 10.062,
+   "text": "Same sale. Ten minutes left. Again.",
+   "wps": 2.61,
+   "words": [
+    {
+     "w": "Same",
+     "s": 7.747,
+     "e": 7.997,
+     "hl": false
+    },
+    {
+     "w": "sale.",
+     "s": 8.072,
+     "e": 8.397,
+     "hl": false
+    },
+    {
+     "w": "Ten",
+     "s": 8.842,
+     "e": 9.017,
+     "hl": true
+    },
+    {
+     "w": "minutes",
+     "s": 9.042,
+     "e": 9.317,
+     "hl": true
+    },
+    {
+     "w": "left.",
+     "s": 9.367,
+     "e": 9.667,
+     "hl": false
+    },
+    {
+     "w": "Again.",
+     "s": 9.742,
+     "e": 10.042,
+     "hl": false
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 10.062,
+   "end": 11.412,
+   "text": "Now they don't trust the timer.",
+   "wps": 4.71,
+   "words": [
+    {
+     "w": "Now",
+     "s": 10.117,
+     "e": 10.317,
+     "hl": false
+    },
+    {
+     "w": "they",
+     "s": 10.342,
+     "e": 10.417,
+     "hl": false
+    },
+    {
+     "w": "don't",
+     "s": 10.442,
+     "e": 10.592,
+     "hl": true
+    },
+    {
+     "w": "trust",
+     "s": 10.642,
+     "e": 10.892,
+     "hl": true
+    },
+    {
+     "w": "the",
+     "s": 10.917,
+     "e": 10.967,
+     "hl": false
+    },
+    {
+     "w": "timer.",
+     "s": 11.017,
+     "e": 11.392,
+     "hl": false
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 11.412,
+   "end": 12.598,
+   "text": "Or your prices.",
+   "wps": 2.92,
+   "words": [
+    {
+     "w": "Or",
+     "s": 11.492,
+     "e": 11.642,
+     "hl": false
+    },
+    {
+     "w": "your",
+     "s": 11.692,
+     "e": 11.792,
+     "hl": true
+    },
+    {
+     "w": "prices.",
+     "s": 11.842,
+     "e": 12.518,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.7,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 13.298,
+   "end": 15.093,
+   "text": "Want to fix this? Here's how!",
+   "wps": 3.5,
+   "words": [
+    {
+     "w": "Want",
+     "s": 13.298,
+     "e": 13.473,
+     "hl": false
+    },
+    {
+     "w": "to",
+     "s": 13.498,
+     "e": 13.548,
+     "hl": false
+    },
+    {
+     "w": "fix",
+     "s": 13.623,
+     "e": 13.848,
+     "hl": false
+    },
+    {
+     "w": "this?",
+     "s": 13.898,
+     "e": 14.123,
+     "hl": false
+    },
+    {
+     "w": "Here's",
+     "s": 14.198,
+     "e": 14.448,
+     "hl": true
+    },
+    {
+     "w": "how!",
+     "s": 14.498,
+     "e": 15.013,
+     "hl": true
+    }
+   ],
+   "chapter": "THE FIX",
+   "hold": 0.5,
+   "loud": true,
+   "timing": "exact"
+  },
+  {
+   "start": 15.593,
+   "end": 18.123,
+   "text": "Only use a timer when the deadline is real.",
+   "wps": 3.86,
+   "words": [
+    {
+     "w": "Only",
+     "s": 15.593,
+     "e": 15.893,
+     "hl": false
+    },
+    {
+     "w": "use",
+     "s": 15.943,
+     "e": 16.118,
+     "hl": false
+    },
+    {
+     "w": "a",
+     "s": 16.143,
+     "e": 16.193,
+     "hl": false
+    },
+    {
+     "w": "timer",
+     "s": 16.268,
+     "e": 16.588,
+     "hl": false
+    },
+    {
+     "w": "when",
+     "s": 16.638,
+     "e": 16.713,
+     "hl": false
+    },
+    {
+     "w": "the",
+     "s": 16.738,
+     "e": 16.788,
+     "hl": false
+    },
+    {
+     "w": "deadline",
+     "s": 16.863,
+     "e": 17.313,
+     "hl": false
+    },
+    {
+     "w": "is",
+     "s": 17.363,
+     "e": 17.463,
+     "hl": false
+    },
+    {
+     "w": "real.",
+     "s": 17.538,
+     "e": 17.923,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 18.123,
+   "end": 21.273,
+   "text": "Show the real end date, like Sunday at midnight.",
+   "wps": 3.35,
+   "words": [
+    {
+     "w": "Show",
+     "s": 18.423,
+     "e": 18.598,
+     "hl": false
+    },
+    {
+     "w": "the",
+     "s": 18.648,
+     "e": 18.723,
+     "hl": false
+    },
+    {
+     "w": "real",
+     "s": 18.798,
+     "e": 19.048,
+     "hl": true
+    },
+    {
+     "w": "end",
+     "s": 19.098,
+     "e": 19.273,
+     "hl": true
+    },
+    {
+     "w": "date,",
+     "s": 19.323,
+     "e": 19.548,
+     "hl": true
+    },
+    {
+     "w": "like",
+     "s": 19.738,
+     "e": 19.913,
+     "hl": false
+    },
+    {
+     "w": "Sunday",
+     "s": 19.988,
+     "e": 20.363,
+     "hl": false
+    },
+    {
+     "w": "at",
+     "s": 20.413,
+     "e": 20.463,
+     "hl": false
+    },
+    {
+     "w": "midnight.",
+     "s": 20.513,
+     "e": 21.113,
+     "hl": false
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 21.273,
+   "end": 23.324,
+   "text": "When it ends, the price goes back.",
+   "wps": 4.4,
+   "words": [
+    {
+     "w": "When",
+     "s": 21.573,
+     "e": 21.673,
+     "hl": false
+    },
+    {
+     "w": "it",
+     "s": 21.698,
+     "e": 21.798,
+     "hl": false
+    },
+    {
+     "w": "ends,",
+     "s": 21.848,
+     "e": 22.114,
+     "hl": false
+    },
+    {
+     "w": "the",
+     "s": 22.164,
+     "e": 22.214,
+     "hl": false
+    },
+    {
+     "w": "price",
+     "s": 22.264,
+     "e": 22.539,
+     "hl": false
+    },
+    {
+     "w": "goes",
+     "s": 22.589,
+     "e": 22.789,
+     "hl": true
+    },
+    {
+     "w": "back.",
+     "s": 22.839,
+     "e": 23.164,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 23.324,
+   "end": 25.369,
+   "text": "Honest deadlines build trust.",
+   "wps": 2.54,
+   "words": [
+    {
+     "w": "Honest",
+     "s": 23.624,
+     "e": 23.924,
+     "hl": false
+    },
+    {
+     "w": "deadlines",
+     "s": 23.974,
+     "e": 24.474,
+     "hl": false
+    },
+    {
+     "w": "build",
+     "s": 24.524,
+     "e": 24.749,
+     "hl": false
+    },
+    {
+     "w": "trust.",
+     "s": 24.824,
+     "e": 25.199,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  },
+  {
+   "start": 25.369,
+   "end": 28.183,
+   "text": "Want more orders? DM us GROWTH.",
+   "wps": 2.46,
+   "words": [
+    {
+     "w": "Want",
+     "s": 25.669,
+     "e": 25.844,
+     "hl": false
+    },
+    {
+     "w": "more",
+     "s": 25.894,
+     "e": 26.094,
+     "hl": false
+    },
+    {
+     "w": "orders?",
+     "s": 26.144,
+     "e": 26.569,
+     "hl": false
+    },
+    {
+     "w": "DM",
+     "s": 27.064,
+     "e": 27.33,
+     "hl": false
+    },
+    {
+     "w": "us",
+     "s": 27.355,
+     "e": 27.48,
+     "hl": false
+    },
+    {
+     "w": "GROWTH.",
+     "s": 27.53,
+     "e": 28.103,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "loud": false,
+   "timing": "exact"
+  }
+ ],
+ "cues": [
+  {
+   "t": 0.15,
+   "sfx": "swoosh",
+   "id": "Got"
+  },
+  {
+   "t": 0.5,
+   "sfx": "tick",
+   "id": "countdown"
+  },
+  {
+   "t": 2.32,
+   "sfx": "whoosh",
+   "id": "Picture"
+  },
+  {
+   "t": 4.432,
+   "sfx": "tick",
+   "id": "ten"
+  },
+  {
+   "t": 6.677,
+   "sfx": "swoosh",
+   "id": "tomorrow"
+  },
+  {
+   "t": 9.742,
+   "sfx": "error",
+   "id": "Again"
+  },
+  {
+   "t": 10.642,
+   "sfx": "pop",
+   "id": "trust"
+  },
+  {
+   "t": 11.842,
+   "sfx": "error",
+   "id": "prices"
+  },
+  {
+   "t": 13.298,
+   "sfx": "whoosh",
+   "id": "Want"
+  },
+  {
+   "t": 14.498,
+   "sfx": "ding",
+   "id": "how"
+  },
+  {
+   "t": 17.538,
+   "sfx": "pop",
+   "id": "real"
+  },
+  {
+   "t": 19.323,
+   "sfx": "ding",
+   "id": "date"
+  },
+  {
+   "t": 22.839,
+   "sfx": "pop",
+   "id": "back"
+  },
+  {
+   "t": 24.824,
+   "sfx": "ding",
+   "id": "trust"
+  },
+  {
+   "t": 27.53,
+   "sfx": "pop",
+   "id": "GROWTH"
+  }
+ ]
+}

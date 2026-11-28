@@ -1,0 +1,34 @@
+{
+ "engine": "kokoro",
+ "voice": "am_puck",
+ "music": false,
+ "lang": "en-us",
+ "lines": [
+  {"text": "A customer loves your dress, but *not today.*", "chapter": "THE PROBLEM"},
+  {"text": "So they close the tab, and *forget you.*"},
+  {"text": "Most stores just *let them go.*"},
+  {"text": "Add a *heart button* to every product.", "chapter": "THE FIX"},
+  {"text": "One tap, and it's *saved for later.*"},
+  {"text": "Then send a *friendly reminder.*"},
+  {"text": "Back in their size? *Tell them.*"},
+  {"text": "Now they come back, *ready to buy.*", "chapter": "THE RESULT"},
+  {"text": "Same visitors. *More orders.*"},
+  {"text": "Want more orders? DM us *GROWTH.*"}
+ ],
+ "cues": [
+  {"sfx": "swoosh", "line": 0, "word": "A", "offset": -0.1},
+  {"sfx": "pop", "line": 0, "word": "not"},
+  {"sfx": "swoosh", "line": 1, "word": "close"},
+  {"sfx": "error", "line": 2, "word": "go"},
+  {"sfx": "whoosh", "line": 3, "word": "Add", "offset": -0.2},
+  {"sfx": "pop", "line": 3, "word": "heart"},
+  {"sfx": "tap", "line": 4, "word": "tap", "offset": 0.05},
+  {"sfx": "ding", "line": 4, "word": "saved"},
+  {"sfx": "pop", "line": 5, "word": "friendly"},
+  {"sfx": "pop", "line": 6, "word": "size"},
+  {"sfx": "whoosh", "line": 7, "word": "Now", "offset": -0.2},
+  {"sfx": "ding", "line": 7, "word": "ready"},
+  {"sfx": "pop", "line": 8, "word": "More"},
+  {"sfx": "pop", "line": 9, "word": "GROWTH"}
+ ]
+}

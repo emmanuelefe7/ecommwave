@@ -1,0 +1,168 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../light.css"><script src="../light.js"></script>
+<!-- LIGHT carousel (L-N-L LEFT): gift cards for last-minute holiday shoppers. Layout: centred cover with fanned realistic
+     NOVA gift cards (real product photo on one), then tip slides pairing realistic UI (left/right alternating) with one
+     big-numeral navy card. Locked LIGHT palette, real photos only. -->
+<style>
+.arch{position:absolute;left:290px;top:450px;width:500px;height:640px}
+.arch .back{position:absolute;left:24px;top:24px;right:-24px;bottom:-24px;border-radius:250px 250px 36px 36px;background:var(--lmint)}
+.arch .ph{position:absolute;inset:0;border-radius:250px 250px 36px 36px;overflow:hidden;background:#d9e3ef}
+.arch .ph img{position:absolute;left:50%;bottom:0;height:630px;transform:translateX(-50%)}
+.gc{position:absolute;width:540px;height:340px;border-radius:30px;overflow:hidden;box-shadow:0 40px 80px rgba(21,42,89,.32),0 8px 20px rgba(21,42,89,.14);color:#fff;font-family:Inter}
+.gc.navy{background:radial-gradient(420px 300px at 100% 0%,rgba(79,209,160,.35),rgba(79,209,160,0) 70%),linear-gradient(135deg,#3356b0,#152a59 70%)}
+.gc .wm{position:absolute;left:38px;top:34px;font:800 34px "Inter Display";letter-spacing:.14em}
+.gc .lbl2{position:absolute;left:38px;bottom:36px;font:600 22px Inter;letter-spacing:.06em;opacity:.9}
+.gc .amt{position:absolute;right:38px;bottom:26px;font:800 74px "Inter Display";letter-spacing:-.03em}
+.gc .chipm{position:absolute;right:38px;top:38px;width:62px;height:46px;border-radius:9px;background:linear-gradient(135deg,#f3d58a,#c9a44c);box-shadow:inset 0 0 0 2px rgba(0,0,0,.08)}
+.gc.photo{background:#e9e0d4}
+.gc.photo img{position:absolute;right:-30px;top:0;height:100%}
+.gc.photo .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,42,89,.86) 0%,rgba(21,42,89,.55) 45%,rgba(21,42,89,0) 75%)}
+.phone{position:absolute;width:400px;height:800px;border-radius:60px;background:#0b1020;padding:13px;box-shadow:0 50px 90px rgba(21,42,89,.28),0 10px 24px rgba(21,42,89,.12),inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:48px;overflow:hidden;background:#fff;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:12px;width:100px;height:29px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:5}
+.sb{height:48px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+.tb{margin-top:6px;padding:9px 14px;background:#152a59;color:#fff;font:700 14px/1.3 Inter;text-align:center}
+.nv{height:50px;display:flex;align-items:center;justify-content:center;font:800 20px "Inter Display";letter-spacing:.08em;color:#0f1f4d;position:relative}
+.nv .x{position:absolute;left:22px;top:12px;font:400 30px Inter;color:#0f1f4d;line-height:1}
+.mi{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid #eef1f5;font:600 21px Inter}
+.mi.on{background:#f0fbf6;color:#0b7a56;font-weight:800;box-shadow:inset 4px 0 0 #4fd1a0}
+.new{font:800 12px Inter;letter-spacing:.08em;background:#152a59;color:#fff;padding:5px 9px;border-radius:6px}
+.rc{position:absolute;border-radius:26px;background:linear-gradient(135deg,var(--lcard1),var(--lcard2));box-shadow:0 22px 44px rgba(21,42,89,.28),inset 0 1px 0 rgba(255,255,255,.18);color:#fff;padding:34px 34px 36px}
+.rc .bn{font:900 96px/1 "Inter Display";color:var(--lmint);letter-spacing:-.04em}
+.rc b{display:block;font:800 36px/1.1 "Inter Display";letter-spacing:-.02em;margin-top:14px}
+.rc span{display:block;font:500 23px/1.4 Inter;color:rgba(255,255,255,.88);margin-top:12px}
+.ui{position:absolute;background:#fff;border-radius:28px;box-shadow:0 40px 90px rgba(21,42,89,.22),0 0 0 1px rgba(21,42,89,.05);font-family:Inter;color:#0f172a;overflow:hidden}
+.am{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 28px}
+.am div{height:74px;border-radius:16px;border:2px solid #cbd5e1;display:grid;place-items:center;font:800 28px "Inter Display"}
+.am div.on{border-color:#152a59;background:#152a59;color:#fff}
+.fl{padding:0 28px;margin-top:18px}
+.fl small{display:block;font:700 16px Inter;color:#64748b;letter-spacing:.04em}
+.fl div{margin-top:8px;min-height:60px;border-radius:14px;border:1.5px solid #cbd5e1;padding:16px 18px;font:500 21px/1.35 Inter;color:#0f172a;display:flex;align-items:center;gap:12px}
+.uibtn{margin:24px 28px 28px;height:66px;border-radius:16px;background:#152a59;color:#fff;font:700 22px Inter;display:grid;place-items:center}
+.lab{position:absolute;display:flex;align-items:center;gap:12px;font:800 24px "Inter Display";color:var(--ltext);white-space:nowrap}
+.lab i{width:16px;height:16px;border-radius:50%;background:var(--lmint);box-shadow:0 0 0 6px rgba(79,209,160,.25);display:block}
+.tag{position:absolute;font:800 20px Inter;letter-spacing:.14em;padding:9px 18px;border-radius:999px;color:#fff}
+</style></head><body>
+
+<!-- 1 COVER -->
+<section class="s lt" id="s1">
+  <div class="ring m" style="right:-70px;top:200px;width:180px;height:180px;border-width:28px"></div>
+  <div class="ring g" style="left:-70px;top:760px;width:150px;height:150px;border-width:22px"></div>
+  <div class="ring g" style="right:-80px;top:1090px;width:160px;height:160px;border-width:26px;filter:blur(1.5px)"></div>
+  <div class="dots" style="left:90px;top:1010px"></div>
+  <div class="top"><img src="../assets/logo_navy.png"><div class="num">01 / 06</div></div>
+  <div class="abs kick" style="left:0;right:0;top:165px;text-align:center">Last-minute shoppers can’t decide?</div>
+  <div class="abs" style="left:0;right:0;top:246px;display:flex;justify-content:center"><div class="slab" style="position:relative">Sell gift cards</div></div>
+  <div class="micon" style="left:490px;top:392px">i:gift</div>
+  <div class="gc" style="left:150px;top:590px;transform:rotate(-7deg);background:radial-gradient(380px 260px at 0% 100%,rgba(79,209,160,.35),rgba(79,209,160,0) 70%),linear-gradient(135deg,#ffffff,#f1ece4);color:#152a59"><div class="wm">NOVA</div><div class="lbl2" style="opacity:.75">GIFT CARD</div><div class="amt" style="right:auto;left:38px;bottom:70px;font-size:64px">$100</div></div>
+  <div class="gc navy" style="left:390px;top:760px;transform:rotate(5deg)"><div class="wm">NOVA</div><div class="chipm"></div><div class="lbl2">GIFT CARD</div><div class="amt">$50</div></div>
+  <div class="chipl" style="left:110px;top:1150px"><span class="ck">i:check</span>Perfect when they can’t decide</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div>
+</section>
+
+<!-- 2 FIND IT -->
+<section class="s lt" id="s2">
+  <div class="ring m" style="right:-70px;top:700px;width:150px;height:150px;border-width:24px"></div>
+  <div class="ring g" style="left:-70px;top:1060px;width:170px;height:170px;border-width:26px"></div>
+  <div class="dots" style="right:90px;top:1080px"></div>
+  <div class="top"><img src="../assets/logo_navy.png"><div class="num">02 / 06</div></div>
+  <div class="abs kick" style="left:80px;top:160px;width:920px;line-height:1.1">Can customers even find your gift card?</div>
+  <div class="phone" style="left:90px;top:340px;height:690px;transform:rotate(-2.5deg)"><div class="scr"><div class="isl"></div>
+    <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+    <div class="tb">Gift cards, sent by email. Perfect for last-minute gifts.</div>
+    <div class="nv"><span class="x">×</span>NOVA</div>
+    <div class="mi">New arrivals <span>›</span></div>
+    <div class="mi">Dresses <span>›</span></div>
+    <div class="mi">Bags <span>›</span></div>
+    <div class="mi">Shoes <span>›</span></div>
+    <div class="mi on">Gift cards <span class="new">GIFT IDEA</span></div>
+    <div class="mi">Gift guide <span>›</span></div>
+    <div class="mi" style="color:#64748b;font-weight:500">Contact us</div>
+  </div></div>
+  <div class="rc" style="left:580px;top:380px;width:420px"><div class="bn">01</div><b>Put it in the menu and the top bar</b><span>Don’t hide it in the footer. Make it one tap away.</span></div>
+  <div class="lab" style="left:600px;top:920px"><i></i>In the main menu</div>
+  <div class="lab" style="left:600px;top:980px"><i></i>In the top bar</div>
+  <div class="lab" style="left:600px;top:1040px"><i></i>In your gift guide</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
+</section>
+
+<!-- 3 AMOUNTS -->
+<section class="s lt" id="s3">
+  <div class="ring m" style="left:-60px;top:1060px;width:150px;height:150px;border-width:24px"></div>
+  <div class="ring g" style="right:-70px;top:1000px;width:170px;height:170px;border-width:26px"></div>
+  <div class="dots" style="right:80px;top:330px"></div>
+  <div class="top"><img src="../assets/logo_navy.png"><div class="num">03 / 06</div></div>
+  <div class="abs kick" style="left:80px;top:160px;width:920px;line-height:1.1">Make picking an amount easy.</div>
+  <div class="rc" style="left:80px;top:320px;width:420px"><div class="bn">02</div><b>Offer 3 or 4 clear amounts</b><span>Simple round numbers. Customers decide in a second, not a minute.</span></div>
+  <div class="ui" style="left:560px;top:300px;width:440px;transform:rotate(2deg)">
+    <div class="gc navy" style="position:relative;width:auto;height:230px;margin:24px 24px 0;border-radius:20px;box-shadow:none"><div class="wm" style="font-size:28px;left:28px;top:26px">NOVA</div><div class="chipm" style="right:28px;top:28px"></div><div class="lbl2" style="left:28px;bottom:26px;font-size:17px">GIFT CARD</div><div class="amt" style="right:28px;bottom:16px;font-size:58px">$50</div></div>
+    <div style="padding:22px 28px 6px;font:800 28px 'Inter Display'">NOVA Gift Card</div>
+    <div style="padding:0 28px 18px;font:600 18px Inter;color:#64748b">Choose an amount</div>
+    <div class="am"><div>$25</div><div class="on">$50</div><div>$100</div><div>$150</div></div>
+    <div class="uibtn">Add to cart · $50</div>
+  </div>
+  <div class="ui" style="left:110px;top:760px;width:380px;padding:22px 24px;transform:rotate(-2deg)">
+    <div style="font:700 17px Inter;color:#94a3b8;letter-spacing:.04em">NOT THIS</div>
+    <div style="margin-top:10px;font:500 21px Inter;color:#0f172a">Enter any amount</div>
+    <div style="margin-top:10px;height:56px;border-radius:12px;border:1.5px dashed #cbd5e1;display:flex;align-items:center;padding:0 16px;font:500 20px Inter;color:#94a3b8">$ 0.00</div>
+  </div>
+  <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
+</section>
+
+<!-- 4 SEND IT RIGHT -->
+<section class="s lt" id="s4">
+  <div class="ring m" style="right:-70px;top:720px;width:150px;height:150px;border-width:24px"></div>
+  <div class="ring g" style="left:-70px;top:1020px;width:170px;height:170px;border-width:26px"></div>
+  <div class="dots" style="left:70px;top:330px"></div>
+  <div class="top"><img src="../assets/logo_navy.png"><div class="num">04 / 06</div></div>
+  <div class="abs kick" style="left:80px;top:160px;width:920px;line-height:1.1">A gift needs a name, a note and a date.</div>
+  <div class="ui" style="left:80px;top:330px;width:470px;transform:rotate(-2deg)">
+    <div style="padding:26px 28px 4px;font:800 28px 'Inter Display'">Send as a gift</div>
+    <div class="fl"><small>TO</small><div>mia@email.com</div></div>
+    <div class="fl"><small>MESSAGE</small><div>Happy birthday, Mia! Pick something you love.</div></div>
+    <div class="fl"><small>SEND ON</small><div><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#152a59" stroke-width="2.2" stroke-linecap="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>December 24, 8:00 AM</div></div>
+    <div class="uibtn">Add to cart · $50</div>
+  </div>
+  <div class="rc" style="left:600px;top:340px;width:400px"><div class="bn">03</div><b>Let them add a note and pick the day</b><span>The card lands in the inbox on the morning they choose.</span></div>
+  <div class="lab" style="left:620px;top:900px"><i></i>Who it’s for</div>
+  <div class="lab" style="left:620px;top:960px"><i></i>A personal message</div>
+  <div class="lab" style="left:620px;top:1020px"><i></i>The day it arrives</div>
+  <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
+</section>
+
+<!-- 5 AFTER THE CUTOFF -->
+<section class="s lt" id="s5">
+  <div class="ring m" style="left:-70px;top:680px;width:140px;height:140px;border-width:22px"></div>
+  <div class="ring g" style="right:-70px;top:1060px;width:170px;height:170px;border-width:26px"></div>
+  <div class="dots" style="right:80px;top:330px"></div>
+  <div class="top"><img src="../assets/logo_navy.png"><div class="num">05 / 06</div></div>
+  <div class="abs kick" style="left:80px;top:160px;width:920px;line-height:1.1">Past your last shipping day? Still a sale.</div>
+  <div class="rc" style="left:80px;top:340px;width:420px"><div class="bn">04</div><b>Switch the top bar to gift cards</b><span>When parcels can’t arrive in time, a gift card still can.</span></div>
+  <div class="mail" style="left:560px;top:330px;width:440px;transform:rotate(2deg)">
+    <div class="mh"><div class="av">N</div><div><div class="fr">NOVA</div><div class="to">to Mia</div></div><div class="tm">Dec 24</div></div>
+    <div class="sj">You got a gift! 🎁</div>
+    <div class="gc photo" style="position:relative;width:auto;height:220px;margin:20px 28px 0;border-radius:18px;box-shadow:none"><img src="../assets/hero_woman.png"><div class="shade"></div><div class="wm" style="font-size:26px;left:26px;top:24px">NOVA</div><div class="amt" style="left:26px;right:auto;bottom:22px;font-size:54px">$50</div></div>
+    <div class="tx">“Happy birthday, Mia! Pick something you love.”</div>
+    <div class="bt">Shop with your gift card</div>
+  </div>
+  <div class="ui" style="left:90px;top:860px;width:420px;transform:rotate(-2deg)"><div class="tb" style="margin:0;padding:20px 22px;font-size:23px">Too late for delivery? Gift cards arrive by email.</div>
+    <div style="padding:16px 22px;font:600 19px Inter;color:#64748b">Your top bar after the last shipping day</div></div>
+  <div class="swipe">Swipe <i>i:arroww</i></div><div class="web">ecommwave.org</div>
+</section>
+
+<!-- 6 CTA -->
+<section class="s lt" id="s6">
+  <div class="top"><img src="../assets/logo_navy.png"><div class="num">06 / 06</div></div>
+  <div class="ring m" style="left:-90px;top:760px;width:190px;height:190px;border-width:28px"></div>
+  <div class="ring g" style="right:-60px;top:860px;width:200px;height:200px;border-width:30px"></div>
+  <div class="dots" style="left:60px;top:1010px"></div>
+  <div class="abs kick" style="left:0;right:0;top:190px;text-align:center">Want more holiday orders?</div>
+  <div class="abs" style="left:0;right:0;top:268px;display:flex;justify-content:center"><div class="slab" style="position:relative">Let’s talk</div></div>
+  <div class="arch"><div class="back"></div><div class="ph"><img src="../assets/woman.png"></div></div>
+  <div class="chipl" style="left:110px;top:640px"><span class="ck">i:check</span>Easy to find</div>
+  <div class="chipl" style="left:700px;top:790px"><span class="ck">i:check</span>Clear amounts</div>
+  <div class="chipl" style="left:110px;top:940px"><span class="ck">i:check</span>Sent on the day</div>
+  <div class="abs" style="left:0;right:0;top:1170px;text-align:center"><span class="cta-l">DM us “GROWTH” <span class="arrow">i:arrowm</span></span></div>
+  <div class="abs" style="left:0;right:0;top:1282px;text-align:center;font:700 28px 'Inter Display';color:#14254f">ecommwave.org</div>
+</section>
+<script>LICONS.gift=LI_('<rect x="3.5" y="9" width="17" height="11.5" rx="1.5"/><path d="M3 9h18M12 9v11.5M12 9c-2-4-6-4-6-1.5S10 9 12 9zm0 0c2-4 6-4 6-1.5S14 9 12 9z"/>','#152a59',44);lightIcons();</script>
+</body></html>

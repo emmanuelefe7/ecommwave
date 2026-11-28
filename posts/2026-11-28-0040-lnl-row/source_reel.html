@@ -1,0 +1,193 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../common.css">
+<script src="../common.js"></script>
+<script src="vo/timing.js"></script>
+<script src="../reel.js"></script>
+<!-- NAVY Reel (L-N-L MIDDLE, growth): let customers save products for later (heart/wishlist + reminder + back-in-size email).
+     REEL STYLE: word-synced captions, cues on words (RL.W), chapter pills, one continuous camera on a realistic NOVA phone
+     with a REAL product photo, handwritten asides, voice + sfx, no music. -->
+<style>
+@font-face{font-family:"Hand";src:url(../fonts/hand.woff2) format("woff2")}
+:root{--ink:#0d1b3e;--mint:#34d5a0;--bad:#ff6b7a}
+body{background:#0a1a47}
+#stage{background:radial-gradient(760px 640px at 50% 42%,rgba(52,213,160,.16) 0%,rgba(52,213,160,0) 70%),radial-gradient(900px 700px at 100% 0%,#145466 0%,rgba(20,84,102,0) 70%),radial-gradient(800px 700px at 0% 100%,#11306b 0%,rgba(17,48,107,0) 70%),#0a1a47}
+.dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1.6px,transparent 1.7px);background-size:36px 36px}
+.wave{position:absolute;left:0;width:1080px;opacity:.55}
+#world{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:540px 760px}
+.phone{position:absolute;left:540px;top:760px;width:370px;height:760px;margin:-380px 0 0 -185px;border-radius:58px;background:#0b1020;padding:12px;
+  box-shadow:0 50px 100px rgba(0,0,0,.45),0 0 0 2px #33406a,inset 0 0 0 2px #2b3448}
+.scr{position:relative;width:100%;height:100%;border-radius:47px;overflow:hidden;background:#f1f3f6;font-family:Inter;color:#0f172a}
+.isl{position:absolute;left:50%;top:11px;width:96px;height:28px;border-radius:16px;background:#000;transform:translateX(-50%);z-index:20}
+.view{position:absolute;inset:0;background:#fff;z-index:2}
+.sb{height:46px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 30px 4px;font:600 15px Inter}
+.nv{height:46px;display:flex;align-items:center;justify-content:center;font:800 19px "Inter Display";letter-spacing:.08em;color:#0f1f4d;position:relative}
+.nv .mi{position:absolute;left:20px;top:15px;width:20px;height:14px;border-top:2.5px solid #0f1f4d;border-bottom:2.5px solid #0f1f4d}
+.nv .mi:after{content:"";position:absolute;left:0;right:0;top:3.5px;border-top:2.5px solid #0f1f4d}
+.nv .hc{position:absolute;right:52px;top:12px}
+.nv .bg{position:absolute;right:18px;top:11px}
+.nv .cnt{position:absolute;right:42px;top:6px;width:17px;height:17px;border-radius:50%;background:#e5484d;color:#fff;font:800 10.5px Inter;display:grid;place-items:center}
+.pimg{margin:6px 14px 0;height:300px;border-radius:18px;background:#e9e0d4;overflow:hidden;position:relative}
+.heart{position:absolute;right:12px;top:12px;width:48px;height:48px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 6px 16px rgba(0,0,0,.18)}
+.pi{padding:14px 18px 0}
+.t1 b{font:800 23px "Inter Display";letter-spacing:-.02em}
+.st{font:500 13px Inter;color:#64748b;margin-top:4px}.st i{color:#f5b301;font-style:normal;letter-spacing:1px}
+.pr{font:800 24px "Inter Display";margin-top:8px}
+.lb{font:700 13px Inter;margin-top:12px;color:#334155}
+.sz{display:flex;gap:8px;margin-top:8px}.sz div{width:52px;height:40px;border-radius:10px;border:1.5px solid #cbd5e1;display:grid;place-items:center;font:700 14px Inter}
+.sz div.on{border-color:#0f1f4d;background:#0f1f4d;color:#fff}
+.sz div.out{color:#b6bfcc;background:linear-gradient(to top right,transparent 47%,#cbd5e1 48%,#cbd5e1 52%,transparent 53%)}
+.btn{position:absolute;left:18px;right:18px;bottom:24px;height:56px;border-radius:16px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 17px Inter;z-index:3}
+/* new tab page (after closing) */
+#ntab{position:absolute;inset:0;background:#f1f3f6;z-index:1}
+#ntab .url{margin:66px 18px 0;height:44px;border-radius:14px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.08);display:flex;align-items:center;gap:10px;padding:0 14px;font:500 15px Inter;color:#94a3b8}
+#ntab h6{font:700 14px Inter;color:#64748b;margin:26px 22px 10px}
+#ntab .fav{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 22px}
+#ntab .fav div{height:62px;border-radius:14px;background:#e2e6ec}
+/* notifications */
+.note{position:absolute;left:12px;right:12px;top:50px;border-radius:22px;background:rgba(245,247,250,.97);box-shadow:0 14px 34px rgba(15,23,42,.28);padding:12px 14px;z-index:12;display:flex;gap:11px;align-items:center}
+.note .ic{width:40px;height:40px;border-radius:9px;background:#0f1f4d;color:#fff;display:grid;place-items:center;font:800 15px "Inter Display";flex:none}
+.note .th{width:44px;height:44px;border-radius:8px;overflow:hidden;position:relative;background:#e9e0d4;flex:none}
+.note b{font:700 13.5px Inter;display:block}.note span{font:500 12.5px/1.35 Inter;color:#334155;display:block;margin-top:2px}
+.note small{position:absolute;right:14px;top:12px;font:500 11px Inter;color:#94a3b8}
+#saved{position:absolute;left:30px;right:30px;bottom:96px;height:50px;border-radius:14px;background:#0f1f4d;color:#fff;display:flex;align-items:center;gap:10px;padding:0 16px;font:600 14.5px Inter;z-index:8}
+#saved u{margin-left:auto;text-decoration:none;color:#34d5a0;font-weight:800}
+#cart{position:absolute;left:8px;right:8px;bottom:8px;height:280px;border-radius:26px 26px 38px 38px;background:#fff;box-shadow:0 -10px 40px rgba(15,23,42,.22);z-index:6;padding:16px 18px}
+#cart h5{font:800 20px "Inter Display";letter-spacing:-.02em}
+.mini{display:flex;align-items:center;gap:10px;margin-top:14px;padding:8px;border-radius:12px;background:#f8fafc;border:1px solid #eef1f5}
+.mini .th{width:50px;height:50px;border-radius:8px;overflow:hidden;position:relative;background:#e9e0d4;flex:none}
+.mini b{font:700 13.5px Inter;display:block}.mini span{font:500 12px Inter;color:#64748b}
+.mini em{margin-left:auto;font:800 15px "Inter Display";font-style:normal}
+.cbtn{margin-top:16px;height:52px;border-radius:14px;background:#0f1f4d;color:#fff;display:flex;align-items:center;justify-content:center;font:700 15.5px Inter}
+/* overlays */
+.pin{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#fff;color:var(--ink);font:700 24px Inter;padding:10px 20px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.3);white-space:nowrap;opacity:0}
+.pin .d{width:26px;height:26px;border-radius:50%;background:#0ea472;box-shadow:0 0 0 5px rgba(14,164,114,.22)}
+.pin.bad .d{background:#e5484d;box-shadow:0 0 0 5px rgba(229,72,77,.2)}
+.chip{position:absolute;display:inline-flex;align-items:center;gap:10px;background:#152a59;color:#fff;font:700 26px Inter;padding:10px 22px 10px 10px;border-radius:999px;box-shadow:0 16px 34px rgba(0,0,0,.35),inset 0 0 0 2px rgba(52,213,160,.45);white-space:nowrap;opacity:0}
+.chip .k{width:36px;height:36px;border-radius:50%;background:var(--mint);display:grid;place-items:center}
+.hbox{position:absolute;left:0;top:0;pointer-events:none;overflow:visible;z-index:20}
+.rip{position:absolute;width:90px;height:90px;border-radius:50%;border:6px solid var(--mint);background:rgba(52,213,160,.2);z-index:21;opacity:0}
+#chap{position:absolute;left:50%;top:190px;background:#fff;color:#0a1a47;font:800 22px Inter;letter-spacing:.16em;padding:12px 24px;border-radius:999px;transform-origin:center;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+#cap{position:absolute;left:70px;right:70px;top:1335px;text-align:center;font:800 64px/1.12 "Inter Display";letter-spacing:-.035em;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,.35)}
+#cap .rw{display:inline-block;will-change:transform,opacity,filter}
+#cap .hl{color:var(--mint)}
+.hand{position:absolute;font:700 54px Hand;color:var(--mint);white-space:nowrap;opacity:0}
+#end{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:44px;opacity:0;padding-bottom:180px}
+.cta{background:var(--mint);color:#0a1a47;font:800 50px "Inter Display";letter-spacing:-.02em;padding:24px 28px 24px 50px;border-radius:999px;display:inline-flex;align-items:center;gap:26px;box-shadow:0 24px 50px rgba(52,213,160,.3)}
+.cta i{width:70px;height:70px;border-radius:50%;background:#0a1a47;display:grid;place-items:center}
+</style></head><body>
+<div id="stage"><div class="dots"></div>
+  <svg class="wave" style="top:1560px" height="260" viewBox="0 0 1080 260"><path d="M-20 150 C 200 60, 380 230, 600 140 S 960 60, 1100 120" fill="none" stroke="#34d5a0" stroke-width="3"/><path d="M-20 190 C 220 100, 400 260, 620 175 S 980 100, 1100 160" fill="none" stroke="#34d5a0" stroke-opacity=".45" stroke-width="2"/></svg>
+  <div id="world">
+    <div class="phone" id="ph"><div class="scr" id="scr"><div class="isl"></div>
+      <div id="ntab">
+        <div class="url"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>Search or type a website</div>
+        <h6>Favorites</h6><div class="fav"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+      <div class="view" id="vA">
+        <div class="sb"><span>9:41</span><span>●●● ▮</span></div>
+        <div class="nv"><i class="mi"></i>NOVA
+          <svg class="hc" id="hcNav" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f1f4d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z"/></svg>
+          <span class="cnt" id="cnt">1</span>
+          <svg class="bg" width="22" height="24" viewBox="0 0 24 24" fill="none" stroke="#0f1f4d" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></div>
+        <div class="pimg"><img src="../assets/hero_woman.png" style="position:absolute;right:-110px;top:0;height:100%">
+          <div class="heart" id="heart"><svg width="26" height="26" viewBox="0 0 24 24"><path id="hp" d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z" fill="none" stroke="#0f1f4d" stroke-width="2.2" stroke-linejoin="round"/></svg></div></div>
+        <div class="pi">
+          <div class="t1"><b>Linen Wrap Dress</b></div>
+          <div class="st"><i>★★★★★</i> 4.7 · 126 reviews</div>
+          <div class="pr">$75</div>
+          <div class="lb">Size</div>
+          <div class="sz"><div>XS</div><div class="on" id="szS">S</div><div>M</div><div>L</div><div>XL</div></div>
+        </div>
+        <div class="btn" id="btnA">Add to cart</div>
+        <div id="saved"><svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 10c0 5.6-7 10-7 10z" fill="#e5484d"/></svg>Saved to your wishlist<u>View</u></div>
+      </div>
+      <div id="cart"><h5>Your cart</h5>
+        <div class="mini"><div class="th"><img src="../assets/hero_woman.png" style="position:absolute;left:-46px;top:0;height:100%"></div><div><b>Linen Wrap Dress</b><span>Size S · Qty 1</span></div><em>$75</em></div>
+        <div style="margin-top:12px;font:600 13.5px Inter;color:#0ea472">✓ Free returns for 30 days</div>
+        <div class="cbtn" id="cbtn">Checkout · $75</div>
+      </div>
+      <div class="note" id="n1"><div class="th"><img src="../assets/hero_woman.png" style="position:absolute;left:-42px;top:0;height:100%"></div><div><b>NOVA · Still thinking it over?</b><span>Your Linen Wrap Dress is saved for you.</span></div><small>now</small></div>
+      <div class="note" id="n2" style="z-index:13"><div class="ic">N</div><div><b>NOVA · Back in your size</b><span>Linen Wrap Dress, size S is back.</span></div><small>now</small></div>
+      <div class="note" id="n3" style="z-index:14"><div class="ic" style="background:#0ea472"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1 13H6z"/><path d="M9 8V6a3 3 0 016 0v2"/></svg></div><div><b>New order · $75</b><span>Linen Wrap Dress, from a wishlist</span></div></div>
+      <svg class="hbox" width="346" height="736"><rect id="rGo" fill="none" stroke="#e5484d" stroke-width="5" stroke-dasharray="12 9" rx="18"/><rect id="rH" fill="none" stroke="#34d5a0" stroke-width="5" rx="28"/></svg>
+      <div class="rip" id="rip1"></div><div class="rip" id="rip2"></div>
+    </div></div>
+    <div class="pin bad" id="pForget"><span class="d"></span>Forgot your store</div>
+    <div class="pin bad" id="pGo"><span class="d"></span>No way back</div>
+    <div class="pin" id="pSaved"><span class="d"></span>Saved for later</div>
+    <div class="chip" id="c1"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a1a47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>Same visitors</div>
+    <div class="chip" id="c2"><span class="k"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0a1a47" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>More orders</div>
+    <div class="hand" id="hLater" style="left:600px;top:330px;transform:rotate(-5deg)">“maybe later…”</div>
+    <div class="hand" id="hBack" style="left:600px;top:310px;transform:rotate(-5deg)">they came back!</div>
+  </div>
+  <div id="chap"></div>
+  <div id="cap"></div>
+  <div id="end">
+    <img src="../assets/logo_white.png" style="height:58px">
+    <div style="font:900 100px/1 'Inter Display';letter-spacing:-.05em;color:#fff;text-align:center;text-transform:uppercase">Not today?<br><span style="font-family:Serif;font-style:italic;font-weight:400;text-transform:none;color:#34d5a0;letter-spacing:-.01em">Let them save it.</span></div>
+    <span class="cta">DM us “GROWTH” <i><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#34d5a0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></i></span>
+    <div style="font:700 34px Inter;color:#fff">ecommwave.org</div>
+  </div>
+</div>
+<script>
+const G=id=>document.getElementById(id), W=(w,l)=>RL.W(w,l), L=i=>RL.L(i), C=clamp;
+const SX=540-185+12, SY=760-380+12;
+const scr=G('scr');
+function rel(el){let x=0,y=0;while(el&&el!==scr){x+=el.offsetLeft;y+=el.offsetTop;el=el.offsetParent;}return{x,y};}
+function box(rect,el,pad,dt){const p=rel(el);rect.setAttribute('x',p.x-pad);rect.setAttribute('y',p.y-pad);
+  const w=el.offsetWidth+2*pad,h=el.offsetHeight+2*pad;rect.setAttribute('width',w);rect.setAttribute('height',h);
+  if(rect.getAttribute('stroke-dasharray'))return; const LEN=2*(w+h);rect.style.strokeDasharray=LEN;rect.style.strokeDashoffset=LEN*(1-dt);}
+function pin(id,t,t0,t1,x,y){const p=RL.pop(t,t0),o=C((t-t1)/.2);const el=G(id);el.style.opacity=C(p*1.5)*(1-o);el.style.left=x+'px';el.style.top=y+'px';el.style.transform=`translate(-50%,-50%) scale(${p})`;}
+function drop(id,t,t0,t1){const p=RL.ease(t,t0,.4,'back')*(1-RL.ease(t,t1,.3));const el=G(id);el.style.transform=`translateY(${(1-p)*-190}px)`;el.style.opacity=C(p*1.4);}
+function rip(el,t,t0,target){const p=rel(target);el.style.left=(p.x+target.offsetWidth/2)+'px';el.style.top=(p.y+target.offsetHeight/2)+'px';RL.ripple(el,t,t0);}
+window.DUR=VO.dur;
+function render(t){
+  const tClose=W('close',1), tAdd=W('Add',3)-0.15, tNow=W('Now',7)-0.15, tSame=W('Same',8)-0.1, tEnd=L(9).start;
+  const cam=RL.cam(t,[
+    {t:0,s:.95,x:0,y:90},
+    {t:W('dress',0)-0.2,s:1.15,x:0,y:60,d:.6},
+    {t:tClose-0.1,s:1.05,x:0,y:60,d:.6},
+    {t:W('Most',2)-0.15,s:1.0,x:0,y:70,d:.6},
+    {t:tAdd,s:1.38,x:-60,y:15,d:.7},
+    {t:W('saved',4)-0.1,s:1.25,x:0,y:-20,d:.6},
+    {t:W('Then',5)-0.15,s:1.3,x:0,y:40,d:.6},
+    {t:tNow,s:1.25,x:0,y:-20,d:.7},
+    {t:tSame,s:.95,x:0,y:70,d:.6},
+    {t:tEnd,s:.7,x:0,y:0,d:.6},
+  ]);
+  G('world').style.transform=cam.css;
+  const inP=RL.ease(t,0.02,.6,'expo'); G('ph').style.transform=`translateY(${(1-inP)*1000}px)`;
+  // L0: "maybe later…" on "not"
+  RL.scribble(G('hLater'),t,W('not',0)-0.05,.5); if(t>=tClose) G('hLater').style.opacity=0;
+  // L1: tab closes on "close" (page swipes away), comes back on "Add"
+  const away=RL.ease(t,tClose,.45,'inout')*(1-RL.ease(t,tAdd+0.05,.5,'inout'));
+  G('vA').style.transform=`translateX(${-away*110}%) scale(${1-away*0.15})`; G('vA').style.opacity=1-away*0.6;
+  pin('pForget',t,W('forget',1),W('Most',2),540,SY+300);
+  // L2: dashed red box around the empty tab, "No way back" on "go"
+  box(G('rGo'),G('ntab'),-14,1); G('rGo').style.opacity=(t>=W('stores',2)&&t<tAdd)?1:0;
+  pin('pGo',t,W('go',2),tAdd,540,SY+420);
+  // L3: heart button appears on "heart" with mint box
+  const hp=RL.pop(t,W('heart',3)); G('heart').style.transform=`scale(${hp})`;
+  box(G('rH'),G('heart'),8,RL.draw(t,W('heart',3)+0.1)); G('rH').style.opacity=(t>=W('heart',3)&&t<W('saved',4)+0.3)?1:0;
+  // L4: tap on "tap" -> heart fills red, nav badge, "Saved" bar + pin on "saved"
+  rip(G('rip1'),t,W('tap',4),G('heart'));
+  const on=t>=W('tap',4)+0.08; G('hp').setAttribute('fill',on?'#e5484d':'none'); G('hp').setAttribute('stroke',on?'#e5484d':'#0f1f4d');
+  G('cnt').style.transform=`scale(${RL.pop(t,W('saved',4))})`;
+  const sv=RL.ease(t,W('saved',4)-0.05,.35,'back')*(1-RL.ease(t,W('Then',5),.3)); G('saved').style.transform=`translateY(${(1-sv)*30}px)`; G('saved').style.opacity=C(sv*1.4);
+  pin('pSaved',t,W('saved',4),W('Then',5),790,SY+150);
+  // L5: reminder email drops on "friendly"; L6: back-in-size on "size"
+  drop('n1',t,W('friendly',5)-0.05,tNow); drop('n2',t,W('size',6)-0.05,tNow);
+  // L7: back on the page, cart drawer slides up on "ready", tap checkout on "buy"
+  const ct=RL.ease(t,W('ready',7)-0.05,.45); G('cart').style.transform=`translateY(${(1-ct)*320}px)`;
+  rip(G('rip2'),t,W('buy',7),G('cbtn'));
+  RL.scribble(G('hBack'),t,W('come',7),.5); if(t>=tEnd) G('hBack').style.opacity=0;
+  // L8: chips on "Same" and "More", new order toast on "More"
+  pin('c1',t,W('Same',8),tEnd,300,600); pin('c2',t,W('More',8),tEnd,780,720);
+  drop('n3',t,W('More',8)-0.05,tEnd+1);
+  const e=RL.ease(t,tEnd,.5); G('end').style.opacity=e; G('end').style.transform=`scale(${0.94+0.06*e})`;
+  G('world').style.opacity=1-e;
+  RL.chapter(G('chap'),t); G('chap').style.opacity*=1-e;
+  RL.caption(G('cap'),t);
+}
+render(0);
+</script></body></html>

@@ -1,0 +1,573 @@
+{
+ "dur": 20.67,
+ "engine": "kokoro",
+ "music": false,
+ "lines": [
+  {
+   "start": 0.25,
+   "end": 2.391,
+   "text": "A customer loves your dress, but not today.",
+   "wps": 3.77,
+   "words": [
+    {
+     "w": "A",
+     "s": 0.25,
+     "e": 0.3,
+     "hl": false
+    },
+    {
+     "w": "customer",
+     "s": 0.35,
+     "e": 0.8,
+     "hl": false
+    },
+    {
+     "w": "loves",
+     "s": 0.85,
+     "e": 1.05,
+     "hl": false
+    },
+    {
+     "w": "your",
+     "s": 1.075,
+     "e": 1.15,
+     "hl": false
+    },
+    {
+     "w": "dress,",
+     "s": 1.2,
+     "e": 1.466,
+     "hl": false
+    },
+    {
+     "w": "but",
+     "s": 1.646,
+     "e": 1.746,
+     "hl": false
+    },
+    {
+     "w": "not",
+     "s": 1.796,
+     "e": 1.971,
+     "hl": true
+    },
+    {
+     "w": "today.",
+     "s": 2.021,
+     "e": 2.371,
+     "hl": true
+    }
+   ],
+   "chapter": "THE PROBLEM",
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 2.391,
+   "end": 4.239,
+   "text": "So they close the tab, and forget you.",
+   "wps": 4.6,
+   "words": [
+    {
+     "w": "So",
+     "s": 2.446,
+     "e": 2.546,
+     "hl": false
+    },
+    {
+     "w": "they",
+     "s": 2.571,
+     "e": 2.671,
+     "hl": false
+    },
+    {
+     "w": "close",
+     "s": 2.721,
+     "e": 3.021,
+     "hl": false
+    },
+    {
+     "w": "the",
+     "s": 3.071,
+     "e": 3.121,
+     "hl": false
+    },
+    {
+     "w": "tab,",
+     "s": 3.196,
+     "e": 3.407,
+     "hl": false
+    },
+    {
+     "w": "and",
+     "s": 3.457,
+     "e": 3.532,
+     "hl": false
+    },
+    {
+     "w": "forget",
+     "s": 3.582,
+     "e": 3.907,
+     "hl": true
+    },
+    {
+     "w": "you.",
+     "s": 3.957,
+     "e": 4.184,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 4.239,
+   "end": 6.104,
+   "text": "Most stores just let them go.",
+   "wps": 3.88,
+   "words": [
+    {
+     "w": "Most",
+     "s": 4.539,
+     "e": 4.764,
+     "hl": false
+    },
+    {
+     "w": "stores",
+     "s": 4.814,
+     "e": 5.134,
+     "hl": false
+    },
+    {
+     "w": "just",
+     "s": 5.184,
+     "e": 5.384,
+     "hl": false
+    },
+    {
+     "w": "let",
+     "s": 5.434,
+     "e": 5.534,
+     "hl": true
+    },
+    {
+     "w": "them",
+     "s": 5.559,
+     "e": 5.709,
+     "hl": true
+    },
+    {
+     "w": "go.",
+     "s": 5.759,
+     "e": 6.084,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 6.104,
+   "end": 8.234,
+   "text": "Add a heart button to every product.",
+   "wps": 3.78,
+   "words": [
+    {
+     "w": "Add",
+     "s": 6.184,
+     "e": 6.309,
+     "hl": false
+    },
+    {
+     "w": "a",
+     "s": 6.334,
+     "e": 6.359,
+     "hl": false
+    },
+    {
+     "w": "heart",
+     "s": 6.409,
+     "e": 6.659,
+     "hl": true
+    },
+    {
+     "w": "button",
+     "s": 6.709,
+     "e": 6.909,
+     "hl": true
+    },
+    {
+     "w": "to",
+     "s": 6.959,
+     "e": 7.034,
+     "hl": false
+    },
+    {
+     "w": "every",
+     "s": 7.084,
+     "e": 7.334,
+     "hl": false
+    },
+    {
+     "w": "product.",
+     "s": 7.384,
+     "e": 8.034,
+     "hl": false
+    }
+   ],
+   "chapter": "THE FIX",
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 8.234,
+   "end": 10.24,
+   "text": "One tap, and it's saved for later.",
+   "wps": 4.15,
+   "words": [
+    {
+     "w": "One",
+     "s": 8.534,
+     "e": 8.709,
+     "hl": false
+    },
+    {
+     "w": "tap,",
+     "s": 8.759,
+     "e": 8.97,
+     "hl": false
+    },
+    {
+     "w": "and",
+     "s": 9.17,
+     "e": 9.245,
+     "hl": false
+    },
+    {
+     "w": "it's",
+     "s": 9.27,
+     "e": 9.345,
+     "hl": false
+    },
+    {
+     "w": "saved",
+     "s": 9.395,
+     "e": 9.67,
+     "hl": true
+    },
+    {
+     "w": "for",
+     "s": 9.72,
+     "e": 9.82,
+     "hl": true
+    },
+    {
+     "w": "later.",
+     "s": 9.87,
+     "e": 10.22,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 10.24,
+   "end": 11.88,
+   "text": "Then send a friendly reminder.",
+   "wps": 3.51,
+   "words": [
+    {
+     "w": "Then",
+     "s": 10.32,
+     "e": 10.495,
+     "hl": false
+    },
+    {
+     "w": "send",
+     "s": 10.545,
+     "e": 10.695,
+     "hl": false
+    },
+    {
+     "w": "a",
+     "s": 10.72,
+     "e": 10.745,
+     "hl": false
+    },
+    {
+     "w": "friendly",
+     "s": 10.795,
+     "e": 11.12,
+     "hl": true
+    },
+    {
+     "w": "reminder.",
+     "s": 11.17,
+     "e": 11.745,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 11.88,
+   "end": 13.98,
+   "text": "Back in their size? Tell them.",
+   "wps": 3.37,
+   "words": [
+    {
+     "w": "Back",
+     "s": 12.18,
+     "e": 12.38,
+     "hl": false
+    },
+    {
+     "w": "in",
+     "s": 12.405,
+     "e": 12.455,
+     "hl": false
+    },
+    {
+     "w": "their",
+     "s": 12.48,
+     "e": 12.605,
+     "hl": false
+    },
+    {
+     "w": "size?",
+     "s": 12.68,
+     "e": 13.065,
+     "hl": false
+    },
+    {
+     "w": "Tell",
+     "s": 13.51,
+     "e": 13.71,
+     "hl": true
+    },
+    {
+     "w": "them.",
+     "s": 13.76,
+     "e": 13.96,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 13.98,
+   "end": 15.616,
+   "text": "Now they come back, ready to buy.",
+   "wps": 4.56,
+   "words": [
+    {
+     "w": "Now",
+     "s": 14.06,
+     "e": 14.26,
+     "hl": false
+    },
+    {
+     "w": "they",
+     "s": 14.31,
+     "e": 14.41,
+     "hl": false
+    },
+    {
+     "w": "come",
+     "s": 14.46,
+     "e": 14.66,
+     "hl": false
+    },
+    {
+     "w": "back,",
+     "s": 14.71,
+     "e": 14.921,
+     "hl": false
+    },
+    {
+     "w": "ready",
+     "s": 14.971,
+     "e": 15.146,
+     "hl": true
+    },
+    {
+     "w": "to",
+     "s": 15.196,
+     "e": 15.246,
+     "hl": true
+    },
+    {
+     "w": "buy.",
+     "s": 15.296,
+     "e": 15.596,
+     "hl": true
+    }
+   ],
+   "chapter": "THE RESULT",
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 15.616,
+   "end": 17.636,
+   "text": "Same visitors. More orders.",
+   "wps": 2.11,
+   "words": [
+    {
+     "w": "Same",
+     "s": 15.721,
+     "e": 15.971,
+     "hl": false
+    },
+    {
+     "w": "visitors.",
+     "s": 16.021,
+     "e": 16.496,
+     "hl": false
+    },
+    {
+     "w": "More",
+     "s": 16.966,
+     "e": 17.166,
+     "hl": true
+    },
+    {
+     "w": "orders.",
+     "s": 17.216,
+     "e": 17.616,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  },
+  {
+   "start": 17.636,
+   "end": 20.065,
+   "text": "Want more orders? DM us GROWTH.",
+   "wps": 2.62,
+   "words": [
+    {
+     "w": "Want",
+     "s": 17.691,
+     "e": 17.841,
+     "hl": false
+    },
+    {
+     "w": "more",
+     "s": 17.891,
+     "e": 18.066,
+     "hl": false
+    },
+    {
+     "w": "orders?",
+     "s": 18.116,
+     "e": 18.516,
+     "hl": false
+    },
+    {
+     "w": "DM",
+     "s": 18.946,
+     "e": 19.212,
+     "hl": false
+    },
+    {
+     "w": "us",
+     "s": 19.237,
+     "e": 19.362,
+     "hl": false
+    },
+    {
+     "w": "GROWTH.",
+     "s": 19.412,
+     "e": 19.985,
+     "hl": true
+    }
+   ],
+   "chapter": null,
+   "hold": 0.0,
+   "timing": "exact"
+  }
+ ],
+ "cues": [
+  {
+   "t": 0.15,
+   "sfx": "swoosh",
+   "id": "A"
+  },
+  {
+   "t": 1.796,
+   "sfx": "pop",
+   "id": "not"
+  },
+  {
+   "t": 2.721,
+   "sfx": "swoosh",
+   "id": "close"
+  },
+  {
+   "t": 5.759,
+   "sfx": "error",
+   "id": "go"
+  },
+  {
+   "t": 5.984,
+   "sfx": "whoosh",
+   "id": "Add"
+  },
+  {
+   "t": 6.409,
+   "sfx": "pop",
+   "id": "heart"
+  },
+  {
+   "t": 8.809,
+   "sfx": "tap",
+   "id": "tap"
+  },
+  {
+   "t": 9.395,
+   "sfx": "ding",
+   "id": "saved"
+  },
+  {
+   "t": 10.795,
+   "sfx": "pop",
+   "id": "friendly"
+  },
+  {
+   "t": 12.68,
+   "sfx": "pop",
+   "id": "size"
+  },
+  {
+   "t": 13.86,
+   "sfx": "whoosh",
+   "id": "Now"
+  },
+  {
+   "t": 14.971,
+   "sfx": "ding",
+   "id": "ready"
+  },
+  {
+   "t": 16.966,
+   "sfx": "pop",
+   "id": "More"
+  },
+  {
+   "t": 19.412,
+   "sfx": "pop",
+   "id": "GROWTH"
+  }
+ ]
+}

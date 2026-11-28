@@ -70,3 +70,14 @@ about the fix. Before start talking about the fix say it loud: 'Want to fix this
   and set `"hold": 0.7` on the last problem line, so there is a clear pause before it and after it.
 - `"loud": true` makes `voiceover.py` say that line clearly louder (+4.5 dB) than the rest. On screen it gets the big
   full-frame title card `RL.bridge` (see PLAYBOOK › REEL STYLE › FIX BRIDGE).
+
+## ElevenLabs (owner, 2026-11-28: "Use ElevenLabs for my voice over") — PENDING, not active yet
+- Wanted: ElevenLabs voice for every reel. Tested 2026-11-28 with voice "Lowell – Warm, Confident, Conversational"
+  (`XxGp0QgHUscY6yYqUxAi`, American), model `eleven_v4`, 1 take: it read the script word for word (checked by
+  transcription), ~420 credits per 25–30 s reel. The account is on the FREE plan (10,000 credits/month = ~20 reels).
+- Pipeline is ready: `tools/el_voice.py` (text → generate → transcribe → plan timings → render silent → mix in the
+  ElevenLabs sandbox). Test: `work_nln4/script_m.json`, `vo_m_el/`, `reel_m_el.html`.
+- BLOCKER: this workspace can't download the ElevenLabs audio/video (elevenlabsusercontent.com is not allowed by the
+  network settings, and copying it out another way is not allowed), and the sandbox output has no public URL for
+  Instagram. Until the owner allows that host in the environment's network access, keep using Kokoro `am_puck` via
+  `voiceover.py` and do NOT spend ElevenLabs credits in scheduled runs.

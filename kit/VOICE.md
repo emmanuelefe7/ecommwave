@@ -61,3 +61,12 @@ Plain, simple words in the script (short sentences, everyday vocabulary).
 - **Consistency**: one voice and ONE fixed voice style for the whole video, one speed, loudness −13 LUFS.
 - Limits of the engine: it can't take free-text acting directions, so tone comes from the voice choice, pace,
   punctuation and accent marks. Write the script for the ear.
+
+## Fix bridge (owner, 2026-11-28 — every video with a problem and a fix)
+Owner: "It talks about the product and continues with the fix, no pause or hold that make people understand it's talking
+about the fix. Before start talking about the fix say it loud: 'Want to fix this? Here's how!'"
+- Between the last problem line and the first fix line, always add the line
+  `{"text": "Want to fix this? *Here's how!*", "chapter": "THE FIX", "loud": true, "hold": 0.5}`
+  and set `"hold": 0.7` on the last problem line, so there is a clear pause before it and after it.
+- `"loud": true` makes `voiceover.py` say that line clearly louder (+4.5 dB) than the rest. On screen it gets the big
+  full-frame title card `RL.bridge` (see PLAYBOOK › REEL STYLE › FIX BRIDGE).

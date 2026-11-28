@@ -19,6 +19,7 @@ SR = 48000
 TARGET_WPS = 3.0                     # brisk, conversational (owner's reference reel ~3 words/sec)
 LEAD, GAP, MAX_GAP, TAIL = 0.25, 0.15, 0.45, 0.60   # lines almost back to back
 MAX_HOLD = 3.6
+LOUD_DB = 4.5    # "loud": true on a line (the fix bridge "Want to fix this? Here's how!") -> said clearly louder
 LANG = 'en-us'   # owner, 2026-11-26: simple, neutral English accent (clear, easy to understand); MAX_HOLD above = optional countdown pause
 
 def kokoro():
@@ -283,6 +284,16 @@ def plan_flow(k, spec, out, voice):
                 if r: seg[:r] = np.linspace(1, seg[0], r); seg[-r:] = np.linspace(seg[0], 1, r)
                 gain[s0:s1] = np.maximum(gain[s0:s1], seg)
             a = a * gain
+        if any(L0[i].get('loud') for i in g):   # owner 2026-11-28: the "Want to fix this? Here's how!" bridge is said LOUD
+            gain = np.ones(len(a)); rp = int(0.04 * sr); pos = 0
+            for i in g:
+                n = len(L0[i]['text'].split()); w = wt[pos:pos + n]; pos += n
+                if not L0[i].get('loud') or not w: continue
+                s0, s1 = max(0, int((w[0][0] - 0.03) * sr)), min(len(a), int((w[-1][1] + 0.05) * sr))
+                seg = np.ones(s1 - s0) * 10 ** (LOUD_DB / 20); r = min(rp, len(seg) // 2)
+                if r: seg[:r] = np.linspace(1, seg[0], r); seg[-r:] = np.linspace(seg[0], 1, r)
+                gain[s0:s1] = seg
+            a = a * gain
         if spec.get('breaths', True):           # soft breath before a new sentence when the pause is long enough
             pk = np.abs(a).max(); br = breath(sr)
             for j in range(1, len(wt)):
@@ -305,7 +316,7 @@ def plan_flow(k, spec, out, voice):
             spoken = w[-1][1] - w[0][0]
             lines[i] = {'start': round(off, 3), 'end': round(off + len(seg) / SR, 3), 'text': clean(L0[i]['text']),
                         'wps': round(counts[n] / max(spoken, 0.3), 2), 'words': words, 'chapter': L0[i].get('chapter'),
-                        'hold': round(min(MAX_HOLD, float(L0[i].get('hold', 0))), 2), 'timing': 'exact', '_cut': seg_e}
+                        'hold': round(min(MAX_HOLD, float(L0[i].get('hold', 0))), 2), 'loud': bool(L0[i].get('loud')), 'timing': 'exact', '_cut': seg_e}
         t += (gend - head) + (lines[g[-1]]['hold'] or GAP)
     for l in lines: l.pop('_cut', None)
     return lines, t
@@ -338,7 +349,7 @@ def plan(script, out):
         words = [dict(w, s=round(t + w['s'], 3), e=round(t + w['e'], 3)) for w in al]
         hold = min(MAX_HOLD, float(ln.get('hold', 0)))
         lines.append({'start': round(t, 3), 'end': round(t + L, 3), 'text': txt, 'wps': round(wps, 2), 'words': words,
-                      'chapter': ln.get('chapter'), 'hold': round(hold, 2), 'timing': src})
+                      'chapter': ln.get('chapter'), 'hold': round(hold, 2), 'loud': bool(ln.get('loud')), 'timing': src})
         t += L + (hold if hold else min(MAX_GAP, max(GAP, ln.get('pause_after', GAP))))
     dur = round(lines[-1]['end'] + TAIL, 2)
     cues = []

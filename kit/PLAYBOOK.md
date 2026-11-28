@@ -173,6 +173,20 @@ example to copy: `work_reel_demo/` (`script.json` + `reel.html`, final `final.mp
   pins/labels popping in, tap ripples, screen changes, error shakes, scribbles. Something changes about every second.
 - **Chapters**: small navy pill at the top that pops when a section starts — set `"chapter"` on the first line of each
   section (e.g. THE QUESTION / THE SETUP / PICTURE THIS / THE FIX).
+- **FIX BRIDGE — REQUIRED in every Reel/video that shows a problem and then a fix (owner, 2026-11-28):** the owner said
+  the video "talks about the product and continues with the fix, no pause or hold that make people understand it's talking
+  about the fix. Before start talking about the fix say it loud: 'Want to fix this? Here's how!'". So between the last
+  problem line and the first fix line, ALWAYS put this exact line in `script.json`:
+  `{"text": "Want to fix this? *Here's how!*", "chapter": "THE FIX", "loud": true, "hold": 0.5}`
+  and give the last problem line `"hold": 0.7` (a clear pause BEFORE the bridge). The fix lines that follow have no chapter
+  of their own. `voiceover.py` says a `"loud"` line ~4.5 dB louder than the rest; the holds give a real pause before and
+  after it. On screen: `RL.bridge(bridgeEl, t)` every frame — a full-frame overlay that dims the scene and shows the line
+  big and centred, word by word, through the pause (CSS: `.bridge{position:absolute;inset:0;display:grid;place-items:center;
+  background:rgba(10,26,71,.82);opacity:0;z-index:50}.bridge .bt{font:900 96px/1.05 "Inter Display";letter-spacing:-.04em;
+  color:#fff;text-align:center;padding:0 90px}.bridge .bw{display:inline-block}.bridge .hl{color:#34d5a0}` — on LIGHT
+  reels use background `rgba(230,236,247,.9)`, text `#14254f`, accent `#0ea472`). Hide the normal caption during it, keep
+  the camera still, cues `whoosh` on "Want" and `ding` on "how!". Then the fix starts. Check a preview frame in the
+  middle of the hold: the bridge card must fill the screen. Applies to growth, mistakes, one-off and filler videos alike.
 - **Camera**: ONE continuous shot — zoom into the phone/UI part being talked about, pull back, move to the next
   (`RL.cam`), no hard cuts and no crossfaded scenes. Realistic NOVA phone/browser UI is the main visual.
 - **Handwritten notes** (`.hand`, Caveat font) for small asides ("comment A or B", "sale lost"), revealed with `RL.scribble`.
@@ -188,7 +202,7 @@ example to copy: `work_reel_demo/` (`script.json` + `reel.html`, final `final.mp
 **Videos**: 1080×1920, 30 fps, 20–30 s, ALWAYS with voiceover, in the REEL STYLE above. Keep key content between y=170 and y=1520 (Instagram UI covers the bottom). Structure: hook → animated realistic UI demo that SHOWS the point → end card with CTA. Transitions: one continuous camera (zoom/pan with RL.cam), never hard cuts or dips to black.
 
 **Voiceover sync (mandatory, the VOICE drives the timeline):**
-1. Write `script.json` FIRST: 9–12 short spoken lines (see REEL STYLE), plain conversational English, 3–8 words each, one idea per line, last line = CTA ("…DM us GROWTH" / free audit). Use `"pause_after": 0.5` only before a big scene change (max 0.6).
+1. Write `script.json` FIRST: 9–12 short spoken lines (see REEL STYLE), plain conversational English, 3–8 words each, one idea per line, last line = CTA ("…DM us GROWTH" / free audit). Problem → fix videos MUST include the loud FIX BRIDGE line "Want to fix this? Here's how!" with holds before and after it (see REEL STYLE). Use `"pause_after": 0.5` only before a big scene change (max 0.6).
 2. `python3 tools/voiceover.py plan script.json vo/` → brisk pace (~3 words/sec), lines packed with 0.15 s gaps, EXACT per-word times in `VO.lines[i].words`, cue times in `VO.cues`, writes `vo/timing.js` and prints the timeline + video length.
 3. Build the page with `<script src="vo/timing.js"></script>` after `common.js`. Either drive every animation directly from `VO.lines[i].start`, or author on a design timeline and lock it with `const T = voWarp([designTimeOfLine0, …, designTimeOfLineN], designEnd)` + `function render(t){ draw(T(t)) }` + `window.DUR = VO.dur` (see `tpl_video_black_friday.html` + `tpl_vo/`). Every line must have something on screen that matches it AT THAT MOMENT: the words being spoken appear (headline reveal, label, callout, checklist item) as they are said; the end card + CTA appear exactly when the CTA line starts. Never let a scene sit still for more than ~2 s; never let the visuals run ahead of or behind the voice.
 4. Render silent → `python3 tools/voiceover.py mix vo/ silent.mp4 final.mp4`. This is a hard gate: it refuses to output if the video length doesn't match the plan, a line is too fast/slow (outside 2.5–3.5 words/sec), any silent gap > 0.5 s (except a planned "hold"), first word after 0.5 s, more than 1.2 s silence at the end, or speech covers < 75 % of the video. If it fails, fix the script or timing and re-run; never post a video that didn't pass.

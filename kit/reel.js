@@ -13,6 +13,7 @@
    RL.draw(t, t0, d)            -> 0..1 for drawing a highlight box (use with stroke-dashoffset)
    RL.ripple(el, t, t0)         -> tap ripple
    RL.scribble(el, t, t0, d)    -> reveal handwritten note left->right
+   RL.bridge(el, t)             -> big centred title card for the LOUD fix bridge line (Want to fix this? Here's how!)
    RL.countdown(el, t, t0, n)   -> OPTIONAL "A or B?" ring countdown (only when the topic is a real comparison)
 */
 (function () {
@@ -56,6 +57,27 @@
         sp.style.opacity = (p * (1 - fadeOut)).toFixed(3);
         sp.style.transform = `translateY(${((1 - p) * (o.dy ?? 26)).toFixed(1)}px) scale(${(0.96 + 0.04 * p).toFixed(3)})`;
         sp.style.filter = p < 1 ? `blur(${((1 - p) * (o.blur ?? 9)).toFixed(1)}px)` : 'none';
+      });
+    },
+
+    /* ---------- fix bridge (owner 2026-11-28) ----------
+       The "loud": true line ("Want to fix this? Here's how!") gets its own big title card: the scene dims, the words
+       pop in big and centred as they are said, and it stays through the pause after it, then clears for the fix.
+       el = full-frame overlay div (class "bridge"); call RL.bridge(el, t) every frame. */
+    bridge(el, t, o = {}) {
+      const i = VO.lines.findIndex(l => l.loud);
+      if (i < 0) { el.style.opacity = 0; return; }
+      const l = VO.lines[i], t0 = l.start - 0.12, t1 = l.end + (l.hold || 0.4) - 0.05;
+      const vis = C((t - t0) / 0.2) * (1 - C((t - t1) / 0.25));
+      el.style.opacity = vis.toFixed(3); if (vis <= 0) return;
+      if (!el._built) {
+        el.innerHTML = `<div class="bt">${l.words.map(w => `<span class="bw${w.hl ? ' hl' : ''}">${w.w}</span>`).join(' ')}</div>`;
+        el._built = true;
+      }
+      [...el.querySelectorAll('.bw')].forEach((sp, j) => {
+        const p = this.pop(t, l.words[j].s - 0.04, 0.32);
+        sp.style.opacity = C(p * 1.4).toFixed(3);
+        sp.style.transform = `scale(${(0.7 + 0.3 * p).toFixed(3)})`;
       });
     },
 
